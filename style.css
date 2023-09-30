@@ -15,11 +15,9 @@
 }
 
 body {
-  color: #000;
+  color: #fff;
   font-family: "Jost", sans-serif;
-  background:linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("assets/bg.png");
   background-size: cover;
-  animation: gradient 15s ease infinite;
   min-height: 100vh;
   display: flex;
   flex-wrap: wrap;
@@ -58,12 +56,15 @@ body {
   position: relative;
   z-index: 1;
   overflow-x: hidden;
-  background-color: white;
+  background-image: linear-gradient(180deg, rgba(255,255,255,0.1), rgba(0,0,0,0.75));
   display: flex;
-  transition: 0.3s;
   flex-direction: column;
-  border-radius: 10px;
-  box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 10px 10px 20px -10px rgba(255, 255, 255, 0.2);
+  border-right: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+  transition: .5s ease;
 }
 
 .card[data-state="#about"] {
@@ -197,7 +198,7 @@ body {
 
 .card-desc {
   line-height: 1.6;
-  color: #636b6f;
+  color: #c0c3c5;
   font-size: 14px;
   margin: 0;
   font-weight: 400;
@@ -211,13 +212,13 @@ body {
   margin-bottom: 30px;
 }
 .card-social svg {
-  fill: #999999;
+  fill: #222;
   width: 16px;
   display: block;
   transition: 0.3s;
 }
 .card-social a {
-  color: #999999;
+  color: #222;
   height: 32px;
   width: 32px;
   border-radius: 50%;
@@ -225,12 +226,12 @@ body {
   align-items: center;
   justify-content: center;
   transition: 0.3s;
-  background-color: #e5e5e5;
+  background-color: #fff;
   border-radius: 50%;
   margin-right: 10px;
 }
 .card-social a:hover svg {
-  fill: #555;
+  fill: #666;
 }
 .card-social a:last-child {
   margin-right: 0;
@@ -238,7 +239,7 @@ body {
 
 .card-buttons {
   display: flex;
-  background-color: #fff;
+  background-color: rgba(255,255,255,0);
   margin-top: auto;
   position: sticky;
   bottom: 0;
@@ -255,7 +256,7 @@ body {
   border: 0;
   padding: 15px 5px;
   cursor: pointer;
-  color: #19232f;
+  color: #fff;
   transition: 0.3s;
   font-family: "Jost", sans-serif;
   font-weight: 500;
@@ -263,9 +264,9 @@ body {
   border-bottom: 3px solid transparent;
 }
 .card-buttons button.is-active, .card-buttons button:hover {
-  color: #19232f;
-  border-bottom: 3px solid #999;
-  background: linear-gradient(to bottom, rgba(79, 109, 147, 0) 0%, rgba(79, 109, 147, 0.05) 44%, rgba(79, 109, 147, 0.1) 100%);
+  color: #fff;
+  border-bottom: 3px solid #fff;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.05) 44%, rgba(255, 255, 255, 0.1) 100%);
 }
 
 .card-section {
@@ -346,7 +347,7 @@ body {
 
 .card-item-desc {
   font-size: 13px;
-  color: #6f6f7b;
+  color: #fff;
   line-height: 1.5;
   font-family: "DM Sans", sans-serif;
 }
@@ -359,7 +360,7 @@ body {
   display: flex;
   align-items: center;
   font-size: 13px;
-  color: #6f6f7b;
+  color: #fff;
   font-family: "DM Sans", sans-serif;
   line-height: 1.6;
   cursor: pointer;
@@ -380,9 +381,9 @@ body {
 .contact-me {
   border: 0;
   outline: none;
-  background: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(25, 25, 25, 1) 96%);
+  background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(245, 245, 245, 1) 96%);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-  color: #fff;
+  color: #050505;
   padding: 12px 16px;
   width: 100%;
   border-radius: 5px;
@@ -398,9 +399,9 @@ body {
 .contact-me:hover {
   border: 0;
   outline: none;
-  background: linear-gradient(to left, rgba(0, 0, 0, 1) 0%, rgba(25, 25, 25, 1) 96%);
+  background: linear-gradient(to left, rgba(255, 255, 255, 1) 0%, rgba(245, 245, 245, 1) 96%);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-  color: #fff;
+  color: #050505;
   padding: 12px 16px;
   width: 100%;
   border-radius: 5px;
@@ -410,4 +411,16 @@ body {
   font-weight: 500;
   font-family: "Jost", sans-serif;
   transform: scale(1.08);
+}
+
+#background-video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
 }
