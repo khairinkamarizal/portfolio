@@ -36,7 +36,7 @@ export default defineNuxtConfig({
   },
   devtools: { enabled: false },
   nitro: {
-    preset: "cloudflare-pages",
+    preset: "cloudflare",
   },
   compatibilityDate: "2024-11-01",
 });
