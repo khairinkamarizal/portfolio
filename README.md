@@ -1,75 +1,32 @@
-# Nuxt Content Starter
+# Khairinkamarizal Portfolio 🚀
 
-Look at the [Nuxt Content documentation](https://content.nuxt.com) to learn more.
+> Creative Designer based in Cyberjaya, Malaysia.
 
-## Setup
+Ambitious and versatile creative designer skilled in branding, UI/UX, motion content, and web development. This repository contains the source code for my personal portfolio, built with modern web technologies.
 
-Make sure to install dependencies:
+---
 
-```bash
-# npm
-npm install
+## 🛠️ Tech Stack
 
-# pnpm
-pnpm install
+- **Framework**: [Nuxt 4](https://nuxt.com/) (Vue 3)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Content**: [@nuxt/content](https://content.nuxt.com/)
+- **Icons**: [Lucide Vue Next](https://lucide.dev/)
+- **Fonts**: [Google Fonts](https://fonts.google.com/)
+- **Database**: [Better SQLite3](https://github.com/WiseLibs/better-sqlite3)
 
-# yarn
-yarn install
+---
 
-# bun
-bun install
-```
+## 🎨 Socials
 
-## Development Server
+Let's connect!
 
-Start the development server on `http://localhost:3000`:
+- [Instagram](https://instagram.com/khairinkamarizal)
+- [Behance](https://be.net/khairinkamarizal)
+- [LinkedIn](https://linkedin.com/in/khairinkamarizal)
 
-```bash
-# npm
-npm run dev
+---
 
-# pnpm
-pnpm dev
+## 📄 License
 
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Copyright © 2026 Khairinkamarizal. All rights reserved.
