@@ -31,7 +31,7 @@
               </ClientOnly>
             </div>
             <ColorToggle
-              class="!bg-black dark:bg-white w-8 h-8 hover:scale-125 transition-transform duration-300" />
+              class="!bg-black dark:!bg-white w-8 h-8 hover:scale-125 transition-transform duration-300" />
           </header>
         </div>
         <div class="flex flex-col justify-center items-center gap-2">

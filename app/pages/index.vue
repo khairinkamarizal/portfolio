@@ -46,8 +46,8 @@
                 alt="avatar"
                 class="w-14 h-14 rounded-full object-cover object-center shrink-0 !mix-blend-normal" />
               <div
-                class="w-14 h-14 shrink-0 flex items-center justify-center bg-white rounded-full -ml-4">
-                <AppLogo class="text-black w-7 h-7" />
+                class="w-14 h-14 shrink-0 flex items-center justify-center bg-black dark:bg-white rounded-full -ml-4">
+                <AppLogo class="text-white dark:text-black w-7 h-7" />
               </div>
             </div>
           </div>
@@ -76,7 +76,7 @@
                 class="group-hover:rotate-45 transition-transform duration-300" />
             </NuxtLink>
             <NuxtLink
-              to="/portfolio"
+              to="https://be.net/khairinkamarizal"
               class="group flex items-center">
               <div
                 class="flex-none group-hover:flex-1 transition-all duration-300 h-1"></div>
