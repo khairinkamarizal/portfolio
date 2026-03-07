@@ -5,7 +5,6 @@ export default defineNuxtConfig({
     "@nuxtjs/color-mode",
     "@nuxtjs/google-fonts",
     "@nuxtjs/tailwindcss",
-    "@nuxt/image",
   ],
   app: {
     head: {
@@ -37,9 +36,6 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   nitro: {
     preset: "cloudflare",
-  },
-  image: {
-    provider: "ipx",
   },
   compatibilityDate: "2024-11-01",
 });

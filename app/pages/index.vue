@@ -41,7 +41,7 @@
 
             <div
               class="flex flex-row relative w-fit col-span-1 items-end justify-end">
-              <NuxtImg
+              <img
                 src="/assets/dp.webp"
                 alt="avatar"
                 class="w-14 h-14 rounded-full object-cover object-center shrink-0 !mix-blend-normal" />
