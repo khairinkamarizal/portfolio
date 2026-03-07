@@ -38,5 +38,8 @@ export default defineNuxtConfig({
   nitro: {
     preset: "cloudflare",
   },
+  image: {
+    provider: "ipx",
+  },
   compatibilityDate: "2024-11-01",
 });
