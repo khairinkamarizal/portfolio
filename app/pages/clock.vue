@@ -37,7 +37,7 @@
         <div class="flex flex-col justify-center items-center gap-2">
           <h2 class="text-3xl">Countdown to Freedom</h2>
           <p
-            class="text-6xl font-semibold tracking-tight tabular-nums leading-tight">
+            class="text-6xl text-center font-semibold tracking-tight tabular-nums leading-tight">
             {{ countdown }}
           </p>
           <p class="text-lg opacity-50">
@@ -125,19 +125,24 @@ function buildMessage() {
   const totalSeconds = Math.floor(diff / 1000);
   const h = Math.floor(totalSeconds / 3600);
   const m = Math.floor((totalSeconds % 3600) / 60);
+  const s = totalSeconds % 60;
 
-  let message = "Hi, there's ";
+  const parts: string[] = [];
+  if (h > 0) parts.push(`${h} hour${h !== 1 ? "s" : ""}`);
+  if (m > 0) parts.push(`${m} minute${m !== 1 ? "s" : ""}`);
+  if (s > 0 || parts.length === 0)
+    parts.push(`${s} second${s !== 1 ? "s" : ""}`);
 
-  if (h > 0) message += h + " hour" + (h !== 1 ? "s" : "");
-
-  if (m > 0) {
-    if (h > 0) message += " and ";
-    message += m + " minute" + (m !== 1 ? "s" : "");
+  let timeStr = "";
+  if (parts.length === 1) {
+    timeStr = parts[0]!;
+  } else if (parts.length === 2) {
+    timeStr = `${parts[0]} and ${parts[1]}`;
+  } else if (parts.length > 2) {
+    timeStr = `${parts.slice(0, -1).join(", ")} and ${parts[parts.length - 1]}`;
   }
 
-  message += " from 4:30 tak sabarnye 😭";
-
-  return message;
+  return `Hi, there's ${timeStr} from 4:30 tak sabarnye 😭`;
 }
 
 async function copyText(text: string) {
