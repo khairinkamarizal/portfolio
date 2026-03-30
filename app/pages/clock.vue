@@ -17,9 +17,7 @@
                   <span>Cyberjaya,&nbsp;</span>
                   <span>{{ hours }}</span>
                   <span class="blink">:</span>
-                  <span
-                    >{{ minutes }} <span class="ml-1">{{ ampm }}</span></span
-                  >
+                  <span>{{ minutes }} <span class="ml-1">{{ ampm }}</span></span>
                 </div>
                 <template #fallback>
                   <div class="opacity-50 flex items-center">
@@ -43,15 +41,7 @@
               {{ countdown }}
             </p>
             <p class="text-lg opacity-50">
-              Targeting 4:30 PM — Time to head home!
-            </p>
-          </div>
-
-          <div class="flex flex-col justify-center items-center gap-2">
-            <h2 class="text-2xl">Countdown to 19 March (Cuti Raya)</h2>
-            <p
-              class="text-4xl text-center font-semibold tracking-tight tabular-nums leading-tight">
-              {{ countdownMar19 }}
+              Targeting 6:00 PM — Time to head home!
             </p>
           </div>
         </div>
@@ -113,7 +103,6 @@ const hours = ref("00");
 const minutes = ref("00");
 const ampm = ref("am");
 const countdown = ref("");
-const countdownMar19 = ref("");
 const shareText = ref("Share");
 
 function getTimeDiff() {
@@ -124,32 +113,17 @@ function getTimeDiff() {
   klNow.setMilliseconds(now.getMilliseconds());
 
   const target = new Date(klNow);
-  target.setHours(16, 30, 0, 0);
+  target.setHours(18, 0, 0, 0);
 
   return target.getTime() - klNow.getTime();
 }
 
-function getTimeDiff19() {
-  const now = new Date();
-  const klNow = new Date(
-    now.toLocaleString("en-US", { timeZone: "Asia/Kuala_Lumpur" }),
-  );
-  klNow.setMilliseconds(now.getMilliseconds());
-
-  const targetMar19 = new Date(klNow);
-  targetMar19.setFullYear(2026, 2, 19);
-  targetMar19.setHours(16, 30, 0, 0);
-
-  return targetMar19.getTime() - klNow.getTime();
-}
-
 function buildMessage() {
   const diff = getTimeDiff();
-  const diff19 = getTimeDiff19();
   let message = "";
 
   if (diff <= 0) {
-    message = "Hi, it's already 4:30 PM 😌\n\n";
+    message = "Hi, it's already 6:00 PM 😌\n\n";
   } else {
     const totalSeconds = Math.floor(diff / 1000);
     const h = Math.floor(totalSeconds / 3600);
@@ -171,34 +145,7 @@ function buildMessage() {
       timeStr = `${parts.slice(0, -1).join(", ")} and ${parts[parts.length - 1]}`;
     }
 
-    message = `Hi, there's ${timeStr} from 4:30 tak sabarnye 😭\n\n`;
-  }
-
-  if (diff19 <= 0) {
-    message += "BALIK RAYA LU 🏠";
-  } else {
-    const d19 = Math.floor(diff19 / (1000 * 60 * 60 * 24));
-    const h19 = Math.floor((diff19 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const m19 = Math.floor((diff19 % (1000 * 60 * 60)) / (1000 * 60));
-    const s19 = Math.floor((diff19 % (1000 * 60)) / 1000);
-
-    const parts19: string[] = [];
-    if (d19 > 0) parts19.push(`${d19} day${d19 !== 1 ? "s" : ""}`);
-    if (h19 > 0) parts19.push(`${h19} hour${h19 !== 1 ? "s" : ""}`);
-    if (m19 > 0) parts19.push(`${m19} minute${m19 !== 1 ? "s" : ""}`);
-    if (s19 > 0 || parts19.length === 0)
-      parts19.push(`${s19} second${s19 !== 1 ? "s" : ""}`);
-
-    let timeStr19 = "";
-    if (parts19.length === 1) {
-      timeStr19 = parts19[0]!;
-    } else if (parts19.length === 2) {
-      timeStr19 = `${parts19[0]} and ${parts19[1]}`;
-    } else if (parts19.length > 2) {
-      timeStr19 = `${parts19.slice(0, -1).join(", ")} and ${parts19[parts19.length - 1]}`;
-    }
-
-    message += `Also, ${timeStr19} left until Cuti Raya (19 March)! 🤩`;
+    message = `Hi, there's ${timeStr} from 6:00 tak sabarnye 😭\n\n`;
   }
 
   return message;
@@ -265,7 +212,7 @@ onMounted(() => {
     klNow.setMilliseconds(now.getMilliseconds());
 
     const target = new Date(klNow);
-    target.setHours(16, 30, 0, 0);
+    target.setHours(18, 0, 0, 0);
 
     if (klNow >= target) {
       countdown.value = "GOT HOME LOL 🏠";
@@ -285,33 +232,6 @@ onMounted(() => {
         .padStart(2, "0");
       countdown.value = `${h}:${m}:${s}:${ms}`;
     }
-
-    const targetMar19 = new Date(klNow);
-    targetMar19.setFullYear(2026, 2, 19);
-    targetMar19.setHours(16, 30, 0, 0);
-
-    if (klNow >= targetMar19) {
-      countdownMar19.value = "BALIK RAYA LU";
-    } else {
-      const diff19 = targetMar19.getTime() - klNow.getTime();
-      const d19 = Math.floor(diff19 / (1000 * 60 * 60 * 24));
-      const h19 = Math.floor(
-        (diff19 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-      );
-      const m19 = Math.floor((diff19 % (1000 * 60 * 60)) / (1000 * 60));
-      const s19 = Math.floor((diff19 % (1000 * 60)) / 1000);
-
-      const dLabel = d19 === 1 ? "day" : "days";
-      const hLabel = h19 === 1 ? "hour" : "hours";
-      const mLabel = m19 === 1 ? "minute" : "minutes";
-      const sLabel = s19 === 1 ? "second" : "seconds";
-
-      if (d19 > 0) {
-        countdownMar19.value = `${d19} ${dLabel}, ${h19} ${hLabel}, ${m19} ${mLabel} and ${s19} ${sLabel} left`;
-      } else {
-        countdownMar19.value = `${h19} ${hLabel}, ${m19} ${mLabel} and ${s19} ${sLabel} left`;
-      }
-    }
   };
 
   updateTime();
@@ -329,7 +249,7 @@ useHead({
     {
       name: "description",
       content:
-        "Countdown to 4:30 PM — The precisely timed journey to freedom and home office escape.",
+        "Countdown to 6:00 PM — The precisely timed journey to freedom and home office escape.",
     },
   ],
 });
