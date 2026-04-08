@@ -111,8 +111,7 @@
           @mouseenter="isHovering = true"
           @mouseleave="isHovering = false"
           @touchstart="isHovering = true"
-          @touchend="isHovering = false"
-        >
+          @touchend="isHovering = false">
           <div
             v-if="isLoading && messages.length === 0"
             class="absolute inset-0 flex flex-col items-center justify-center opacity-50 gap-3">
@@ -139,34 +138,69 @@
             <p class="text-sm">Be the first to leave a message!</p>
           </div>
 
-          <TransitionGroup
-            name="list"
-            tag="div"
-            class="flex flex-col gap-4">
-            <article
-              v-for="msg in messages"
-              :key="msg.id"
-              class="group bg-white dark:bg-neutral-950 p-5 lg:p-6 border border-neutral-200 dark:border-neutral-800/60 hover:border-neutral-300 dark:hover:border-neutral-700 transition-all duration-300 overflow-hidden relative flex flex-col gap-3">
-              <div class="flex justify-between items-center z-10 w-full gap-4">
-                <h3 class="font-medium text-base truncate max-w-[70%]">
-                  {{ msg.name }}
-                </h3>
-                <time
-                  :datetime="msg.created_at"
-                  class="text-xs font-medium tracking-wide uppercase opacity-40 shrink-0">
-                  {{ formatTimeAgo(msg.created_at) }}
-                </time>
-              </div>
-              <p
-                class="text-base opacity-80 leading-relaxed break-words whitespace-pre-wrap z-10">
-                {{ msg.message }}
-              </p>
+          <div class="flex flex-col gap-4 pb-4">
+            <TransitionGroup
+              name="list"
+              tag="div"
+              ref="firstList"
+              class="flex flex-col gap-4">
+              <article
+                v-for="msg in messages"
+                :key="msg.id"
+                class="group bg-white dark:bg-neutral-950 p-5 lg:p-6 border border-neutral-200 dark:border-neutral-800/60 hover:border-neutral-300 dark:hover:border-neutral-700 transition-all duration-300 overflow-hidden relative flex flex-col gap-3">
+                <div
+                  class="flex justify-between items-center z-10 w-full gap-4">
+                  <h3 class="font-medium text-base truncate max-w-[70%]">
+                    {{ msg.name }}
+                  </h3>
+                  <time
+                    :datetime="msg.created_at"
+                    class="text-xs font-medium tracking-wide uppercase opacity-40 shrink-0">
+                    {{ formatTimeAgo(msg.created_at) }}
+                  </time>
+                </div>
+                <p
+                  class="text-base opacity-80 leading-relaxed break-words whitespace-pre-wrap z-10">
+                  {{ msg.message }}
+                </p>
 
-              <!-- Hover gradient -->
-              <div
-                class="absolute inset-0 bg-gradient-to-br from-neutral-100 to-transparent dark:from-white/[0.1] dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-            </article>
-          </TransitionGroup>
+                <!-- Hover gradient -->
+                <div
+                  class="absolute inset-0 bg-gradient-to-br from-neutral-100 to-transparent dark:from-white/[0.1] dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+              </article>
+            </TransitionGroup>
+
+            <!-- Duplicate list for seamless infinite scroll -->
+            <div
+              v-if="messages.length > 0"
+              class="flex flex-col gap-4"
+              aria-hidden="true">
+              <article
+                v-for="msg in messages"
+                :key="'dup-' + msg.id"
+                class="group bg-white dark:bg-neutral-950 p-5 border border-neutral-200 dark:border-neutral-800/60 transition-all duration-300 overflow-hidden relative flex flex-col gap-3">
+                <div
+                  class="flex justify-between items-center z-10 w-full gap-4">
+                  <h3 class="font-medium text-base truncate max-w-[70%]">
+                    {{ msg.name }}
+                  </h3>
+                  <time
+                    :datetime="msg.created_at"
+                    class="text-xs font-medium tracking-wide uppercase opacity-40 shrink-0">
+                    {{ formatTimeAgo(msg.created_at) }}
+                  </time>
+                </div>
+                <p
+                  class="text-base opacity-80 leading-relaxed break-words whitespace-pre-wrap z-10">
+                  {{ msg.message }}
+                </p>
+
+                <!-- Hover gradient -->
+                <div
+                  class="absolute inset-0 bg-gradient-to-br from-neutral-100 to-transparent dark:from-white/[0.1] dark:to-transparent opacity-0 pointer-events-none"></div>
+              </article>
+            </div>
+          </div>
         </section>
 
         <div class="flex flex-col gap-8">
@@ -243,6 +277,7 @@ const minutes = ref("00");
 const ampm = ref("am");
 
 const messagesContainer = ref<HTMLElement | null>(null);
+const firstList = ref<any>(null);
 const isHovering = ref(false);
 let autoScrollFrame: number;
 
@@ -357,20 +392,25 @@ onMounted(() => {
   // Auto-scrolling ticker behavior
   const startAutoScroll = () => {
     if (messagesContainer.value && !isHovering.value) {
-      if (
-        messagesContainer.value.scrollTop + messagesContainer.value.clientHeight >=
-        messagesContainer.value.scrollHeight
-      ) {
-        // Option to loop or stop. Let's just hold it here or reset?
-        // Let's reset cleanly to 0 if it reaches bottom
-        messagesContainer.value.scrollTop = 0;
+      const container = messagesContainer.value;
+
+      // Calculate seamless loop breakpoint: height of first list + gap
+      let loopPoint = 0;
+      if (firstList.value && firstList.value.$el) {
+        // Includes the 16px (1rem) gap from the wrapper flex between firstList and dup block
+        loopPoint = firstList.value.$el.offsetHeight + 16;
+      }
+
+      if (loopPoint > 0 && container.scrollTop >= loopPoint) {
+        // Soft reset to exactly where it was in the duplicate to avoid visual snapping!
+        container.scrollTop = container.scrollTop - loopPoint;
       } else {
-        messagesContainer.value.scrollTop += 0.5;
+        container.scrollTop += 0.5;
       }
     }
     autoScrollFrame = requestAnimationFrame(startAutoScroll);
   };
-  
+
   // Wait a moment for rendering before initiating the autoscroll
   setTimeout(startAutoScroll, 1000);
 });
