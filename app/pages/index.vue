@@ -2,7 +2,7 @@
   <VideoBackground />
   <div
     class="flex items-stretch justify-center transition-colors duration-300 min-h-screen text-white">
-    <div class="max-w-md flex flex-col relative overflow-hidden">
+    <div class="w-full max-w-md flex flex-col relative overflow-hidden">
       <div
         class="flex flex-col relative overflow-hidden h-screen justify-between p-5">
         <div class="flex flex-col gap-10">
@@ -53,7 +53,7 @@
           </div>
           <div
             class="flex flex-row justify-between items-start gap-5 mix-blend-difference">
-            <ArrowRight clas="w-20 h-20" />
+            <ArrowRight class="w-20 h-20" />
             <p class="dark:font-light text-2xl leading-tight w-fit">
               Ambitious and versatile creative designer skilled in branding,
               UI/UX, motion content and web development.
@@ -88,7 +88,7 @@
             </NuxtLink>
           </div>
           <div
-            class="flex flex-row justify-between items-center px-5 pb-5 *:font-medium *:text-xl *:active:opacity-50 hover:*:opacity-75 text-white">
+            class="flex flex-row justify-between items-center *:font-medium *:text-xl *:active:opacity-50 hover:*:opacity-75 text-white">
             <NuxtLink to="https://instagram.com/khairinkamarizal"
               >Instagram</NuxtLink
             >
@@ -97,16 +97,15 @@
               >LinkedIn</NuxtLink
             >
           </div>
+          <footer class="text-xs opacity-50 font-light">
+            <div class="flex justify-between items-center">
+              <p>Copyright 2026 © Khairinkamarizal</p>
+              <p>—</p>
+              <p>All rights reserved</p>
+            </div>
+          </footer>
         </div>
       </div>
-
-      <footer class="text-xs opacity-50 p-5 mix-blend-difference font-light">
-        <div class="flex justify-between items-center">
-          <p>Copyright 2026 © Khairinkamarizal</p>
-          <p>—</p>
-          <p>All rights reserved</p>
-        </div>
-      </footer>
     </div>
   </div>
 </template>

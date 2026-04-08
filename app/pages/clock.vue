@@ -1,7 +1,7 @@
 <template>
   <div
     class="bg-white dark:bg-black text-black dark:text-white flex items-stretch justify-center transition-colors duration-300 min-h-screen">
-    <div class="max-w-md flex flex-col relative overflow-hidden">
+    <div class="w-full max-w-md flex flex-col relative overflow-hidden">
       <div
         class="flex flex-col relative overflow-hidden h-screen justify-between p-5">
         <div class="flex flex-col gap-10">
@@ -17,7 +17,9 @@
                   <span>Cyberjaya,&nbsp;</span>
                   <span>{{ hours }}</span>
                   <span class="blink">:</span>
-                  <span>{{ minutes }} <span class="ml-1">{{ ampm }}</span></span>
+                  <span
+                    >{{ minutes }} <span class="ml-1">{{ ampm }}</span></span
+                  >
                 </div>
                 <template #fallback>
                   <div class="opacity-50 flex items-center">
@@ -73,7 +75,7 @@
             </NuxtLink>
           </div>
           <div
-            class="flex flex-row justify-between items-center px-5 pb-5 *:font-medium *:text-xl *:active:opacity-50 hover:*:opacity-75">
+            class="flex flex-row justify-between items-center *:font-medium *:text-lg *:active:opacity-50 hover:*:opacity-75">
             <NuxtLink to="https://instagram.com/khairinkamarizal"
               >Instagram</NuxtLink
             >
@@ -82,7 +84,7 @@
               >LinkedIn</NuxtLink
             >
           </div>
-          <footer class="text-xs opacity-50 font-light">
+          <footer class="text-xs opacity-40 font-light">
             <div class="flex justify-between items-center">
               <p>Copyright 2026 © Khairinkamarizal</p>
               <p>—</p>
