@@ -288,22 +288,31 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from "vue";
-import { useHead, definePageMeta } from "#imports";
+import { useHead, useSeoMeta, definePageMeta } from "#imports";
 import { UploadCloud, X, Flame, MessageSquare, Cog } from "lucide-vue-next";
 
 definePageMeta({
   layout: "simple",
 });
 
-useHead({
-  title: "Brutalist | AI Design Critique",
-  meta: [
-    {
-      name: "description",
-      content:
-        "Get a brutally honest critique of your design using AI. No sugar-coating allowed.",
-    },
-  ],
+useSeoMeta({
+  title: "Brutalist",
+  ogTitle: "Brutalist",
+  description:
+    "Get a brutally honest critique of your design using AI. No sugar-coating allowed.",
+  ogDescription:
+    "Get a brutally honest critique of your design using AI. No sugar-coating allowed.",
+  ogImage: "/assets/preview.jpg",
+  ogImageType: "image/jpeg",
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
+  ogImageAlt: "Brutalist Preview",
+  ogType: "website",
+  twitterCard: "summary_large_image",
+  twitterImage: "/assets/preview.jpg",
+  twitterTitle: "Brutalist",
+  twitterDescription:
+    "Get a brutally honest critique of your design using AI. No sugar-coating allowed.",
 });
 
 interface CritiqueItem {
@@ -452,7 +461,7 @@ const submitDesign = async () => {
 
     // Reset form after successful submission
     clearImage();
-    honesty.value = 7;
+    honesty.value = 5;
 
     // Scroll down to new critique
     setTimeout(() => {
