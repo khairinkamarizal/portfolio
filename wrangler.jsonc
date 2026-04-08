@@ -9,6 +9,13 @@
   "assets": {
     "directory": "./.output/public/"
   },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "khairin",
+      "database_id": "e8d69866-78f1-48ea-b84c-a5b3782530cc"
+    }
+  ],
   "observability": {
     "enabled": true
   }
