@@ -88,7 +88,7 @@
             </NuxtLink>
           </div>
           <div
-            class="flex flex-row justify-between items-center *:font-medium *:text-xl *:active:opacity-50 hover:*:opacity-75 text-white">
+            class="flex flex-row justify-between items-center *:font-medium *:text-lg *:active:opacity-50 hover:*:opacity-75">
             <NuxtLink to="https://instagram.com/khairinkamarizal"
               >Instagram</NuxtLink
             >
