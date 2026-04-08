@@ -2,10 +2,8 @@
   <div
     class="bg-white dark:bg-black text-black dark:text-white flex items-stretch justify-center transition-colors duration-300 min-h-screen">
     <div class="w-full max-w-md flex flex-col relative overflow-hidden">
-      <div
-        class="flex flex-col relative overflow-hidden h-screen justify-between p-5">
-        <!-- Header -->
-        <div class="flex flex-col gap-10 pt-4 pb-6">
+      <div class="flex flex-col relative overflow-hidden h-screen p-5 gap-12">
+        <div class="flex flex-col gap-10">
           <header class="w-full flex justify-between items-center">
             <NuxtLink to="/"
               ><AppLogo
@@ -37,7 +35,7 @@
         </div>
 
         <!-- Form Section -->
-        <section class="relative overflow-hidden group">
+        <section class="relative group">
           <form
             @submit.prevent="submitMessage"
             class="relative z-10 space-y-5">
@@ -52,7 +50,7 @@
                 v-model="form.name"
                 type="text"
                 placeholder="Leave blank to stay anon"
-                class="w-full border-b border-neutral-200/60 dark:border-neutral-800 px-5 py-3.5 focus:outline-none focus:ring-1 focus:ring-black/5 dark:focus:ring-white/10 focus:border-neutral-300 dark:focus:neutral-600 transition-all duration-300"
+                class="w-full border-b border-neutral-200/60 dark:border-neutral-800 px-5 py-3.5 focus:outline-none focus:ring-1 focus:ring-black/5 dark:focus:ring-white/10 focus:border-neutral-300 dark:focus:neutral-600 transition-all duration-300 dark:bg-black"
                 :disabled="isSubmitting" />
             </div>
             <div class="flex flex-col gap-1.5">
@@ -69,7 +67,7 @@
                   placeholder="What's on your mind?..."
                   required
                   maxlength="200"
-                  class="w-full border-b border-neutral-200/60 dark:border-neutral-800 px-5 py-3.5 focus:outline-none focus:ring-1 focus:ring-black/5 dark:focus:ring-white/10 focus:border-neutral-300 dark:focus:neutral-600 transition-all duration-300"
+                  class="w-full border-b border-neutral-200/60 dark:border-neutral-800 px-5 py-3.5 focus:outline-none focus:ring-1 focus:ring-black/5 dark:focus:ring-white/10 focus:border-neutral-300 dark:focus:neutral-600 transition-all duration-300 dark:bg-black"
                   :disabled="isSubmitting"></textarea>
                 <div
                   class="absolute bottom-3 right-4 text-[10px] font-medium transition-colors"
@@ -96,7 +94,7 @@
               <button
                 type="submit"
                 :disabled="isSubmitting || !form.message.trim()"
-                class="bg-black dark:bg-white text-white dark:text-black px-6 py-2.5 rounded-xl font-medium hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 flex items-center gap-2 shadow-sm hover:shadow-md">
+                class="bg-black dark:bg-white text-white dark:text-black px-4 py-2 font-medium hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 flex items-center gap-2">
                 <span
                   v-if="isSubmitting"
                   class="animate-spin inline-block w-4 h-4 border-[3px] border-white/30 dark:border-black/30 border-t-white dark:border-t-black rounded-full"></span>
@@ -107,7 +105,14 @@
         </section>
 
         <!-- Messages List -->
-        <section class="space-y-4 relative min-h-[300px]">
+        <section
+          ref="messagesContainer"
+          class="space-y-4 relative max-h-[300px] overflow-y-auto no-scrollbar scroll-smooth"
+          @mouseenter="isHovering = true"
+          @mouseleave="isHovering = false"
+          @touchstart="isHovering = true"
+          @touchend="isHovering = false"
+        >
           <div
             v-if="isLoading && messages.length === 0"
             class="absolute inset-0 flex flex-col items-center justify-center opacity-50 gap-3">
@@ -118,11 +123,11 @@
 
           <div
             v-else-if="apiFailed"
-            class="bg-red-50 dark:bg-red-950/20 text-red-600 dark:text-red-400 p-8 rounded-3xl border border-red-200 text-center flex flex-col items-center gap-3">
+            class="bg-red-50 dark:bg-red-950/20 text-red-600 dark:text-red-400 p-8 border border-red-200 dark:border-red-900/25 text-center flex flex-col items-center gap-3">
             <p class="font-medium">Couldn't load messages</p>
             <button
               @click="fetchMessages(false)"
-              class="text-sm px-4 py-2 bg-red-100 dark:bg-red-900/40 rounded-lg hover:bg-red-200 dark:hover:bg-red-900/60 transition-colors">
+              class="text-sm px-4 py-2 bg-red-100 dark:bg-red-900/40 hover:bg-red-200 dark:hover:bg-red-900/60 transition-colors">
               Try again
             </button>
           </div>
@@ -141,25 +146,25 @@
             <article
               v-for="msg in messages"
               :key="msg.id"
-              class="group bg-white dark:bg-[#18181b] p-5 lg:p-6 rounded-[1.5rem] shadow-sm hover:shadow-md border border-slate-100 dark:border-slate-800/60 hover:border-slate-200 dark:hover:border-slate-700 transition-all duration-300 overflow-hidden relative flex flex-col gap-3">
+              class="group bg-white dark:bg-neutral-950 p-5 lg:p-6 border border-neutral-200 dark:border-neutral-800/60 hover:border-neutral-300 dark:hover:border-neutral-700 transition-all duration-300 overflow-hidden relative flex flex-col gap-3">
               <div class="flex justify-between items-center z-10 w-full gap-4">
-                <h3 class="font-semibold text-[15px] truncate max-w-[70%]">
+                <h3 class="font-medium text-base truncate max-w-[70%]">
                   {{ msg.name }}
                 </h3>
                 <time
                   :datetime="msg.created_at"
-                  class="text-[11px] font-medium tracking-wide uppercase opacity-40 shrink-0">
+                  class="text-xs font-medium tracking-wide uppercase opacity-40 shrink-0">
                   {{ formatTimeAgo(msg.created_at) }}
                 </time>
               </div>
               <p
-                class="text-[15px] opacity-80 leading-relaxed break-words whitespace-pre-wrap z-10">
+                class="text-base opacity-80 leading-relaxed break-words whitespace-pre-wrap z-10">
                 {{ msg.message }}
               </p>
 
               <!-- Hover gradient -->
               <div
-                class="absolute inset-0 bg-gradient-to-br from-slate-50/50 to-transparent dark:from-white/[0.02] dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                class="absolute inset-0 bg-gradient-to-br from-neutral-100 to-transparent dark:from-white/[0.1] dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
             </article>
           </TransitionGroup>
         </section>
@@ -237,6 +242,10 @@ const hours = ref("00");
 const minutes = ref("00");
 const ampm = ref("am");
 
+const messagesContainer = ref<HTMLElement | null>(null);
+const isHovering = ref(false);
+let autoScrollFrame: number;
+
 let refreshInterval: ReturnType<typeof setInterval>;
 let timeInterval: ReturnType<typeof setInterval>;
 
@@ -295,6 +304,11 @@ const submitMessage = async () => {
 
     await fetchMessages(true);
 
+    // Auto scroll to latest message smoothly on submit
+    setTimeout(() => {
+      messagesContainer.value?.scrollTo({ top: 0, behavior: "smooth" });
+    }, 100);
+
     setTimeout(() => {
       successMsg.value = false;
     }, 3000);
@@ -339,15 +353,45 @@ onMounted(() => {
 
   updateTime();
   timeInterval = setInterval(updateTime, 1000);
+
+  // Auto-scrolling ticker behavior
+  const startAutoScroll = () => {
+    if (messagesContainer.value && !isHovering.value) {
+      if (
+        messagesContainer.value.scrollTop + messagesContainer.value.clientHeight >=
+        messagesContainer.value.scrollHeight
+      ) {
+        // Option to loop or stop. Let's just hold it here or reset?
+        // Let's reset cleanly to 0 if it reaches bottom
+        messagesContainer.value.scrollTop = 0;
+      } else {
+        messagesContainer.value.scrollTop += 0.5;
+      }
+    }
+    autoScrollFrame = requestAnimationFrame(startAutoScroll);
+  };
+  
+  // Wait a moment for rendering before initiating the autoscroll
+  setTimeout(startAutoScroll, 1000);
 });
 
 onUnmounted(() => {
   if (refreshInterval) clearInterval(refreshInterval);
   if (timeInterval) clearInterval(timeInterval);
+  if (autoScrollFrame) cancelAnimationFrame(autoScrollFrame);
 });
 </script>
 
 <style scoped>
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
 @keyframes blink {
   0%,
   100% {
