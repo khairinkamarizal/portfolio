@@ -10,6 +10,7 @@
     "deploy": "nuxt build && wrangler deploy"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "@nuxt/content": "^3.11.2",
     "@nuxt/image": "^2.0.0",
     "@nuxtjs/color-mode": "^4.0.0",

@@ -34,6 +34,9 @@ export default defineNuxtConfig({
     },
   },
   devtools: { enabled: false },
+  runtimeConfig: {
+    geminiApiKey: process.env.GEMINI_API_KEY || "",
+  },
   nitro: {
     preset: "cloudflare_module",
   },

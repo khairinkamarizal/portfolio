@@ -1,109 +1,51 @@
 <template>
-  <div
-    class="bg-white dark:bg-black text-black dark:text-white flex items-stretch justify-center transition-colors duration-300 min-h-screen">
-    <div class="w-full max-w-md flex flex-col relative overflow-hidden">
-      <div
-        class="flex flex-col relative overflow-hidden h-screen justify-between p-5">
-        <div class="flex flex-col gap-10">
-          <header class="w-full flex justify-between items-center">
-            <NuxtLink to="/"
-              ><AppLogo
-                class="w-8 h-8 hover:scale-125 transition-transform duration-300"
-            /></NuxtLink>
-            <div class="text-xs flex items-center flex-col gap-0">
-              <span class="font-medium">Based in MY 大马</span>
-              <ClientOnly>
-                <div class="opacity-50 flex items-center">
-                  <span>Cyberjaya,&nbsp;</span>
-                  <span>{{ hours }}</span>
-                  <span class="blink">:</span>
-                  <span
-                    >{{ minutes }} <span class="ml-1">{{ ampm }}</span></span
-                  >
-                </div>
-                <template #fallback>
-                  <div class="opacity-50 flex items-center">
-                    <span>--</span>
-                    <span class="mx-[1px] blink">:</span>
-                    <span>-- <span class="ml-1">--</span></span>
-                  </div>
-                </template>
-              </ClientOnly>
-            </div>
-            <ColorToggle
-              class="!bg-black dark:!bg-white w-8 h-8 hover:scale-125 transition-transform duration-300" />
-          </header>
-        </div>
-
-        <div class="flex flex-col gap-12">
-          <div class="flex flex-col justify-center items-center gap-2">
-            <h2 class="text-3xl">Countdown to Freedom</h2>
-            <p
-              class="text-6xl text-center font-semibold tracking-tight tabular-nums leading-tight">
-              {{ countdown }}
-            </p>
-            <p class="text-lg opacity-50">
-              Targeting 6:00 PM — Time to head home!
-            </p>
-          </div>
-        </div>
-
-        <div class="flex flex-col gap-8">
-          <div
-            class="flex flex-col gap-4 *:bg-black dark:*:bg-white dark:*:text-black *:text-white *:px-4 *:py-2 *:w-full dark:*:font-medium *:text-2xl *:flex *:flex-row transition-all duration-300 *:items-center">
-            <button
-              @click="handleShare"
-              class="group flex items-center">
-              <div
-                class="flex-none group-hover:flex-1 transition-all duration-300 h-1"></div>
-              <span>{{ shareText }}</span>
-              <div
-                class="flex-1 group-hover:flex-none transition-all duration-300 group-hover:w-2 h-1"></div>
-              <ArrowUpRight
-                class="group-hover:rotate-45 transition-transform duration-300" />
-            </button>
-            <NuxtLink
-              to="/"
-              class="group flex items-center border-b-2 dark:border-b border-black dark:border-white !bg-transparent !text-black dark:!text-white">
-              <div
-                class="flex-none group-hover:flex-1 transition-all duration-300 h-1"></div>
-              <span>Back to home</span>
-              <div
-                class="flex-1 group-hover:flex-none transition-all duration-300 group-hover:w-2 h-1"></div>
-              <ArrowUpRight
-                class="group-hover:rotate-45 transition-transform duration-300" />
-            </NuxtLink>
-          </div>
-          <div
-            class="flex flex-row justify-between items-center *:font-medium *:text-lg *:active:opacity-50 hover:*:opacity-75">
-            <NuxtLink to="https://instagram.com/khairinkamarizal"
-              >Instagram</NuxtLink
-            >
-            <NuxtLink to="https://be.net/khairinkamarizal">Behance</NuxtLink>
-            <NuxtLink to="https://linkedin.com/in/khairinkamarizal"
-              >LinkedIn</NuxtLink
-            >
-          </div>
-          <footer class="text-xs opacity-40 font-light">
-            <div class="flex justify-between items-center">
-              <p>Copyright 2026 © Khairinkamarizal</p>
-              <p>—</p>
-              <p>All rights reserved</p>
-            </div>
-          </footer>
+  <NuxtLayout name="simple">
+    <template #default>
+      <div class="flex flex-col h-full justify-center gap-12">
+        <div class="flex flex-col justify-center items-center gap-2">
+          <h2 class="text-3xl">Countdown to Freedom</h2>
+          <p
+            class="text-6xl text-center font-semibold tracking-tight tabular-nums leading-tight">
+            {{ countdown }}
+          </p>
+          <p class="text-lg opacity-50 text-center">
+            Targeting 6:00 PM — Time to head home!
+          </p>
         </div>
       </div>
-    </div>
-  </div>
+    </template>
+
+    <template #footer-actions>
+      <button
+        @click="handleShare"
+        class="group flex items-center">
+        <div
+          class="flex-none group-hover:flex-1 transition-all duration-300 h-1"></div>
+        <span>{{ shareText }}</span>
+        <div
+          class="flex-1 group-hover:flex-none transition-all duration-300 group-hover:w-2 h-1"></div>
+        <ArrowUpRight
+          class="group-hover:rotate-45 transition-transform duration-300" />
+      </button>
+      <NuxtLink
+        to="/"
+        class="group flex items-center border-b-2 dark:border-b border-black dark:border-white !bg-transparent !text-black dark:!text-white">
+        <div
+          class="flex-none group-hover:flex-1 transition-all duration-300 h-1"></div>
+        <span>Back to home</span>
+        <div
+          class="flex-1 group-hover:flex-none transition-all duration-300 group-hover:w-2 h-1"></div>
+        <ArrowUpRight
+          class="group-hover:rotate-45 transition-transform duration-300" />
+      </NuxtLink>
+    </template>
+  </NuxtLayout>
 </template>
 
 <script setup lang="ts">
-import { ArrowRight, ArrowUpRight } from "lucide-vue-next";
+import { ArrowUpRight } from "lucide-vue-next";
 import { ref, onMounted, onUnmounted } from "vue";
 
-const hours = ref("00");
-const minutes = ref("00");
-const ampm = ref("am");
 const countdown = ref("");
 const shareText = ref("Share");
 
@@ -192,20 +134,6 @@ async function handleShare() {
 onMounted(() => {
   const updateTime = () => {
     const now = new Date();
-    // KL Time formatter
-    const formatter = new Intl.DateTimeFormat("en-US", {
-      timeZone: "Asia/Kuala_Lumpur",
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: true,
-    });
-
-    const parts = formatter.formatToParts(now);
-    hours.value = parts.find((p) => p.type === "hour")?.value || "00";
-    minutes.value = parts.find((p) => p.type === "minute")?.value || "00";
-    ampm.value = (
-      parts.find((p) => p.type === "dayPeriod")?.value || "am"
-    ).toLowerCase();
 
     // Countdown logic
     const klNow = new Date(
@@ -246,7 +174,7 @@ definePageMeta({
 });
 
 useHead({
-  title: "Khairinkamarizal — Freedom",
+  title: "Freedom",
   meta: [
     {
       name: "description",
@@ -256,18 +184,3 @@ useHead({
   ],
 });
 </script>
-
-<style scoped>
-@keyframes blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.25;
-  }
-}
-.blink {
-  animation: blink 1s ease-in-out infinite;
-}
-</style>
