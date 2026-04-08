@@ -14,7 +14,7 @@
 
     <!-- Upload Form -->
     <section
-      class="relative z-10 bg-white dark:bg-neutral-950 p-6 md:p-8 border border-neutral-200 dark:border-neutral-800/60 transition-all duration-300">
+      class="relative z-10 bg-white dark:bg-neutral-950 p-8 border border-neutral-200 dark:border-neutral-800/60 transition-all duration-300">
       <div class="space-y-8">
         <!-- Image Upload Area -->
         <div
@@ -69,7 +69,7 @@
 
               <button
                 @click.stop="clearImage"
-                class="absolute top-4 right-4 bg-black/60 text-white p-2.5 rounded-full hover:bg-black/80 hover:scale-110 transition-all z-20 md:opacity-0 md:group-hover:opacity-100 flex items-center justify-center backdrop-blur-md border border-white/10"
+                class="absolute top-4 right-4 bg-black/60 text-white p-2.5 rounded-full hover:bg-black/80 hover:scale-110 transition-all z-20 flex items-center justify-center backdrop-blur-md border border-white/10"
                 title="Remove image">
                 <X class="w-5 h-5" />
               </button>
@@ -80,8 +80,7 @@
         <!-- Honesty Slider -->
         <div
           class="space-y-5 px-1 pt-2 border-t border-neutral-100 dark:border-neutral-900 pt-6">
-          <div
-            class="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-2">
+          <div class="flex flex-row justify-between items-end gap-2">
             <div>
               <label class="text-base font-semibold flex items-center gap-2">
                 Honesty Dial
@@ -92,7 +91,7 @@
               </label>
             </div>
             <span
-              class="text-xs font-medium px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded self-start sm:self-auto transition-colors duration-300"
+              class="text-xs font-medium px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded self-auto transition-colors duration-300"
               :style="{ color: currentScaleColor }">
               {{ scaleLabel }}
             </span>
@@ -141,8 +140,8 @@
 
         <!-- Submit Section -->
         <div
-          class="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-neutral-100 dark:border-neutral-900 pt-6">
-          <div class="flex-1 w-full text-center sm:text-left">
+          class="flex flex-row items-center justify-between gap-4 border-t border-neutral-100 dark:border-neutral-900 pt-6">
+          <div class="flex-1 w-full text-left">
             <Transition
               name="fade"
               mode="out-in">
@@ -153,7 +152,7 @@
               </p>
               <p
                 v-else
-                class="text-[10px] opacity-50 max-w-sm hidden sm:block">
+                class="text-[10px] opacity-50 max-w-sm block">
                 Your images aren’t saved, they’re deleted right after the AI
                 finishes its critique.
               </p>
@@ -216,18 +215,17 @@
           </div>
 
           <!-- Content Side -->
-          <div
-            class="p-5 sm:p-6 md:p-8 flex flex-col w-full bg-white dark:bg-neutral-950">
+          <div class="p-8 flex flex-col w-full bg-white dark:bg-neutral-950">
             <!-- Brutalist Header: Massive Score & Emoji -->
             <div
               class="grid grid-cols-2 border-b-2 border-neutral-100 dark:border-neutral-900 pb-5 mb-5 overflow-hidden">
               <div
                 class="flex flex-col gap-2 items-center justify-start border-r-2 border-neutral-100 dark:border-neutral-900">
                 <span
-                  class="text-[10px] sm:text-xs font-bold uppercase tracking-widest opacity-40"
+                  class="text-xs font-bold uppercase tracking-widest opacity-40"
                   >My Rating</span
                 >
-                <div class="flex items-end gap-2 sm:gap-3">
+                <div class="flex items-end gap-3">
                   <span
                     class="text-6xl leading-none font-semibold tracking-tighter"
                     :style="{ color: getScaleColor(10 - item.rating) }">
@@ -239,22 +237,22 @@
 
               <div class="flex flex-col gap-3 items-center justify-start">
                 <span
-                  class="text-[10px] sm:text-xs font-bold uppercase tracking-widest opacity-40"
+                  class="text-xs font-bold uppercase tracking-widest opacity-40"
                   >My Reaction</span
                 >
                 <span
-                  class="text-4xl sm:text-5xl filter transition-all duration-300 leading-none">
+                  class="text-5xl filter transition-all duration-300 leading-none">
                   {{ item.emoji }}
                 </span>
               </div>
             </div>
 
             <!-- Content Area -->
-            <div class="flex flex-col gap-6 sm:gap-8 flex-1">
+            <div class="flex flex-col gap-8 flex-1">
               <!-- Verdict -->
               <div class="space-y-3">
                 <div
-                  class="inline-flex py-1 px-2.5 bg-black text-white dark:bg-white dark:text-black text-[10px] sm:text-xs font-bold uppercase tracking-widest">
+                  class="inline-flex py-1 px-2.5 bg-black text-white dark:bg-white dark:text-black text-xs font-bold uppercase tracking-widest">
                   The Verdict
                 </div>
                 <p class="text-base leading-relaxed">
@@ -265,7 +263,7 @@
               <!-- Fixes -->
               <div class="space-y-3">
                 <div
-                  class="inline-flex py-1 px-2.5 bg-neutral-100 dark:bg-neutral-900 text-[10px] sm:text-xs font-bold uppercase tracking-widest">
+                  class="inline-flex py-1 px-2.5 bg-neutral-100 dark:bg-neutral-900 text-xs font-bold uppercase tracking-widest">
                   Action Items
                 </div>
                 <p class="text-base leading-relaxed opacity-80">
@@ -296,23 +294,37 @@ definePageMeta({
 });
 
 useSeoMeta({
+  // Basic
   title: "Brutalist",
-  ogTitle: "Brutalist",
   description:
-    "Get a brutally honest critique of your design using AI. No sugar-coating allowed.",
+    "Upload your design and get brutally honest AI feedback. No sugar-coating. Just real critique.",
+
+  // Open Graph (Facebook, Threads, Instagram preview system)
+  ogTitle: "Brutalist – Brutally Honest AI Design Critique",
   ogDescription:
-    "Get a brutally honest critique of your design using AI. No sugar-coating allowed.",
-  ogImage: "/assets/preview.jpg",
+    "Think your design is good? Let AI roast it. Brutalist gives you raw, unfiltered feedback to improve faster.",
+  ogImage: "https://khairin.baby/assets/preview.jpg",
+  ogImageSecureUrl: "https://khairin.baby/assets/preview.jpg",
   ogImageType: "image/jpeg",
   ogImageWidth: 1200,
   ogImageHeight: 630,
-  ogImageAlt: "Brutalist Preview",
+  ogImageAlt: "Brutalist AI giving harsh design critique",
+  ogSiteName: "Brutalist",
+  ogLocale: "en_US",
   ogType: "website",
+
+  // Extra (better compatibility for Meta platforms)
+  ogUrl: "https://khairin.baby/brutalist",
+
+  // Twitter (still useful fallback, Threads may reuse this logic)
   twitterCard: "summary_large_image",
-  twitterImage: "/assets/preview.jpg",
-  twitterTitle: "Brutalist",
+  twitterTitle: "Brutalist – AI Design Critique",
   twitterDescription:
-    "Get a brutally honest critique of your design using AI. No sugar-coating allowed.",
+    "No fluff. No bias. Just brutally honest design feedback from AI.",
+  twitterImage: "https://khairin.baby/assets/preview.jpg",
+
+  // Optional but helpful
+  themeColor: "#000000",
 });
 
 interface CritiqueItem {
