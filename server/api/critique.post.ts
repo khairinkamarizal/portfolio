@@ -5,8 +5,16 @@ import { defineEventHandler, readBody, createError, getRequestIP } from "h3";
 const rateLimits = new Map<string, number>();
 
 export default defineEventHandler(async (event) => {
-  const config = useRuntimeConfig();
-  const apiKey = config.geminiApiKey;
+  const config = useRuntimeConfig(event);
+  
+  // Check runtime config first, then fall back to Cloudflare env if available
+  let apiKey = config.geminiApiKey;
+  
+  // On Cloudflare Workers, variables are in event.context.cloudflare.env
+  const cloudflare = (event.context as any).cloudflare;
+  if (!apiKey && cloudflare?.env?.GEMINI_API_KEY) {
+    apiKey = cloudflare.env.GEMINI_API_KEY;
+  }
 
   if (!apiKey) {
     throw createError({
@@ -41,7 +49,7 @@ export default defineEventHandler(async (event) => {
   const honesty = parseInt(honesty_scale) || 5;
 
   const genAI = new GoogleGenerativeAI(apiKey);
-  const model = genAI.getGenerativeModel({ model: "	gemini-3-flash-preview" });
+  const model = genAI.getGenerativeModel({ model: "gemini-3-flash-preview" });
 
   try {
     const matches = image.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
