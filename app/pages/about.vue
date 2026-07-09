@@ -107,11 +107,11 @@
               class="text-xs tracking-widest uppercase opacity-50 mb-4 font-mono">
               Experience
             </h2>
-            <div class="flex flex-col gap-0 divide-y divide-black/8 dark:divide-white/8 border-t border-black/8 dark:border-white/8">
+            <div class="flex flex-col gap-0 border-t border-black/8 dark:border-white/8">
               <div
                 v-for="job in experience"
                 :key="`${job.company}-${job.period}`"
-                class="py-6 flex flex-col gap-2">
+                class="py-6 flex flex-col gap-2 border-b border-black/8 dark:border-white/8 pb-8 last:border-b-0">
                 <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
                   <div>
                     <h3 class="text-sm font-semibold">{{ job.role }}</h3>
