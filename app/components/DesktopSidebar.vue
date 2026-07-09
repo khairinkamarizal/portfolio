@@ -29,7 +29,7 @@
     <div class="border-t border-black/8 dark:border-white/8 -mx-5 mb-5" />
 
     <!-- Location + time -->
-    <div class="flex flex-col gap-1 normal-case text-[11px] mb-4">
+    <div class="flex flex-col gap-1 normal-case text-[11px] mb-4 pt-2">
       <span class="opacity-40 tracking-[0.12em] uppercase">Cyberjaya, MY</span>
       <ClientOnly>
         <div class="opacity-60 flex items-center gap-0.5 tabular-nums">
