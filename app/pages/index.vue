@@ -136,7 +136,6 @@ import { useHead, definePageMeta } from "#imports";
 
 const { data: latestPosts } = await useAsyncData('latest-posts', () =>
   queryCollection('writing')
-    .where('draft', '=', false)
     .order('date', 'DESC')
     .limit(3)
     .all()
@@ -157,25 +156,28 @@ const skills = [
 
 const featuredProjects = [
   {
-    title: "Asterix — Brand Identity System",
+    title: "FRONTFACE®",
     year: 2024,
-    tags: ["Branding", "Identity", "Figma"],
-    description: "Full brand identity system for a creative agency — logo, colour system, typography, and brand guidelines.",
-    behanceUrl: "https://be.net/khairinkamarizal",
+    category: "Branding",
+    tags: ["Branding", "Identity", "Typography"],
+    description: "Full brand identity system for FRONTFACE®. Typographic-led branding with a strong editorial voice.",
+    behanceUrl: "https://www.behance.net/gallery/217073883/FRONTFACE",
   },
   {
-    title: "Relayworks — Product Design",
-    year: 2024,
-    tags: ["UI/UX", "Product", "Figma"],
-    description: "End-to-end product design for a B2B workflow automation tool. Covered research, IA, wireframes, and a full component system.",
-    behanceUrl: "https://be.net/khairinkamarizal",
-  },
-  {
-    title: "Solara — App UI Design",
+    title: "Mero&Kero",
     year: 2023,
-    tags: ["UI/UX", "Mobile", "Figma"],
-    description: "UI/UX design for a solar energy monitoring app. Designed the full user flow, component system, and data visualisation patterns.",
-    behanceUrl: "https://be.net/khairinkamarizal",
+    category: "Branding",
+    tags: ["Brand Identity", "Logo", "Visual Design"],
+    description: "Brand identity design for Mero&Kero. Playful yet refined visual system with custom logotype.",
+    behanceUrl: "https://www.behance.net/khairinkamarizal",
+  },
+  {
+    title: "Datalyse Logo",
+    year: 2023,
+    category: "Logo",
+    tags: ["Logo", "Design", "Identity"],
+    description: "Logo design for Datalyse. Clean and modern approach to data-driven brand identity.",
+    behanceUrl: "https://www.behance.net/khairinkamarizal",
   },
 ]
 
