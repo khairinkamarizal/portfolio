@@ -12,8 +12,10 @@
 import { Eye } from 'lucide-vue-next'
 
 /**
- * ViewCounter — tracks per-slug view counts via localStorage.
- * UI only — no backend. Increments once per slug per session key.
+ * ViewCounter — tracks and displays per-slug page view counts.
+ * @props slug {string} - Post or page slug used as the localStorage key.
+ * UI only — no backend. Increments the count once per slug using a "seen" flag
+ * so repeated visits in the same browser do not inflate the count.
  */
 interface Props {
   slug: string
