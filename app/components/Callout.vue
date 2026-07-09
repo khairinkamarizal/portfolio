@@ -14,9 +14,14 @@
 <script setup lang="ts">
 /**
  * Callout — aside/callout component for writing posts.
- * Props: type ("note"|"tip"|"warning"|"info"), title (string, optional), content (string)
- * Different subtle background colors per type but still minimal (very light tint).
- * Used in markdown via MDC syntax.
+ *
+ * @prop {'note'|'tip'|'warning'|'info'|'error'} [type='note'] - Semantic type that controls the border color, background tint, and icon.
+ * @prop {string} [title] - Optional bold heading shown above the content.
+ * @prop {string} [content] - Fallback text content when no slot is provided.
+ *
+ * Renders a left-bordered aside with a subtle tint per type.
+ * Slot content takes precedence over the `content` prop.
+ * Intended for use in markdown via MDC syntax.
  */
 const props = defineProps<{
   type?: 'note' | 'tip' | 'warning' | 'info' | 'error'
