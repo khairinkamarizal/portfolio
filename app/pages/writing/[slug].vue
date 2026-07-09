@@ -170,13 +170,4 @@ const readingTime = computed(() => {
   return text
 })
 
-function formatDate(dateStr: string): string {
-  if (!dateStr) return "";
-  const date = new Date(dateStr);
-  return date.toLocaleDateString("en-GB", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-}
 </script>
