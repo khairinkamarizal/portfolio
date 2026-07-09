@@ -8,6 +8,15 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * Blockquote — styled pull-quote component.
+ *
+ * @prop {string} quote - The quotation text to display.
+ * @prop {string} [author] - Optional attribution shown below the quote as a cite element.
+ *
+ * Renders a left-bordered blockquote with an optional author footer.
+ * Typography is light/italic; adapts to light and dark color schemes.
+ */
 defineProps<{
   quote: string
   author?: string
