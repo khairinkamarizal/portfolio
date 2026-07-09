@@ -28,7 +28,7 @@
         <!-- Main hero text: takes up space boldly -->
         <div class="relative z-10 flex-1 flex flex-col justify-center py-8">
           <div class="overflow-hidden">
-            <h1 class="font-mono font-bold uppercase leading-[0.85] tracking-[-0.03em] text-[clamp(3rem,10vw,7rem)]">
+            <h1 class="font-mono font-bold uppercase leading-[0.85] tracking-[-0.04em] text-[clamp(3rem,10vw,7rem)]">
               Khairin<br />Kamarizal
             </h1>
           </div>
