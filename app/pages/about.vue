@@ -125,7 +125,7 @@
                   <span
                     v-for="tag in job.tags"
                     :key="tag"
-                    class="text-[10px] tracking-wide uppercase px-1.5 py-0.5 border border-black/8 dark:border-white/8 font-mono">
+                    class="tag-base">
                     {{ tag }}
                   </span>
                 </div>
