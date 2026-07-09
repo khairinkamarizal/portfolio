@@ -197,6 +197,11 @@
 
   .bg-surface { @apply bg-black/[0.02] dark:bg-white/[0.03]; }
   .bg-surface-hover { @apply hover:bg-black/[0.04] dark:hover:bg-white/[0.04]; }
+
+  .bg-ink { @apply bg-black dark:bg-white; }
+  .text-ink { @apply text-black dark:text-white; }
+  .text-ink-inverse { @apply text-white dark:text-black; }
+  .border-ink { @apply border-black dark:border-white; }
 }
 
 /* ============================================
