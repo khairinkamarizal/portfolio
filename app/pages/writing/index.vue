@@ -46,6 +46,12 @@
         <div v-else class="flex flex-col gap-2">
           <p class="text-sm opacity-50">Nothing published yet. Check back soon.</p>
         </div>
+
+        <!-- Stay updated -->
+        <div class="flex flex-col gap-2">
+          <h2 class="text-xs opacity-50 tracking-widest">Stay updated</h2>
+          <NewsletterSignup />
+        </div>
       </div>
     </template>
 
