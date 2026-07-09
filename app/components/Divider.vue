@@ -1,6 +1,6 @@
 <template>
   <Transition name="divider-fade">
-    <div v-show="mounted" aria-hidden="true">
+    <div v-show="mounted" aria-hidden="true" class="my-6">
       <div v-if="label" class="relative">
         <div class="border-t border-black/8 dark:border-white/8" />
         <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-black px-3 font-mono text-[9px] tracking-[0.2em] uppercase opacity-40">{{ label }}</span>
