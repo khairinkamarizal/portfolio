@@ -16,6 +16,13 @@
           <p class="text-sm opacity-70 leading-relaxed dark:font-light">
             Currently available for freelance projects and collaborations.
           </p>
+          <a
+            href="#"
+            class="self-start text-xs tracking-wider px-4 py-2 border border-black/20 dark:border-white/20 hover:border-black dark:hover:border-white flex items-center gap-1.5 transition-colors duration-150"
+            aria-label="Download resume (coming soon)">
+            <Download :size="12" />
+            <span>Download Resume</span>
+          </a>
         </div>
 
         <!-- Skills -->
@@ -95,7 +102,7 @@
 </template>
 
 <script setup lang="ts">
-import { ArrowUpRight } from "lucide-vue-next";
+import { ArrowUpRight, Download } from "lucide-vue-next";
 
 definePageMeta({
   layout: false,
