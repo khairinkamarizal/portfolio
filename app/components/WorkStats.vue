@@ -1,8 +1,8 @@
 <template>
-  <div class="flex flex-row gap-8">
-    <div v-for="stat in stats" :key="stat.label" class="flex flex-col gap-0.5">
-      <span class="text-2xl font-medium tracking-tight">{{ stat.value }}</span>
-      <span class="text-xs opacity-40 tracking-wider">{{ stat.label.toUpperCase() }}</span>
+  <div class="flex flex-row border border-black/8 dark:border-white/8 divide-x divide-black/8 dark:divide-white/8">
+    <div v-for="stat in stats" :key="stat.label" class="flex-1 flex flex-col gap-0.5 px-6 py-4">
+      <span class="text-3xl font-light tracking-tight tabular-nums">{{ stat.value }}</span>
+      <span class="text-[10px] tracking-[0.15em] opacity-50" style="font-family: 'Space Mono', monospace">{{ stat.label.toUpperCase() }}</span>
     </div>
   </div>
 </template>
