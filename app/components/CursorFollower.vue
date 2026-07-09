@@ -89,14 +89,14 @@ onMounted(() => {
   background-color: black;
   pointer-events: none;
   z-index: 9999;
-  mix-blend-mode: difference;
+  mix-blend-mode: normal;
   opacity: 0;
   transition: opacity 0.2s ease;
   will-change: transform;
 }
 
 .cursor-follower.is-visible {
-  opacity: 1;
+  opacity: 0.5;
 }
 
 .cursor-follower.is-hovering-link {
