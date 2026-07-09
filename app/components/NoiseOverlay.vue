@@ -50,7 +50,7 @@ const filterId = 'noise-' + Math.random().toString(36).slice(2, 8)
   z-index: 1000;
   pointer-events: none;
   mix-blend-mode: overlay;
-  animation: grain 8s steps(10) infinite;
+  animation: grain 6s steps(10) infinite;
 }
 
 .noise-svg {
