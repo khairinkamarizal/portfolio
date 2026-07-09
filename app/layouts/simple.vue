@@ -78,7 +78,7 @@
         <!-- Footer -->
         <div
           :class="[
-            'flex flex-col gap-8 font-sans normal-case py-4',
+            'flex flex-col gap-8 font-sans normal-case py-4 dark:bg-[#0a0a0a]',
             transparent ? 'mix-blend-difference' : '',
           ]">
           <div
