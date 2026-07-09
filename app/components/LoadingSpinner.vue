@@ -36,4 +36,8 @@ const sizeClasses: Record<'sm' | 'md' | 'lg', string> = {
     transform: rotate(360deg);
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner { animation-duration: 2s; }
+}
 </style>
