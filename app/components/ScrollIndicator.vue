@@ -2,7 +2,7 @@
   <Transition name="fade">
     <div
       v-if="showIndicator"
-      class="scroll-indicator fixed bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 opacity-60 hover:opacity-100 transition-opacity duration-200 pointer-events-none"
+      class="scroll-indicator fixed bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 opacity-50 hover:opacity-100 transition-opacity duration-200 pointer-events-none"
       aria-hidden="true">
       <span class="text-xs tracking-widest opacity-70 normal-case font-mono">Scroll</span>
       <span class="text-sm nudge">↓</span>
