@@ -106,7 +106,9 @@
         </section>
 
         <!-- Tag cloud -->
-        <TagCloud :tags="tagCounts" @filter="handleTagFilter" />
+        <RevealOnScroll variant="fade-up" :delay="50">
+          <TagCloud :tags="tagCounts" @filter="handleTagFilter" />
+        </RevealOnScroll>
 
         <!-- Behance CTA -->
         <a
@@ -119,8 +121,10 @@
         </a>
 
         <!-- Open to work -->
-        <SectionLabel label="Get in Touch" variant="numbered" :number="3" />
-        <OpenToWork />
+        <RevealOnScroll variant="fade-up" :delay="50">
+          <SectionLabel label="Get in Touch" variant="numbered" :number="3" />
+          <OpenToWork />
+        </RevealOnScroll>
       </div>
     </template>
 
