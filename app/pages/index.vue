@@ -1,15 +1,15 @@
 <template>
   <NuxtLayout name="simple">
     <template #default>
-      <GridBackground variant="dots" />
       <ClientOnly>
         <ScrollIndicator />
       </ClientOnly>
 
       <!-- ==================== HERO ==================== -->
       <section class="relative min-h-[90vh] flex flex-col justify-between px-8 pt-10 pb-10 border-b border-black/8 dark:border-white/8">
+        <GridBackground variant="dots" class="z-0" />
         <!-- Top row: number + avatar cluster -->
-        <div class="flex items-start justify-between">
+        <div class="relative z-10 flex items-start justify-between">
           <span class="text-[10px] font-mono tracking-[0.3em] uppercase opacity-30">001 / Index</span>
           <div class="flex flex-row relative items-center">
             <img
@@ -42,6 +42,9 @@
         <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <span class="font-mono text-xs tracking-[0.25em] uppercase opacity-40">
             Creative Designer &amp; Developer
+          </span>
+          <span class="hidden lg:block font-mono text-[9px] tracking-[0.2em] uppercase opacity-20">
+            Press G then W to go to work
           </span>
           <div class="flex items-center gap-3">
             <NuxtLink
