@@ -43,6 +43,8 @@ export default defineNuxtConfig({
         { name: "theme-color", content: "#000000", media: "(prefers-color-scheme: dark)" },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:creator", content: "@khairinkamarizal" },
+        { property: "og:image", content: "https://khair.ink/og-image.png" },
+        { name: "twitter:image", content: "https://khair.ink/og-image.png" },
       ],
       link: [
         { rel: "canonical", href: "https://khair.ink" },
