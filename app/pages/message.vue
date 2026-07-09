@@ -141,7 +141,7 @@
                   <button
                     type="submit"
                     :disabled="submitting"
-                    class="px-5 py-2.5 bg-black dark:bg-white text-white dark:text-black text-xs tracking-wider font-medium hover:opacity-80 transition-opacity duration-150 disabled:opacity-40 disabled:cursor-not-allowed">
+                    class="px-5 py-2.5 bg-black dark:bg-white text-white dark:text-black text-xs tracking-wider font-medium hover:opacity-80 transition-opacity duration-150 disabled:opacity-40 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:outline-none">
                     {{ submitting ? "Sending..." : "Send Message" }}
                   </button>
 
