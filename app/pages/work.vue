@@ -9,7 +9,7 @@
               <ProjectCount :count="projects.length" />
             </ClientOnly>
           </div>
-          <h1 class="text-2xl md:text-3xl font-light leading-tight tracking-tight text-balance">
+          <h1 class="text-3xl md:text-4xl font-light leading-tight tracking-tight text-balance">
             Projects spanning brand identity, UI/UX, and digital design.
           </h1>
         </div>
