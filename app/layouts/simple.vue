@@ -90,23 +90,7 @@
               </NuxtLink>
             </slot>
           </div>
-          <div
-            class="flex flex-row justify-between items-center *:font-medium *:text-lg *:active:opacity-50 hover:*:opacity-75">
-            <NuxtLink to="https://instagram.com/khairinkamarizal"
-              >Instagram</NuxtLink
-            >
-            <NuxtLink to="https://be.net/khairinkamarizal">Behance</NuxtLink>
-            <NuxtLink to="https://linkedin.com/in/khairinkamarizal"
-              >LinkedIn</NuxtLink
-            >
-          </div>
-          <footer class="text-xs opacity-40 font-light">
-            <div class="flex justify-between items-center">
-              <p>Copyright 2026 © Khairinkamarizal</p>
-              <p>—</p>
-              <p>All rights reserved</p>
-            </div>
-          </footer>
+          <Footer />
         </div>
       </div>
     </div>
