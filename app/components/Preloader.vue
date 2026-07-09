@@ -13,6 +13,10 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+  meta: [{ name: 'color-scheme', content: 'light dark' }]
+});
+
 const isLoading = ref(true);
 
 onMounted(() => {
