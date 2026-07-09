@@ -40,7 +40,7 @@
 
         <!-- Bottom row: role + CTAs -->
         <div class="relative z-10 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-          <span class="font-mono text-xs tracking-[0.25em] uppercase opacity-40">
+          <span class="font-mono text-xs tracking-[0.25em] uppercase opacity-40 italic">
             Creative Designer &amp; Developer
           </span>
           <span class="hidden lg:block font-mono text-[9px] tracking-[0.2em] uppercase opacity-20">
