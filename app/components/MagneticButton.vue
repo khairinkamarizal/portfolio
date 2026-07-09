@@ -11,6 +11,18 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * MagneticButton — wrapper that applies a magnetic cursor attraction effect.
+ *
+ * @prop {number} [strength=20] - Maximum pixel offset the element moves toward the cursor.
+ *   Higher values produce a more pronounced magnetic pull.
+ *
+ * Tracks mousemove within the element and translates it toward the cursor position,
+ * normalized relative to the element's own dimensions so strength is consistent
+ * regardless of element size. Resets to origin on mouseleave with a CSS transition.
+ * Automatically disabled on touch/pointer-coarse devices (no hover capability)
+ * to avoid unexpected layout shifts on mobile.
+ */
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const props = withDefaults(defineProps<{
