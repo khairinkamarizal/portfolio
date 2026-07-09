@@ -1,6 +1,6 @@
 # khair.ink
 
-Personal portfolio for Khairinkamarizal — UI/UX designer and developer based in Cyberjaya, Malaysia.
+Personal portfolio of Khairin Kamarizal — Creative Designer & Developer. Cyberjaya, Malaysia.
 
 Live at [khair.ink](https://khair.ink).
 
