@@ -235,6 +235,11 @@
     @apply text-xs opacity-50;
   }
 
+  .text-caption {
+    font-family: 'Space Mono', monospace;
+    @apply text-[10px] tracking-[0.15em] uppercase opacity-50;
+  }
+
   /* Link hover pattern */
   .link-hover {
     @apply opacity-50 hover:opacity-100 transition-opacity duration-200;
