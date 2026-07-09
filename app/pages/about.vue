@@ -6,7 +6,7 @@
     <!-- ============================================ -->
     <!-- HERO: page heading                           -->
     <!-- ============================================ -->
-    <section class="w-full border-b border-black/10 dark:border-white/10 px-6 md:px-12 lg:px-20 py-12 lg:py-20">
+    <section class="w-full border-b border-black/8 dark:border-white/8 px-8 py-12 lg:py-20">
       <h1
         class="text-4xl md:text-6xl lg:text-7xl font-bold leading-none tracking-tighter uppercase font-mono">
         About
@@ -19,7 +19,7 @@
     <!-- ============================================ -->
     <!-- MAIN CONTENT: 2-col desktop, stacked mobile  -->
     <!-- ============================================ -->
-    <section class="w-full px-6 md:px-12 lg:px-20 py-10 lg:py-14">
+    <section class="w-full px-8 py-10 lg:py-14">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
 
         <!-- LEFT COL: bio + skills + certs -->
@@ -58,7 +58,7 @@
                 class="text-xs tracking-widest uppercase opacity-50 mb-4 font-mono">
                 Skills
               </h2>
-              <div class="grid grid-cols-2 gap-px bg-black/10 dark:bg-white/10 border border-black/10 dark:border-white/10">
+              <div class="grid grid-cols-2 gap-px bg-black/8 dark:bg-white/8 border border-black/8 dark:border-white/8">
                 <div
                   v-for="(group, i) in skillGroups"
                   :key="group.category"
@@ -87,7 +87,7 @@
                 class="text-xs tracking-widest uppercase opacity-50 mb-4 font-mono">
                 Education & Certs
               </h2>
-              <div class="flex flex-col divide-y divide-black/10 dark:divide-white/10 border-t border-black/10 dark:border-white/10">
+              <div class="flex flex-col divide-y divide-black/8 dark:divide-white/8 border-t border-black/8 dark:border-white/8">
                 <div
                   v-for="cert in certs"
                   :key="cert.title"
@@ -107,7 +107,7 @@
               class="text-xs tracking-widest uppercase opacity-50 mb-4 font-mono">
               Experience
             </h2>
-            <div class="flex flex-col gap-0 divide-y divide-black/10 dark:divide-white/10 border-t border-black/10 dark:border-white/10">
+            <div class="flex flex-col gap-0 divide-y divide-black/8 dark:divide-white/8 border-t border-black/8 dark:border-white/8">
               <div
                 v-for="job in experience"
                 :key="`${job.company}-${job.period}`"
@@ -126,7 +126,7 @@
                   <span
                     v-for="tag in job.tags"
                     :key="tag"
-                    class="text-[10px] tracking-wide uppercase px-1.5 py-0.5 border border-black/10 dark:border-white/10 font-mono">
+                    class="text-[10px] tracking-wide uppercase px-1.5 py-0.5 border border-black/8 dark:border-white/8 font-mono">
                     {{ tag }}
                   </span>
                 </div>
@@ -141,7 +141,7 @@
     <!-- TOOLS & STACK                                -->
     <!-- ============================================ -->
     <RevealOnScroll variant="fade-up" :delay="50">
-      <section class="w-full border-t border-black/10 dark:border-white/10 px-6 md:px-12 lg:px-20 py-10 lg:py-14">
+      <section class="w-full border-t border-black/8 dark:border-white/8 px-8 py-10 lg:py-14">
         <h2
           class="text-xs tracking-widest uppercase opacity-50 mb-4 font-mono">
           Tools &amp; Stack
@@ -168,7 +168,7 @@
     <!-- MY PROCESS                                   -->
     <!-- ============================================ -->
     <RevealOnScroll variant="fade-up" :delay="100">
-      <section class="w-full border-t border-black/10 dark:border-white/10 px-6 md:px-12 lg:px-20 py-10 lg:py-14">
+      <section class="w-full border-t border-black/8 dark:border-white/8 px-8 py-10 lg:py-14">
         <h2
           class="text-xs tracking-widest uppercase opacity-50 mb-4 font-mono">
           My Process
@@ -187,7 +187,7 @@
     <!-- ============================================ -->
     <!-- CTA: footer strip                            -->
     <!-- ============================================ -->
-    <section class="w-full border-t border-black/10 dark:border-white/10 px-6 md:px-12 lg:px-20 py-12">
+    <section class="w-full border-t border-black/8 dark:border-white/8 px-8 py-12">
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <p class="text-sm opacity-60">Want to work together or just say hello?</p>
         <NuxtLink

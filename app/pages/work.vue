@@ -1,7 +1,7 @@
 <template>
   <NuxtLayout name="simple">
     <template #default>
-      <div class="flex flex-col gap-10 mt-10">
+      <div class="flex flex-col gap-10 px-8 pt-10 pb-10">
         <div class="flex flex-col gap-2">
           <div class="flex items-center justify-between mb-3">
             <p class="text-xs font-mono opacity-50 tracking-widest">Selected Work</p>

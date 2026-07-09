@@ -1,56 +1,55 @@
 <template>
   <aside
     :class="[
-      'w-56 shrink-0 flex flex-col gap-8 px-6 py-8 border-r uppercase sticky top-0 h-screen overflow-y-auto font-mono',
+      'w-52 shrink-0 flex flex-col px-5 py-7 border-r sticky top-0 h-screen overflow-y-auto font-mono',
       transparent
         ? 'border-white/8 mix-blend-difference'
         : 'border-black/8 dark:border-white/8',
     ]"
     aria-label="Desktop sidebar">
-    
+
     <!-- Logo + color toggle -->
-    <div class="flex items-center justify-between">
+    <div class="flex items-center justify-between mb-10">
       <NuxtLink to="/" aria-label="Go to homepage">
-        <AppLogo
-          class="w-8 h-8 hover:scale-110 transition-transform duration-300" />
+        <AppLogo class="w-7 h-7 hover:opacity-70 transition-opacity duration-200" />
       </NuxtLink>
       <ColorToggle
-        class="w-7 h-7 hover:scale-110 transition-transform duration-300"
-        :class="
-          transparent
-            ? 'mix-blend-difference text-white'
-            : 'text-black dark:text-white'
-        " />
+        class="w-6 h-6 hover:opacity-70 transition-opacity duration-200"
+        :class="transparent ? 'mix-blend-difference text-white' : 'text-black dark:text-white'" />
     </div>
 
     <!-- Vertical nav -->
     <AppNav direction="vertical" aria-label="Main navigation" />
 
-    <div class="border-t border-black/8 dark:border-white/8 -mx-6" />
-
-    <!-- Spacer pushes info to bottom -->
+    <!-- Spacer -->
     <div class="flex-1" />
 
+    <!-- Divider -->
+    <div class="border-t border-black/8 dark:border-white/8 -mx-5 mb-5" />
+
     <!-- Location + time -->
-    <div class="flex flex-col gap-1.5 font-sans normal-case text-xs">
-      <span class="opacity-50 tracking-[0.15em] text-xs">CYBERJAYA, MY</span>
+    <div class="flex flex-col gap-1 normal-case text-[11px] mb-4">
+      <span class="opacity-40 tracking-[0.12em] uppercase">Cyberjaya, MY</span>
       <ClientOnly>
-        <div class="opacity-70 flex items-center gap-0.5">
+        <div class="opacity-60 flex items-center gap-0.5 tabular-nums">
           <span>{{ hours }}</span>
           <span class="blink">:</span>
           <span>{{ minutes }}</span>
-          <span class="ml-1 opacity-70">{{ ampm }}</span>
+          <span class="ml-1.5 opacity-60 uppercase text-[9px]">{{ ampm }}</span>
         </div>
         <template #fallback>
-          <div class="opacity-40">--:-- --</div>
+          <div class="opacity-30 tabular-nums">--:-- --</div>
         </template>
       </ClientOnly>
     </div>
 
-    <!-- Availability dot -->
-    <div class="flex items-center gap-2 font-sans normal-case">
-      <span class="w-1.5 h-1.5 rounded-full bg-green-500 ring-2 ring-green-500/20 shrink-0 animate-pulse"></span>
-      <span class="text-[10px] opacity-60 tracking-[0.15em]">OPEN TO WORK</span>
+    <!-- Availability -->
+    <div class="flex items-center gap-2 normal-case">
+      <span class="relative flex w-1.5 h-1.5 shrink-0">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-60" />
+        <span class="relative inline-flex rounded-full w-1.5 h-1.5 bg-green-500" />
+      </span>
+      <span class="text-[9px] opacity-50 tracking-[0.15em] uppercase">Open to work</span>
     </div>
   </aside>
 </template>
