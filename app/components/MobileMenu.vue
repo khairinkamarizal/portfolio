@@ -39,7 +39,7 @@
         </div>
 
         <!-- Nav links -->
-        <div class="py-1">
+        <div class="py-1 flex flex-col gap-4">
           <AppNav direction="vertical" bordered />
         </div>
 
