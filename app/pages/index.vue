@@ -6,7 +6,7 @@
       </ClientOnly>
 
       <!-- ==================== HERO ==================== -->
-      <section id="hero" class="relative min-h-[90vh] flex flex-col justify-between px-8 pt-10 pb-10 border-b border-black/8 dark:border-white/8">
+      <section id="hero" aria-describedby="hero-bio" class="relative min-h-[90vh] flex flex-col justify-between px-8 pt-10 pb-10 border-b border-black/8 dark:border-white/8">
         <GridBackground variant="dots" class="z-0" />
         <!-- Top row: number + avatar cluster -->
         <div class="relative z-10 flex items-start justify-between">
@@ -34,7 +34,7 @@
           </div>
           <div class="mt-6 flex flex-col gap-3 max-w-xs">
             <StatusBadge text="Available for projects" />
-            <p class="text-sm leading-relaxed opacity-55 font-sans font-light">
+            <p id="hero-bio" class="text-sm leading-relaxed opacity-55 font-sans font-light">
               Creative designer &amp; developer. Branding, UI/UX,<br class="hidden md:block" /> motion &amp; web. Based in Cyberjaya, MY.
             </p>
           </div>
