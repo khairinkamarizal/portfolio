@@ -41,6 +41,12 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * NewsletterSignup — email capture form shown at the bottom of blog posts.
+ * UI only — no backend is connected. Replace the setTimeout stub in handleSubmit
+ * with a real API call when a mailing-list service is integrated.
+ * Shows a success message after submission; no page reload required.
+ */
 const email = ref('')
 const submitted = ref(false)
 const loading = ref(false)
