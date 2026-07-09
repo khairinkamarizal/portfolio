@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
     :to="post._path ?? `/writing/${post.slug}`"
-    class="group block w-full border-b border-black/10 dark:border-white/10 py-6 hover:border-black/30 dark:hover:border-white/30 transition-colors duration-200">
+    class="group block w-full relative border-b border-black/10 dark:border-white/10 py-6 hover:border-black/30 dark:hover:border-white/30 transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 group-hover:after:w-full after:bg-black dark:after:bg-white after:transition-all after:duration-300">
     <!-- Date -->
     <p class="text-xs font-mono opacity-50 mb-2 text-black dark:text-white">
       {{ formattedDate }}
