@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full relative overflow-hidden bg-black/8 dark:bg-white/8">
+  <div class="w-full h-full relative overflow-hidden bg-black/8 dark:bg-white/8 text-black dark:text-white">
     <!-- Branding / Motion category -->
     <svg
       v-if="resolvedCategory === 'branding'"
