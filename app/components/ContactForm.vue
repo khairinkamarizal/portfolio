@@ -1,31 +1,35 @@
 <template>
   <div class="flex flex-col gap-4">
     <Transition name="fade" mode="out-in">
-      <div v-if="submitted" key="success" class="flex flex-col gap-2">
+      <div v-if="submitted" key="success" class="flex flex-col gap-2" aria-live="polite">
         <p class="text-sm opacity-70">Message received. I'll get back to you soon.</p>
         <button type="button" @click="submitted = false; form = { name: '', email: '', message: '' }" class="text-xs font-mono opacity-50 hover:opacity-100 transition-opacity duration-150 underline mt-3">Send another message</button>
       </div>
 
       <form v-else key="form" class="flex flex-col gap-3" @submit.prevent="handleSubmit">
         <div class="flex flex-col gap-1.5">
-          <label for="contact-name" class="text-xs opacity-40 tracking-wider">Name</label>
+          <label for="contact-name" class="text-xs opacity-60 tracking-wider">Name</label>
           <input
             id="contact-name"
             v-model="form.name"
             type="text"
+            name="name"
             required
+            autocomplete="name"
             placeholder="Your name"
             class="text-sm px-3 py-2 border border-black/20 dark:border-white/20 bg-transparent placeholder:opacity-30 focus:outline-none focus:border-black dark:focus:border-white transition-colors duration-150"
             :disabled="loading" />
         </div>
 
         <div class="flex flex-col gap-1.5">
-          <label for="contact-email" class="text-xs opacity-40 tracking-wider">Email</label>
+          <label for="contact-email" class="text-xs opacity-60 tracking-wider">Email</label>
           <input
             id="contact-email"
             v-model="form.email"
             type="email"
+            name="email"
             required
+            autocomplete="email"
             placeholder="your@email.com"
             class="text-sm px-3 py-2 border border-black/20 dark:border-white/20 bg-transparent placeholder:opacity-30 focus:outline-none focus:border-black dark:focus:border-white transition-colors duration-150"
             :disabled="loading" />
@@ -33,10 +37,11 @@
         </div>
 
         <div class="flex flex-col gap-1.5">
-          <label for="contact-message" class="text-xs opacity-40 tracking-wider">Message</label>
+          <label for="contact-message" class="text-xs opacity-60 tracking-wider">Message</label>
           <textarea
             id="contact-message"
             v-model="form.message"
+            name="message"
             required
             rows="4"
             placeholder="What's on your mind?"
@@ -52,7 +57,7 @@
         </button>
 
         <!-- Error state -->
-        <p v-if="errorMessage" class="text-[11px] text-red-500 dark:text-red-400">{{ errorMessage }}</p>
+        <p v-if="errorMessage" aria-live="polite" class="text-[11px] text-red-500 dark:text-red-400">{{ errorMessage }}</p>
       </form>
     </Transition>
   </div>
