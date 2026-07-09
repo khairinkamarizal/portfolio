@@ -1,5 +1,7 @@
 <template>
+  <!-- v-once: grid is purely decorative and static, skip re-renders -->
   <div
+    v-once
     :class="['grid-bg pointer-events-none', `grid-bg--${variant}`]"
     :style="gridStyle"
     aria-hidden="true" />
