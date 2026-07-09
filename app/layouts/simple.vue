@@ -18,9 +18,15 @@
     </ClientOnly>
     <!-- Film grain noise overlay -->
     <NoiseOverlay :opacity="0.03" />
-    <div class="w-full max-w-md md:max-w-xl lg:max-w-2xl flex flex-col relative">
+
+    <!-- Outer wrapper: max-w-4xl on desktop for wider layout -->
+    <div class="w-full max-w-md md:max-w-xl lg:max-w-4xl flex flex-col lg:flex-row relative">
+
+      <!-- ===================== -->
+      <!-- MOBILE / TABLET LAYOUT (hidden on lg+) -->
+      <!-- ===================== -->
       <div
-        class="flex flex-col relative min-h-screen px-5 md:px-8 lg:px-10 py-5 gap-12 uppercase"
+        class="flex flex-col relative min-h-screen px-5 md:px-8 py-5 gap-12 uppercase lg:hidden"
         style="font-family: &quot;Space Mono&quot;, monospace">
         <!-- Header -->
         <div
@@ -57,7 +63,9 @@
             <ColorToggle
               class="w-8 h-8 hover:scale-125 transition-transform duration-300"
               :class="
-                transparent ? 'bg-white text-black' : '!bg-black dark:!bg-white'
+                transparent
+                  ? 'mix-blend-difference text-white'
+                  : 'text-black dark:text-white'
               " />
           </header>
 
@@ -101,6 +109,105 @@
           <Footer />
         </div>
       </div>
+
+      <!-- ===================== -->
+      <!-- DESKTOP LAYOUT (lg+): sidebar + main content -->
+      <!-- ===================== -->
+      <div class="hidden lg:flex flex-row w-full min-h-screen">
+        <!-- Sidebar: w-48, sticky, full height -->
+        <aside
+          :class="[
+            'w-48 shrink-0 flex flex-col gap-10 px-6 py-8 border-r uppercase sticky top-0 h-screen overflow-y-auto',
+            transparent
+              ? 'border-white/10 mix-blend-difference'
+              : 'border-black/10 dark:border-white/10',
+          ]"
+          style="font-family: &quot;Space Mono&quot;, monospace"
+          aria-label="Desktop sidebar">
+          <!-- Logo + color toggle -->
+          <div class="flex items-center justify-between">
+            <NuxtLink to="/">
+              <AppLogo
+                class="w-8 h-8 hover:scale-125 transition-transform duration-300" />
+            </NuxtLink>
+            <ColorToggle
+              class="w-7 h-7 hover:scale-125 transition-transform duration-300"
+              :class="
+                transparent
+                  ? 'mix-blend-difference text-white'
+                  : 'text-black dark:text-white'
+              " />
+          </div>
+
+          <!-- Vertical nav -->
+          <AppNav direction="vertical" aria-label="Main navigation" />
+
+          <!-- Spacer pushes location/availability to bottom -->
+          <div class="flex-1" />
+
+          <!-- Location + time -->
+          <div class="flex flex-col gap-1.5 font-sans normal-case text-xs">
+            <span class="opacity-40 tracking-widest text-[10px]">CYBERJAYA, MY</span>
+            <ClientOnly>
+              <div class="opacity-60 flex items-center gap-0.5">
+                <span>{{ hours }}</span>
+                <span class="blink">:</span>
+                <span>{{ minutes }}</span>
+                <span class="ml-1 opacity-70">{{ ampm }}</span>
+              </div>
+              <template #fallback>
+                <div class="opacity-40">--:-- --</div>
+              </template>
+            </ClientOnly>
+          </div>
+
+          <!-- Availability dot -->
+          <div class="flex items-center gap-2 font-sans normal-case">
+            <span class="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0 animate-pulse"></span>
+            <span class="text-[10px] opacity-50 tracking-wider">AVAILABLE</span>
+          </div>
+        </aside>
+
+        <!-- Main content area -->
+        <div class="flex-1 flex flex-col min-h-screen px-10 py-8">
+          <main id="main-content" role="main" class="flex-1 flex flex-col font-sans normal-case">
+            <PageTransition>
+              <slot />
+            </PageTransition>
+          </main>
+
+          <!-- Desktop footer -->
+          <div
+            :class="[
+              'flex flex-col gap-8 font-sans normal-case mt-16',
+              transparent ? 'mix-blend-difference' : '',
+            ]">
+            <div
+              class="flex flex-col gap-4 w-full"
+              :class="
+                transparent
+                  ? '*:bg-white *:text-black *:px-4 *:py-2 *:w-full *:font-medium *:text-2xl *:flex *:flex-row transition-all duration-300 *:items-center'
+                  : '*:bg-black dark:*:bg-white dark:*:text-black *:text-white *:px-4 *:py-2 *:w-full dark:*:font-medium *:text-2xl *:flex *:flex-row transition-all duration-300 *:items-center'
+              ">
+              <slot name="footer-actions">
+                <NuxtLink
+                  to="/"
+                  class="group flex items-center w-full">
+                  <div
+                    class="flex-none group-hover:flex-1 transition-all duration-300 h-1"></div>
+                  <span>Back to home</span>
+                  <div
+                    class="flex-1 group-hover:flex-none transition-all duration-300 group-hover:w-2 h-1"></div>
+                  <ArrowUpRight
+                    class="group-hover:rotate-45 transition-transform duration-300" />
+                </NuxtLink>
+              </slot>
+            </div>
+            <Footer />
+          </div>
+        </div>
+      </div>
+
     </div>
     <!-- Back to top button -->
     <ClientOnly>
