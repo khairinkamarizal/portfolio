@@ -37,9 +37,7 @@
                   I'm Khairin — a Malaysian designer and developer who builds digital things that feel as good as they look. 5+ years of craft across brand, product, and web.
                 </p>
                 <p>
-                  My work spans product design, front-end engineering, and brand identity.
-                  I'm comfortable moving between Figma and the terminal, and I care deeply
-                  about the details that make an experience feel right.
+                  My work lives at the intersection of design and engineering — Figma to code, brand identity to design systems. I care about the details that make the difference between good and great.
                 </p>
                 <p>
                   When I'm not building things, I'm writing about design, reading about
