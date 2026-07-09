@@ -50,6 +50,6 @@ onMounted(() => {
 }
 
 .nudge {
-  animation: nudge-down 1.5s ease-in-out infinite;
+  animation: nudge-down 2s ease-in-out infinite;
 }
 </style>
