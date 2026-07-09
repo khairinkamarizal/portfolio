@@ -245,6 +245,14 @@
     @apply opacity-50 hover:opacity-100 transition-opacity duration-200;
   }
 
+  .input-base {
+    @apply w-full bg-transparent border-b border-black/25 dark:border-white/25 
+      px-0 py-2.5 text-sm font-sans
+      focus:outline-none focus:border-black dark:focus:border-white
+      transition-colors duration-150
+      placeholder:opacity-30;
+  }
+
   /* Animated underline from left */
   .link-underline {
     position: relative;
