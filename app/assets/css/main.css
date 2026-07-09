@@ -187,6 +187,10 @@
 
   .tracking-tight-editorial { letter-spacing: -0.03em; }
   .tracking-ultra-wide { letter-spacing: 0.4em; }
+
+  .text-foreground { @apply text-black dark:text-white; }
+  .text-muted-foreground { @apply text-black/60 dark:text-white/60; }
+  .text-subtle { @apply text-black/40 dark:text-white/40; }
 }
 
 /* ============================================
