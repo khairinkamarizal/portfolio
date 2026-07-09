@@ -137,25 +137,29 @@ useHead({
 });
 
 const skills = [
-  // Design Tools
-  { name: "Figma", level: "expert", category: "Design Tools" },
-  { name: "Adobe Illustrator", level: "expert", category: "Design Tools" },
-  { name: "Photoshop", level: "advanced", category: "Design Tools" },
-  { name: "After Effects", level: "advanced", category: "Design Tools" },
-  { name: "Prototyping", level: "expert", category: "Design Tools" },
-  { name: "Art Direction", level: "advanced", category: "Design Tools" },
-  // Dev Stack
-  { name: "Nuxt / Vue.js", level: "advanced", category: "Dev Stack" },
-  { name: "Tailwind CSS", level: "expert", category: "Dev Stack" },
-  { name: "TypeScript", level: "intermediate", category: "Dev Stack" },
-  { name: "HTML / CSS", level: "expert", category: "Dev Stack" },
-  { name: "Responsive Design", level: "expert", category: "Dev Stack" },
-  // Craft
-  { name: "Brand Identity", level: "expert", category: "Craft" },
-  { name: "UI/UX Design", level: "advanced", category: "Craft" },
-  { name: "Motion Design", level: "advanced", category: "Craft" },
-  { name: "Typography", level: "expert", category: "Craft" },
-  { name: "Design Systems", level: "advanced", category: "Craft" },
+  // Design
+  { name: "Figma", level: "expert", category: "Design" },
+  { name: "Adobe Illustrator", level: "expert", category: "Design" },
+  { name: "Photoshop", level: "expert", category: "Design" },
+  { name: "After Effects", level: "advanced", category: "Design" },
+  { name: "Typography", level: "expert", category: "Design" },
+  { name: "Motion Design", level: "advanced", category: "Design" },
+  // Development
+  { name: "Nuxt/Vue.js", level: "expert", category: "Development" },
+  { name: "Tailwind CSS", level: "expert", category: "Development" },
+  { name: "HTML/CSS", level: "expert", category: "Development" },
+  { name: "Responsive Design", level: "expert", category: "Development" },
+  { name: "Web Development", level: "expert", category: "Development" },
+  // Strategy
+  { name: "Project Management", level: "expert", category: "Strategy" },
+  { name: "Brand Identity", level: "expert", category: "Strategy" },
+  { name: "UI/UX Design", level: "expert", category: "Strategy" },
+  { name: "Creative Direction", level: "advanced", category: "Strategy" },
+];
+
+const languages = [
+  { name: "English", level: "Full Professional" },
+  { name: "Malay", level: "Native or Bilingual" },
 ];
 
 const experienceItems = [
