@@ -30,6 +30,7 @@
 
         <!-- Main hero text: takes up space boldly -->
         <div class="relative z-10 flex-1 flex flex-col justify-center py-8">
+          <p class="font-mono text-[9px] tracking-[0.3em] uppercase opacity-20 mb-4">001 / Home</p>
           <div class="overflow-hidden">
             <h1 class="font-mono font-bold uppercase leading-[0.85] tracking-[-0.04em] text-[clamp(3rem,10vw,7rem)]">
               Khairin<br />Kamarizal
@@ -38,7 +39,7 @@
           <div class="mt-6 flex flex-col gap-3 max-w-xs">
             <StatusBadge text="Available for projects" />
             <p id="hero-bio" class="text-sm leading-relaxed opacity-55 font-sans font-light max-w-[280px]">
-              Creative designer &amp; developer. Branding, UI/UX,<br class="hidden md:block" /> motion &amp; web. Based in Cyberjaya, MY.
+              Designer and developer crafting digital experiences at the intersection of aesthetics and function. Cyberjaya, Malaysia.
             </p>
           </div>
         </div>
@@ -203,10 +204,10 @@ useHead({
   meta: [
     {
       name: "description",
-      content: "Ambitious and versatile creative designer skilled in branding, UI/UX, motion content and web development.",
+      content: "Designer and developer crafting digital experiences at the intersection of aesthetics and function. Cyberjaya, Malaysia.",
     },
     { property: "og:title", content: "Khairin Kamarizal — Creative Designer & Developer" },
-    { property: "og:description", content: "Ambitious and versatile creative designer skilled in branding, UI/UX, motion content and web development." },
+    { property: "og:description", content: "Designer and developer crafting digital experiences at the intersection of aesthetics and function. Cyberjaya, Malaysia." },
     { property: "og:url", content: "https://khair.ink" },
   ],
 });
