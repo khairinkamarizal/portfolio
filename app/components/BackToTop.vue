@@ -2,10 +2,11 @@
   <Transition name="fade">
     <button
       v-if="visible"
+      type="button"
       @click="scrollToTop"
       class="fixed bottom-6 right-6 z-50 w-9 h-9 flex items-center justify-center border border-black/20 dark:border-white/20 bg-white dark:bg-black hover:border-black dark:hover:border-white transition-all duration-200"
       aria-label="Back to top">
-      <ArrowUp :size="14" />
+      <ArrowUp :size="14" aria-hidden="true" />
     </button>
   </Transition>
 </template>
