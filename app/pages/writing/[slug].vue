@@ -58,10 +58,12 @@
             </div>
 
             <!-- Related posts -->
-            <RelatedPosts
-              v-if="post?.tags?.length"
-              :tags="post.tags"
-              :current-slug="route.params.slug as string" />
+            <div class="mt-10">
+              <RelatedPosts
+                v-if="post?.tags?.length"
+                :tags="post.tags"
+                :current-slug="route.params.slug as string" />
+            </div>
 
             <!-- Post navigation -->
             <PostNavigation
