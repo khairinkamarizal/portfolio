@@ -1,7 +1,7 @@
 <template>
   <div class="flex items-center gap-2 flex-wrap">
-    <span v-if="readingTime" class="text-xs opacity-30 font-mono">{{ readingTime }}</span>
-    <span class="text-xs opacity-40">{{ formattedDate }}</span>
+    <span v-if="readingTime" class="text-xs opacity-50 font-mono">{{ readingTime }}</span>
+    <span class="text-xs opacity-50">{{ formattedDate }}</span>
     <div v-if="tags?.length" class="flex items-center gap-1.5">
       <span
         v-for="tag in tags"
