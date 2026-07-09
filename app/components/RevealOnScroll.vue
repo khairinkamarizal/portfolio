@@ -11,8 +11,8 @@
         : 'opacity-0',
     ]"
     :style="{
-      transitionDuration: '0.5s',
-      transitionDelay: `${delay}ms`,
+      transitionDuration: duration + 'ms',
+      transitionDelay: delay + 'ms',
     }"
   >
     <slot />
@@ -24,9 +24,11 @@ import { ref, onMounted, onUnmounted } from 'vue'
 
 const props = withDefaults(defineProps<{
   delay?: number
+  duration?: number
   variant?: 'fade-up' | 'fade-in' | 'fade-left' | 'fade-right'
 }>(), {
   delay: 0,
+  duration: 500,
   variant: 'fade-up',
 })
 
