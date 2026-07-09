@@ -32,7 +32,7 @@
                 Featured
               </span>
               <div class="flex items-center gap-3 text-xs opacity-50 font-mono">
-                <span>{{ featuredPost.date }}</span>
+                <span>{{ formatDate(featuredPost.date) }}</span>
                 <span>·</span>
                 <span>{{ featuredPost.readTime }}</span>
               </div>
@@ -109,7 +109,7 @@
               {{ post.excerpt }}
             </p>
             <span class="text-xs font-mono opacity-50 mt-auto">
-              {{ post.date }}
+              {{ formatDate(post.date) }}
             </span>
           </NuxtLink>
         </div>
@@ -192,6 +192,10 @@ const posts = [
 
 const featuredPost = computed(() => posts.find((p) => p.featured) ?? null);
 const nonFeaturedPosts = computed(() => posts.filter((p) => !p.featured));
+
+function formatDate(d: string) {
+  return new Intl.DateTimeFormat('en-US', { month: 'short', year: 'numeric' }).format(new Date(d))
+}
 
 const allTags = computed(() => {
   const tags = new Set<string>(["All"]);
