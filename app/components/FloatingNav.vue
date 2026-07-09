@@ -87,6 +87,10 @@ onMounted(() => {
   _handleScroll = handleScroll
   window.addEventListener('scroll', handleScroll, { passive: true })
   window.addEventListener('resize', handleResize)
+
+  // Set initial active section
+  const firstSection = props.sections[0]
+  if (firstSection) activeSection.value = firstSection.id
 })
 
 onUnmounted(() => {
