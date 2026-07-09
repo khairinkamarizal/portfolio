@@ -153,6 +153,19 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * ProjectThumbnail — SVG placeholder thumbnail for projects without an image.
+ *
+ * Renders a category-specific SVG illustration (concentric circles for branding,
+ * wave lines for motion, diagonal lines for jersey/sport, a grid for logo/identity,
+ * or a default dot pattern) with the project's initial letter overlaid.
+ * Used as a fallback inside WorkCard when no `thumbnail` image URL is provided.
+ *
+ * @prop {string} [title] - Project title; its first character is used as the initial
+ * @prop {string} [category] - Project category; drives which SVG pattern is rendered
+ *
+ * @example <ProjectThumbnail title="Acme Rebrand" category="Branding" />
+ */
 const props = defineProps<{
   title?: string
   category?: string
