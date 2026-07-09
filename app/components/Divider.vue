@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="['divider', `divider--${variant}`, className]"
+    :class="['divider', `divider--${variant}`, extraClass]"
     aria-hidden="true" />
 </template>
 
@@ -11,10 +11,10 @@
 
 withDefaults(defineProps<{
   variant?: 'line' | 'dots' | 'zigzag' | 'wave'
-  className?: string
+  extraClass?: string
 }>(), {
   variant: 'line',
-  className: '',
+  extraClass: '',
 })
 </script>
 
