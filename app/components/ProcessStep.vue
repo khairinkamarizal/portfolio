@@ -7,7 +7,9 @@
     </div>
     <div class="process-step-content">
       <h3 class="process-step-title">{{ title }}</h3>
-      <p class="process-step-description">{{ description }}</p>
+      <slot name="description">
+        <p class="process-step-description">{{ description }}</p>
+      </slot>
     </div>
   </div>
 </template>
