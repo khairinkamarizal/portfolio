@@ -90,6 +90,9 @@
           <ExternalLink :size="12" />
           <span>View all on Behance</span>
         </a>
+
+        <!-- Open to work -->
+        <OpenToWork />
       </div>
     </template>
 
