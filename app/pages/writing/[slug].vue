@@ -28,7 +28,7 @@
           </div>
         </div>
 
-        <!-- Post body -->
+        <!-- Post body — wrapped in prose for @tailwindcss/typography rendering -->
         <div
           v-if="post"
           class="prose prose-sm dark:prose-invert max-w-none
