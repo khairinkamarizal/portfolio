@@ -13,6 +13,18 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * TextSplit — animates text by splitting it into individually staggered units.
+ *
+ * @prop {string} text - The text string to split and animate.
+ * @prop {'char'|'word'} [by='word'] - Split granularity: by individual character or by word.
+ * @prop {number} [stagger=50] - Delay in milliseconds between each unit's animation start.
+ *
+ * Renders each unit as an inline-block span with a CSS keyframe entrance animation.
+ * Spaces are preserved as explicit &#32; entities to maintain layout.
+ * Respects `prefers-reduced-motion`: animation is disabled via CSS media query.
+ * The wrapper carries the full text as aria-label; individual units are aria-hidden.
+ */
 import { computed } from 'vue'
 
 const props = withDefaults(defineProps<{
