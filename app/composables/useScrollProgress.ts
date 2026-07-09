@@ -1,3 +1,7 @@
+/**
+ * Returns the current scroll progress as a percentage (0-100).
+ * Updates on scroll via passive listener.
+ */
 export function useScrollProgress() {
   const progress = ref(0)
   
