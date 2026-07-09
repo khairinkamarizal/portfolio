@@ -7,7 +7,7 @@
       </ClientOnly>
 
       <!-- ==================== HERO ==================== -->
-      <section class="relative min-h-[85vh] flex flex-col justify-between px-8 pt-10 pb-10 border-b border-black/8 dark:border-white/8">
+      <section class="relative min-h-[90vh] flex flex-col justify-between px-8 pt-10 pb-10 border-b border-black/8 dark:border-white/8">
         <!-- Top row: number + avatar cluster -->
         <div class="flex items-start justify-between">
           <span class="text-[10px] font-mono tracking-[0.3em] uppercase opacity-30">001 / Index</span>
