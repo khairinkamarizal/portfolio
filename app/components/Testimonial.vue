@@ -59,7 +59,7 @@ defineProps<{
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-family: 'Space Mono', monospace;
-  opacity: 0.45;
+  opacity: 0.65;
 }
 
 .testimonial-name {
