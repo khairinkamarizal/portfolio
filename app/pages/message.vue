@@ -164,6 +164,7 @@
           <!-- RIGHT: direct contact info + availability -->
           <div class="flex flex-col gap-10">
             <div>
+              <p class="font-mono text-[9px] tracking-[0.25em] uppercase opacity-40 mb-4">Connect</p>
               <h2 class="text-xs tracking-widest uppercase font-mono opacity-50 mb-6">
                 Direct Contact
               </h2>
@@ -180,7 +181,7 @@
                     :target="contact.external ? '_blank' : undefined"
                     :rel="contact.external ? 'noopener noreferrer' : undefined"
                     class="text-sm hover:opacity-60 transition-opacity duration-150">
-                    {{ contact.value }}
+                    {{ contact.value }}{{ contact.external ? ' ↗' : '' }}
                   </a>
                 </div>
               </div>
