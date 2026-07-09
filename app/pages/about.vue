@@ -5,10 +5,9 @@
 
         <!-- Bio -->
         <div class="flex flex-col gap-4">
-          <h1 class="text-xs opacity-50 tracking-widest">About</h1>
-          <p class="text-2xl leading-tight dark:font-light">
-            Creative designer and developer based in Cyberjaya, Malaysia.
-          </p>
+          <PageHeader
+            title="About"
+            description="Creative designer and developer based in Cyberjaya, Malaysia." />
           <p class="text-sm opacity-70 leading-relaxed dark:font-light">
             I'm Khairin — a versatile designer with 4+ years of experience across brand identity,
             UI/UX, motion design, and web development. I bridge the gap between visual craft
