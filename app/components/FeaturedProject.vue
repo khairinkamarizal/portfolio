@@ -54,6 +54,14 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * FeaturedProject
+ *
+ * Displays a single featured project card with a large 16:9 thumbnail,
+ * title, description, year, tags, and an optional Behance link.
+ * Falls back to a generated ProjectThumbnail when no image is provided.
+ * Supports hover animations and is intended for use in the Work section.
+ */
 defineProps<{
   title: string
   description?: string
