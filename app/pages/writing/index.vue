@@ -79,7 +79,7 @@
                 : 'border-black/20 dark:border-white/20 hover:border-black/60 dark:hover:border-white/60',
             ]"
             @click="activeTag = tag">
-            {{ tag }}
+            {{ tag }} ({{ getTagCount(tag) }})
           </button>
         </div>
 
@@ -215,4 +215,8 @@ const filteredPosts = computed(() =>
     ? nonFeaturedPosts.value
     : nonFeaturedPosts.value.filter((p) => p.tags.includes(activeTag.value))
 );
+
+function getTagCount(tag: string) {
+  return tag === "All" ? nonFeaturedPosts.value.length : nonFeaturedPosts.value.filter(p => p.tags?.includes(tag)).length ?? 0
+}
 </script>
