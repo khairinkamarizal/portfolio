@@ -1,5 +1,6 @@
 <template>
   <span
+    role="status"
     :class="[
       'text-[10px] tracking-wider px-2 py-0.5 border',
       categoryStyles[category.toLowerCase()] || categoryStyles.default,
