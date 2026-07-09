@@ -32,7 +32,7 @@
     <div class="flex flex-col gap-1 normal-case text-xs mb-4 pt-2">
       <span class="opacity-40 tracking-[0.12em] uppercase">Cyberjaya, MY</span>
       <ClientOnly>
-        <div class="opacity-60 flex items-center gap-0.5 tabular-nums">
+        <div class="opacity-70 flex items-center gap-0.5 tabular-nums">
           <span>{{ hours }}</span>
           <span class="blink">:</span>
           <span>{{ minutes }}</span>
