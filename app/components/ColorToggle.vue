@@ -52,6 +52,16 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * ColorToggle — light/dark mode toggle button.
+ *
+ * Renders a sun or moon icon depending on the current color scheme and toggles
+ * the theme via the `useTheme` composable on click. Wrapped in `<ClientOnly>`
+ * to avoid SSR hydration mismatches. Transitions between icons with a
+ * scale/fade animation.
+ *
+ * @example <ColorToggle />
+ */
 const { isDark, toggleTheme } = useTheme()
 </script>
 
