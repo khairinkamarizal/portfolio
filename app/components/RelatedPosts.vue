@@ -6,8 +6,8 @@
         v-for="post in related"
         :key="post.slug"
         :to="`/writing/${post.slug}`"
-        class="flex flex-col gap-1 py-3 first:pt-0 hover:opacity-70 transition-opacity duration-200">
-        <span class="text-sm font-medium leading-snug">{{ post.title }}</span>
+        class="group flex flex-col gap-1 py-3 first:pt-0">
+        <span class="text-sm font-medium leading-snug opacity-70 group-hover:opacity-100 transition-opacity duration-150">{{ post.title }}</span>
         <span class="text-xs opacity-50">{{ formatDate(post.date) }}</span>
       </NuxtLink>
     </div>
