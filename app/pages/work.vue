@@ -28,7 +28,7 @@
           <SectionLabel label="Featured" variant="numbered" :number="1" />
           <p class="text-muted mt-1">Highlight pieces I'm proud of</p>
           <RevealOnScroll variant="fade-up" :delay="50">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-2">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-2">
               <FeaturedProject
                 v-for="project in featuredProjects"
                 :key="project.title"
