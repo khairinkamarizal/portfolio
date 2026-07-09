@@ -21,4 +21,8 @@ const categoryStyles: Record<string, string> = {
   logo: 'bg-purple-500/10 dark:bg-purple-400/10 border-purple-500/30 dark:border-purple-400/30',
   default: 'bg-black/5 dark:bg-white/5 border-black/20 dark:border-white/20',
 }
+
+if (import.meta.dev && category && !categoryStyles[category.toLowerCase()]) {
+  console.warn(`[CategoryBadge] Unknown category: "${category}". Add it to categoryStyles.`)
+}
 </script>
