@@ -47,19 +47,7 @@
         <!-- Experience -->
         <div class="flex flex-col gap-4">
           <h2 class="text-xs opacity-50 tracking-widest">Experience</h2>
-          <div class="flex flex-col gap-0 divide-y divide-black/10 dark:divide-white/10">
-            <div
-              v-for="role in experience"
-              :key="role.company + role.period"
-              class="flex flex-col gap-1 py-5 first:pt-0">
-              <div class="flex justify-between items-start gap-2">
-                <span class="text-sm font-medium">{{ role.title }}</span>
-                <span class="text-xs opacity-40 shrink-0">{{ role.period }}</span>
-              </div>
-              <span class="text-xs opacity-50 tracking-wide">{{ role.company.toUpperCase() }}</span>
-              <p class="text-sm opacity-60 leading-relaxed dark:font-light mt-1">{{ role.description }}</p>
-            </div>
-          </div>
+          <ExperienceTimeline :items="experienceItems" />
         </div>
 
         <!-- Tools -->
@@ -141,21 +129,21 @@ const skillGroups = [
   },
 ];
 
-const experience = [
+const experienceItems = [
   {
-    title: "Freelance Designer & Developer",
+    role: "Freelance Designer & Developer",
     company: "Independent",
     period: "2022 — Present",
     description: "Working with startups and small businesses on brand identity, UI/UX design, and web development projects. Clients across Malaysia, Singapore, and the UK.",
   },
   {
-    title: "UI/UX Designer",
+    role: "UI/UX Designer",
     company: "Axiata Digital Services",
     period: "2021 — 2022",
     description: "Designed digital products and internal tooling for a major Malaysian telecommunications group. Led end-to-end design for a customer-facing mobile app feature used by 200k+ users.",
   },
   {
-    title: "Junior Graphic Designer",
+    role: "Junior Graphic Designer",
     company: "Studio Lapan",
     period: "2020 — 2021",
     description: "Contributed to branding, print, and digital design projects at a boutique creative studio in Kuala Lumpur. Worked on identity systems, packaging, and editorial layouts.",
