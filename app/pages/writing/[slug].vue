@@ -23,13 +23,13 @@
             <ViewCounter :slug="route.params.slug as string" />
           </div>
           <!-- Decorative separator -->
-          <div class="w-12 h-px bg-black dark:bg-white opacity-20"></div>
+          <div class="w-12 h-px bg-black dark:bg-white opacity-10"></div>
         </div>
 
         <!-- Post body — wrapped in prose for @tailwindcss/typography rendering -->
         <div
           v-if="post"
-          class="prose prose-sm dark:prose-invert max-w-none
+          class="prose prose-sm dark:prose-invert max-w-2xl
             prose-headings:font-medium prose-headings:tracking-tight
             prose-h1:text-xl prose-h2:text-lg prose-h3:text-base
             prose-p:opacity-70 prose-p:leading-relaxed prose-p:dark:font-light
@@ -56,7 +56,11 @@
         <EmojiReaction :post-slug="route.params.slug as string" />
 
         <!-- Author bio -->
-        <AuthorCard v-if="post" />
+        <AuthorCard
+          v-if="post"
+          name="Khairinkamarizal"
+          title="Software Engineer"
+          bio="Writing about design, code, and the space between them." />
 
         <!-- Share buttons -->
         <ClientOnly>
