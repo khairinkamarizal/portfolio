@@ -1,6 +1,6 @@
 <template>
-  <nav aria-label="Table of contents" class="flex flex-col gap-1">
-    <span class="text-xs opacity-40 tracking-widest mb-2">CONTENTS</span>
+  <nav aria-label="Table of contents" class="flex flex-col gap-2">
+    <p class="text-xs opacity-50 tracking-[0.2em] uppercase font-mono">CONTENTS</p>
     <ul class="flex flex-col gap-0.5">
       <li
         v-for="link in links"
