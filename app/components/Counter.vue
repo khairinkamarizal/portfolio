@@ -1,29 +1,26 @@
 <template>
   <div>
-    <h3>Counter: {{ count }}</h3>
-    <button @click="increment">
-      Increment
-    </button>
-    <button @click="decrement">
-      Decrement
-    </button>
+    <span>{{ current }}</span>
   </div>
 </template>
 
 <script setup lang="ts">
-const count = ref(0)
+const props = defineProps<{
+  to: number
+}>()
 
-const increment = () => {
-  count.value++
-}
+const current = ref(0)
 
-const decrement = () => {
-  count.value--
-}
+onMounted(() => {
+  const startTime = performance.now()
+  const duration = 1200
+  function tick(now: number) {
+    const elapsed = now - startTime
+    const t = Math.min(elapsed / duration, 1)
+    const eased = 1 - Math.pow(1 - t, 3)
+    current.value = Math.round(eased * props.to)
+    if (t < 1) requestAnimationFrame(tick)
+  }
+  requestAnimationFrame(tick)
+})
 </script>
-
-<style scoped>
-button {
-  margin: 5px;
-}
-</style>
