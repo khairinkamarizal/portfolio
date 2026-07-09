@@ -8,10 +8,17 @@
 </template>
 
 <script setup lang="ts">
-// Custom cursor follower component
-// Client-side only — only renders on desktop (md+, pointer: fine)
-// Small circle that follows the mouse with slight lag via CSS transition
-// Dark mode aware (inverts color)
+/**
+ * CursorFollower — custom animated cursor dot.
+ *
+ * Renders a small circle that follows the mouse pointer with a lerp-smoothed
+ * lag effect using `requestAnimationFrame`. Only activates on desktop devices
+ * with a fine pointer (mouse); hidden on touch/mobile. Expands slightly when
+ * hovering over `<a>` or `<button>` elements. Dark mode aware — inverts color
+ * via CSS. Hides the native cursor while active.
+ *
+ * @example <CursorFollower />
+ */
 
 const x = ref(-100)
 const y = ref(-100)
