@@ -3,6 +3,8 @@
     <img
       :src="src"
       :alt="alt"
+      loading="lazy"
+      decoding="async"
       class="image-caption-img" />
     <figcaption v-if="caption" class="image-caption-text">
       {{ caption }}
