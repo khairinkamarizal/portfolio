@@ -39,8 +39,11 @@ export default defineNuxtConfig({
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         { name: "theme-color", content: "#ffffff", media: "(prefers-color-scheme: light)" },
         { name: "theme-color", content: "#000000", media: "(prefers-color-scheme: dark)" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:creator", content: "@khairinkamarizal" },
       ],
       link: [
+        { rel: "canonical", href: "https://khair.ink" },
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
         {
           rel: "preconnect",
