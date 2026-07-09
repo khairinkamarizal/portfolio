@@ -4,10 +4,13 @@
 
     <!-- Copy link -->
     <button
+      type="button"
       @click="copyLink"
-      class="text-[11px] opacity-50 hover:opacity-100 transition-opacity duration-150 tracking-wider flex items-center gap-1"
+      class="text-[11px] opacity-70 hover:opacity-100 transition-opacity duration-150 tracking-wider flex items-center gap-1"
       :aria-label="copied ? 'Link copied' : 'Copy link'">
-      <span>{{ copied ? 'COPIED' : 'COPY LINK' }}</span>
+      <Transition name="fade" mode="out-in">
+        <span :key="copied ? 'copied' : 'copy'">{{ copied ? 'COPIED' : 'COPY LINK' }}</span>
+      </Transition>
     </button>
 
     <!-- Twitter / X -->
@@ -15,7 +18,7 @@
       :href="twitterUrl"
       target="_blank"
       rel="noopener noreferrer"
-      class="text-[11px] opacity-50 hover:opacity-100 transition-opacity duration-150 tracking-wider"
+      class="text-[11px] opacity-70 hover:opacity-100 transition-opacity duration-150 tracking-wider"
       aria-label="Share on Twitter / X">
       X
     </a>
@@ -25,7 +28,7 @@
       :href="linkedinUrl"
       target="_blank"
       rel="noopener noreferrer"
-      class="text-[11px] opacity-50 hover:opacity-100 transition-opacity duration-150 tracking-wider"
+      class="text-[11px] opacity-70 hover:opacity-100 transition-opacity duration-150 tracking-wider"
       aria-label="Share on LinkedIn">
       LINKEDIN
     </a>
@@ -69,3 +72,14 @@ const linkedinUrl = computed(() => {
   return `https://www.linkedin.com/sharing/share-offsite/?url=${url}&title=${title}`
 })
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.15s;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
