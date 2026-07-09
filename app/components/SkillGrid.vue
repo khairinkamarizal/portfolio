@@ -25,7 +25,7 @@
               class="w-1 h-1 rounded-full transition-colors duration-150"
               :class="i <= skillLevel(skill.level)
                 ? 'bg-black dark:bg-white'
-                : 'bg-black/15 dark:bg-white/15'" />
+                : 'bg-black/25 dark:bg-white/25'" />
           </div>
         </div>
       </div>
