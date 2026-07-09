@@ -1,15 +1,15 @@
 <template>
   <div class="flex flex-col gap-4">
     <h2 class="text-xs opacity-50 tracking-widest uppercase font-mono">Currently</h2>
-    <div class="flex flex-col gap-3">
-      <div
+    <ul role="list" class="flex flex-col gap-3">
+      <li
         v-for="item in items"
         :key="item.label"
         class="flex flex-col gap-0.5">
         <span class="text-[10px] opacity-40 tracking-wider">{{ item.label.toUpperCase() }}</span>
         <span class="text-sm opacity-70 leading-snug">{{ item.value }}</span>
-      </div>
-    </div>
+      </li>
+    </ul>
   </div>
 </template>
 
