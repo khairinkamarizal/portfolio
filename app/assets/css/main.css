@@ -110,6 +110,13 @@
     @apply border-t border-black/8 dark:border-white/8;
   }
 
+  /* Consistent 150ms transition for interactive elements */
+  .transition-base {
+    transition-property: color, background-color, border-color, opacity, transform;
+    transition-timing-function: ease;
+    transition-duration: 150ms;
+  }
+
   /* Monospace label — small all-caps tracking */
   .label-mono {
     font-family: 'Space Mono', monospace;
