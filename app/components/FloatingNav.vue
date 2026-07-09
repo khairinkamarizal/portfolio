@@ -45,6 +45,12 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * FloatingNav — scroll-aware section navigation overlay.
+ * @props sections {Section[]} - Array of { id, label } objects matching page section IDs.
+ * Renders dot buttons on desktop (right edge) and a label bar on mobile (bottom center).
+ * Becomes visible after scrolling 100px; highlights the active section via getBoundingClientRect.
+ */
 interface Section {
   id: string
   label: string
