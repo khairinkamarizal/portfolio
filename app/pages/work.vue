@@ -12,7 +12,7 @@
               </ClientOnly>
             </div>
             <h1 class="text-3xl md:text-4xl font-light leading-tight tracking-tight text-balance">
-              Projects spanning brand identity, UI/UX, and digital design.
+              Selected projects in brand identity, UI/UX, and digital craft.
             </h1>
           </div>
         </RevealOnScroll>
