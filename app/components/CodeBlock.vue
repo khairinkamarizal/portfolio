@@ -2,7 +2,7 @@
   <div class="flex flex-col border border-black/10 dark:border-white/10 my-4">
     <!-- Header with filename and copy button -->
     <div
-      v-if="filename || code"
+      v-if="filename || language"
       class="flex items-center justify-between px-4 py-2 border-b border-black/10 dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.02]">
       <span v-if="filename" class="text-xs font-mono opacity-50">{{ filename }}</span>
       <span v-else class="text-xs font-mono opacity-30">{{ language || 'code' }}</span>
