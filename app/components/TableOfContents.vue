@@ -18,6 +18,11 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * TableOfContents — sidebar navigation for long-form content.
+ * Props: links (Array<{ id, text, depth }>)
+ * Highlights the active heading via IntersectionObserver as the user scrolls.
+ */
 defineProps<{
   links: Array<{
     id: string
