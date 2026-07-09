@@ -95,7 +95,7 @@
               All work <ArrowUpRight class="w-3 h-3" />
             </NuxtLink>
           </div>
-          <div class="grid grid-cols-1 gap-6">
+          <div class="grid grid-cols-1 gap-8">
             <WorkCard
               v-for="project in featuredProjects"
               :key="project.title"
