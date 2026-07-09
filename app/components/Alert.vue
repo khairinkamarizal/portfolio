@@ -1,32 +1,26 @@
 <template>
-  <div class="alert" :style="{ 'border-color': color }">
+  <div
+    class="flex items-center p-4 border transition-colors duration-150"
+    :class="variants[variant]">
     <slot></slot>
   </div>
 </template>
 
 <script setup lang="ts">
-const { color } = defineProps({
-  color: {
-    type: String,
-    default: 'orange'
-  }
+/**
+ * Alert — inline alert/notification component.
+ * Props: variant ('info' | 'warning' | 'error' | 'success')
+ */
+withDefaults(defineProps<{
+  variant?: 'info' | 'warning' | 'error' | 'success'
+}>(), {
+  variant: 'info'
 })
+
+const variants = {
+  info: 'border-black/20 dark:border-white/20 bg-black/5 dark:bg-white/5',
+  warning: 'border-yellow-500/40 bg-yellow-500/5',
+  error: 'border-red-500/40 bg-red-500/5',
+  success: 'border-green-500/40 bg-green-500/5',
+}
 </script>
-
-<style scoped>
-.alert {
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  border: 2px solid;
-  border-radius: 0.5rem;
-  background-color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.alert:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-}
-</style>
