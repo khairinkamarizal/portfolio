@@ -4,6 +4,7 @@
     v-once
     :class="['grid-bg pointer-events-none', `grid-bg--${variant}`]"
     :style="gridStyle"
+    class="pointer-events-none"
     aria-hidden="true" />
 </template>
 
