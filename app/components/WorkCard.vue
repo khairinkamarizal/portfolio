@@ -9,12 +9,12 @@
         :alt="title"
         loading="lazy"
         decoding="async"
-        class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]" />
+        class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]" />
       <ProjectThumbnail
         v-else
         :category="category"
         :title="title"
-        class="w-full h-full transition-transform duration-700 ease-out group-hover:scale-[1.03]" />
+        class="w-full h-full transition-transform duration-700 ease-out group-hover:scale-[1.02]" />
       <!-- Hover overlay -->
       <div class="absolute inset-0 bg-black/0 group-hover:bg-black/[0.04] dark:group-hover:bg-white/[0.04] transition-colors duration-500" />
       <!-- Year badge top-right -->
@@ -63,12 +63,12 @@
         :alt="title"
         loading="lazy"
         decoding="async"
-        class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]" />
+        class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]" />
       <ProjectThumbnail
         v-else
         :category="category"
         :title="title"
-        class="w-full h-full transition-transform duration-700 ease-out group-hover:scale-[1.03]" />
+        class="w-full h-full transition-transform duration-700 ease-out group-hover:scale-[1.02]" />
       <!-- Hover overlay -->
       <div class="absolute inset-0 bg-black/0 group-hover:bg-black/[0.04] dark:group-hover:bg-white/[0.04] transition-colors duration-500" />
       <!-- Year badge top-right -->
