@@ -4,7 +4,7 @@
     class="group block w-full border-b border-black/10 dark:border-white/10 py-6 hover:border-black/30 dark:hover:border-white/30 transition-colors duration-200">
     <!-- Date -->
     <p class="text-xs font-mono opacity-40 mb-2 text-black dark:text-white">
-      {{ post.date }}
+      {{ formattedDate }}
     </p>
 
     <!-- Title -->
@@ -41,7 +41,7 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   post: {
     _path?: string
     slug?: string
@@ -52,4 +52,8 @@ defineProps<{
     readingTime?: number
   }
 }>()
+
+const formattedDate = computed(() =>
+  new Intl.DateTimeFormat('en-US', { month: 'short', year: 'numeric' }).format(new Date(props.post.date))
+)
 </script>
