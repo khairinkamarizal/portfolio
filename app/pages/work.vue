@@ -16,6 +16,8 @@
 
         <WorkStats />
 
+        <Divider variant="dots" />
+
         <!-- Featured projects -->
         <div v-if="featuredProjects.length" class="flex flex-col gap-3">
           <SectionLabel label="Featured" variant="numbered" :number="1" />
@@ -58,6 +60,8 @@
             </div>
           </div>
         </div>
+
+        <Divider variant="line" />
 
         <!-- Card view -->
         <div v-if="viewMode === 'card'" class="flex flex-col gap-0 divide-y divide-black/10 dark:divide-white/10">
