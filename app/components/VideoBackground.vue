@@ -29,8 +29,19 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, ref, onMounted } from "vue";
 
 const colorMode = useColorMode();
 const isDark = computed(() => colorMode.value === "dark");
+
+const darkVideo = ref<HTMLVideoElement | null>(null);
+const lightVideo = ref<HTMLVideoElement | null>(null);
+
+onMounted(() => {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) {
+    darkVideo.value?.pause();
+    lightVideo.value?.pause();
+  }
+});
 </script>
