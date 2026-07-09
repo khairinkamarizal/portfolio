@@ -26,10 +26,12 @@ const props = withDefaults(defineProps<{
   delay?: number
   duration?: number
   variant?: 'fade-up' | 'fade-in' | 'fade-left' | 'fade-right'
+  once?: boolean
 }>(), {
   delay: 0,
   duration: 500,
   variant: 'fade-up',
+  once: true,
 })
 
 const el = ref<HTMLElement | null>(null)
@@ -56,7 +58,13 @@ onMounted(() => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           isVisible.value = true
-          observer?.disconnect()
+          // When once=true, disconnect after first reveal
+          if (props.once) {
+            observer?.disconnect()
+          }
+        } else if (!props.once) {
+          // Re-trigger: hide again when element leaves viewport
+          isVisible.value = false
         }
       })
     },
