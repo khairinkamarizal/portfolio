@@ -69,7 +69,7 @@
               All work <ArrowUpRight class="w-3 h-3" />
             </NuxtLink>
           </div>
-          <div class="flex flex-col gap-0 divide-y divide-black/10 dark:divide-white/10">
+          <div class="flex flex-col gap-3">
             <WorkCard
               v-for="project in featuredProjects"
               :key="project.title"
@@ -77,7 +77,9 @@
               :year="project.year"
               :tags="project.tags"
               :description="project.description"
-              :url="project.behanceUrl" />
+              :url="project.behanceUrl"
+              :thumbnail="true"
+              :category="project.category" />
           </div>
         </div>
 
