@@ -112,6 +112,9 @@
         </section>
       </RevealOnScroll>
 
+      <!-- Divider between featured work and latest writing -->
+      <div class="border-t border-black/8 dark:border-white/8" />
+
       <!-- ==================== LATEST WRITING ==================== -->
       <RevealOnScroll v-if="latestPosts?.length" variant="fade-up" :delay="50">
         <section class="px-8 py-10 border-t border-black/8 dark:border-white/8">
