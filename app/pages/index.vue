@@ -77,15 +77,15 @@
           <MarqueeTicker :items="skills" :speed="30" />
         </div>
 
-        <!-- Stats row -->
-        <div class="grid grid-cols-4 divide-x divide-black/10 dark:divide-white/10 border border-black/10 dark:border-white/10 py-5">
+        <!-- Stats banner: full-width, more prominent on desktop -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-black/10 dark:divide-white/10 border border-black/10 dark:border-white/10">
           <ClientOnly>
-            <StatCounter :value="1423" label="BEHANCE VIEWS" />
-            <StatCounter :value="38" label="APPRECIATIONS" />
-            <StatCounter :value="43" label="FOLLOWERS" />
-            <StatCounter :value="4" label="YEARS EXP" suffix="+" />
+            <StatCounter :value="1423" label="BEHANCE VIEWS" class="py-6 lg:py-8" />
+            <StatCounter :value="38" label="APPRECIATIONS" class="py-6 lg:py-8" />
+            <StatCounter :value="43" label="FOLLOWERS" class="py-6 lg:py-8" />
+            <StatCounter :value="4" label="YEARS EXP" suffix="+" class="py-6 lg:py-8" />
             <template #fallback>
-              <div class="flex flex-col items-center py-1 col-span-4 opacity-30 text-xs tracking-widest">LOADING</div>
+              <div class="flex flex-col items-center py-6 col-span-4 opacity-30 text-xs tracking-widest">LOADING</div>
             </template>
           </ClientOnly>
         </div>
