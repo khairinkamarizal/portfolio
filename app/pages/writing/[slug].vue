@@ -1,6 +1,10 @@
 <template>
   <NuxtLayout name="simple">
+    <!-- Reading progress bar -->
     <template #default>
+      <ClientOnly>
+        <ProgressBar />
+      </ClientOnly>
       <div class="flex flex-col gap-8 mt-10">
 
         <!-- Back link -->
