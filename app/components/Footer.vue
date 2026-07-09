@@ -1,11 +1,11 @@
 <template>
-  <footer class="w-full px-6 md:px-12 lg:px-20 py-12 lg:py-16">
+  <footer class="w-full px-6 md:px-12 lg:px-20 py-12 lg:py-16 border-t border-black/8 dark:border-white/8">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6">
 
       <!-- LEFT: Logo + tagline -->
       <div class="flex flex-col gap-4">
         <NuxtLink to="/" class="inline-block">
-          <AppLogo class="w-8 h-8 hover:scale-125 transition-transform duration-300" />
+          <AppLogo class="w-8 h-8 hover:scale-110 transition-transform duration-300" />
         </NuxtLink>
         <p class="text-xs leading-relaxed opacity-50 max-w-[18ch]">
           Khairin Kamarizal — Designer & Developer
