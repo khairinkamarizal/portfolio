@@ -7,7 +7,7 @@
     aria-valuemin="0"
     aria-valuemax="100">
     <div
-      class="h-full bg-black dark:bg-white transition-all duration-150 ease-out"
+      class="h-full bg-black dark:bg-white transition-[width] duration-150 ease-out"
       :style="{ width: `${progress}%` }"></div>
   </div>
 </template>
