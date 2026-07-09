@@ -19,15 +19,14 @@
           <div class="lg:col-span-3 flex flex-col gap-8">
 
             <!-- Post header -->
-            <div class="flex flex-col gap-6" v-if="post">
+            <header v-if="post" class="mb-10 pb-8 border-b border-black/8 dark:border-white/8">
+              <p v-if="post.category" class="font-mono text-[10px] tracking-[0.25em] uppercase opacity-40 mb-3">{{ post.category }}</p>
               <h1 class="text-3xl md:text-4xl leading-tight dark:font-light">{{ post.title }}</h1>
-              <div class="flex items-center gap-4 flex-wrap">
+              <div class="flex items-center gap-4 flex-wrap mt-4">
                 <PostMeta :date="post.date" :reading-time="readingTime" :tags="post.tags" />
                 <ViewCounter :slug="route.params.slug as string" />
               </div>
-              <!-- Decorative separator -->
-              <div class="w-12 h-px bg-black/10 dark:bg-white/10"></div>
-            </div>
+            </header>
 
             <!-- Post body — wrapped in prose for @tailwindcss/typography rendering -->
             <div
