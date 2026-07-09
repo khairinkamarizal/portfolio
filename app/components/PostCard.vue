@@ -27,13 +27,9 @@ const props = defineProps<{
   slug: string
 }>()
 
+const { formatDate } = useFormatDate()
+
 const formattedDate = computed(() => {
-  if (!props.date) return ""
-  const d = new Date(props.date)
-  return d.toLocaleDateString("en-GB", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  })
+  return formatDate(props.date)
 })
 </script>
