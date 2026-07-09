@@ -9,6 +9,8 @@
           </p>
         </div>
 
+        <WorkStats />
+
         <div class="flex flex-col gap-0 divide-y divide-black/10 dark:divide-white/10">
           <WorkCard
             v-for="project in projects"
