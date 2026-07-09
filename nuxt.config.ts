@@ -9,6 +9,12 @@ export default defineNuxtConfig({
   app: {
     head: {
       link: [{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }],
+      meta: [
+        { property: "og:site_name", content: "Khairinkamarizal" },
+        { property: "og:type", content: "website" },
+        { property: "og:url", content: "https://khair.ink" },
+        { name: "twitter:card", content: "summary" },
+      ],
     },
   },
   colorMode: {
@@ -19,6 +25,7 @@ export default defineNuxtConfig({
   googleFonts: {
     families: {
       "Inter Tight": "100..900",
+      "Space Mono": [400, 700],
     },
   },
   tailwindcss: {
