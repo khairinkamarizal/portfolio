@@ -14,7 +14,7 @@
           </h1>
           <span class="font-mono text-[9px] tracking-[0.2em] opacity-25 ml-2">({{ posts?.length ?? 0 }})</span>
           <p class="text-sm opacity-50 mt-4 max-w-sm font-sans leading-relaxed">
-            Writing about design, development, and the space between them.
+            Notes on design craft, frontend development, and creative thinking.
           </p>
         </div>
       </section>
