@@ -11,6 +11,19 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * TagPill — small label badge for project/post tags.
+ *
+ * Renders an uppercase monospace pill displaying a single tag string.
+ * Supports two sizes and an active/inactive visual state — inactive shows a
+ * border-only style while active uses a filled background (inverted in dark mode).
+ *
+ * @prop {string} tag - The tag text to display
+ * @prop {boolean} [active=false] - Whether the pill is in the active/selected state
+ * @prop {'sm'|'md'} [size='sm'] - Size variant controlling font size and padding
+ *
+ * @example <TagPill tag="Nuxt" :active="true" size="sm" />
+ */
 withDefaults(defineProps<{
   tag: string
   active?: boolean
