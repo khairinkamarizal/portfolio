@@ -26,7 +26,7 @@
       <h2 class="text-base md:text-lg font-semibold tracking-tight leading-snug">{{ title }}</h2>
 
       <!-- Description -->
-      <p v-if="description" class="text-sm opacity-55 leading-relaxed font-sans">{{ description }}</p>
+      <p v-if="description" class="text-sm opacity-60 leading-relaxed font-sans">{{ description }}</p>
 
       <!-- Bottom row: year + tags + CTA -->
       <div class="flex items-center justify-between gap-3 mt-1 pt-4 border-t border-black/8 dark:border-white/8">
