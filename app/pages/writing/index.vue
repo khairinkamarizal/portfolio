@@ -83,7 +83,7 @@
         </div>
 
         <!-- Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-px bg-black/10 dark:bg-white/10 border border-black/10 dark:border-white/10">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-px bg-black/8 dark:bg-white/8 border border-black/8 dark:border-white/8 divide-y divide-black/8 dark:divide-white/8">
           <NuxtLink
             v-for="post in filteredPosts"
             :key="post.slug"
