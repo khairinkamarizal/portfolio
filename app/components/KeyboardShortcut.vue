@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center gap-1" :aria-label="`Keyboard shortcut: ${keys.join(' + ')}`">
+  <div role="group" class="flex items-center gap-1" :aria-label="`Keyboard shortcut: ${keys.join(' + ')}`">
     <kbd
       v-for="(key, i) in keys"
       :key="i"
