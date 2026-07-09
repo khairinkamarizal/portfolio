@@ -2,7 +2,7 @@
   <a v-if="url" :href="url" target="_blank" rel="noopener noreferrer" class="block"
     :aria-label="title + (category ? ' — ' + category : '') + ' (opens in new tab)'"
   >
-  <article class="group/card relative border-l-2 border-transparent hover:border-black dark:hover:border-white transition-colors duration-200">
+  <article class="group/card relative border-l-2 border-transparent hover:border-black/25 dark:hover:border-white/25 transition-colors duration-200">
     <!-- Thumbnail -->
     <div class="relative w-full aspect-[4/3] overflow-hidden bg-black/[0.03] dark:bg-white/[0.03] border border-black/8 dark:border-white/8">
       <img
@@ -56,7 +56,7 @@
   </article>
   </a>
   <div v-else class="block">
-  <article class="group/card relative border-l-2 border-transparent hover:border-black dark:hover:border-white transition-colors duration-200">
+  <article class="group/card relative border-l-2 border-transparent hover:border-black/25 dark:hover:border-white/25 transition-colors duration-200">
     <!-- Thumbnail -->
     <div class="relative w-full aspect-[4/3] overflow-hidden bg-black/[0.03] dark:bg-white/[0.03] border border-black/8 dark:border-white/8">
       <img
