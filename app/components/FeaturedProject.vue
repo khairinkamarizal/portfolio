@@ -1,7 +1,7 @@
 <template>
   <article class="group w-full">
     <!-- Thumbnail -->
-    <div class="w-full aspect-[16/9] overflow-hidden bg-black/5 dark:bg-white/5 mb-5">
+    <div class="w-full aspect-[16/9] overflow-hidden bg-black/5 dark:bg-white/5 mb-5 border border-black/8 dark:border-white/8">
       <img
         v-if="thumbnail"
         :src="thumbnail"
@@ -19,29 +19,29 @@
       <!-- Eyebrow category -->
       <p
         v-if="category"
-        class="text-xs tracking-widest uppercase opacity-40 font-mono text-black dark:text-white"
+        class="text-xs tracking-widest uppercase opacity-50 font-mono text-black dark:text-white"
         style="font-family: 'Space Mono', monospace">
         {{ category }}
       </p>
 
       <!-- Title -->
-      <h2 class="text-2xl md:text-3xl font-bold leading-tight text-black dark:text-white">
+      <h2 class="text-xl md:text-2xl font-bold tracking-tight leading-snug text-black dark:text-white">
         {{ title }}
       </h2>
 
       <!-- Description -->
       <p
         v-if="description"
-        class="text-sm opacity-60 leading-relaxed max-w-2xl text-black dark:text-white">
+        class="text-sm opacity-55 leading-relaxed text-black dark:text-white">
         {{ description }}
       </p>
 
       <!-- Year + tags + CTA row -->
-      <div class="flex items-center justify-between flex-wrap gap-3 pt-1">
+      <div class="flex items-center justify-between flex-wrap gap-3 mt-4 pt-4 border-t border-black/8 dark:border-white/8">
         <div class="flex items-center gap-3 flex-wrap">
           <span
             v-if="year"
-            class="text-xs font-mono opacity-40 text-black dark:text-white"
+            class="text-xs font-mono tabular-nums opacity-40 text-black dark:text-white"
             style="font-family: 'Space Mono', monospace">
             {{ year }}
           </span>
@@ -57,9 +57,9 @@
         <NuxtLink
           v-if="href"
           :to="href"
-          class="relative text-xs tracking-widest uppercase font-mono text-black dark:text-white after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-current after:transition-all after:duration-300 hover:after:w-full"
+          class="link-underline relative text-xs tracking-widest uppercase font-mono text-black dark:text-white"
           style="font-family: 'Space Mono', monospace">
-          View Project →
+          View on Behance →
         </NuxtLink>
       </div>
     </div>
