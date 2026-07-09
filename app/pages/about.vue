@@ -32,7 +32,7 @@
                 class="text-xs tracking-widest uppercase opacity-50 mb-4 font-mono">
                 Bio
               </h2>
-              <div class="flex flex-col gap-4 text-sm leading-[1.75] opacity-70">
+              <div class="flex flex-col gap-4 text-sm leading-[1.7] opacity-70">
                 <p>
                   I'm Khairin — a designer and developer with 5+ years of experience
                   building digital products that balance form and function. I believe
