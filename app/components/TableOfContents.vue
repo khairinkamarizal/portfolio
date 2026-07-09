@@ -8,7 +8,8 @@
         :class="depthClass(link.depth)">
         <a
           :href="`#${link.id}`"
-          class="text-xs opacity-50 hover:opacity-100 transition-opacity duration-150 leading-relaxed">
+          class="text-xs hover:opacity-100 transition-opacity duration-150 leading-relaxed"
+          :class="link.id === activeId ? 'opacity-100 font-medium' : 'opacity-50'">
           {{ link.text }}
         </a>
       </li>
@@ -30,4 +31,18 @@ const depthClass = (depth: number) => {
   if (depth === 2) return 'pl-3'
   return 'pl-6'
 }
+
+const activeId = ref('')
+
+onMounted(() => {
+  const headings = document.querySelectorAll('h1, h2, h3, h4')
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(e => { if (e.isIntersecting) activeId.value = e.target.id })
+    },
+    { rootMargin: '0px 0px -80% 0px', threshold: 0 }
+  )
+  headings.forEach(h => observer.observe(h))
+  onUnmounted(() => observer.disconnect())
+})
 </script>
