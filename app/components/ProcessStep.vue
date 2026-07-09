@@ -17,6 +17,22 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * ProcessStep
+ *
+ * Displays a single step in a multi-step process. Renders a large decorative
+ * step number alongside a title and description. The "Step" label and number
+ * are marked aria-hidden since they are purely visual; the title conveys
+ * semantic meaning to assistive technologies.
+ *
+ * Supports an optional named slot "description" to replace the default
+ * paragraph with custom markup.
+ *
+ * @prop {string} number      - The step identifier displayed as the large number (e.g. "01").
+ * @prop {string} title       - Heading text for this process step.
+ * @prop {string} description - Fallback description text rendered when the
+ *                              "description" slot is not provided.
+ */
 defineProps<{
   number: string
   title: string
