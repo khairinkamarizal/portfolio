@@ -34,7 +34,7 @@
     <!-- CTA -->
     <div class="mt-6 pt-5 border-t border-black/10 dark:border-white/10">
       <NuxtLink
-        to="/contact"
+        to="/message"
         class="text-xs tracking-widest uppercase font-mono opacity-60 hover:opacity-100 transition-opacity duration-200 text-black dark:text-white"
         style="font-family: 'Space Mono', monospace">
         Start a Conversation →
