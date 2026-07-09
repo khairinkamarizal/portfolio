@@ -5,7 +5,7 @@
       <!-- LEFT: Logo + tagline -->
       <div class="flex flex-col gap-4">
         <NuxtLink to="/" class="inline-block mb-4">
-          <AppLogo class="w-8 h-8 hover:scale-110 transition-transform duration-300" />
+          <AppLogo class="w-7 h-7 hover:scale-110 transition-transform duration-300" />
         </NuxtLink>
         <p class="text-xs leading-relaxed opacity-50 max-w-[18ch]">
           Khairin Kamarizal — Designer & Developer
