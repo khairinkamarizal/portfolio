@@ -64,18 +64,7 @@
         <Divider variant="line" />
 
         <!-- Card view -->
-        <div v-if="viewMode === 'card'" class="flex flex-col gap-0 divide-y divide-black/10 dark:divide-white/10">
-          <WorkCard
-            v-for="project in filteredProjects"
-            :key="project.title"
-            :title="project.title"
-            :year="project.year"
-            :tags="project.tags"
-            :description="project.description"
-            :url="project.behanceUrl"
-            :thumbnail="true"
-            :category="project.category" />
-        </div>
+        <WorkGrid v-if="viewMode === 'card'" :projects="filteredProjects" />
 
         <!-- List view -->
         <div v-else class="flex flex-col gap-0 divide-y divide-black/10 dark:divide-white/10">
