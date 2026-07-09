@@ -29,6 +29,11 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * PostNavigation — previous/next post links shown at the bottom of a post.
+ * @props prevPost {{ title, slug } | null} - The post before the current one.
+ * @props nextPost {{ title, slug } | null} - The post after the current one.
+ */
 import { ArrowLeft, ArrowRight } from 'lucide-vue-next'
 
 defineProps<{
