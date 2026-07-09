@@ -32,6 +32,15 @@
   </section>
 </template>
 
+/**
+ * ContactCTA component.
+ *
+ * Static call-to-action section displayed at the bottom of pages to invite
+ * visitors to get in touch. Renders an eyebrow label, headline, supporting
+ * text, a mailto link, and a NuxtLink to the about page.
+ *
+ * No props — all content is hardcoded in the template.
+ */
 <script setup lang="ts">
 // No props — static CTA section
 </script>
