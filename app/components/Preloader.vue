@@ -18,8 +18,8 @@ const isLoading = ref(true);
 onMounted(() => {
   console.log(
     "%chey i saw u. thanks for stopping by my portfolio.\ni hope you find something that inspires you here.\n— Khairinkamarizal%c",
-    "background: #fff; color: #000; padding: 4px 12px; font-weight: semibold; font-size: 14px; font-family: sans-serif; letter-spacing: 2px;",
-    "background: #fff; color: #000; padding: 4px 12px; font-weight: semibold; font-size: 14px; font-family: sans-serif; letter-spacing: 2px;",
+    "background: #fff; color: #000; padding: 4px 12px; font-weight: 600; font-size: 14px; font-family: sans-serif; letter-spacing: 2px;",
+    "background: #fff; color: #000; padding: 4px 12px; font-weight: 600; font-size: 14px; font-family: sans-serif; letter-spacing: 2px;",
   );
   setTimeout(() => {
     isLoading.value = false;
