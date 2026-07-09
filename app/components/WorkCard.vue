@@ -38,7 +38,7 @@
       </div>
 
       <!-- Description -->
-      <p v-if="description" class="text-xs opacity-50 line-clamp-2 leading-relaxed font-sans">
+      <p v-if="description" class="text-xs opacity-[0.65] line-clamp-2 leading-relaxed font-sans">
         {{ description }}
       </p>
 
@@ -92,7 +92,7 @@
       </div>
 
       <!-- Description -->
-      <p v-if="description" class="text-xs opacity-50 line-clamp-2 leading-relaxed font-sans">
+      <p v-if="description" class="text-xs opacity-[0.65] line-clamp-2 leading-relaxed font-sans">
         {{ description }}
       </p>
 
