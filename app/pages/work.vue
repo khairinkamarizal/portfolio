@@ -5,7 +5,7 @@
         <RevealOnScroll variant="fade-up">
           <div class="flex flex-col gap-2">
             <div class="flex items-center justify-between mb-3">
-              <p class="text-xs font-mono opacity-50 tracking-widest">Selected Work <span class="opacity-50">({{ projects.length }})</span></p>
+              <p class="mono-label">Selected Work <span class="opacity-50">({{ projects.length }})</span></p>
               <ClientOnly>
                 <ProjectCount :count="projects.length" />
               </ClientOnly>
@@ -80,7 +80,7 @@
           <!-- List view -->
           <div v-else-if="viewMode === 'list' && filteredProjects.length" class="flex flex-col gap-0">
             <template v-for="[year, yearProjects] in projectsByYear" :key="year">
-              <p class="font-mono text-xs opacity-30 tracking-widest pt-4 pb-1">{{ year }}</p>
+              <p class="mono-label opacity-30 pt-4 pb-1">{{ year }}</p>
               <div class="divide-y divide-black/10 dark:divide-white/10">
                 <div
                   v-for="project in yearProjects"
