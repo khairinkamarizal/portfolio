@@ -37,7 +37,7 @@
                 <label
                   for="name"
                   class="text-xs tracking-widest uppercase font-mono opacity-50">
-                  Name <span class="opacity-50">*</span>
+                   Name <span class="opacity-50">*</span><span class="sr-only">(required)</span>
                 </label>
                 <input
                   id="name"
@@ -63,7 +63,7 @@
                 <label
                   for="email"
                   class="text-xs tracking-widest uppercase font-mono opacity-50">
-                  Email <span class="opacity-50">*</span>
+                   Email <span class="opacity-50">*</span><span class="sr-only">(required)</span>
                 </label>
                 <input
                   id="email"
@@ -105,7 +105,7 @@
                 <label
                   for="message"
                   class="text-xs tracking-widest uppercase font-mono opacity-50">
-                  Message <span class="opacity-50">*</span>
+                   Message <span class="opacity-50">*</span><span class="sr-only">(required)</span>
                 </label>
                 <textarea
                   id="message"
