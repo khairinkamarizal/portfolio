@@ -42,4 +42,9 @@ onMounted(() => {
 :deep(svg) {
   transition: all 0.5s ease;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader-leave-active { transition: opacity 0.1s ease !important; }
+  .preloader-leave-to { transform: none !important; }
+}
 </style>
