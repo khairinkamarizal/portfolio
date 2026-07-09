@@ -54,6 +54,11 @@
           :tags="post.tags"
           :current-slug="route.params.slug as string" />
 
+        <!-- Post navigation -->
+        <PostNavigation
+          :prev-post="prevPost"
+          :next-post="nextPost" />
+
       </div>
     </template>
 
@@ -90,6 +95,36 @@ if (!post.value) {
     fatal: true,
   });
 }
+
+// Fetch all posts sorted by date to find prev/next neighbors
+const { data: allPosts } = await useAsyncData("all-writing-nav", () =>
+  queryCollection("writing")
+    .where("draft", "=", false)
+    .order("date", "DESC")
+    .all()
+)
+
+const currentSlug = route.params.slug as string
+
+const prevPost = computed(() => {
+  if (!allPosts.value) return null
+  const idx = allPosts.value.findIndex(p => p.slug === currentSlug)
+  if (idx < allPosts.value.length - 1) {
+    const p = allPosts.value[idx + 1]
+    return { title: p.title, slug: p.slug }
+  }
+  return null
+})
+
+const nextPost = computed(() => {
+  if (!allPosts.value) return null
+  const idx = allPosts.value.findIndex(p => p.slug === currentSlug)
+  if (idx > 0) {
+    const p = allPosts.value[idx - 1]
+    return { title: p.title, slug: p.slug }
+  }
+  return null
+})
 
 useHead({
   title: computed(() => post.value?.title ? `${post.value.title} — Khairinkamarizal` : "Khairinkamarizal"),
