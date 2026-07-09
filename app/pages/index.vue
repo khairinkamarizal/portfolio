@@ -41,7 +41,7 @@
               Creative Designer &amp; Developer
             </span>
           </FadeText>
-          <div class="mt-4 flex flex-col gap-3 max-w-xs">
+          <div class="mt-4 flex flex-col gap-4 max-w-xs">
             <p id="hero-bio" class="text-sm leading-relaxed opacity-55 font-sans font-light max-w-[280px] animate-appear animate-appear-delay-2">
               Designer and developer crafting digital experiences at the intersection of aesthetics and function. Cyberjaya, Malaysia.
             </p>
