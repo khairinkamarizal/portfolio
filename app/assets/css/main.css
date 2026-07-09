@@ -91,6 +91,11 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  /* Hanging punctuation for prose paragraphs */
+  p {
+    hanging-punctuation: first last;
+  }
+
   /* Reduced motion override for accessibility */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
