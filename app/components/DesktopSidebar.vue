@@ -30,7 +30,7 @@
 
     <!-- Location + time -->
     <div class="flex flex-col gap-1 normal-case text-xs mb-4 pt-2">
-      <span class="opacity-40 tracking-[0.12em] uppercase">Cyberjaya, MY</span>
+      <span class="mono-label">Cyberjaya, MY</span>
       <ClientOnly>
         <div class="opacity-70 flex items-center gap-0.5 tabular-nums">
           <span>{{ hours }}</span>
@@ -50,7 +50,7 @@
         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-60" />
         <span class="relative inline-flex rounded-full w-1.5 h-1.5 bg-green-500" />
       </span>
-      <span class="text-[10px] opacity-50 tracking-[0.15em] uppercase">Open to work</span>
+      <span class="mono-label">Open to work</span>
     </div>
   </aside>
 </template>
