@@ -26,8 +26,7 @@
       <!-- MOBILE / TABLET LAYOUT (hidden on lg+) -->
       <!-- ===================== -->
       <div
-        class="flex flex-col relative min-h-screen px-5 md:px-8 py-5 gap-12 uppercase lg:hidden"
-        style="font-family: &quot;Space Mono&quot;, monospace">
+        class="flex flex-col relative min-h-screen px-5 md:px-8 py-5 gap-12 uppercase lg:hidden font-mono">
         <!-- Header -->
         <div
           :class="[
@@ -40,19 +39,16 @@
                 class="w-8 h-8 hover:scale-125 transition-transform duration-300"
             /></NuxtLink>
             <div
-              class="text-xs flex items-center flex-col gap-0 font-sans tracking-wide normal-case">
+              class="text-xs flex flex-col items-end gap-0.5 font-sans tracking-wide normal-case">
               <span class="font-medium">Based in MY 大马</span>
               <ClientOnly>
-                <div class="opacity-50 flex items-center">
-                  <span>Cyberjaya,&nbsp;</span>
+                <div class="opacity-60 flex items-center">
                   <span>{{ hours }}</span>
                   <span class="blink">:</span>
-                  <span
-                    >{{ minutes }} <span class="ml-1">{{ ampm }}</span></span
-                  >
+                  <span>{{ minutes }} <span class="ml-1">{{ ampm }}</span></span>
                 </div>
                 <template #fallback>
-                  <div class="opacity-50 flex items-center">
+                  <div class="opacity-60 flex items-center">
                     <span>--</span>
                     <span class="mx-[1px] blink">:</span>
                     <span>-- <span class="ml-1">--</span></span>
@@ -70,7 +66,7 @@
           </header>
 
           <!-- Navigation -->
-          <AppNav aria-label="Main navigation" />
+          <AppNav direction="horizontal" aria-label="Main navigation" />
         </div>
 
         <main id="main-content" role="main" class="flex-1 flex flex-col font-sans normal-case">

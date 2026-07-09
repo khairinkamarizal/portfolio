@@ -1,12 +1,11 @@
 <template>
   <aside
     :class="[
-      'w-56 shrink-0 flex flex-col gap-8 px-6 py-8 border-r uppercase sticky top-0 h-screen overflow-y-auto',
+      'w-56 shrink-0 flex flex-col gap-8 px-6 py-8 border-r uppercase sticky top-0 h-screen overflow-y-auto font-mono',
       transparent
         ? 'border-white/8 mix-blend-difference'
         : 'border-black/8 dark:border-white/8',
     ]"
-    style="font-family: 'Space Mono', monospace"
     aria-label="Desktop sidebar">
     
     <!-- Logo + color toggle -->
@@ -34,7 +33,7 @@
 
     <!-- Location + time -->
     <div class="flex flex-col gap-1.5 font-sans normal-case text-xs">
-      <span class="opacity-50 tracking-widest text-xs">CYBERJAYA, MY</span>
+      <span class="opacity-50 tracking-[0.15em] text-xs">CYBERJAYA, MY</span>
       <ClientOnly>
         <div class="opacity-70 flex items-center gap-0.5">
           <span>{{ hours }}</span>
