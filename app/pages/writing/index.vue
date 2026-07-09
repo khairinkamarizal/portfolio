@@ -8,7 +8,7 @@
       <section class="w-full border-b border-black/10 dark:border-white/10 px-6 md:px-12 lg:px-20 py-16 lg:py-24">
         <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <h1 class="font-mono text-4xl md:text-5xl font-bold tracking-tight leading-none uppercase">
-            Writing
+            Writing<span class="font-mono text-xs opacity-30 ml-2">({{ posts.length }})</span>
           </h1>
           <p class="text-sm opacity-60 max-w-sm leading-relaxed md:text-right">
             Thoughts on design, engineering, and the space between.
