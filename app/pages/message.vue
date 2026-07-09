@@ -51,7 +51,7 @@
                     'focus:border-black dark:focus:border-white',
                     errors.name
                       ? 'border-red-500'
-                      : 'border-black/20 dark:border-white/20',
+                      : 'border-black/25 dark:border-white/25',
                   ]"
                   :aria-describedby="errors.name ? 'name-error' : undefined"
                   placeholder="Your name" />
@@ -77,7 +77,7 @@
                     'focus:border-black dark:focus:border-white',
                     errors.email
                       ? 'border-red-500'
-                      : 'border-black/20 dark:border-white/20',
+                      : 'border-black/25 dark:border-white/25',
                   ]"
                   :aria-describedby="errors.email ? 'email-error' : undefined"
                   placeholder="your@email.com" />
@@ -96,7 +96,7 @@
                   v-model="form.subject"
                   type="text"
                   name="subject"
-                  class="w-full border border-black/20 dark:border-white/20 px-4 py-3 text-sm bg-transparent focus:outline-none focus:border-black dark:focus:border-white transition-colors duration-150 placeholder:opacity-30"
+                  class="w-full border border-black/25 dark:border-white/25 px-4 py-3 text-sm bg-transparent focus:outline-none focus:border-black dark:focus:border-white transition-colors duration-150 placeholder:opacity-30"
                   placeholder="What's this about?" />
               </div>
 
@@ -118,7 +118,7 @@
                     'focus:border-black dark:focus:border-white',
                     errors.message
                       ? 'border-red-500'
-                      : 'border-black/20 dark:border-white/20',
+                      : 'border-black/25 dark:border-white/25',
                   ]"
                   :aria-describedby="errors.message ? 'message-error' : undefined"
                   placeholder="Tell me what you're thinking..." />
