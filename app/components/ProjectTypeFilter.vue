@@ -7,7 +7,7 @@
       @click="$emit('select', type)"
       :aria-pressed="selected === type"
       :class="[
-        'text-[10px] tracking-wider px-3 py-1 border transition-all duration-150',
+        'text-xs font-mono tracking-widest px-3 py-1 border transition-all duration-150',
         selected === type
           ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white'
           : 'border-black/20 dark:border-white/20 hover:border-black dark:hover:border-white',
