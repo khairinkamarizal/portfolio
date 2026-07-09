@@ -72,9 +72,9 @@
             <!-- Author bio -->
             <AuthorCard
               v-if="post"
-              name="Khairinkamarizal"
-              title="Software Engineer"
-              bio="Writing about design, code, and the space between them." />
+              name="Khairin Kamarizal"
+              title="Creative Designer & Developer"
+              bio="Building digital products that balance form and function." />
 
             <!-- Share buttons -->
             <ClientOnly>
