@@ -1,7 +1,7 @@
 <template>
   <div class="noise-overlay" :style="{ opacity }" aria-hidden="true">
     <svg class="noise-svg" xmlns="http://www.w3.org/2000/svg">
-      <filter id="noise-filter">
+      <filter :id="filterId">
         <feTurbulence
           type="fractalNoise"
           baseFrequency="0.65"
@@ -9,7 +9,7 @@
           stitchTiles="stitch" />
         <feColorMatrix type="saturate" values="0" />
       </filter>
-      <rect width="100%" height="100%" filter="url(#noise-filter)" />
+      <rect width="100%" height="100%" :filter="`url(#${filterId})`" />
     </svg>
   </div>
 </template>
@@ -25,6 +25,8 @@ withDefaults(defineProps<{
 }>(), {
   opacity: 0.03,
 })
+
+const filterId = 'noise-' + Math.random().toString(36).slice(2, 8)
 </script>
 
 <style scoped>
