@@ -40,8 +40,7 @@
                   My work lives at the intersection of design and engineering — Figma to code, brand identity to design systems. I care about the details that make the difference between good and great.
                 </p>
                 <p>
-                  When I'm not building things, I'm writing about design, reading about
-                  systems, or making coffee with too much deliberation.
+                  Outside of client work, I write about design craft, experiment with creative code, and drink too much coffee thinking about typography.
                 </p>
               </div>
             </div>
