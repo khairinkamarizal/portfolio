@@ -72,7 +72,9 @@
             :year="project.year"
             :tags="project.tags"
             :description="project.description"
-            :url="project.behanceUrl" />
+            :url="project.behanceUrl"
+            :thumbnail="true"
+            :category="project.category" />
         </div>
 
         <!-- List view -->
