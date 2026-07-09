@@ -5,7 +5,11 @@ export default defineNuxtConfig({
     "@nuxtjs/color-mode",
     "@nuxtjs/google-fonts",
     "@nuxtjs/tailwindcss",
+    "@tailwindcss/typography",
   ],
+  experimental: {
+    payloadExtraction: false,
+  },
   app: {
     head: {
       link: [{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }],
