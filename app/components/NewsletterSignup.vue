@@ -9,7 +9,7 @@
     </div>
 
     <Transition name="fade" mode="out-in">
-      <div v-if="submitted" key="success" class="flex items-center gap-2 text-sm">
+      <div v-if="submitted" key="success" role="status" aria-live="polite" class="flex items-center gap-2 text-sm">
         <span class="opacity-70">You're subscribed. Talk soon.</span>
       </div>
 
