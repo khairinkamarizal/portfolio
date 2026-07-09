@@ -12,10 +12,15 @@
 
 <script setup lang="ts">
 /**
- * Tooltip — simple CSS-only tooltip component.
- * Props: text (string)
- * Wraps slot in a container, shows tooltip on hover.
- * No JS — pure CSS transition via group-hover.
+ * Tooltip — accessible CSS-driven tooltip component.
+ *
+ * @prop {string} text - The tooltip text to display on hover or focus.
+ *
+ * Wraps slot content in a relatively positioned container and shows a tooltip
+ * above the element on hover or focus-within. Visibility is handled purely via
+ * CSS group-hover/group-focus-within transitions — no JS involved.
+ * A unique ID is generated per instance and linked via aria-describedby for
+ * screen reader accessibility.
  */
 defineProps<{
   text: string
