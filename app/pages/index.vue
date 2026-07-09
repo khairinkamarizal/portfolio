@@ -41,19 +41,18 @@
         </div>
 
         <!-- Stats row -->
-        <div class="grid grid-cols-3 gap-0 divide-x divide-black/10 dark:divide-white/10 border border-black/10 dark:border-white/10 normal-case font-sans">
-          <div class="flex flex-col items-center py-4 px-2 gap-0.5">
-            <span class="text-2xl font-bold tracking-tight" style="font-family: 'Space Mono', monospace">1,423</span>
-            <span class="text-[10px] opacity-40 tracking-widest text-center">BEHANCE VIEWS</span>
-          </div>
-          <div class="flex flex-col items-center py-4 px-2 gap-0.5">
-            <span class="text-2xl font-bold tracking-tight" style="font-family: 'Space Mono', monospace">38</span>
-            <span class="text-[10px] opacity-40 tracking-widest text-center">APPRECIATIONS</span>
-          </div>
-          <div class="flex flex-col items-center py-4 px-2 gap-0.5">
-            <span class="text-2xl font-bold tracking-tight" style="font-family: 'Space Mono', monospace">43</span>
-            <span class="text-[10px] opacity-40 tracking-widest text-center">FOLLOWERS</span>
-          </div>
+        <div class="grid grid-cols-4 gap-0 divide-x divide-black/10 dark:divide-white/10 border border-black/10 dark:border-white/10 py-4">
+          <ClientOnly>
+            <StatCounter :value="1423" label="BEHANCE VIEWS" />
+            <StatCounter :value="38" label="APPRECIATIONS" />
+            <StatCounter :value="43" label="FOLLOWERS" />
+            <StatCounter :value="4" label="YEARS EXP" suffix="+" />
+            <template #fallback>
+              <div class="flex flex-col items-center py-1 gap-0.5 col-span-4">
+                <span class="text-xs opacity-30 tracking-widest normal-case font-sans">Loading stats…</span>
+              </div>
+            </template>
+          </ClientOnly>
         </div>
 
         <!-- Selected work -->
