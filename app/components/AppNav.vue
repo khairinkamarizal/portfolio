@@ -16,7 +16,6 @@
             ? 'font-bold opacity-100'
             : 'opacity-40 hover:opacity-70',
       ]"
-      style="font-family: 'Space Mono', monospace"
       :aria-current="isActive(link.href) ? 'page' : undefined">
       {{ link.label }}
     </NuxtLink>
@@ -36,7 +35,7 @@ const links = [
   { label: 'Work', href: '/work' },
   { label: 'Writing', href: '/writing' },
   { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Contact', href: '/message' },
 ]
 
 function isActive(href: string): boolean {

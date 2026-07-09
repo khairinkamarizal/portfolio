@@ -1,20 +1,17 @@
 <template>
-  <div class="relative">
+  <div ref="containerRef" class="relative">
     <!-- Hamburger toggle button -->
     <button
       type="button"
       :aria-expanded="open"
       aria-controls="mobile-menu-dropdown"
       aria-label="Toggle navigation menu"
-      :class="[
-        'flex items-center justify-center w-8 h-8 hover:opacity-60 transition-opacity duration-200',
-        transparent ? 'mix-blend-difference text-white' : '',
-      ]"
+      class="flex items-center justify-center w-8 h-8 hover:opacity-60 transition-opacity duration-200"
       @click="open = !open">
       <component :is="open ? X : Menu" :size="20" stroke-width="1.5" />
     </button>
 
-    <!-- Dropdown overlay -->
+    <!-- Dropdown -->
     <Transition
       enter-active-class="transition duration-200 ease-out"
       enter-from-class="opacity-0 -translate-y-2"
@@ -25,12 +22,22 @@
       <div
         v-if="open"
         id="mobile-menu-dropdown"
-        class="absolute right-0 top-full mt-2 w-56 bg-white dark:bg-black border border-black/10 dark:border-white/10 shadow-lg z-50"
-        style="font-family: 'Space Mono', monospace">
+        class="absolute right-0 top-full mt-2 w-56 bg-white dark:bg-black border border-black/10 dark:border-white/10 shadow-lg z-50 font-mono">
+
+        <!-- Close button -->
+        <div class="flex justify-end px-3 pt-2">
+          <button
+            type="button"
+            aria-label="Close menu"
+            class="flex items-center justify-center w-7 h-7 opacity-40 hover:opacity-100 transition-opacity"
+            @click="open = false">
+            <X :size="16" stroke-width="1.5" />
+          </button>
+        </div>
 
         <!-- Nav links -->
         <div class="py-1">
-          <AppNav :mobile="true" @close="open = false" />
+          <AppNav direction="vertical" />
         </div>
 
         <!-- Social links -->
@@ -66,10 +73,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { ref, watch, onMounted, onBeforeUnmount } from "vue";
 import { Menu, X } from "lucide-vue-next";
 
 const open = ref(false);
+const containerRef = ref<HTMLElement | null>(null);
 const route = useRoute();
 
 // Close on route change
@@ -79,4 +87,19 @@ watch(
     open.value = false;
   }
 );
+
+// Close on outside click
+function handleOutsideClick(event: MouseEvent) {
+  if (open.value && containerRef.value && !containerRef.value.contains(event.target as Node)) {
+    open.value = false;
+  }
+}
+
+onMounted(() => {
+  document.addEventListener("mousedown", handleOutsideClick);
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener("mousedown", handleOutsideClick);
+});
 </script>
