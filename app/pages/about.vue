@@ -1,7 +1,6 @@
 <template>
   <NuxtLayout name="simple">
     <template #default>
-      <div class="w-full">
 
     <!-- ============================================ -->
     <!-- HERO: page heading                           -->
@@ -197,7 +196,6 @@
       </div>
     </section>
 
-  </div>
     </template>
   </NuxtLayout>
 </template>
