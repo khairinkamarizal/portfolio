@@ -38,7 +38,7 @@ export default defineNuxtConfig({
       htmlAttrs: { lang: "en" },
       meta: [
         { charset: "utf-8" },
-        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
         { name: "theme-color", content: "#ffffff", media: "(prefers-color-scheme: light)" },
         { name: "theme-color", content: "#000000", media: "(prefers-color-scheme: dark)" },
         { name: "twitter:card", content: "summary_large_image" },
