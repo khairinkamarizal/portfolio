@@ -53,17 +53,8 @@ async function copyLink() {
       copied.value = false
     }, 2000)
   } catch {
-    // Fallback: select a temporary input
-    const input = document.createElement('input')
-    input.value = props.url
-    document.body.appendChild(input)
-    input.select()
-    document.execCommand('copy')
-    document.body.removeChild(input)
-    copied.value = true
-    setTimeout(() => {
-      copied.value = false
-    }, 2000)
+    // Fallback: show URL in prompt so user can copy manually
+    window.prompt('Copy this link:', props.url)
   }
 }
 
