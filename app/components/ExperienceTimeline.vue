@@ -2,7 +2,7 @@
   <div class="w-full">
     <div
       v-for="(item, index) in items"
-      :key="index"
+      :key="item.company + '-' + item.period"
       class="relative flex gap-6 pb-10 last:pb-0">
 
       <!-- Timeline spine -->
@@ -24,8 +24,7 @@
           </span>
           <span
             v-if="item.current"
-            class="text-[10px] tracking-widest uppercase bg-black dark:bg-white text-white dark:text-black px-2 py-0.5 font-mono"
-            style="font-family: 'Space Mono', monospace">
+            class="text-[10px] tracking-widest uppercase bg-black dark:bg-white text-white dark:text-black px-2 py-0.5 font-mono">
             NOW
           </span>
         </div>
@@ -37,8 +36,7 @@
 
         <!-- Period + location -->
         <p
-          class="text-xs font-mono opacity-40 text-black dark:text-white mb-3"
-          style="font-family: 'Space Mono', monospace">
+          class="text-xs font-mono opacity-40 text-black dark:text-white mb-3">
           {{ item.period }}<span v-if="item.location"> · {{ item.location }}</span>
         </p>
 
