@@ -1,7 +1,7 @@
 <template>
   <NuxtLayout name="simple">
     <template #default>
-  <div class="w-full">
+      <div class="w-full">
 
     <!-- ============================================ -->
     <!-- HERO: page heading                           -->
