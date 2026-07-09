@@ -5,138 +5,123 @@
       <ClientOnly>
         <ScrollIndicator />
       </ClientOnly>
-      <div class="flex flex-col gap-12 mt-8 pb-8 relative z-10">
 
-        <!-- Hero -->
-        <div class="flex flex-col gap-4 pb-8 border-b border-black/10 dark:border-white/10">
-          <div class="flex flex-row items-center justify-between">
-            <div class="flex flex-col gap-1.5">
-              <h1 class="text-4xl md:text-5xl font-bold tracking-tight leading-[0.9] font-mono">
-                KHAIRIN<br />KAMARIZAL
-              </h1>
-              <span class="text-xs opacity-50 tracking-widest normal-case font-sans mt-2">Creative Designer & Developer</span>
+      <!-- ==================== HERO ==================== -->
+      <section class="relative min-h-[85vh] flex flex-col justify-between px-8 pt-10 pb-10 border-b border-black/8 dark:border-white/8">
+        <!-- Top row: number + avatar cluster -->
+        <div class="flex items-start justify-between">
+          <span class="text-[10px] font-mono tracking-[0.3em] uppercase opacity-30">001 / Index</span>
+          <div class="flex flex-row relative items-center">
+            <img
+              src="/assets/dp.webp"
+              alt="Khairin Kamarizal"
+              class="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover object-center shrink-0 ring-1 ring-black/10 dark:ring-white/10" />
+            <div
+              class="w-9 h-9 md:w-10 md:h-10 shrink-0 flex items-center justify-center bg-black dark:bg-white rounded-full -ml-3 ring-2 ring-white dark:ring-black">
+              <AppLogo class="text-white dark:text-black w-4 h-4 md:w-5 md:h-5" />
             </div>
-            <div class="flex flex-row relative items-center">
-              <img
-                src="/assets/dp.webp"
-                alt="Khairin Kamarizal"
-                class="w-20 h-20 rounded-full object-cover object-center shrink-0 ring-2 ring-black/10 dark:ring-white/10" />
-              <div
-                class="w-12 h-12 shrink-0 flex items-center justify-center bg-black dark:bg-white rounded-full -ml-3 ring-2 ring-white dark:ring-black">
-                <AppLogo class="text-white dark:text-black w-6 h-6" />
-              </div>
-            </div>
-          </div>
-
-          <!-- Bio tagline -->
-          <p class="text-sm leading-relaxed dark:font-light normal-case font-sans opacity-60 max-w-sm">
-            Ambitious and versatile creative designer skilled in branding,
-            UI/UX, motion content and web development. Based in Cyberjaya, Malaysia.
-          </p>
-
-          <!-- Status badge -->
-          <StatusBadge />
-
-          <!-- CTA links -->
-          <div class="flex items-center gap-4 mt-2 normal-case">
-            <NuxtLink
-              to="/work"
-              class="text-xs tracking-wider font-medium px-5 py-2.5 bg-black dark:bg-white text-white dark:text-black hover:opacity-80 transition-opacity duration-150">
-              VIEW WORK
-            </NuxtLink>
-            <a
-              href="mailto:khairinkamarizal@gmail.com"
-              class="text-xs tracking-wider px-5 py-2.5 border border-black/20 dark:border-white/20 hover:border-black dark:hover:border-white transition-colors duration-150">
-              HIT ME UP
-            </a>
           </div>
         </div>
 
-        <!-- Skills marquee strip -->
-        <RevealOnScroll variant="fade-up">
+        <!-- Main hero text: takes up space boldly -->
+        <div class="flex-1 flex flex-col justify-center py-8">
+          <div class="overflow-hidden">
+            <h1 class="font-mono font-bold uppercase leading-[0.85] tracking-[-0.03em] text-[clamp(3.5rem,12vw,8rem)]">
+              Khairin<br />Kamarizal
+            </h1>
+          </div>
+          <div class="mt-6 flex flex-col gap-3 max-w-xs">
+            <StatusBadge text="Available for projects" />
+            <p class="text-sm leading-relaxed opacity-55 font-sans">
+              Creative designer &amp; developer. Branding, UI/UX,<br class="hidden md:block" /> motion &amp; web. Based in Cyberjaya, MY.
+            </p>
+          </div>
+        </div>
+
+        <!-- Bottom row: role + CTAs -->
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <span class="font-mono text-xs tracking-[0.25em] uppercase opacity-40">
+            Creative Designer &amp; Developer
+          </span>
+          <div class="flex items-center gap-3">
+            <NuxtLink
+              to="/work"
+              class="font-mono text-xs tracking-[0.15em] uppercase px-5 py-2.5 bg-black dark:bg-white text-white dark:text-black hover:opacity-75 transition-opacity duration-200">
+              View Work
+            </NuxtLink>
+            <a
+              href="mailto:khairinkamarizal@gmail.com"
+              class="font-mono text-xs tracking-[0.15em] uppercase px-5 py-2.5 border border-black/20 dark:border-white/20 hover:border-black dark:hover:border-white transition-colors duration-200 opacity-70 hover:opacity-100">
+              Get in Touch
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SKILLS MARQUEE ==================== -->
+      <RevealOnScroll variant="fade-up">
+        <div class="border-b border-black/8 dark:border-white/8 py-3">
           <MarqueeTicker :items="skills" :speed="30" />
-        </RevealOnScroll>
+        </div>
+      </RevealOnScroll>
 
-        <!-- Stats row -->
-        <RevealOnScroll variant="fade-up" :delay="100">
-          <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-black/10 dark:divide-white/10 border border-black/10 dark:border-white/10 py-4">
-            <ClientOnly>
-              <StatCounter :value="1423" label="BEHANCE VIEWS" />
-              <StatCounter :value="38" label="APPRECIATIONS" />
-              <StatCounter :value="43" label="FOLLOWERS" />
-              <StatCounter :value="5" label="YEARS EXP" suffix="+" />
-              <template #fallback>
-                <div class="col-span-4 flex items-center justify-center py-4 opacity-30 text-xs">Loading stats...</div>
-              </template>
-            </ClientOnly>
+      <!-- ==================== STATS ==================== -->
+      <RevealOnScroll variant="fade-up" :delay="100">
+        <div class="grid grid-cols-2 md:grid-cols-4 border-b border-black/8 dark:border-white/8">
+          <ClientOnly>
+            <StatCounter :value="1423" label="BEHANCE VIEWS" />
+            <StatCounter :value="38" label="APPRECIATIONS" />
+            <StatCounter :value="43" label="FOLLOWERS" />
+            <StatCounter :value="5" label="YEARS EXP" suffix="+" />
+            <template #fallback>
+              <div class="col-span-4 py-6 flex items-center justify-center opacity-30 text-xs font-mono">Loading...</div>
+            </template>
+          </ClientOnly>
+        </div>
+      </RevealOnScroll>
+
+      <!-- ==================== FEATURED WORK ==================== -->
+      <RevealOnScroll variant="fade-up" :delay="50">
+        <section class="px-8 py-10">
+          <div class="flex items-center justify-between mb-8">
+            <div class="flex items-center gap-3">
+              <span class="font-mono text-[10px] tracking-[0.3em] uppercase opacity-40">Selected Work</span>
+            </div>
+            <NuxtLink to="/work" class="font-mono text-[10px] tracking-[0.2em] uppercase opacity-40 hover:opacity-100 transition-opacity duration-200 flex items-center gap-1.5">
+              All work <ArrowUpRight class="w-3 h-3" />
+            </NuxtLink>
           </div>
-        </RevealOnScroll>
-
-        <!-- Featured work -->
-        <RevealOnScroll variant="fade-up" :delay="50">
-          <div class="flex flex-col gap-4 normal-case">
-            <div class="flex items-center justify-between">
-              <SectionLabel label="Featured Work" />
-              <NuxtLink to="/work" class="text-xs opacity-50 hover:opacity-100 transition-opacity tracking-wider flex items-center gap-1">
-                View all <ArrowUpRight class="w-3 h-3" />
-              </NuxtLink>
-            </div>
-            <div class="grid grid-cols-1 gap-4">
-              <WorkCard
-                v-for="project in featuredProjects"
-                :key="project.title"
-                :title="project.title"
-                :year="project.year"
-                :tags="project.tags"
-                :description="project.description"
-                :url="project.behanceUrl"
-                :category="project.category" />
-            </div>
+          <div class="grid grid-cols-1 gap-6">
+            <WorkCard
+              v-for="project in featuredProjects"
+              :key="project.title"
+              :title="project.title"
+              :year="project.year"
+              :tags="project.tags"
+              :description="project.description"
+              :category="project.category" />
           </div>
-        </RevealOnScroll>
+        </section>
+      </RevealOnScroll>
 
-        <!-- Latest writing -->
-        <RevealOnScroll variant="fade-up" :delay="50">
-          <div v-if="latestPosts?.length" class="flex flex-col gap-4 normal-case">
-            <div class="flex items-center justify-between">
-              <SectionLabel label="Latest Writing" />
-              <NuxtLink to="/writing" class="text-xs opacity-50 hover:opacity-100 transition-opacity tracking-wider flex items-center gap-1">
-                View all <ArrowUpRight class="w-3 h-3" />
-              </NuxtLink>
-            </div>
-            <div class="flex flex-col divide-y divide-black/10 dark:divide-white/10">
-              <PostCard
-                v-for="post in latestPosts"
-                :key="post.path"
-                :title="post.title"
-                :description="post.description"
-                :date="post.date"
-                :tags="post.tags || []"
-                :slug="post.path?.split('/').pop() || ''" />
-            </div>
+      <!-- ==================== LATEST WRITING ==================== -->
+      <RevealOnScroll v-if="latestPosts?.length" variant="fade-up" :delay="50">
+        <section class="px-8 py-10 border-t border-black/8 dark:border-white/8">
+          <div class="flex items-center justify-between mb-8">
+            <span class="font-mono text-[10px] tracking-[0.3em] uppercase opacity-40">Latest Writing</span>
+            <NuxtLink to="/writing" class="font-mono text-[10px] tracking-[0.2em] uppercase opacity-40 hover:opacity-100 transition-opacity duration-200 flex items-center gap-1.5">
+              All posts <ArrowUpRight class="w-3 h-3" />
+            </NuxtLink>
           </div>
-        </RevealOnScroll>
+          <div class="flex flex-col divide-y divide-black/8 dark:divide-white/8">
+            <PostCard
+              v-for="post in latestPosts"
+              :key="post._path"
+              :post="post" />
+          </div>
+        </section>
+      </RevealOnScroll>
 
-      </div>
-    </template>
-
-    <template #footer-actions>
-      <a
-        href="mailto:khairinkamarizal@gmail.com"
-        class="group flex items-center">
-        <div class="flex-none group-hover:flex-1 transition-all duration-300 h-1"></div>
-        <span>Hit me up</span>
-        <div class="flex-1 group-hover:flex-none transition-all duration-300 group-hover:w-2 h-1"></div>
-        <ArrowUpRight class="group-hover:rotate-45 transition-transform duration-300" />
-      </a>
-      <NuxtLink
-        to="https://be.net/khairinkamarizal"
-        class="group flex items-center">
-        <div class="flex-none group-hover:flex-1 transition-all duration-300 h-1"></div>
-        <span>View my portfolio</span>
-        <div class="flex-1 group-hover:flex-none transition-all duration-300 group-hover:w-2 h-1"></div>
-        <ArrowUpRight class="group-hover:rotate-45 transition-transform duration-300" />
-      </NuxtLink>
     </template>
   </NuxtLayout>
 </template>

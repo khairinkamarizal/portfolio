@@ -114,7 +114,7 @@
         <DesktopSidebar :transparent="transparent" />
 
         <!-- Main content area: flex-1 takes all remaining width -->
-        <div class="flex-1 flex flex-col min-h-screen px-10 py-8">
+        <div class="flex-1 flex flex-col min-h-screen">
           <main id="main-content" role="main" class="flex-1 flex flex-col font-sans normal-case">
             <PageTransition>
               <slot />
