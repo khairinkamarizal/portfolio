@@ -25,8 +25,12 @@
             aria-label="Email address" />
           <button
             type="submit"
-            :disabled="loading || !email"
-            class="text-xs tracking-wider px-4 py-2 bg-black dark:bg-white text-white dark:text-black transition-opacity duration-150 disabled:opacity-40">
+            :aria-disabled="loading || !email"
+            @click="!email || loading ? null : handleSubmit()"
+            :class="[
+              'text-xs tracking-wider px-4 py-2 bg-black dark:bg-white text-white dark:text-black transition-opacity duration-150',
+              !email ? 'opacity-40 cursor-not-allowed' : ''
+            ]">
             {{ loading ? '...' : 'Subscribe' }}
           </button>
         </div>
