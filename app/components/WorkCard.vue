@@ -12,14 +12,7 @@
       </div>
     </div>
     <p class="text-sm opacity-60 leading-relaxed dark:font-light">{{ description }}</p>
-    <div v-if="tags?.length" class="flex flex-wrap gap-1.5 mt-1">
-      <span
-        v-for="tag in tags"
-        :key="tag"
-        class="text-[10px] tracking-wider border border-black/20 dark:border-white/20 px-2 py-0.5">
-        {{ tag.toUpperCase() }}
-      </span>
-    </div>
+    <TagList v-if="tags?.length" :tags="tags" size="sm" class="mt-1" />
   </a>
 </template>
 
