@@ -1,9 +1,8 @@
 <template>
   <div class="process-step">
     <div
-      class="process-step-number"
-      aria-hidden="true"
-      style="font-family: 'Space Mono', monospace">
+      class="process-step-number font-mono"
+      aria-hidden="true">
       {{ number }}
     </div>
     <div class="process-step-content">
