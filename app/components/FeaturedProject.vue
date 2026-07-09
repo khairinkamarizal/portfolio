@@ -23,7 +23,7 @@
     <!-- Content below image -->
     <div class="pt-5 flex flex-col gap-3">
       <!-- Title -->
-      <h2 class="text-lg md:text-xl font-semibold tracking-tight leading-snug">{{ title }}</h2>
+      <h2 class="text-base md:text-lg font-semibold tracking-tight leading-snug">{{ title }}</h2>
 
       <!-- Description -->
       <p v-if="description" class="text-sm opacity-55 leading-relaxed font-sans">{{ description }}</p>
