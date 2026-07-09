@@ -67,7 +67,7 @@
                       :key="skill"
                       class="text-sm opacity-70">
                       <div class="flex items-center justify-between gap-2 py-2.5">
-                        <span class="text-sm">{{ skill }}</span>
+                        <span class="text-sm tracking-tight">{{ skill }}</span>
                         <div class="flex-1 border-b border-dotted border-black/15 dark:border-white/15 mx-2" />
                       </div>
                     </li>
