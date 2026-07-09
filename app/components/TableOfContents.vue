@@ -5,7 +5,7 @@
       <li
         v-for="link in links"
         :key="link.id"
-        :style="{ paddingLeft: `${(link.depth - 1) * 12}px` }">
+        :class="depthClass(link.depth)">
         <a
           :href="`#${link.id}`"
           class="text-xs opacity-50 hover:opacity-100 transition-opacity duration-150 leading-relaxed">
@@ -24,4 +24,10 @@ defineProps<{
     depth: number
   }>
 }>()
+
+const depthClass = (depth: number) => {
+  if (depth <= 1) return 'pl-0'
+  if (depth === 2) return 'pl-3'
+  return 'pl-6'
+}
 </script>
