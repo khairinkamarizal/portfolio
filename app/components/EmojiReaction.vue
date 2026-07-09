@@ -15,7 +15,7 @@
               : 'border-black/20 dark:border-white/20 hover:border-black dark:hover:border-white',
           ]"
           :aria-pressed="reacted.has(reaction.emoji)"
-          :aria-label="`React with ${reaction.emoji}`">
+          :aria-label="'React with ' + emojiNames[reaction.emoji] + ' emoji (count: ' + reaction.count + ')'">
           <span>{{ reaction.emoji }}</span>
           <span class="font-mono tabular-nums">{{ reaction.count }}</span>
         </button>
@@ -35,6 +35,7 @@ interface Reaction {
 }
 
 const EMOJIS = ['👀', '🔥', '💯', '✨']
+const emojiNames: Record<string, string> = { '👀': 'eyes', '🔥': 'fire', '💯': 'hundred points', '✨': 'sparkles' }
 const STORAGE_KEY = computed(() => `reactions-${props.postSlug}`)
 
 const reactions = ref<Reaction[]>(EMOJIS.map(emoji => ({ emoji, count: 0 })))
