@@ -92,8 +92,8 @@
         <section class="px-8 py-10" aria-label="Featured work">
           <div class="flex items-center justify-between mb-8">
             <div class="flex items-center gap-3">
-              <span class="font-mono text-[9px] tracking-[0.25em] uppercase opacity-25">002</span>
-              <span class="font-mono text-[10px] tracking-[0.3em] uppercase opacity-40">Selected Work</span>
+              <span class="mono-label opacity-25">002</span>
+              <span class="mono-label">Selected Work</span>
             </div>
             <NuxtLink to="/work" class="font-mono text-[10px] tracking-[0.2em] uppercase opacity-40 hover:opacity-100 transition-opacity duration-200 flex items-center gap-1.5">
               All work <ArrowUpRight class="w-3 h-3" />
@@ -121,8 +121,8 @@
         <section class="px-8 py-10 border-t border-black/8 dark:border-white/8">
           <div class="flex items-center justify-between mb-8">
             <div class="flex items-center gap-3">
-              <span class="font-mono text-[9px] tracking-[0.25em] uppercase opacity-25">003</span>
-              <span class="font-mono text-[10px] tracking-[0.3em] uppercase opacity-40">Latest Writing</span>
+              <span class="mono-label opacity-25">003</span>
+              <span class="mono-label">Latest Writing</span>
             </div>
             <NuxtLink to="/writing" class="font-mono text-[10px] tracking-[0.2em] uppercase opacity-40 hover:opacity-100 transition-opacity duration-200 flex items-center gap-1.5">
               All posts <ArrowUpRight class="w-3 h-3" />
