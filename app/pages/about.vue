@@ -25,6 +25,12 @@
           </a>
         </div>
 
+        <!-- Availability -->
+        <AvailabilityCard />
+
+        <!-- Local time -->
+        <LocationTime />
+
         <!-- Skills -->
         <div class="flex flex-col gap-4">
           <h2 class="text-xs opacity-50 tracking-widest">Skills</h2>
