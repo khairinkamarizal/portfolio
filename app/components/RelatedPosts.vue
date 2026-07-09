@@ -1,5 +1,5 @@
 <template>
-  <div v-if="related.length" class="flex flex-col gap-4 pt-8 border-t border-black/10 dark:border-white/10">
+  <div v-if="!error && related.length" class="flex flex-col gap-4 pt-8 border-t border-black/10 dark:border-white/10">
     <h3 class="text-xs opacity-50 tracking-widest">Related</h3>
     <div class="flex flex-col divide-y divide-black/10 dark:divide-white/10">
       <NuxtLink
@@ -22,7 +22,7 @@ const props = defineProps<{
 
 const { formatDate } = useFormatDate()
 
-const { data: allPosts } = await useAsyncData(`related-${props.currentSlug}`, () =>
+const { data: allPosts, error } = await useAsyncData(`related-${props.currentSlug}`, () =>
   queryCollection('writing')
     .where('draft', '=', false)
     .order('date', 'DESC')
