@@ -25,6 +25,28 @@
           </p>
         </div>
 
+        <!-- Selected work -->
+        <div class="flex flex-col gap-4">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xs opacity-50 tracking-widest">Selected work</h2>
+            <NuxtLink
+              to="/work"
+              class="text-xs opacity-40 hover:opacity-100 transition-opacity duration-200 flex items-center gap-1">
+              All work <ArrowUpRight class="w-3 h-3" />
+            </NuxtLink>
+          </div>
+          <div class="flex flex-col gap-0 divide-y divide-black/10 dark:divide-white/10">
+            <WorkCard
+              v-for="project in featuredProjects"
+              :key="project.title"
+              :title="project.title"
+              :year="project.year"
+              :tags="project.tags"
+              :description="project.description"
+              :url="project.behanceUrl" />
+          </div>
+        </div>
+
         <!-- Latest writing -->
         <div class="flex flex-col gap-4">
           <div class="flex items-center justify-between">
@@ -87,6 +109,30 @@ const { data: latestPosts } = await useAsyncData('latest-posts', () =>
     .limit(3)
     .all()
 )
+
+const featuredProjects = [
+  {
+    title: "Asterix — Brand Identity System",
+    year: 2024,
+    tags: ["Branding", "Identity", "Figma"],
+    description: "Full brand identity system for a creative agency — logo, colour system, typography, and brand guidelines.",
+    behanceUrl: "https://be.net/khairinkamarizal",
+  },
+  {
+    title: "Relayworks — Product Design",
+    year: 2024,
+    tags: ["UI/UX", "Product", "Figma"],
+    description: "End-to-end product design for a B2B workflow automation tool. Covered research, IA, wireframes, and a full component system.",
+    behanceUrl: "https://be.net/khairinkamarizal",
+  },
+  {
+    title: "Solara — App UI Design",
+    year: 2023,
+    tags: ["UI/UX", "Mobile", "Figma"],
+    description: "UI/UX design for a solar energy monitoring app. Designed the full user flow, component system, and data visualisation patterns.",
+    behanceUrl: "https://be.net/khairinkamarizal",
+  },
+]
 
 definePageMeta({
   layout: false,
