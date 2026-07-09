@@ -41,7 +41,7 @@ defineProps<{
   font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 700;
   line-height: 1;
-  opacity: 0.1;
+  opacity: 0.2;
   min-width: 4ch;
   flex-shrink: 0;
   letter-spacing: -0.04em;
