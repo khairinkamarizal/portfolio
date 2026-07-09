@@ -3,10 +3,11 @@
     :class="direction === 'vertical' ? 'flex flex-col gap-1' : 'flex items-center gap-6'"
     aria-label="Main navigation">
     <NuxtLink
-      v-for="link in links"
+      v-for="(link, index) in links"
       :key="link.href"
       :to="link.href"
-      class="text-xs tracking-wider uppercase font-mono transition-all duration-200 text-black dark:text-white"
+      :style="{ animationDelay: index * 50 + 'ms' }"
+      class="animate-appear text-xs tracking-wider uppercase font-mono transition-all duration-200 text-black dark:text-white"
       :class="[
         direction === 'vertical'
           ? isActive(link.href)
