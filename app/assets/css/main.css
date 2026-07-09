@@ -194,6 +194,9 @@
 
   .border-subtle { @apply border-black/8 dark:border-white/8; }
   .divide-subtle > * + * { @apply border-t border-black/8 dark:border-white/8; }
+
+  .bg-surface { @apply bg-black/[0.02] dark:bg-white/[0.03]; }
+  .bg-surface-hover { @apply hover:bg-black/[0.04] dark:hover:bg-white/[0.04]; }
 }
 
 /* ============================================
