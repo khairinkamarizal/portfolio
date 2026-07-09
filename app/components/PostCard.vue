@@ -8,7 +8,7 @@
     </p>
 
     <!-- Title -->
-    <div class="flex items-center gap-2 mb-2">
+    <div class="flex items-center gap-3 mb-2">
       <h2
         class="text-sm font-medium tracking-tight leading-tight text-black dark:text-white group-hover:translate-x-0.5 transition-transform duration-200">
         {{ post.title }}
