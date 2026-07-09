@@ -23,7 +23,7 @@
             <ViewCounter :slug="route.params.slug as string" />
           </div>
           <!-- Decorative separator -->
-          <div class="w-12 h-px bg-black dark:bg-white opacity-10"></div>
+          <div class="w-12 h-px bg-black/10 dark:bg-white/10"></div>
         </div>
 
         <!-- Post body — wrapped in prose for @tailwindcss/typography rendering -->
