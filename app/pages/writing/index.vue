@@ -90,10 +90,10 @@
         <!-- Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-px bg-black/8 dark:bg-white/8 border border-black/8 dark:border-white/8 divide-y divide-black/8 dark:divide-white/8 max-w-2xl">
           <NuxtLink
-            v-for="post in filteredPosts"
+            v-for="(post, index) in filteredPosts"
             :key="post.slug"
             :to="`/writing/${post.slug}`"
-            class="group bg-white dark:bg-black p-6 flex flex-col gap-4 hover:bg-black/5 dark:hover:bg-white/5 transition-colors duration-150">
+            class="group bg-white dark:bg-black p-6 flex flex-col gap-4 hover:bg-black/5 dark:hover:bg-white/5 transition-colors duration-150 hover:translate-x-0.5 transition-transform duration-200">
             <div class="flex items-center justify-between">
               <div class="flex flex-wrap gap-2">
                 <span
