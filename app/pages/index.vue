@@ -6,7 +6,7 @@
       </ClientOnly>
 
       <!-- ==================== HERO ==================== -->
-      <section class="relative min-h-[90vh] flex flex-col justify-between px-8 pt-10 pb-10 border-b border-black/8 dark:border-white/8">
+      <section id="hero" class="relative min-h-[90vh] flex flex-col justify-between px-8 pt-10 pb-10 border-b border-black/8 dark:border-white/8">
         <GridBackground variant="dots" class="z-0" />
         <!-- Top row: number + avatar cluster -->
         <div class="relative z-10 flex items-start justify-between">
