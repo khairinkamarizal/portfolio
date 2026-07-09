@@ -2,6 +2,7 @@
   <div
     class="flex items-center p-4 border transition-colors duration-150"
     :class="variants[variant]">
+    <span class="font-mono text-xs opacity-60 mr-2" aria-hidden="true">{{ icons[variant] }}</span>
     <slot></slot>
   </div>
 </template>
@@ -22,5 +23,12 @@ const variants = {
   warning: 'border-yellow-500/40 bg-yellow-500/5',
   error: 'border-red-500/40 bg-red-500/5',
   success: 'border-green-500/40 bg-green-500/5',
+}
+
+const icons = {
+  info: 'ℹ',
+  warning: '⚠',
+  error: '✕',
+  success: '✓',
 }
 </script>
