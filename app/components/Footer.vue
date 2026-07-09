@@ -23,6 +23,13 @@
         class="text-xs opacity-40 hover:opacity-100 transition-opacity duration-150">
         LinkedIn
       </a>
+      <a
+        href="https://github.com/khairinkamarizal"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-xs opacity-40 hover:opacity-100 transition-opacity duration-150">
+        GitHub
+      </a>
     </div>
 
     <!-- Bottom row -->
