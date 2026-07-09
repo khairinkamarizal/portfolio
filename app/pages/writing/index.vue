@@ -31,6 +31,16 @@
           </button>
         </div>
 
+        <!-- Featured post -->
+        <FeaturedPost
+          v-if="filteredPosts && filteredPosts.length > 0 && !selectedTag"
+          :title="filteredPosts[0].title"
+          :description="filteredPosts[0].description"
+          :date="filteredPosts[0].date"
+          :tags="filteredPosts[0].tags"
+          :slug="filteredPosts[0].stem?.split('/').pop() || ''"
+          :reading-time="getReadingTime(filteredPosts[0])" />
+
         <!-- Post count -->
         <div v-if="filteredPosts && filteredPosts.length > 0" class="flex items-center gap-2">
           <span class="text-xs opacity-40 tracking-wider">
@@ -39,9 +49,9 @@
           </span>
         </div>
 
-        <div v-if="filteredPosts && filteredPosts.length > 0" class="flex flex-col gap-0 divide-y divide-black/10 dark:divide-white/10">
+        <div v-if="remainingPosts.length > 0" class="flex flex-col gap-0 divide-y divide-black/10 dark:divide-white/10">
           <PostCard
-            v-for="post in filteredPosts"
+            v-for="post in remainingPosts"
             :key="post.path"
             :title="post.title"
             :description="post.description"
@@ -136,6 +146,13 @@ const filteredPosts = computed(() => {
   if (!posts.value) return [];
   if (!selectedTag.value) return posts.value;
   return posts.value.filter((post) => post.tags?.includes(selectedTag.value!));
+});
+
+// When no tag filter is active, the first post is shown as FeaturedPost — skip it in the list
+const remainingPosts = computed(() => {
+  if (!filteredPosts.value.length) return [];
+  if (!selectedTag.value) return filteredPosts.value.slice(1);
+  return filteredPosts.value;
 });
 
 function getReadingTime(post: any): string {
