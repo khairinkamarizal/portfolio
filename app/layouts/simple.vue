@@ -179,6 +179,8 @@ useHead({
     title ? `${title} — Khairin Kamarizal ` : "Khairin Kamarizal",
 });
 
+useKeyboardShortcuts();
+
 const hours = ref("00");
 const minutes = ref("00");
 const ampm = ref("am");
