@@ -37,6 +37,10 @@ onMounted(() => {
     return
   }
 
+  // Skip animation for users who prefer reduced motion
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  if (prefersReduced) { isVisible.value = true; return }
+
   // Hide once we're on the client, then let the observer reveal
   isVisible.value = false
 
