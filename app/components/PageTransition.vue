@@ -4,11 +4,20 @@
   </Transition>
 </template>
 
+/**
+ * PageTransition component.
+ *
+ * Wraps its slot in a Vue `<Transition>` with `mode="out-in"` to animate
+ * between page navigations in the app layout.
+ *
+ * Animation: fade + subtle vertical slide (6 px) using CSS transitions at
+ * 250 ms with a smooth ease curve. `will-change` is applied to
+ * opacity and transform for GPU compositing.
+ *
+ * No props. Drop it around `<slot />` or `<NuxtPage />` in a layout file.
+ */
 <script setup lang="ts">
-// Page transition component
-// Wraps slot in a fade transition
-// Used in layout to animate between page navigations
-// Uses Vue's <Transition> component with CSS
+// No runtime logic — animation is handled entirely via scoped CSS.
 </script>
 
 <style scoped>
