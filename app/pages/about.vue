@@ -60,6 +60,20 @@
           <ExperienceTimeline :items="experienceItems" />
         </div>
 
+        <!-- Certifications -->
+        <div class="flex flex-col gap-4">
+          <h2 class="text-xs opacity-50 tracking-widest">Certifications</h2>
+          <div class="flex flex-col gap-2">
+            <div
+              v-for="cert in certifications"
+              :key="cert"
+              class="flex items-start gap-2 text-sm opacity-70">
+              <span class="text-xs opacity-40 mt-0.5">✓</span>
+              <span>{{ cert }}</span>
+            </div>
+          </div>
+        </div>
+
         <!-- Tools -->
         <div class="flex flex-col gap-4">
           <h2 class="text-xs opacity-50 tracking-widest">Tools</h2>
@@ -160,6 +174,14 @@ const skills = [
 const languages = [
   { name: "English", level: "Full Professional" },
   { name: "Malay", level: "Native or Bilingual" },
+];
+
+const certifications = [
+  "Full Stack Web Development with Flask",
+  "Adobe Creative Educator Level 2",
+  "Typography: Type in Motion",
+  "AI Appreciate Badge — AI untuk Rakyat",
+  "Adobe Creative Educator Level 1",
 ];
 
 const experienceItems = [
