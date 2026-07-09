@@ -74,6 +74,16 @@
           </div>
         </div>
 
+        <!-- Education -->
+        <div class="flex flex-col gap-4">
+          <h2 class="text-xs opacity-50 tracking-widest">Education</h2>
+          <div class="flex flex-col gap-1">
+            <span class="text-sm font-medium">Diploma, New Media Communication & Contentpreneurship</span>
+            <span class="text-xs opacity-50 tracking-wide">UNIVERSITI TEKNOLOGI MARA (UITM)</span>
+            <span class="text-xs opacity-40 font-mono">July 2019 — January 2022</span>
+          </div>
+        </div>
+
         <!-- Tools -->
         <div class="flex flex-col gap-4">
           <h2 class="text-xs opacity-50 tracking-widest">Tools</h2>
