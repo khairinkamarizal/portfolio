@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,7 +7,6 @@
 /* ============================================
    FONTS
    ============================================ */
-@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 /* ============================================
    BASE STYLES
@@ -350,6 +351,13 @@
 
   .section-heading {
     @apply text-xs font-mono tracking-[0.2em] uppercase opacity-50 mb-4;
+  }
+
+  .card-base {
+    @apply border border-black/8 dark:border-white/8 transition-colors duration-200;
+  }
+  .card-base:hover {
+    @apply border-black/20 dark:border-white/20;
   }
 }
 
