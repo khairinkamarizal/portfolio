@@ -115,8 +115,8 @@
     </template>
 
     <template #footer-actions>
-      <NuxtLink
-        to="https://be.net/khairinkamarizal"
+      <a
+        href="https://www.behance.net/khairinkamarizal"
         target="_blank"
         rel="noopener noreferrer"
         class="group flex items-center">
@@ -124,7 +124,7 @@
         <span>View all on Behance</span>
         <div class="flex-1 group-hover:flex-none transition-all duration-300 group-hover:w-2 h-1"></div>
         <ArrowUpRight class="group-hover:rotate-45 transition-transform duration-300" />
-      </NuxtLink>
+      </a>
     </template>
   </NuxtLayout>
 </template>
