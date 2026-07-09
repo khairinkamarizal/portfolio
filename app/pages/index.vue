@@ -10,7 +10,7 @@
         <GridBackground variant="dots" class="z-0" />
         <!-- Top row: number + avatar cluster -->
         <div class="relative z-10 flex items-start justify-between">
-          <span class="text-[10px] font-mono tracking-[0.3em] uppercase opacity-30">001 / Index</span>
+          <span class="mono-label opacity-30">001 / Index</span>
           <div class="flex flex-row relative items-center">
             <img
               src="/assets/dp.webp"
@@ -42,10 +42,10 @@
 
         <!-- Bottom row: role + CTAs -->
         <div class="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between flex-wrap gap-4">
-          <span class="font-mono text-xs tracking-[0.25em] uppercase opacity-40 italic">
+          <span class="mono-label italic">
             Creative Designer &amp; Developer
           </span>
-          <span class="hidden lg:block font-mono text-[9px] tracking-[0.2em] uppercase opacity-20">
+          <span class="hidden lg:block mono-label opacity-20">
             Press G then W to go to work
           </span>
           <div class="flex items-center gap-3">
