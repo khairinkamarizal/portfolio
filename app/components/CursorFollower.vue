@@ -45,8 +45,8 @@ onMounted(() => {
   }
 
   const handleMouseMove = (e: MouseEvent) => {
-    targetX = e.clientX - 6
-    targetY = e.clientY - 6
+    targetX = e.clientX - 5
+    targetY = e.clientY - 5
     if (!isVisible.value) isVisible.value = true
   }
 
@@ -83,8 +83,8 @@ onMounted(() => {
   position: fixed;
   top: 0;
   left: 0;
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background-color: black;
   pointer-events: none;
