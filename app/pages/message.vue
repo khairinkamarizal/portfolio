@@ -220,9 +220,14 @@
 <script setup lang="ts">
 import { ref, reactive, computed } from "vue";
 
-useSeoMeta({
-  title: "Message",
-  description: "Get in touch — project inquiries, questions, or just to say hello.",
+useHead({
+  title: 'Contact — Khairin Kamarizal',
+  meta: [
+    { name: 'description', content: 'Get in touch with Khairin Kamarizal for design and development projects.' },
+    { property: 'og:title', content: 'Contact — Khairin Kamarizal' },
+    { property: 'og:description', content: 'Get in touch for design and development projects.' },
+    { property: 'og:url', content: 'https://khair.ink/message' },
+  ],
 });
 
 definePageMeta({
