@@ -58,7 +58,7 @@
                 :aria-pressed="viewMode === 'card'"
                 :class="['p-1.5 border transition-colors duration-150', viewMode === 'card' ? 'border-black dark:border-white bg-black dark:bg-white text-white dark:text-black' : 'border-transparent opacity-40 hover:opacity-70']"
                 aria-label="Card view">
-                <LayoutGrid class="w-3 h-3" />
+                 <LayoutGrid class="w-3 h-3 transition-colors duration-150" />
               </button>
               <button
                 type="button"
@@ -66,7 +66,7 @@
                 :aria-pressed="viewMode === 'list'"
                 :class="['p-1.5 border transition-colors duration-150', viewMode === 'list' ? 'border-black dark:border-white bg-black dark:bg-white text-white dark:text-black' : 'border-transparent opacity-40 hover:opacity-70']"
                 aria-label="List view">
-                <List class="w-3 h-3" />
+                 <List class="w-3 h-3 transition-colors duration-150" />
               </button>
             </div>
           </div>
