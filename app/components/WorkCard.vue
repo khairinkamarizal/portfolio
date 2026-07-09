@@ -1,57 +1,50 @@
 <template>
-  <article
-    class="group relative overflow-hidden bg-white dark:bg-black border border-black/8 dark:border-white/8 hover:border-black/25 dark:hover:border-white/25 transition-colors duration-300 cursor-pointer">
+  <article class="group relative">
     <!-- Thumbnail -->
-    <div class="relative overflow-hidden w-full aspect-[4/3] bg-black/5 dark:bg-white/5">
+    <div class="relative w-full aspect-[4/3] overflow-hidden bg-black/[0.03] dark:bg-white/[0.03] border border-black/8 dark:border-white/8">
       <img
         v-if="thumbnail"
         :src="thumbnail"
         :alt="title"
-        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+        class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]" />
       <ProjectThumbnail
         v-else
         :category="category"
         :title="title"
-        class="w-full h-full transition-transform duration-500 group-hover:scale-105" />
-      <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 dark:group-hover:bg-white/5 transition-colors duration-300 z-10" />
+        class="w-full h-full transition-transform duration-700 ease-out group-hover:scale-[1.03]" />
+      <!-- Hover overlay -->
+      <div class="absolute inset-0 bg-black/0 group-hover:bg-black/[0.04] dark:group-hover:bg-white/[0.04] transition-colors duration-500" />
+      <!-- Year badge top-right -->
+      <span class="absolute top-3 right-3 font-mono text-[10px] tracking-[0.15em] opacity-0 group-hover:opacity-60 transition-opacity duration-300 bg-white dark:bg-black px-2 py-0.5 tabular-nums">
+        {{ year }}
+      </span>
     </div>
 
     <!-- Content -->
-    <div class="p-4">
-      <!-- Title + Year row -->
-      <div class="flex items-start justify-between gap-2 mb-2">
-        <h3 class="text-base font-semibold tracking-tight leading-snug text-black dark:text-white">
-          {{ title }}
-        </h3>
-        <span
-          class="text-xs font-mono tabular-nums opacity-40 shrink-0 mt-0.5 text-black dark:text-white">
-          {{ year }}
-        </span>
+    <div class="pt-4 pb-2">
+      <!-- Category + title row -->
+      <div class="flex items-start justify-between gap-4 mb-1.5">
+        <div class="flex flex-col gap-0.5 min-w-0">
+          <p v-if="category" class="font-mono text-[9px] tracking-[0.25em] uppercase opacity-40 mb-1">{{ category }}</p>
+          <h3 class="text-sm font-semibold tracking-tight leading-snug truncate">{{ title }}</h3>
+        </div>
+        <!-- Arrow that appears on hover -->
+        <span class="opacity-0 group-hover:opacity-40 transition-opacity duration-200 shrink-0 mt-0.5 text-xs">↗</span>
       </div>
 
       <!-- Description -->
-      <p
-        v-if="description"
-        class="text-sm opacity-60 line-clamp-2 leading-relaxed mb-3 text-black dark:text-white">
+      <p v-if="description" class="text-xs opacity-50 line-clamp-2 leading-relaxed font-sans">
         {{ description }}
       </p>
 
-      <!-- Tags -->
-      <div v-if="tags && tags.length" class="flex flex-wrap gap-1.5">
+      <!-- Tags row -->
+      <div v-if="tags?.length" class="flex flex-wrap gap-1 mt-3">
         <span
-          v-for="tag in tags"
+          v-for="tag in tags.slice(0, 3)"
           :key="tag"
-          class="text-[10px] tracking-wide uppercase px-1.5 py-0.5 border border-black/10 dark:border-white/10 text-black/60 dark:text-white/60 font-mono">
+          class="font-mono text-[9px] tracking-[0.1em] uppercase px-2 py-0.5 border border-black/8 dark:border-white/8 opacity-60">
           {{ tag }}
         </span>
-      </div>
-
-      <!-- View link row -->
-      <div class="flex items-center justify-between mt-3 pt-3 border-t border-black/8 dark:border-white/8">
-        <span class="text-[10px] tracking-widest uppercase opacity-0 group-hover:opacity-40 transition-opacity duration-200 font-mono">
-          View on Behance
-        </span>
-        <span class="text-[10px] opacity-0 group-hover:opacity-60 group-hover:translate-x-0.5 transition-all duration-200">&rarr;</span>
       </div>
     </div>
   </article>
