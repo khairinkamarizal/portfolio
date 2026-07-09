@@ -5,11 +5,6 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
-  text: string
-  tag?: 'span' | 'div'
-}>()
-
 withDefaults(defineProps<{
   text: string
   tag?: 'span' | 'div'
