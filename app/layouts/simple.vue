@@ -174,7 +174,7 @@ defineProps({
 });
 
 useHead({
-  htmlAttrs: { lang: "en" },
+  htmlAttrs: { lang: "en" }, // ensures <html lang="en"> for screen readers and SEO
   bodyAttrs: { class: "antialiased" },
   titleTemplate: (title) =>
     title ? `${title} — Khairin Kamarizal ` : "Khairin Kamarizal",
