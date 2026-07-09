@@ -8,7 +8,7 @@
     <!-- ============================================ -->
     <section class="w-full border-b border-black/10 dark:border-white/10 px-6 md:px-12 lg:px-20 py-12 lg:py-20">
       <h1
-        class="text-5xl md:text-7xl lg:text-[8vw] font-bold leading-none tracking-tighter uppercase font-mono">
+        class="text-4xl md:text-6xl lg:text-7xl font-bold leading-none tracking-tighter uppercase font-mono">
         About
       </h1>
       <p class="mt-4 text-sm opacity-60 max-w-lg leading-relaxed text-balance">
@@ -121,12 +121,12 @@
                     {{ job.period }}
                   </span>
                 </div>
-                <p class="text-sm opacity-60 leading-relaxed">{{ job.description }}</p>
+                <p class="text-sm opacity-60 leading-relaxed mt-2">{{ job.description }}</p>
                 <div class="flex flex-wrap gap-2 mt-1">
                   <span
                     v-for="tag in job.tags"
                     :key="tag"
-                    class="text-xs tracking-wide opacity-40 border border-black/10 dark:border-white/10 px-2 py-0.5">
+                    class="text-[10px] tracking-wide uppercase px-1.5 py-0.5 border border-black/10 dark:border-white/10 font-mono">
                     {{ tag }}
                   </span>
                 </div>
@@ -149,7 +149,7 @@
         <div class="flex flex-col gap-8">
           <div v-for="group in toolGroups" :key="group.label">
             <h3
-              class="text-xs tracking-widest uppercase opacity-30 mb-3 font-mono">
+              class="text-xs tracking-widest uppercase opacity-40 mb-3 font-mono">
               {{ group.label }}
             </h3>
             <div class="flex flex-wrap gap-2">
