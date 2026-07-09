@@ -74,7 +74,7 @@
 
     <template #footer-actions>
       <NuxtLink
-        to="mailto:khairinkamarizal@gmail.com"
+        :to="`mailto:${siteConfig.email}`"
         class="group flex items-center">
         <div class="flex-none group-hover:flex-1 transition-all duration-300 h-1"></div>
         <span>Get in touch</span>
@@ -82,7 +82,7 @@
         <ArrowUpRight class="group-hover:rotate-45 transition-transform duration-300" />
       </NuxtLink>
       <NuxtLink
-        to="https://linkedin.com/in/khairinkamarizal"
+        :to="siteConfig.social.linkedin"
         target="_blank"
         rel="noopener noreferrer"
         class="group flex items-center">
@@ -97,6 +97,8 @@
 
 <script setup lang="ts">
 import { ArrowUpRight, Download } from "lucide-vue-next";
+
+const siteConfig = useSiteConfig()
 
 definePageMeta({
   layout: false,
