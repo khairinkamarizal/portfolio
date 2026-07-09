@@ -204,10 +204,14 @@
 </template>
 
 <script setup lang="ts">
-useSeoMeta({
-  title: "About",
-  description:
-    "Designer & developer based in Cyberjaya, Malaysia. 5+ years building thoughtful digital products.",
+useHead({
+  title: 'About — Khairin Kamarizal',
+  meta: [
+    { name: 'description', content: 'Designer and developer with 5+ years of experience building digital products that balance form and function.' },
+    { property: 'og:title', content: 'About — Khairin Kamarizal' },
+    { property: 'og:description', content: 'Designer, developer, and occasional over-thinker. Based in Cyberjaya, Malaysia.' },
+    { property: 'og:url', content: 'https://khair.ink/about' },
+  ],
 });
 
 definePageMeta({
