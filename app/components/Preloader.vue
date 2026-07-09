@@ -12,6 +12,22 @@
   </Transition>
 </template>
 
+/**
+ * Preloader component.
+ *
+ * Displays a full-screen loading overlay centred on the AppLogo while the
+ * initial page hydrates. The overlay is shown for a minimum of 2 000 ms,
+ * then fades out with a slide-up exit transition.
+ *
+ * Side-effects:
+ * - Sets the `color-scheme` meta tag to `light dark` via `useHead`.
+ * - Prints a personalised console greeting for curious visitors.
+ *
+ * Respects `prefers-reduced-motion` via scoped CSS overrides that collapse
+ * the exit animation to a simple opacity fade.
+ *
+ * No props.
+ */
 <script setup lang="ts">
 useHead({
   meta: [{ name: 'color-scheme', content: 'light dark' }]
