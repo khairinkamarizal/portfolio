@@ -34,7 +34,7 @@
               @submit.prevent="handleSubmit">
 
               <!-- Name -->
-              <div class="flex flex-col gap-2">
+              <div class="flex flex-col gap-2 focus-within:opacity-100 opacity-80 transition-opacity duration-150">
                 <label
                   for="name"
                   class="mono-label">
@@ -60,7 +60,7 @@
               </div>
 
               <!-- Email -->
-              <div class="flex flex-col gap-2">
+              <div class="flex flex-col gap-2 focus-within:opacity-100 opacity-80 transition-opacity duration-150">
                 <label
                   for="email"
                   class="mono-label">
@@ -86,7 +86,7 @@
               </div>
 
               <!-- Subject -->
-              <div class="flex flex-col gap-2">
+              <div class="flex flex-col gap-2 focus-within:opacity-100 opacity-80 transition-opacity duration-150">
                 <label
                   for="subject"
                   class="mono-label">
@@ -102,7 +102,7 @@
               </div>
 
               <!-- Message -->
-              <div class="flex flex-col gap-2">
+              <div class="flex flex-col gap-2 focus-within:opacity-100 opacity-80 transition-opacity duration-150">
                 <label
                   for="message"
                   class="mono-label">
