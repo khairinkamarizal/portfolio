@@ -24,7 +24,7 @@
         <div v-if="featuredProjects.length" class="flex flex-col gap-3">
           <SectionLabel label="Featured" variant="numbered" :number="1" />
           <RevealOnScroll variant="fade-up" :delay="50">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-2">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-2">
               <FeaturedProject
                 v-for="project in featuredProjects"
                 :key="project.title"
