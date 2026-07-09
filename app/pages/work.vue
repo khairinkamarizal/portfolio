@@ -11,9 +11,14 @@
 
         <WorkStats />
 
+        <ProjectTypeFilter
+          :types="projectTypes"
+          :selected="selectedType"
+          @select="selectedType = $event" />
+
         <div class="flex flex-col gap-0 divide-y divide-black/10 dark:divide-white/10">
           <WorkCard
-            v-for="project in projects"
+            v-for="project in filteredProjects"
             :key="project.title"
             :title="project.title"
             :year="project.year"
@@ -55,6 +60,16 @@ import { ArrowUpRight, ExternalLink } from "lucide-vue-next";
 definePageMeta({
   layout: false,
 });
+
+const selectedType = ref('All')
+
+const projectTypes = ['Branding', 'Motion', 'Jersey', 'Logo']
+
+const filteredProjects = computed(() =>
+  selectedType.value === 'All'
+    ? projects
+    : projects.filter(p => p.category === selectedType.value)
+)
 
 useHead({
   title: "Work — Khairinkamarizal",
