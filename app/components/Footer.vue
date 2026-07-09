@@ -1,5 +1,5 @@
 <template>
-  <footer class="w-full px-6 md:px-12 lg:px-20 py-10 md:py-12 lg:py-16 border-t border-black/8 dark:border-white/8">
+  <footer role="contentinfo" class="w-full px-6 md:px-12 lg:px-20 py-10 md:py-12 lg:py-16 border-t border-black/8 dark:border-white/8">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 lg:gap-12">
 
       <!-- LEFT: Logo + tagline -->
