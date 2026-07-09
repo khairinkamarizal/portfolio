@@ -69,7 +69,7 @@
       <!-- ============================================ -->
       <section class="w-full px-6 md:px-12 lg:px-20 py-12 lg:py-16">
         <!-- Tag filter -->
-        <div class="sticky top-0 z-10 bg-white dark:bg-black py-3 border-b border-black/8 dark:border-white/8 flex flex-wrap gap-2 mb-10">
+        <div class="sticky top-0 z-10 bg-white dark:bg-black py-3 border-b border-black/8 dark:border-white/8 flex flex-wrap gap-1.5 mb-10">
           <button
             v-for="tag in allTags"
             :key="tag"
