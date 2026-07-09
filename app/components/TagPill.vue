@@ -56,13 +56,15 @@ withDefaults(defineProps<{
 
 /* Active: filled */
 .tag-pill--active {
-  background-color: currentColor;
-  border: 1px solid currentColor;
+  background-color: black;
+  color: white;
+  border: 1px solid black;
   opacity: 1;
 }
 
-/* Active text inversion trick using mix-blend-mode */
-.tag-pill--active {
-  position: relative;
+.dark .tag-pill--active {
+  background-color: white;
+  color: black;
+  border-color: white;
 }
 </style>
