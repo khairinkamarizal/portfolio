@@ -63,6 +63,11 @@ export default defineNuxtConfig({
     layoutTransition: { name: "page", mode: "out-in" },
   },
 
+  // Nitro server config
+  nitro: {
+    compressPublicAssets: true,
+  },
+
   // Experimental performance features
   experimental: {
     renderJsonPayloads: true,
