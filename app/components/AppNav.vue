@@ -25,6 +25,14 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * AppNav
+ *
+ * Primary site navigation. Renders links to Work, Writing, About, and Contact.
+ * Supports both horizontal (mobile header) and vertical (desktop sidebar) layouts.
+ * Highlights the active route using border-l in vertical mode or font-bold in horizontal.
+ * Optionally adds a bottom border to each link via the `bordered` prop.
+ */
 withDefaults(defineProps<{
   direction?: 'horizontal' | 'vertical'
   bordered?: boolean
