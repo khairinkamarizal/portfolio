@@ -75,7 +75,6 @@
       </RevealOnScroll>
 
       <!-- ==================== STATS ==================== -->
-      <div class="border-t border-black/8 dark:border-white/8" />
       <RevealOnScroll variant="fade-up" :delay="100">
         <section aria-label="Statistics">
           <div class="grid grid-cols-2 md:grid-cols-4 border-b border-black/8 dark:border-white/8">
