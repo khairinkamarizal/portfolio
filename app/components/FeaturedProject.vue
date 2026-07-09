@@ -6,6 +6,8 @@
         v-if="thumbnail"
         :src="thumbnail"
         :alt="title"
+        loading="lazy"
+        decoding="async"
         class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]" />
       <ProjectThumbnail
         v-else
