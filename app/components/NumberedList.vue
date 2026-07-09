@@ -1,5 +1,5 @@
 <template>
-  <ol class="numbered-list">
+  <ol class="numbered-list" role="list">
     <li
       v-for="(item, index) in items"
       :key="index"
