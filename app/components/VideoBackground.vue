@@ -29,6 +29,16 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * VideoBackground — full-viewport looping video background tied to color mode.
+ *
+ * Switches between `dark_bg.mp4` and `light_bg.mp4` based on the active color scheme.
+ * Videos are autoplay, muted, loop, and playsinline for cross-browser compatibility.
+ * Rendered inside ClientOnly to avoid SSR hydration issues with the color mode check.
+ * Fixed positioned at z-index -50 so it underlays all page content without interfering.
+ * Respects `prefers-reduced-motion`: pauses the active video on mount if the user
+ * has requested reduced motion.
+ */
 import { computed, ref, onMounted } from "vue";
 
 const colorMode = useColorMode();
