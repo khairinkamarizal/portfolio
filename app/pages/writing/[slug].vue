@@ -58,6 +58,14 @@
         <!-- Author bio -->
         <AuthorCard v-if="post" />
 
+        <!-- Share buttons -->
+        <ClientOnly>
+          <ShareButtons
+            v-if="post"
+            :title="post.title"
+            :url="pageUrl" />
+        </ClientOnly>
+
       </div>
     </template>
 
@@ -142,6 +150,13 @@ useHead({
     },
   ],
 });
+
+const pageUrl = computed(() => {
+  if (import.meta.client) {
+    return window.location.href
+  }
+  return `https://khairinkamarizal.com/writing/${route.params.slug}`
+})
 
 const readingTime = computed(() => {
   if (!post.value?.body) return ""
