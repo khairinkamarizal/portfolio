@@ -15,6 +15,8 @@
             <img
               src="/assets/dp.webp"
               alt="Khairin Kamarizal"
+              loading="eager"
+              decoding="async"
               class="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover object-center shrink-0 ring-1 ring-black/10 dark:ring-white/10" />
             <div
               class="w-9 h-9 md:w-10 md:h-10 shrink-0 flex items-center justify-center bg-black dark:bg-white rounded-full -ml-3 ring-2 ring-white dark:ring-black">
