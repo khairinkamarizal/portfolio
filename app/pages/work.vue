@@ -76,17 +76,22 @@
           <WorkGrid v-if="viewMode === 'card' && filteredProjects.length" :projects="filteredProjects" />
 
           <!-- List view -->
-          <div v-else-if="viewMode === 'list' && filteredProjects.length" class="flex flex-col gap-0 divide-y divide-black/10 dark:divide-white/10">
-            <div
-              v-for="project in filteredProjects"
-              :key="project.title"
-              class="hover:bg-black/5 dark:hover:bg-white/5 transition-colors duration-150">
-              <WorkListItem
-                :title="project.title"
-                :year="project.year"
-                :category="project.category"
-                :url="project.behanceUrl" />
-            </div>
+          <div v-else-if="viewMode === 'list' && filteredProjects.length" class="flex flex-col gap-0">
+            <template v-for="[year, yearProjects] in projectsByYear" :key="year">
+              <p class="font-mono text-xs opacity-30 tracking-widest pt-4 pb-1">{{ year }}</p>
+              <div class="divide-y divide-black/10 dark:divide-white/10">
+                <div
+                  v-for="project in yearProjects"
+                  :key="project.title"
+                  class="hover:bg-black/5 dark:hover:bg-white/5 transition-colors duration-150">
+                  <WorkListItem
+                    :title="project.title"
+                    :year="project.year"
+                    :category="project.category"
+                    :url="project.behanceUrl" />
+                </div>
+              </div>
+            </template>
           </div>
 
           <!-- Empty state -->
@@ -147,6 +152,16 @@ const filteredProjects = computed(() =>
     ? projects
     : projects.filter(p => p.category === selectedType.value)
 )
+
+const projectsByYear = computed(() => {
+  const map = new Map<number, typeof filteredProjects.value>()
+  filteredProjects.value.forEach(p => {
+    const y = Number(p.year)
+    if (!map.has(y)) map.set(y, [])
+    map.get(y)!.push(p)
+  })
+  return [...map.entries()].sort(([a], [b]) => b - a)
+})
 
 const { get: lsGet, set: lsSet } = useLocalStorage()
 const viewMode = ref<'card' | 'list'>('card')
