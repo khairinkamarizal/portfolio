@@ -28,12 +28,10 @@
               class="flex flex-col gap-1.5">
               <span class="text-xs opacity-40 tracking-wider">{{ group.category.toUpperCase() }}</span>
               <div class="flex flex-wrap gap-1.5">
-                <span
+                <SkillBadge
                   v-for="skill in group.items"
                   :key="skill"
-                  class="text-xs border border-black/20 dark:border-white/20 px-2.5 py-1">
-                  {{ skill }}
-                </span>
+                  :label="skill" />
               </div>
             </div>
           </div>
