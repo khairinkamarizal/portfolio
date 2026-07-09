@@ -3,51 +3,57 @@
     <template #default>
       <div class="flex flex-col gap-10 mt-10">
         <div class="flex flex-col gap-2">
-          <div class="flex items-center justify-between">
-            <h1 class="text-xs opacity-50 tracking-widest">Selected Work</h1>
+          <div class="flex items-center justify-between mb-3">
+            <h1 class="text-xs font-mono opacity-50 tracking-widest">Selected Work</h1>
             <ClientOnly>
               <ProjectCount :count="projects.length" />
             </ClientOnly>
           </div>
-          <p class="text-2xl leading-tight dark:font-light">
+          <p class="text-2xl md:text-3xl font-light leading-tight tracking-tight text-balance">
             Projects spanning brand identity, UI/UX, and digital design.
           </p>
         </div>
 
-        <WorkStats />
+        <RevealOnScroll variant="fade-up">
+          <WorkStats />
+        </RevealOnScroll>
 
         <Divider variant="dots" />
 
         <!-- Featured projects -->
         <div v-if="featuredProjects.length" class="flex flex-col gap-3">
           <SectionLabel label="Featured" variant="numbered" :number="1" />
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            <FeaturedProject
-              v-for="project in featuredProjects"
-              :key="project.title"
-              :title="project.title"
-              :description="project.description"
-              :year="project.year"
-              :tags="project.tags"
-              :url="project.behanceUrl"
-              :category="project.category" />
-          </div>
+          <RevealOnScroll variant="fade-up" :delay="50">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-2">
+              <FeaturedProject
+                v-for="project in featuredProjects"
+                :key="project.title"
+                :title="project.title"
+                :description="project.description"
+                :year="project.year"
+                :tags="project.tags"
+                :url="project.behanceUrl"
+                :category="project.category" />
+            </div>
+          </RevealOnScroll>
         </div>
 
         <div class="flex flex-col gap-3">
           <SectionLabel label="All Work" variant="numbered" :number="2" />
           <div class="flex items-center justify-between gap-4">
-            <ProjectTypeFilter
-              :types="projectTypes"
-              :selected="selectedType"
-              @select="selectedType = $event" />
+            <div class="py-2">
+              <ProjectTypeFilter
+                :types="projectTypes"
+                :selected="selectedType"
+                @select="selectedType = $event" />
+            </div>
             <!-- View toggle -->
             <div class="flex items-center gap-1 shrink-0">
               <button
                 type="button"
                 @click="viewMode = 'card'"
                 :aria-pressed="viewMode === 'card'"
-                :class="['p-1.5 border transition-colors duration-150', viewMode === 'card' ? 'border-black dark:border-white' : 'border-transparent opacity-40 hover:opacity-70']"
+                :class="['p-1.5 border transition-colors duration-150', viewMode === 'card' ? 'border-black dark:border-white bg-black dark:bg-white text-white dark:text-black' : 'border-transparent opacity-40 hover:opacity-70']"
                 aria-label="Card view">
                 <LayoutGrid class="w-3 h-3" />
               </button>
@@ -55,7 +61,7 @@
                 type="button"
                 @click="viewMode = 'list'"
                 :aria-pressed="viewMode === 'list'"
-                :class="['p-1.5 border transition-colors duration-150', viewMode === 'list' ? 'border-black dark:border-white' : 'border-transparent opacity-40 hover:opacity-70']"
+                :class="['p-1.5 border transition-colors duration-150', viewMode === 'list' ? 'border-black dark:border-white bg-black dark:bg-white text-white dark:text-black' : 'border-transparent opacity-40 hover:opacity-70']"
                 aria-label="List view">
                 <List class="w-3 h-3" />
               </button>
@@ -65,19 +71,21 @@
 
         <Divider variant="line" />
 
-        <!-- Card view -->
-        <WorkGrid v-if="viewMode === 'card'" :projects="filteredProjects" />
+        <RevealOnScroll variant="fade-up" :delay="50">
+          <!-- Card view -->
+          <WorkGrid v-if="viewMode === 'card'" :projects="filteredProjects" />
 
-        <!-- List view -->
-        <div v-else class="flex flex-col gap-0 divide-y divide-black/10 dark:divide-white/10">
-          <WorkListItem
-            v-for="project in filteredProjects"
-            :key="project.title"
-            :title="project.title"
-            :year="project.year"
-            :category="project.category"
-            :url="project.behanceUrl" />
-        </div>
+          <!-- List view -->
+          <div v-else class="flex flex-col gap-0 divide-y divide-black/10 dark:divide-white/10">
+            <WorkListItem
+              v-for="project in filteredProjects"
+              :key="project.title"
+              :title="project.title"
+              :year="project.year"
+              :category="project.category"
+              :url="project.behanceUrl" />
+          </div>
+        </RevealOnScroll>
 
         <!-- Tag cloud -->
         <TagCloud :tags="tagCounts" @filter="handleTagFilter" />
