@@ -1,9 +1,10 @@
 <template>
   <div :class="['w-full', showLine ? 'pt-px' : '']">
-    <!-- Optional top border line -->
+    <!-- Optional top border line with width transition -->
     <div
       v-if="showLine"
-      class="border-t border-black/10 dark:border-white/10 mb-3" />
+      ref="lineRef"
+      :class="['h-px bg-black/10 dark:bg-white/10 mb-3 transition-all duration-500', lineVisible ? 'w-full' : 'w-0']" />
 
     <!-- Label row -->
     <p
@@ -15,9 +16,41 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
+
 defineProps<{
   label?: string
   showLine?: boolean
   number?: number | string
 }>()
+
+const lineRef = ref<HTMLElement | null>(null)
+const lineVisible = ref(false)
+
+let observer: IntersectionObserver | null = null
+
+onMounted(() => {
+  if (!lineRef.value || typeof IntersectionObserver === 'undefined') {
+    lineVisible.value = true
+    return
+  }
+
+  observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          lineVisible.value = true
+          observer?.disconnect()
+        }
+      })
+    },
+    { threshold: 0.1 }
+  )
+
+  observer.observe(lineRef.value)
+})
+
+onUnmounted(() => {
+  observer?.disconnect()
+})
 </script>
