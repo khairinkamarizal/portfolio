@@ -21,7 +21,7 @@
           <WorkStats />
         </RevealOnScroll>
 
-        <Divider variant="dots" />
+        <div class="border-t border-black/8 dark:border-white/8" />
 
         <!-- Featured projects -->
         <section v-if="featuredProjects.length" aria-label="Featured projects" class="flex flex-col gap-3 py-8">
