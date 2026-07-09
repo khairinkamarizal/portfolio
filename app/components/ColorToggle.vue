@@ -3,6 +3,7 @@
     <template #fallback><div class="w-5 h-5" /></template>
     <button
       id="color-mode-toggle"
+      type="button"
       @click="toggleTheme"
       class="flex items-center justify-center hover:opacity-70 transition-opacity duration-150"
       :aria-label="`Switch to ${isDark ? 'light' : 'dark'} mode`">
@@ -10,7 +11,7 @@
       <svg
         v-if="!isDark"
         xmlns="http://www.w3.org/2000/svg"
-        class="w-4 h-4 text-black"
+        class="w-4 h-4 text-inherit"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -24,7 +25,7 @@
       <svg
         v-else
         xmlns="http://www.w3.org/2000/svg"
-        class="w-4 h-4 text-white"
+        class="w-4 h-4 text-inherit"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
