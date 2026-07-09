@@ -7,7 +7,7 @@
     <h3 class="text-base font-medium leading-tight">{{ title }}</h3>
     <div class="flex items-center gap-3 shrink-0">
       <span class="font-mono text-[10px] opacity-40">{{ year }}</span>
-      <span class="text-[10px] tracking-wider opacity-40">{{ category.toUpperCase() }}</span>
+      <span v-if="category" class="font-mono text-[9px] tracking-[0.1em] uppercase opacity-40 ml-2">{{ category }}</span>
       <ArrowRight class="w-4 h-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200" />
     </div>
   </a>
