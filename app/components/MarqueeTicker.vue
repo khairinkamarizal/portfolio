@@ -40,6 +40,14 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * MarqueeTicker
+ *
+ * Horizontally scrolling ticker that loops an array of text items infinitely.
+ * Renders two copies of the content for a seamless loop. Pauses on hover.
+ * Supports ltr/rtl scroll direction, configurable speed, gap, and separator.
+ * The duplicate content strip is aria-hidden to avoid screen reader repetition.
+ */
 const { speed = 30, direction = 'ltr', gap = 48, separator = '·' } = defineProps<{
   items: string[]
   speed?: number
