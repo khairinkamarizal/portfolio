@@ -93,6 +93,11 @@ export default defineNuxtConfig({
     '/message': { prerender: true },
   },
 
+  // Explicit route list for nuxt generate (static deployment)
+  generate: {
+    routes: ['/', '/work', '/about', '/writing', '/message'],
+  },
+
   // Dev tools
   devtools: { enabled: true },
 });
