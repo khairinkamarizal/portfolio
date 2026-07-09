@@ -1,8 +1,9 @@
 <template>
-  <div class="w-full">
+  <div class="w-full" role="list">
     <div
       v-for="(item, index) in items"
       :key="item.company + '-' + item.period"
+      role="listitem"
       class="relative flex gap-6 pb-10 last:pb-0">
 
       <!-- Timeline spine -->
