@@ -9,7 +9,7 @@
       <section id="main-content" class="w-full border-b border-black/10 dark:border-white/10">
         <div class="px-8 pt-10 pb-8 border-b border-black/8 dark:border-white/8">
           <p class="font-mono text-[10px] tracking-[0.3em] uppercase opacity-20 mb-2">001 / Writing</p>
-          <h1 class="font-mono text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-none uppercase">
+          <h1 class="font-mono text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-none uppercase animate-appear">
             Thoughts &amp;<br/>Ideas.
           </h1>
           <span class="font-mono text-[9px] tracking-[0.2em] opacity-25 ml-2">({{ posts?.length ?? 0 }})</span>
