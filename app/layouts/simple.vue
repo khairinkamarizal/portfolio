@@ -33,7 +33,7 @@
             'flex flex-col gap-10',
             transparent ? 'mix-blend-difference' : '',
           ]">
-          <header class="w-full flex justify-between items-center" aria-label="Site header">
+          <header class="w-full flex justify-between items-center border-b border-black/8 dark:border-white/8 pb-4" aria-label="Site header">
             <NuxtLink to="/"
               ><AppLogo
                 class="w-8 h-8 hover:scale-125 transition-transform duration-300"
