@@ -10,7 +10,11 @@
 <script setup lang="ts">
 /**
  * Alert — inline alert/notification component.
- * Props: variant ('info' | 'warning' | 'error' | 'success')
+ *
+ * @prop {'info'|'warning'|'error'|'success'} [variant='info'] - Visual style and icon for the alert.
+ *
+ * Renders a bordered, tinted banner with a monospace icon prefix and a default slot
+ * for content. Colors and icons are mapped per variant; defaults to 'info'.
  */
 withDefaults(defineProps<{
   variant?: 'info' | 'warning' | 'error' | 'success'
