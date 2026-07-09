@@ -39,6 +39,14 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * PostCard
+ *
+ * Renders a single blog post as a list-row link. Shows the post's
+ * category, formatted date, title, description (revealed on hover),
+ * tags, and reading time. Uses a bottom-border underline animation
+ * on hover. Intended for use in the Writing index page.
+ */
 const props = defineProps<{
   post: {
     _path?: string
