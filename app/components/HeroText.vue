@@ -12,6 +12,18 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * HeroText — large animated headline component with staggered line entrance.
+ *
+ * @prop {string[]} lines - Array of text lines; each line animates in independently.
+ *
+ * Each line fades up from a 12px offset with a 120ms stagger between lines.
+ * Uses `will-change: transform` during animation and clears it on transitionend
+ * to avoid unnecessary GPU layer promotion after the animation completes.
+ * Respects `prefers-reduced-motion`: skips animation and shows text immediately.
+ * Bold, editorial typography with tight leading and tracking.
+ */
+
 // Large animated hero text component
 // Props: lines (string[]) — each line fades in sequentially with CSS transitions
 // Bold, editorial typography
