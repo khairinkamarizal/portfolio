@@ -37,7 +37,7 @@
             </h1>
           </div>
           <FadeText :delay="200" class="mt-5">
-            <span class="mono-label italic tracking-[-0.02em]">
+            <span class="mono-label italic tracking-[-0.02em] animate-appear animate-appear-delay-1">
               Creative Designer &amp; Developer
             </span>
           </FadeText>
