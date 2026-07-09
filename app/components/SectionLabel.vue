@@ -12,6 +12,7 @@
       <span v-if="number !== undefined" class="mr-3">{{ String(number).padStart(2, '0') }} /</span>
       <slot>{{ label }}</slot>
     </p>
+    <p v-if="description" class="text-xs font-sans opacity-50 mt-1">{{ description }}</p>
   </div>
 </template>
 
@@ -22,6 +23,7 @@ defineProps<{
   label?: string
   showLine?: boolean
   number?: number | string
+  description?: string
 }>()
 
 const lineRef = ref<HTMLElement | null>(null)
