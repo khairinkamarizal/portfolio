@@ -5,7 +5,7 @@
       <ClientOnly>
         <ReadingProgress />
       </ClientOnly>
-      <div class="flex flex-col gap-8 mt-10">
+      <div class="flex flex-col gap-8 px-8 pt-10 pb-10">
 
         <!-- Back link -->
         <NuxtLink
