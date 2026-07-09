@@ -38,7 +38,7 @@
           </RevealOnScroll>
         </div>
 
-        <div class="flex flex-col gap-3">
+        <div class="flex flex-col gap-3 border-t border-black/8 dark:border-white/8 pt-6">
           <SectionLabel label="All Work" variant="numbered" :number="2" />
           <div class="flex items-center justify-between gap-4">
             <div class="py-2">
