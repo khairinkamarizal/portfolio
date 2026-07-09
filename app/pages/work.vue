@@ -23,7 +23,7 @@
         <Divider variant="dots" />
 
         <!-- Featured projects -->
-        <section v-if="featuredProjects.length" aria-label="Featured projects" class="flex flex-col gap-3">
+        <section v-if="featuredProjects.length" aria-label="Featured projects" class="flex flex-col gap-3 py-8">
           <SectionLabel label="Featured" variant="numbered" :number="1" />
           <p class="text-muted mt-1">Highlight pieces I'm proud of</p>
           <RevealOnScroll variant="fade-up" :delay="50">
