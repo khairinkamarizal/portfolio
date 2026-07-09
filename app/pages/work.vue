@@ -11,11 +11,25 @@
 
         <WorkStats />
 
+        <!-- Featured projects -->
+        <div v-if="featuredProjects.length" class="flex flex-col gap-3">
+          <FeaturedProject
+            v-for="project in featuredProjects"
+            :key="project.title"
+            :title="project.title"
+            :description="project.description"
+            :year="project.year"
+            :tags="project.tags"
+            :url="project.behanceUrl"
+            :category="project.category" />
+        </div>
+
         <ProjectTypeFilter
           :types="projectTypes"
           :selected="selectedType"
           @select="selectedType = $event" />
 
+        <!-- All projects grid -->
         <div class="flex flex-col gap-0 divide-y divide-black/10 dark:divide-white/10">
           <WorkCard
             v-for="project in filteredProjects"
@@ -64,6 +78,8 @@ definePageMeta({
 const selectedType = ref('All')
 
 const projectTypes = ['Branding', 'Motion', 'Jersey', 'Logo']
+
+const featuredProjects = computed(() => projects.filter(p => p.featured))
 
 const filteredProjects = computed(() =>
   selectedType.value === 'All'
