@@ -1,3 +1,17 @@
+/**
+ * Composable that traps keyboard focus within a container element.
+ *
+ * When active, Tab and Shift+Tab cycle through focusable descendants without
+ * leaving the container — useful for modals and drawers.
+ *
+ * @param containerRef - A template ref pointing to the container element.
+ * @returns {{ activate: () => void, deactivate: () => void }}
+ *
+ * @example
+ * const modal = ref<HTMLElement | null>(null)
+ * const { activate, deactivate } = useFocusTrap(modal)
+ * // call activate() when the modal opens, deactivate() when it closes
+ */
 export function useFocusTrap(containerRef: Ref<HTMLElement | null>) {
   const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
   
