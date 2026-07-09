@@ -30,25 +30,17 @@ withDefaults(defineProps<{
   opacity: 0.1;
 }
 
-/* Dots variant — row of dots */
+/* Dots variant — CSS gradient dots */
 .divider--dots {
-  height: auto;
-  padding: 8px 0;
-  background: none;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  height: 16px;
+  background-image: radial-gradient(circle, currentColor 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+  background-position: 0 50%;
+  opacity: 0.15;
 }
 
 .divider--dots::before {
-  content: '· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·';
-  display: block;
-  opacity: 0.15;
-  overflow: hidden;
-  white-space: nowrap;
-  font-size: 14px;
-  letter-spacing: 2px;
-  width: 100%;
+  content: none;
 }
 
 /* Zigzag variant — CSS zigzag pattern */
@@ -83,8 +75,9 @@ withDefaults(defineProps<{
   content: '';
   position: absolute;
   bottom: 0;
-  left: -10px;
-  right: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% + 20px);
   height: 24px;
   border-radius: 50%;
   border: 1px solid currentColor;
