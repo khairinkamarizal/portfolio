@@ -202,6 +202,10 @@
   .text-ink { @apply text-black dark:text-white; }
   .text-ink-inverse { @apply text-white dark:text-black; }
   .border-ink { @apply border-black dark:border-white; }
+
+  .section-gap { @apply gap-10 md:gap-14; }
+  .content-gap { @apply gap-6 md:gap-8; }
+  .item-gap { @apply gap-3 md:gap-4; }
 }
 
 /* ============================================
