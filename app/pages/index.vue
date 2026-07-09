@@ -107,7 +107,8 @@
               :year="project.year"
               :tags="project.tags"
               :description="project.description"
-              :category="project.category" />
+              :category="project.category"
+              :url="project.behanceUrl" />
           </div>
         </section>
       </RevealOnScroll>
