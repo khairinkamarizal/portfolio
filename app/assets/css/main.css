@@ -363,6 +363,10 @@
   .stagger-3 { animation-delay: 0.3s; }
   .stagger-4 { animation-delay: 0.4s; }
   .stagger-5 { animation-delay: 0.5s; }
+
+  .clip-none { clip-path: none; }
+  .clip-reveal { clip-path: inset(0 100% 0 0); }
+  .clip-revealed { clip-path: inset(0 0 0 0); }
 }
 
 /* ============================================
