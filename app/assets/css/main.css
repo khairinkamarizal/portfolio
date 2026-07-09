@@ -121,6 +121,11 @@
   .text-fluid-xl { font-size: clamp(1.25rem, 3vw, 1.5rem); }
   .text-fluid-2xl { font-size: clamp(1.5rem, 4vw, 2rem); }
   .text-fluid-3xl { font-size: clamp(2rem, 6vw, 3rem); }
+
+  /* Focus ring utility */
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2;
+  }
 }
 
 /* ============================================
