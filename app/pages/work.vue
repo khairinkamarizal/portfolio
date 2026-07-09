@@ -24,13 +24,34 @@
             :category="project.category" />
         </div>
 
-        <ProjectTypeFilter
-          :types="projectTypes"
-          :selected="selectedType"
-          @select="selectedType = $event" />
+        <div class="flex items-center justify-between gap-4">
+          <ProjectTypeFilter
+            :types="projectTypes"
+            :selected="selectedType"
+            @select="selectedType = $event" />
+          <!-- View toggle -->
+          <div class="flex items-center gap-1 shrink-0">
+            <button
+              type="button"
+              @click="viewMode = 'card'"
+              :aria-pressed="viewMode === 'card'"
+              :class="['p-1.5 border transition-colors duration-150', viewMode === 'card' ? 'border-black dark:border-white' : 'border-transparent opacity-40 hover:opacity-70']"
+              aria-label="Card view">
+              <LayoutGrid class="w-3 h-3" />
+            </button>
+            <button
+              type="button"
+              @click="viewMode = 'list'"
+              :aria-pressed="viewMode === 'list'"
+              :class="['p-1.5 border transition-colors duration-150', viewMode === 'list' ? 'border-black dark:border-white' : 'border-transparent opacity-40 hover:opacity-70']"
+              aria-label="List view">
+              <List class="w-3 h-3" />
+            </button>
+          </div>
+        </div>
 
-        <!-- All projects grid -->
-        <div class="flex flex-col gap-0 divide-y divide-black/10 dark:divide-white/10">
+        <!-- Card view -->
+        <div v-if="viewMode === 'card'" class="flex flex-col gap-0 divide-y divide-black/10 dark:divide-white/10">
           <WorkCard
             v-for="project in filteredProjects"
             :key="project.title"
@@ -38,6 +59,17 @@
             :year="project.year"
             :tags="project.tags"
             :description="project.description"
+            :url="project.behanceUrl" />
+        </div>
+
+        <!-- List view -->
+        <div v-else class="flex flex-col gap-0 divide-y divide-black/10 dark:divide-white/10">
+          <WorkListItem
+            v-for="project in filteredProjects"
+            :key="project.title"
+            :title="project.title"
+            :year="project.year"
+            :category="project.category"
             :url="project.behanceUrl" />
         </div>
 
@@ -69,7 +101,7 @@
 </template>
 
 <script setup lang="ts">
-import { ArrowUpRight, ExternalLink } from "lucide-vue-next";
+import { ArrowUpRight, ExternalLink, LayoutGrid, List } from "lucide-vue-next";
 
 definePageMeta({
   layout: false,
@@ -86,6 +118,17 @@ const filteredProjects = computed(() =>
     ? projects
     : projects.filter(p => p.category === selectedType.value)
 )
+
+const { get: lsGet, set: lsSet } = useLocalStorage()
+const viewMode = ref<'card' | 'list'>('card')
+
+onMounted(() => {
+  viewMode.value = lsGet<'card' | 'list'>('work-view-mode', 'card')
+})
+
+watch(viewMode, (val) => {
+  lsSet('work-view-mode', val)
+})
 
 useHead({
   title: "Work — Khairinkamarizal",
