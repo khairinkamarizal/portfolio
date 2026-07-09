@@ -49,7 +49,8 @@
           </span>
         </div>
 
-        <div v-if="remainingPosts.length > 0" class="flex flex-col gap-0 divide-y divide-black/10 dark:divide-white/10">
+        <!-- On lg+: 2-column grid for remaining posts; on mobile: single column list -->
+        <div v-if="remainingPosts.length > 0" class="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-0 divide-y divide-black/10 dark:divide-white/10 lg:divide-y-0">
           <PostCard
             v-for="post in remainingPosts"
             :key="post.path"
