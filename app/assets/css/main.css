@@ -111,6 +111,10 @@
     transition: initial;
   }
 
+  [id] {
+    scroll-margin-top: 5rem;
+  }
+
   /* Reduced motion override for accessibility */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
