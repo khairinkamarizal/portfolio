@@ -211,7 +211,7 @@
   /* Display / hero heading */
   .heading-display {
     font-family: 'Space Mono', monospace;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.045em;
     @apply text-5xl md:text-7xl lg:text-[7vw] font-bold leading-none uppercase;
   }
 
