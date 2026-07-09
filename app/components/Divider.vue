@@ -15,9 +15,20 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 
-// Reusable section divider component
-// Variants: line | dots | zigzag | wave
-// Editorial design, dark mode aware
+/**
+ * Divider — decorative section separator.
+ *
+ * Renders a full-width horizontal divider between page sections. Supports four
+ * CSS-only visual styles and an optional centred text label. Fades in on mount
+ * via a Vue Transition. Dark mode aware.
+ *
+ * @prop {'line'|'dots'|'zigzag'|'wave'} [variant='line'] - Visual style of the divider
+ * @prop {string} [extraClass] - Additional CSS classes forwarded to the divider element
+ * @prop {string} [label] - Optional centred label text; overrides the pattern variant
+ *
+ * @example <Divider variant="dots" />
+ * @example <Divider label="Projects" />
+ */
 
 withDefaults(defineProps<{
   variant?: 'line' | 'dots' | 'zigzag' | 'wave'
