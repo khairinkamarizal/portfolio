@@ -1,6 +1,7 @@
 <template>
   <div
     :class="['grid-bg pointer-events-none', `grid-bg--${variant}`]"
+    :style="gridStyle"
     aria-hidden="true" />
 </template>
 
@@ -10,10 +11,36 @@
 // Variants: dots | grid | lines
 // Dark mode aware — very subtle opacity
 
-withDefaults(defineProps<{
+import { computed } from 'vue'
+
+const props = withDefaults(defineProps<{
   variant?: 'dots' | 'grid' | 'lines'
+  size?: number
 }>(), {
   variant: 'dots',
+  size: 24,
+})
+
+const gridStyle = computed(() => {
+  const s = props.size
+  if (props.variant === 'dots') {
+    return { backgroundSize: `${s}px ${s}px` }
+  }
+  if (props.variant === 'grid') {
+    return { backgroundSize: `${s}px ${s}px` }
+  }
+  if (props.variant === 'lines') {
+    return {
+      backgroundImage: `repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent ${s - 1}px,
+        currentColor ${s - 1}px,
+        currentColor ${s}px
+      )`,
+    }
+  }
+  return {}
 })
 </script>
 
