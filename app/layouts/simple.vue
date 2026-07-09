@@ -16,6 +16,8 @@
     <ClientOnly>
       <CursorFollower />
     </ClientOnly>
+    <!-- Film grain noise overlay -->
+    <NoiseOverlay :opacity="0.03" />
     <div class="w-full max-w-md md:max-w-xl lg:max-w-2xl flex flex-col relative">
       <div
         class="flex flex-col relative min-h-screen px-5 md:px-8 lg:px-10 py-5 gap-12 uppercase"
