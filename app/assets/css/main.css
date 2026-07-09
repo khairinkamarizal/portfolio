@@ -184,6 +184,9 @@
   .animate-appear-delay-1 { animation-delay: 0.1s; opacity: 0; }
   .animate-appear-delay-2 { animation-delay: 0.2s; opacity: 0; }
   .animate-appear-delay-3 { animation-delay: 0.3s; opacity: 0; }
+
+  .tracking-tight-editorial { letter-spacing: -0.03em; }
+  .tracking-ultra-wide { letter-spacing: 0.4em; }
 }
 
 /* ============================================
