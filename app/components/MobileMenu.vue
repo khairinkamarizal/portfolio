@@ -4,7 +4,7 @@
     <button
       type="button"
       :aria-expanded="open"
-      aria-controls="mobile-menu-dropdown"
+      aria-controls="mobile-menu-panel"
       aria-label="Toggle navigation menu"
       class="flex items-center justify-center w-8 h-8 hover:opacity-60 transition-opacity duration-200"
       @click="open = !open">
@@ -22,7 +22,7 @@
       <div
         v-if="open"
         ref="menuRef"
-        id="mobile-menu-dropdown"
+        id="mobile-menu-panel"
         class="absolute right-0 top-full mt-2 w-56 bg-white dark:bg-black border border-black/10 dark:border-white/10 shadow-lg z-50 font-mono"
         @touchstart="onTouchStart"
         @touchend="onTouchEnd">
