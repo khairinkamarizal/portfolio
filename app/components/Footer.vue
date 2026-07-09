@@ -10,7 +10,7 @@
         <p class="text-xs leading-relaxed opacity-50 max-w-[18ch]">
           Khairin Kamarizal — Designer & Developer
         </p>
-        <p class="text-xs opacity-40 font-mono">
+        <p class="text-xs opacity-50 font-mono">
           Based in Cyberjaya, MY
         </p>
       </div>
@@ -48,7 +48,7 @@
 
       <!-- COPYRIGHT: full-width row -->
       <div class="border-t border-black/8 dark:border-white/8 mt-8 pt-6 col-span-full">
-        <p class="text-xs opacity-40 font-mono">
+        <p class="text-xs opacity-50 font-mono">
           &copy; {{ currentYear }} Khairin Kamarizal
         </p>
       </div>
