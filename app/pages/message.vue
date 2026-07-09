@@ -280,8 +280,8 @@ async function handleSubmit() {
 
 const contactLinks = [
   { label: "Email", value: "hello@khairin.dev", href: "mailto:hello@khairin.dev", external: false },
-  { label: "GitHub", value: "github.com/khairin", href: "https://github.com", external: true },
-  { label: "LinkedIn", value: "linkedin.com/in/khairin", href: "https://linkedin.com", external: true },
-  { label: "Twitter", value: "@khairin", href: "https://twitter.com", external: true },
+  { label: "GitHub", value: "github.com/khairinkamarizal", href: "https://github.com/khairinkamarizal", external: true },
+  { label: "LinkedIn", value: "linkedin.com/in/khairinkamarizal", href: "https://linkedin.com/in/khairinkamarizal", external: true },
+  { label: "Twitter", value: "@khairinkamarizal", href: "https://x.com/khairinkamarizal", external: true },
 ];
 </script>
