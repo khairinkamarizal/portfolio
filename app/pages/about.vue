@@ -34,9 +34,7 @@
               </h2>
               <div class="flex flex-col gap-3 text-sm leading-relaxed md:leading-[1.7] opacity-70 max-w-lg font-light">
                 <p>
-                  I'm Khairin — a designer and developer with 5+ years of experience
-                  building digital products that balance form and function. I believe
-                  great software is the result of careful thinking, not just clever code.
+                  I'm Khairin — a Malaysian designer and developer who builds digital things that feel as good as they look. 5+ years of craft across brand, product, and web.
                 </p>
                 <p>
                   My work spans product design, front-end engineering, and brand identity.
@@ -82,7 +80,7 @@
           </RevealOnScroll>
 
           <!-- Certifications -->
-          <RevealOnScroll variant="fade-up" :delay="100">
+          <RevealOnScroll variant="fade-up" :delay="50">
             <div>
               <h2 class="mono-label mb-4">
                 Education & Certs
