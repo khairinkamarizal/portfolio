@@ -63,9 +63,11 @@ function react(emoji: string) {
   if (reacted.value.has(emoji)) {
     reaction.count = Math.max(0, reaction.count - 1)
     reacted.value.delete(emoji)
+    reacted.value = new Set(reacted.value)
   } else {
     reaction.count += 1
     reacted.value.add(emoji)
+    reacted.value = new Set(reacted.value)
   }
 
   // Persist to localStorage
