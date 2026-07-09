@@ -39,7 +39,7 @@ onMounted(() => {
   const updateTime = () => {
     const now = new Date()
     const formatter = new Intl.DateTimeFormat('en-US', {
-      timeZone: props.tz ?? 'Asia/Kuala_Lumpur',
+      timeZone: props.tz,
       hour: '2-digit',
       minute: '2-digit',
       hour12: true,
