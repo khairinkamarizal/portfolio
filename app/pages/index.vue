@@ -25,14 +25,8 @@
             </div>
           </div>
 
-          <!-- Status badge (inline, no external component yet) -->
-          <div class="flex items-center gap-2 w-fit normal-case font-sans">
-            <span class="relative flex h-2 w-2">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-            </span>
-            <span class="text-xs text-green-600 dark:text-green-400 font-medium tracking-wide">Available for Freelance & Fulltime</span>
-          </div>
+          <!-- Status badge -->
+          <StatusBadge />
 
           <!-- Bio tagline -->
           <p class="text-base leading-snug dark:font-light normal-case font-sans opacity-80">
@@ -42,14 +36,8 @@
         </div>
 
         <!-- Skills marquee strip -->
-        <div class="border-y border-black/10 dark:border-white/10 py-2 overflow-hidden -mx-5">
-          <div class="marquee-track flex gap-6 w-max normal-case font-sans">
-            <template v-for="i in 2" :key="i">
-              <span v-for="skill in skills" :key="`${i}-${skill}`" class="text-xs opacity-50 tracking-widest whitespace-nowrap shrink-0">
-                {{ skill }} <span class="opacity-30 mx-1">·</span>
-              </span>
-            </template>
-          </div>
+        <div class="border-y border-black/10 dark:border-white/10 py-2 -mx-5">
+          <MarqueeTicker :items="skills" :speed="30" />
         </div>
 
         <!-- Stats row -->
@@ -211,17 +199,3 @@ useHead({
 });
 </script>
 
-<style scoped>
-.marquee-track {
-  animation: marquee 30s linear infinite;
-}
-
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-</style>
