@@ -1,7 +1,7 @@
 <template>
   <aside
     :class="[
-      'w-52 shrink-0 flex flex-col px-5 py-7 border-r sticky top-0 h-screen overflow-y-auto font-mono',
+      'w-56 shrink-0 flex flex-col px-5 py-7 border-r sticky top-0 h-screen overflow-y-auto font-mono',
       transparent
         ? 'border-white/8 mix-blend-difference'
         : 'border-black/8 dark:border-white/8',
