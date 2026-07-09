@@ -1,9 +1,14 @@
 <template>
   <Transition name="divider-fade">
-    <div
-      v-show="mounted"
-      :class="['divider', `divider--${variant}`, extraClass]"
-      aria-hidden="true" />
+    <div v-show="mounted" aria-hidden="true">
+      <div v-if="label" class="relative">
+        <div class="border-t border-black/8 dark:border-white/8" />
+        <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-black px-3 font-mono text-[9px] tracking-[0.2em] uppercase opacity-40">{{ label }}</span>
+      </div>
+      <div
+        v-else
+        :class="['divider', `divider--${variant}`, extraClass]" />
+    </div>
   </Transition>
 </template>
 
@@ -17,6 +22,7 @@ import { ref, onMounted } from 'vue'
 withDefaults(defineProps<{
   variant?: 'line' | 'dots' | 'zigzag' | 'wave'
   extraClass?: string
+  label?: string
 }>(), {
   variant: 'line',
   extraClass: '',
