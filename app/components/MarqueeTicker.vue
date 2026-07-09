@@ -15,7 +15,7 @@
             aria-hidden="true"
             class="text-xs font-mono text-black dark:text-white opacity-30 mx-4"
             style="font-family: 'Space Mono', monospace">
-            ·
+            {{ separator }}
           </span>
         </template>
       </span>
@@ -31,7 +31,7 @@
             aria-hidden="true"
             class="text-xs font-mono text-black dark:text-white opacity-30 mx-4"
             style="font-family: 'Space Mono', monospace">
-            ·
+            {{ separator }}
           </span>
         </template>
       </span>
@@ -40,11 +40,12 @@
 </template>
 
 <script setup lang="ts">
-const { speed = 30, direction = 'ltr', gap = 48 } = defineProps<{
+const { speed = 30, direction = 'ltr', gap = 48, separator = '·' } = defineProps<{
   items: string[]
   speed?: number
   direction?: 'ltr' | 'rtl'
   gap?: number
+  separator?: string
 }>()
 </script>
 
