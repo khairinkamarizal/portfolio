@@ -17,9 +17,7 @@
     </div>
 
     <!-- Description -->
-    <p
-      v-if="post.description"
-      class="text-sm opacity-60 line-clamp-2 leading-relaxed mb-3 text-black dark:text-white">
+    <p v-if="post.description" class="text-xs font-sans opacity-0 group-hover:opacity-50 transition-opacity duration-200 mt-1 line-clamp-2 leading-relaxed">
       {{ post.description }}
     </p>
 
