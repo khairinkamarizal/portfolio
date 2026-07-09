@@ -8,10 +8,13 @@
     </p>
 
     <!-- Title -->
-    <h2
-      class="text-xl font-bold leading-tight mb-2 text-black dark:text-white group-hover:opacity-70 transition-opacity duration-200">
-      {{ post.title }}
-    </h2>
+    <div class="flex items-center gap-2 mb-2">
+      <h2
+        class="text-xl font-bold leading-tight text-black dark:text-white group-hover:translate-x-0.5 transition-transform duration-200">
+        {{ post.title }}
+      </h2>
+      <span class="opacity-0 group-hover:opacity-60 transition-opacity duration-200 text-black dark:text-white">→</span>
+    </div>
 
     <!-- Description -->
     <p
