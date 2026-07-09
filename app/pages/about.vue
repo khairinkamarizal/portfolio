@@ -6,7 +6,7 @@
     <!-- HERO: page heading                           -->
     <!-- ============================================ -->
     <RevealOnScroll variant="fade-up">
-      <section id="main-content" class="w-full border-b border-black/8 dark:border-white/8 px-8 py-12 md:py-16 lg:py-20" aria-label="About">
+      <section id="main-content" class="w-full border-b border-black/8 dark:border-white/8 px-page py-12 md:py-16 lg:py-20" aria-label="About">
         <p class="mono-label opacity-20 mb-3">002 / About</p>
         <h1
           class="text-4xl md:text-6xl lg:text-7xl font-bold leading-none uppercase font-mono tracking-[-0.04em] animate-appear [will-change:opacity,transform]">
