@@ -7,6 +7,7 @@
     <!-- HERO: page heading                           -->
     <!-- ============================================ -->
     <section class="w-full border-b border-black/8 dark:border-white/8 px-8 py-12 lg:py-20" aria-label="About">
+      <p class="font-mono text-[9px] tracking-[0.3em] uppercase opacity-25 mb-3">002 / About</p>
       <h1
         class="text-4xl md:text-6xl lg:text-7xl font-bold leading-none tracking-tighter uppercase font-mono">
         About
