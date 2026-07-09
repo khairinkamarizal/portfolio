@@ -41,7 +41,7 @@
           target="_blank"
           rel="noopener noreferrer"
           :aria-label="link.label"
-          class="text-xs tracking-widest uppercase opacity-50 hover:opacity-100 transition-opacity duration-200 w-fit font-mono">
+          class="text-xs tracking-widest uppercase opacity-60 hover:opacity-100 transition-opacity duration-150 w-fit font-mono">
           {{ link.label }} ↗
         </a>
       </div>
