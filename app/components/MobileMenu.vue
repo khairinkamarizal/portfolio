@@ -22,7 +22,7 @@
       <div
         v-if="open"
         id="mobile-menu-dropdown"
-        class="absolute right-0 top-full mt-2 w-56 bg-white dark:bg-black border border-black/10 dark:border-white/10 shadow-lg z-50 font-mono"
+        class="absolute right-0 top-full mt-2 w-56 bg-white dark:bg-black border border-black/10 dark:border-white/10 shadow-lg z-50 font-mono backdrop-blur-sm"
         @touchstart="onTouchStart"
         @touchend="onTouchEnd">
 
