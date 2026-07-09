@@ -240,11 +240,12 @@
     to { opacity: 1; transform: translateY(0); }
   }
   .animate-appear {
+    opacity: 0;
     animation: smooth-appear 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
-  .animate-appear-delay-1 { animation-delay: 0.1s; opacity: 0; }
-  .animate-appear-delay-2 { animation-delay: 0.2s; opacity: 0; }
-  .animate-appear-delay-3 { animation-delay: 0.3s; opacity: 0; }
+  .animate-appear-delay-1 { animation-delay: 0.1s; opacity: 0; animation-fill-mode: forwards; }
+  .animate-appear-delay-2 { animation-delay: 0.2s; opacity: 0; animation-fill-mode: forwards; }
+  .animate-appear-delay-3 { animation-delay: 0.3s; opacity: 0; animation-fill-mode: forwards; }
 
   .tracking-tight-editorial { letter-spacing: -0.03em; }
   .tracking-ultra-wide { letter-spacing: 0.4em; }
