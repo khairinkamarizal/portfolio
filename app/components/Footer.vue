@@ -17,7 +17,7 @@
 
       <!-- CENTER: Nav links -->
       <div class="flex flex-col gap-1.5 border-t border-black/8 dark:border-white/8 pt-6 md:border-t-0 md:pt-0" aria-label="Footer navigation">
-        <span class="text-xs tracking-widest uppercase opacity-40 mb-2 font-mono">
+        <span class="text-xs tracking-widest uppercase tracking-[0.2em] opacity-40 mb-2 font-mono">
           Navigation
         </span>
         <NuxtLink
