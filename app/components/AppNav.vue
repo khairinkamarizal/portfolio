@@ -7,7 +7,7 @@
       :key="link.href"
       :to="link.href"
       :style="{ animationDelay: index * 50 + 'ms' }"
-      class="animate-appear text-xs tracking-wider uppercase font-mono transition-all duration-200 text-black dark:text-white"
+      class="animate-appear text-xs tracking-[0.15em] uppercase font-mono transition-all duration-200 text-black dark:text-white"
       :class="[
         direction === 'vertical'
           ? isActive(link.href)
