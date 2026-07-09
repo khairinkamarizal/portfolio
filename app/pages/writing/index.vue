@@ -95,7 +95,8 @@
             :to="`/writing/${post.slug}`"
             class="group bg-white dark:bg-black p-6 flex flex-col gap-4 hover:bg-black/5 dark:hover:bg-white/5 transition-colors duration-150 hover:translate-x-0.5 transition-transform duration-200">
             <div class="flex items-center justify-between">
-              <div class="flex flex-wrap gap-2">
+              <div class="flex flex-wrap gap-2 items-center">
+                <span v-if="index === 0" class="font-mono text-[9px] tracking-[0.2em] uppercase opacity-30 mr-2">Latest</span>
                 <span
                   v-for="tag in post.tags"
                   :key="tag"
