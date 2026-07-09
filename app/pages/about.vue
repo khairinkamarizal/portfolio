@@ -190,11 +190,19 @@
     <section class="w-full border-t border-black/8 dark:border-white/8 px-8 py-12">
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <p class="text-sm opacity-60">Want to work together or just say hello?</p>
-        <NuxtLink
-          to="/message"
-          class="text-xs tracking-widest uppercase border border-black/20 dark:border-white/20 px-6 py-3 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-200 self-start sm:self-auto font-mono focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2">
-          Get in Touch →
-        </NuxtLink>
+        <div class="flex items-center gap-3 self-start sm:self-auto">
+          <NuxtLink
+            to="/message"
+            class="text-xs tracking-widest uppercase border border-black/20 dark:border-white/20 px-6 py-3 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-200 font-mono focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2">
+            Get in Touch →
+          </NuxtLink>
+          <button
+            type="button"
+            @click="copyEmail"
+            class="font-mono text-[10px] tracking-[0.2em] uppercase opacity-50 hover:opacity-100 transition-opacity duration-200 flex items-center gap-1.5">
+            <span>{{ emailCopied ? 'Copied!' : 'Copy email' }}</span>
+          </button>
+        </div>
       </div>
     </section>
 
@@ -217,6 +225,13 @@ useHead({
 definePageMeta({
   layout: false,
 });
+
+const emailCopied = ref(false)
+async function copyEmail() {
+  await navigator.clipboard.writeText('khairinkamarizal@gmail.com')
+  emailCopied.value = true
+  setTimeout(() => { emailCopied.value = false }, 2000)
+}
 
 const processSteps = [
   {
