@@ -12,9 +12,9 @@
       class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:bg-black focus:text-white dark:focus:bg-white dark:focus:text-black focus:text-sm">
       Skip to content
     </a>
-    <div class="w-full max-w-md flex flex-col relative overflow-hidden">
+    <div class="w-full max-w-md md:max-w-xl lg:max-w-2xl flex flex-col relative">
       <div
-        class="flex flex-col relative min-h-screen p-5 gap-12 uppercase"
+        class="flex flex-col relative min-h-screen px-5 md:px-8 lg:px-10 py-5 gap-12 uppercase"
         style="font-family: &quot;Space Mono&quot;, monospace">
         <!-- Header -->
         <div
