@@ -1,9 +1,7 @@
 <template>
   <div class="w-full border border-black/10 dark:border-white/10 p-8 md:p-12">
     <!-- Eyebrow -->
-    <p
-      class="text-xs tracking-widest uppercase opacity-40 mb-6 font-mono text-black dark:text-white"
-      style="font-family: 'Space Mono', monospace">
+    <p class="text-xs tracking-widest uppercase opacity-40 mb-6 font-mono text-black dark:text-white">
       Current Status
     </p>
 
@@ -20,9 +18,7 @@
     <!-- Meta details -->
     <div class="flex flex-wrap gap-x-8 gap-y-3 mb-8">
       <div v-for="detail in details" :key="detail.label">
-        <p
-          class="text-[10px] tracking-widest uppercase opacity-40 font-mono text-black dark:text-white mb-0.5"
-          style="font-family: 'Space Mono', monospace">
+        <p class="text-[10px] tracking-widest uppercase opacity-40 font-mono text-black dark:text-white mb-0.5">
           {{ detail.label }}
         </p>
         <p class="text-sm font-medium text-black dark:text-white">
@@ -33,9 +29,8 @@
 
     <!-- CTA -->
     <NuxtLink
-      to="/contact"
-      class="inline-flex items-center gap-2 text-xs tracking-widest uppercase font-mono border border-black dark:border-white px-5 py-3 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-200 text-black dark:text-white"
-      style="font-family: 'Space Mono', monospace">
+      to="/message"
+      class="inline-flex items-center gap-2 text-xs tracking-widest uppercase font-mono border border-black dark:border-white px-5 py-3 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-200 text-black dark:text-white">
       Get in Touch →
     </NuxtLink>
   </div>
