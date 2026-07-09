@@ -12,6 +12,16 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * BackToTop — floating scroll-to-top button.
+ *
+ * Renders a fixed button in the bottom-right corner that smoothly scrolls the
+ * page back to the top when clicked. Appears with a fade-up transition once
+ * the user has scrolled more than 400px, and disappears when back near the top.
+ * Uses a passive scroll listener for performance.
+ *
+ * @example <BackToTop />
+ */
 import { ArrowUp } from 'lucide-vue-next'
 
 const visible = ref(false)
