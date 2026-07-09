@@ -90,6 +90,15 @@
     image-rendering: crisp-edges;
   }
 
+  button, [role="button"], a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  .no-min-touch {
+    min-height: unset;
+    min-width: unset;
+  }
+
   /* Tab size for code blocks */
   pre, code {
     tab-size: 2;
