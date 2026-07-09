@@ -1,5 +1,5 @@
 <template>
-  <figure class="image-caption" :style="width ? { maxWidth: width } : {}">
+  <figure class="image-caption border border-black/8 dark:border-white/8" :style="width ? { maxWidth: width } : {}">
     <img
       :src="src"
       :alt="alt"
