@@ -34,7 +34,7 @@
           </div>
           <div class="mt-6 flex flex-col gap-3 max-w-xs">
             <StatusBadge text="Available for projects" />
-            <p id="hero-bio" class="text-sm leading-relaxed opacity-55 font-sans font-light">
+            <p id="hero-bio" class="text-sm leading-relaxed opacity-55 font-sans font-light max-w-[280px]">
               Creative designer &amp; developer. Branding, UI/UX,<br class="hidden md:block" /> motion &amp; web. Based in Cyberjaya, MY.
             </p>
           </div>
