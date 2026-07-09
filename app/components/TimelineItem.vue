@@ -8,7 +8,7 @@
         :class="current
           ? 'bg-black dark:bg-white border-black dark:border-white'
           : 'bg-transparent border-black/30 dark:border-white/30'" />
-      <div class="w-px flex-1 mt-1 bg-black/10 dark:bg-white/10"></div>
+      <div v-if="!last" class="w-px flex-1 mt-1 bg-black/10 dark:bg-white/10"></div>
     </div>
 
     <!-- Content -->
@@ -51,5 +51,6 @@ defineProps<{
   location?: string
   description?: string
   current?: boolean
+  last?: boolean
 }>()
 </script>
