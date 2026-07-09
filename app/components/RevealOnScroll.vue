@@ -20,12 +20,24 @@
   </div>
 </template>
 
-/**
- * Reveals slot content when it enters the viewport.
- * Supports fade-up, fade-in, fade-left, fade-right variants.
- * Respects prefers-reduced-motion.
- */
 <script setup lang="ts">
+/**
+ * RevealOnScroll component.
+ *
+ * Wraps slot content in a div that animates into view when the element
+ * enters the viewport, using IntersectionObserver.
+ *
+ * @prop {number}  delay    - Animation delay in ms (default: 0).
+ * @prop {number}  duration - Transition duration in ms (default: 450).
+ * @prop {'fade-up'|'fade-in'|'fade-left'|'fade-right'} variant
+ *                          - Direction/style of the reveal (default: 'fade-up').
+ * @prop {boolean} once     - Disconnect observer after first reveal (default: true).
+ *                            Set to false to re-animate on each viewport entry.
+ *
+ * Accessibility: respects `prefers-reduced-motion`; renders content fully
+ * visible with no animation when the preference is set.
+ * SSR-safe: defaults to visible so content is readable without JS.
+ */
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const props = withDefaults(defineProps<{
