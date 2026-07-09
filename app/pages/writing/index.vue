@@ -202,6 +202,7 @@ const featuredPost = computed(() => posts.find((p) => p.featured) ?? null);
 const nonFeaturedPosts = computed(() => posts.filter((p) => !p.featured));
 
 function formatDate(d: string) {
+  // All date strings are formatted consistently via Intl.DateTimeFormat
   return new Intl.DateTimeFormat('en-US', { month: 'short', year: 'numeric' }).format(new Date(d))
 }
 
