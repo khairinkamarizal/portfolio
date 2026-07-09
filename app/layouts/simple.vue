@@ -4,7 +4,7 @@
       'flex items-stretch justify-center transition-colors duration-300 min-h-screen',
       transparent
         ? 'text-white'
-        : 'bg-white dark:bg-black text-black dark:text-white',
+        : 'bg-white dark:bg-[#0a0a0a] text-black dark:text-white',
     ]">
     <!-- Skip to content link for keyboard users -->
     <a
