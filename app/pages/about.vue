@@ -9,7 +9,7 @@
     <section id="main-content" class="w-full border-b border-black/8 dark:border-white/8 px-8 py-12 md:py-16 lg:py-20" aria-label="About">
       <p class="mono-label opacity-25 mb-3">002 / About</p>
       <h1
-        class="text-4xl md:text-6xl lg:text-7xl font-bold leading-none uppercase font-mono" style="letter-spacing: -0.04em;">
+        class="text-4xl md:text-6xl lg:text-7xl font-bold leading-none uppercase font-mono tracking-[-0.04em]">
         About
       </h1>
       <p class="mt-4 text-sm opacity-60 max-w-lg leading-relaxed text-balance">
