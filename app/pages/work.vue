@@ -174,20 +174,12 @@ function handleTagFilter(tag: string) {
 }
 
 useHead({
-  title: "Work — Khairinkamarizal",
+  title: 'Work — Khairin Kamarizal',
   meta: [
-    {
-      name: "description",
-      content: "Selected work and projects",
-    },
-    {
-      property: "og:title",
-      content: "Work — Khairinkamarizal",
-    },
-    {
-      property: "og:description",
-      content: "Selected work and projects spanning brand identity, UI/UX design, and digital experiences.",
-    },
+    { name: 'description', content: 'Selected design and development projects by Khairin Kamarizal — brand identity, UI/UX, and digital design.' },
+    { property: 'og:title', content: 'Work — Khairin Kamarizal' },
+    { property: 'og:description', content: 'Selected design and development projects by Khairin Kamarizal.' },
+    { property: 'og:url', content: 'https://khair.ink/work' },
   ],
 });
 
