@@ -36,27 +36,20 @@
               Khairin<br />Kamarizal
             </h1>
           </div>
-          <div class="mt-6 flex flex-col gap-3 max-w-xs">
-            <StatusBadge text="Available for projects" />
+          <span class="mono-label italic tracking-[-0.02em] mt-5">
+            Creative Designer &amp; Developer
+          </span>
+          <div class="mt-4 flex flex-col gap-3 max-w-xs">
             <p id="hero-bio" class="text-sm leading-relaxed opacity-55 font-sans font-light max-w-[280px]">
               Designer and developer crafting digital experiences at the intersection of aesthetics and function. Cyberjaya, Malaysia.
             </p>
+            <StatusBadge text="Available for projects" />
           </div>
-        </div>
-
-        <!-- Bottom row: role + CTAs -->
-        <div class="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between flex-wrap gap-3">
-          <span class="mono-label italic tracking-[-0.02em]">
-            Creative Designer &amp; Developer
-          </span>
-          <span class="hidden lg:block mono-label opacity-0 hover:opacity-20 transition-opacity duration-300">
-            Press G then W to go to work
-          </span>
-          <div class="flex items-center gap-3">
+          <div class="flex items-center gap-3 mt-5">
             <NuxtLink
               to="/work"
               class="font-mono text-xs tracking-[0.15em] uppercase px-5 py-2.5 bg-black dark:bg-white text-white dark:text-black hover:opacity-75 transition-all duration-200">
-              Work
+              View Work
             </NuxtLink>
             <a
               href="mailto:khairinkamarizal@gmail.com"
@@ -64,6 +57,13 @@
               Get in Touch
             </a>
           </div>
+        </div>
+
+        <!-- Bottom row: keyboard hint -->
+        <div class="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between flex-wrap gap-3">
+          <span class="hidden lg:block mono-label opacity-0 hover:opacity-20 transition-opacity duration-300">
+            Press G then W to go to work
+          </span>
         </div>
       </section>
 
