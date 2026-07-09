@@ -20,7 +20,7 @@
     <!-- Links -->
     <div class="flex items-center gap-4 flex-wrap">
       <a
-        href="mailto:hello@example.com"
+        href="mailto:khairinkamarizal@gmail.com"
         class="text-xs tracking-widest uppercase font-mono border border-black dark:border-white px-5 py-3 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-200 text-black dark:text-white"
         style="font-family: 'Space Mono', monospace">
         Send Email →
