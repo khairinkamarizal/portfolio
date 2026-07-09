@@ -4,7 +4,7 @@
       v-if="visible"
       type="button"
       @click="scrollToTop"
-      class="fixed bottom-6 right-6 z-50 w-9 h-9 p-2.5 flex items-center justify-center border border-black/10 dark:border-white/10 bg-white/90 dark:bg-black/90 backdrop-blur-sm shadow-sm hover:border-black dark:hover:border-white transition-all duration-200"
+      class="fixed bottom-6 right-6 z-50 w-9 h-9 p-2.5 flex items-center justify-center border border-black/10 dark:border-white/10 bg-white/90 dark:bg-black/90 backdrop-blur-sm shadow-sm hover:border-black dark:hover:border-white opacity-80 hover:opacity-100 transition-opacity duration-150 transition-all duration-200"
       aria-label="Back to top">
       <ArrowUp :size="14" aria-hidden="true" />
     </button>
