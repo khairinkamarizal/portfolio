@@ -1,5 +1,5 @@
 <template>
-  <article class="group relative flex flex-col">
+  <article class="group/featured relative flex flex-col">
     <!-- Large thumbnail -->
     <div class="relative w-full aspect-[16/9] overflow-hidden bg-black/[0.03] dark:bg-white/[0.03] border border-black/8 dark:border-white/8">
       <img
@@ -8,14 +8,14 @@
         :alt="title"
         loading="lazy"
         decoding="async"
-        class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]" />
+        class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/featured:scale-[1.02]" />
       <ProjectThumbnail
         v-else
         :category="category"
         :title="title"
-        class="w-full h-full transition-transform duration-700 ease-out group-hover:scale-[1.02]" />
+        class="w-full h-full transition-transform duration-700 ease-out group-hover/featured:scale-[1.02]" />
       <!-- Category overlay bottom-left -->
-      <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover/featured:opacity-100 transition-opacity duration-300">
         <span v-if="category" class="font-mono text-[9px] tracking-[0.25em] uppercase text-white/80">{{ category }}</span>
       </div>
     </div>
