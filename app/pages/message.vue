@@ -8,7 +8,7 @@
         <!-- ============================================ -->
         <div class="flex flex-col gap-3">
           <div class="mb-10">
-            <p class="font-mono text-[10px] tracking-[0.3em] uppercase opacity-40 mb-2">001 / Get in touch</p>
+            <p class="mono-label mb-2">001 / Get in touch</p>
             <h1 class="font-mono text-4xl md:text-5xl font-bold tracking-tight leading-none uppercase">Let's<br/>Talk.</h1>
           </div>
           <p class="text-sm opacity-60 max-w-lg leading-relaxed">
@@ -24,7 +24,7 @@
 
           <!-- LEFT: contact form -->
           <div>
-            <h2 class="text-xs tracking-widest uppercase font-mono opacity-50 mb-8">
+            <h2 class="mono-label mb-8">
               Send a Message
             </h2>
 
@@ -37,7 +37,7 @@
               <div class="flex flex-col gap-2">
                 <label
                   for="name"
-                  class="text-xs tracking-[0.15em] uppercase font-mono opacity-50">
+                  class="mono-label">
                    Name <span class="opacity-50">*</span><span class="sr-only">(required)</span>
                 </label>
                 <input
@@ -63,7 +63,7 @@
               <div class="flex flex-col gap-2">
                 <label
                   for="email"
-                  class="text-xs tracking-[0.15em] uppercase font-mono opacity-50">
+                  class="mono-label">
                    Email <span class="opacity-50">*</span><span class="sr-only">(required)</span>
                 </label>
                 <input
@@ -89,7 +89,7 @@
               <div class="flex flex-col gap-2">
                 <label
                   for="subject"
-                  class="text-xs tracking-[0.15em] uppercase font-mono opacity-50">
+                  class="mono-label">
                   Subject
                 </label>
                 <input
@@ -105,7 +105,7 @@
               <div class="flex flex-col gap-2">
                 <label
                   for="message"
-                  class="text-xs tracking-[0.15em] uppercase font-mono opacity-50">
+                  class="mono-label">
                    Message <span class="opacity-50">*</span><span class="sr-only">(required)</span>
                 </label>
                 <textarea
@@ -189,7 +189,7 @@
 
             <!-- Availability -->
             <div>
-              <h2 class="text-xs tracking-widest uppercase font-mono opacity-50 mb-6">
+              <h2 class="mono-label mb-6">
                 Availability
               </h2>
               <div class="flex items-start gap-3 p-4 border border-black/10 dark:border-white/10">
@@ -206,7 +206,7 @@
 
             <!-- Location / timezone -->
             <div>
-              <h2 class="text-xs tracking-widest uppercase font-mono opacity-50 mb-6">
+              <h2 class="mono-label mb-6">
                 Location
               </h2>
               <p class="text-sm opacity-70 leading-relaxed">
