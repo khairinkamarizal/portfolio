@@ -28,6 +28,7 @@
             placeholder="your@email.com"
             class="text-sm px-3 py-2 border border-black/20 dark:border-white/20 bg-transparent placeholder:opacity-30 focus:outline-none focus:border-black dark:focus:border-white transition-colors duration-150"
             :disabled="loading" />
+          <p v-if="form.email && !isEmailValid" class="text-xs text-red-500 mt-1">Please enter a valid email</p>
         </div>
 
         <div class="flex flex-col gap-1.5">
@@ -44,7 +45,7 @@
 
         <button
           type="submit"
-          :disabled="loading || !form.name || !form.email || !form.message"
+          :disabled="loading || !form.name || !form.email || !isEmailValid || !form.message"
           class="self-start text-xs tracking-wider px-4 py-2 bg-black dark:bg-white text-white dark:text-black transition-opacity duration-150 disabled:opacity-40">
           {{ loading ? 'Sending...' : 'Send Message' }}
         </button>
@@ -62,6 +63,8 @@ const form = reactive({
   email: '',
   message: '',
 })
+
+const isEmailValid = computed(() => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
 
 const submitted = ref(false)
 const loading = ref(false)
