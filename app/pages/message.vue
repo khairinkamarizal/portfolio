@@ -9,7 +9,7 @@
         <div class="flex flex-col gap-3">
           <div class="mb-10">
             <p class="mono-label mb-2">001 / Get in touch</p>
-            <h1 class="font-mono text-4xl md:text-5xl font-bold tracking-tight leading-none uppercase">Let's<br/>Talk.</h1>
+            <h1 class="font-mono text-4xl md:text-5xl font-bold tracking-tight leading-none uppercase text-balance">Let's<br/>Talk.</h1>
           </div>
           <p class="text-sm opacity-60 max-w-lg leading-relaxed">
             Have a project in mind, a question, or just want to say hello?
