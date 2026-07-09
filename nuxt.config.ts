@@ -20,7 +20,13 @@ export default defineNuxtConfig({
     // @nuxt/content reads from the content/ directory by default.
     // Structure: content/writing/*.md for blog posts, content/work/*.md for projects.
     "@nuxt/content",
+    "@nuxt/image",
   ],
+
+  // Image optimization
+  image: {
+    domains: ["behance.net", "mir-s3-cdn-cf.behance.net"],
+  },
 
   // Color mode: defaults to system, persisted in localStorage
   // Light: bg-white, text-black
