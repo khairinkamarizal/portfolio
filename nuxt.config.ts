@@ -45,6 +45,7 @@ export default defineNuxtConfig({
         { name: "twitter:creator", content: "@khairinkamarizal" },
         { property: "og:image", content: "https://khair.ink/og-image.png" },
         { name: "twitter:image", content: "https://khair.ink/og-image.png" },
+        { name: "robots", content: "index, follow" },
       ],
       link: [
         { rel: "canonical", href: "https://khair.ink" },
