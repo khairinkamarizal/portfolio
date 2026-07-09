@@ -127,9 +127,14 @@
 
 <script setup lang="ts">
 
-useSeoMeta({
-  title: "Writing",
-  description: "Thoughts on design, engineering, and the space between.",
+useHead({
+  title: 'Writing — Khairin Kamarizal',
+  meta: [
+    { name: 'description', content: 'Writing about design, development, and the creative process.' },
+    { property: 'og:title', content: 'Writing — Khairin Kamarizal' },
+    { property: 'og:description', content: 'Writing about design, development, and the creative process.' },
+    { property: 'og:url', content: 'https://khair.ink/writing' },
+  ],
 });
 
 definePageMeta({
