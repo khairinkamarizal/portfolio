@@ -17,6 +17,7 @@
           :href="project.url"
           target="_blank"
           rel="noopener noreferrer"
+          :aria-label="project.title + ' (opens in new tab)'"
           class="group flex items-center justify-between py-2.5 first:pt-0 hover:opacity-60 transition-opacity duration-200">
           <span class="text-sm font-medium">{{ project.title }}</span>
           <div class="flex items-center gap-2 shrink-0">
