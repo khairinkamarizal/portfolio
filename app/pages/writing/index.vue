@@ -1,165 +1,217 @@
 <template>
-  <NuxtLayout name="simple">
-    <template #default>
-      <div class="flex flex-col gap-10 mt-10">
-        <div class="flex flex-col gap-2">
-          <h1 class="text-xs opacity-50 tracking-widest">Writing</h1>
-          <p class="text-2xl leading-tight dark:font-light">
-            Thoughts on design, development, and the space between.
-          </p>
-        </div>
+  <div class="w-full">
 
-        <!-- Tag filter -->
-        <div v-if="allTags.length > 0" class="flex flex-wrap gap-1.5">
-          <button
-            class="text-[10px] tracking-wider px-2 py-0.5 transition-colors duration-150"
-            :class="selectedTag === null
-              ? 'bg-black text-white dark:bg-white dark:text-black'
-              : 'border border-black/20 dark:border-white/20 opacity-60 hover:opacity-100'"
-            @click="selectedTag = null">
-            ALL
-          </button>
-          <button
-            v-for="tag in allTags"
-            :key="tag"
-            class="text-[10px] tracking-wider px-2 py-0.5 transition-colors duration-150"
-            :class="selectedTag === tag
-              ? 'bg-black text-white dark:bg-white dark:text-black'
-              : 'border border-black/20 dark:border-white/20 opacity-60 hover:opacity-100'"
-            @click="selectedTag = tag">
-            {{ tag.toUpperCase() }}
-          </button>
-        </div>
+    <!-- ============================================ -->
+    <!-- HERO: page heading                           -->
+    <!-- ============================================ -->
+    <section class="w-full border-b border-black/10 dark:border-white/10 px-6 md:px-12 lg:px-20 py-16 lg:py-24">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <h1
+          class="text-5xl md:text-7xl lg:text-[8vw] font-bold leading-none tracking-tighter uppercase"
+          style="font-family: 'Space Mono', monospace">
+          Writing
+        </h1>
+        <p class="text-sm opacity-60 max-w-sm leading-relaxed md:text-right">
+          Thoughts on design, engineering, and the space between.
+        </p>
+      </div>
+    </section>
 
-        <!-- Featured post -->
-        <FeaturedPost
-          v-if="filteredPosts && filteredPosts.length > 0 && !selectedTag"
-          :title="filteredPosts[0].title"
-          :description="filteredPosts[0].description"
-          :date="filteredPosts[0].date"
-          :tags="filteredPosts[0].tags"
-          :slug="filteredPosts[0].stem?.split('/').pop() || ''"
-          :reading-time="getReadingTime(filteredPosts[0])" />
-
-        <!-- Post count -->
-        <div v-if="filteredPosts && filteredPosts.length > 0" class="flex items-center gap-2">
-          <span class="text-xs opacity-40 tracking-wider">
-            {{ filteredPosts.length }} {{ filteredPosts.length === 1 ? 'POST' : 'POSTS' }}
-            <span v-if="selectedTag"> IN {{ selectedTag.toUpperCase() }}</span>
-          </span>
-        </div>
-
-        <!-- On lg+: 2-column grid for remaining posts; on mobile: single column list -->
-        <div v-if="remainingPosts.length > 0" class="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-0 divide-y divide-black/10 dark:divide-white/10 lg:divide-y-0">
-          <PostCard
-            v-for="post in remainingPosts"
-            :key="post.path"
-            :title="post.title"
-            :description="post.description"
-            :date="post.date"
-            :tags="post.tags"
-            :slug="post.stem?.split('/').pop() || ''"
-            :reading-time="getReadingTime(post)" />
-        </div>
-
-        <div v-else class="flex flex-col gap-4 py-12 items-center text-center">
-          <div class="flex flex-col gap-2">
-            <p class="text-sm opacity-60">
-              <span v-if="selectedTag">No posts found with the tag "{{ selectedTag }}".</span>
-              <span v-else>Nothing published yet. Check back soon.</span>
+    <!-- ============================================ -->
+    <!-- FEATURED POST: full-width                    -->
+    <!-- ============================================ -->
+    <section
+      v-if="featuredPost"
+      class="w-full border-b border-black/10 dark:border-white/10">
+      <NuxtLink
+        :to="`/writing/${featuredPost.slug}`"
+        class="group block px-6 md:px-12 lg:px-20 py-12 lg:py-16 hover:bg-black/2 dark:hover:bg-white/2 transition-colors duration-200">
+        <div class="flex flex-col lg:flex-row lg:items-start lg:gap-16">
+          <!-- Featured label + meta -->
+          <div class="lg:w-1/3 flex flex-col gap-4 mb-6 lg:mb-0">
+            <span
+              class="text-xs tracking-widest uppercase opacity-40"
+              style="font-family: 'Space Mono', monospace">
+              Featured
+            </span>
+            <div class="flex items-center gap-3 text-xs opacity-50" style="font-family: 'Space Mono', monospace">
+              <span>{{ featuredPost.date }}</span>
+              <span>·</span>
+              <span>{{ featuredPost.readTime }}</span>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                v-for="tag in featuredPost.tags"
+                :key="tag"
+                class="text-xs tracking-wide border border-black/10 dark:border-white/10 px-2 py-0.5 opacity-50">
+                {{ tag }}
+              </span>
+            </div>
+          </div>
+          <!-- Title + excerpt -->
+          <div class="lg:w-2/3">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight tracking-tight group-hover:opacity-70 transition-opacity duration-200">
+              {{ featuredPost.title }}
+            </h2>
+            <p class="mt-4 text-sm leading-relaxed opacity-60 max-w-2xl">
+              {{ featuredPost.excerpt }}
             </p>
-            <button
-              v-if="selectedTag"
-              @click="selectedTag = null"
-              class="text-xs opacity-40 hover:opacity-100 transition-opacity duration-200 underline underline-offset-2">
-              Clear filter
-            </button>
+            <span
+              class="mt-6 inline-block text-xs tracking-widest uppercase opacity-50 group-hover:opacity-100 transition-opacity"
+              style="font-family: 'Space Mono', monospace">
+              Read More →
+            </span>
           </div>
         </div>
-
-        <!-- Stay updated -->
-        <div class="flex flex-col gap-2">
-          <h2 class="text-xs opacity-50 tracking-widest">Stay updated</h2>
-          <NewsletterSignup />
-        </div>
-      </div>
-    </template>
-
-    <template #footer-actions>
-      <NuxtLink
-        to="/"
-        class="group flex items-center">
-        <div class="flex-none group-hover:flex-1 transition-all duration-300 h-1"></div>
-        <span>Back to home</span>
-        <div class="flex-1 group-hover:flex-none transition-all duration-300 group-hover:w-2 h-1"></div>
-        <ArrowUpRight class="group-hover:rotate-45 transition-transform duration-300" />
       </NuxtLink>
-    </template>
-  </NuxtLayout>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- POSTS GRID: 3-col xl+, 2-col md, 1-col      -->
+    <!-- ============================================ -->
+    <section class="w-full px-6 md:px-12 lg:px-20 py-12 lg:py-16">
+      <!-- Tag filter -->
+      <div class="flex flex-wrap gap-2 mb-10">
+        <button
+          v-for="tag in allTags"
+          :key="tag"
+          :class="[
+            'text-xs tracking-widest uppercase px-3 py-1.5 border transition-colors duration-200',
+            activeTag === tag
+              ? 'border-black dark:border-white bg-black dark:bg-white text-white dark:text-black'
+              : 'border-black/20 dark:border-white/20 hover:border-black/60 dark:hover:border-white/60',
+          ]"
+          style="font-family: 'Space Mono', monospace"
+          @click="activeTag = tag">
+          {{ tag }}
+        </button>
+      </div>
+
+      <!-- Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-px bg-black/10 dark:bg-white/10 border border-black/10 dark:border-white/10">
+        <NuxtLink
+          v-for="post in filteredPosts"
+          :key="post.slug"
+          :to="`/writing/${post.slug}`"
+          class="group bg-white dark:bg-black p-6 flex flex-col gap-4 hover:bg-black/2 dark:hover:bg-white/2 transition-colors duration-200">
+          <div class="flex items-center justify-between">
+            <div class="flex flex-wrap gap-2">
+              <span
+                v-for="tag in post.tags"
+                :key="tag"
+                class="text-xs tracking-wide border border-black/10 dark:border-white/10 px-2 py-0.5 opacity-50">
+                {{ tag }}
+              </span>
+            </div>
+            <span
+              class="text-xs opacity-40 shrink-0"
+              style="font-family: 'Space Mono', monospace">
+              {{ post.readTime }}
+            </span>
+          </div>
+          <h3 class="text-base font-semibold leading-snug group-hover:opacity-70 transition-opacity duration-200">
+            {{ post.title }}
+          </h3>
+          <p class="text-sm opacity-50 leading-relaxed line-clamp-3 flex-1">
+            {{ post.excerpt }}
+          </p>
+          <span
+            class="text-xs opacity-40 mt-auto"
+            style="font-family: 'Space Mono', monospace">
+            {{ post.date }}
+          </span>
+        </NuxtLink>
+      </div>
+
+      <!-- Empty state -->
+      <EmptyState
+        v-if="filteredPosts.length === 0"
+        title="No posts found"
+        :description="`No writing tagged with '${activeTag}' yet. Try a different tag.`" />
+    </section>
+
+  </div>
 </template>
 
 <script setup lang="ts">
-import { ArrowUpRight } from "lucide-vue-next";
+import { ref, computed } from "vue";
+
+useSeoMeta({
+  title: "Writing",
+  description: "Thoughts on design, engineering, and the space between.",
+});
 
 definePageMeta({
-  layout: false,
+  layout: "simple",
 });
 
-useHead({
-  title: "Writing — Khairinkamarizal",
-  meta: [
-    {
-      name: "description",
-      content: "Thoughts on design, development, and the space between.",
-    },
-    {
-      property: "og:title",
-      content: "Writing — Khairinkamarizal",
-    },
-    {
-      property: "og:description",
-      content: "Thoughts on design, development, and the space between.",
-    },
-  ],
-});
+const posts = [
+  {
+    slug: "on-design-systems",
+    title: "On Design Systems",
+    date: "2024-06-01",
+    readTime: "5 min",
+    tags: ["Design", "Systems"],
+    excerpt:
+      "Design systems are not just component libraries. They are a shared language between designers and engineers — and the decisions baked into them shape every product decision downstream.",
+    featured: true,
+  },
+  {
+    slug: "the-case-for-boring-tech",
+    title: "The Case for Boring Tech",
+    date: "2024-05-12",
+    readTime: "4 min",
+    tags: ["Engineering"],
+    excerpt:
+      "Choosing proven, well-understood technology over the shiny new thing is often the most radical choice you can make on a team that values velocity.",
+    featured: false,
+  },
+  {
+    slug: "nuxt-4-first-look",
+    title: "Nuxt 4 First Look",
+    date: "2024-04-20",
+    readTime: "6 min",
+    tags: ["Vue", "Nuxt"],
+    excerpt:
+      "Nuxt 4 brings a new app directory structure, improved TypeScript support, and a faster dev server. Here's what changed and what it means for existing projects.",
+    featured: false,
+  },
+  {
+    slug: "typography-in-product-ui",
+    title: "Typography in Product UI",
+    date: "2024-03-15",
+    readTime: "7 min",
+    tags: ["Design", "Typography"],
+    excerpt:
+      "Most UI typography problems are not about choosing the right typeface. They are about hierarchy, spacing, and having the discipline to use fewer styles.",
+    featured: false,
+  },
+  {
+    slug: "building-with-tailwind",
+    title: "Building with Tailwind at Scale",
+    date: "2024-02-08",
+    readTime: "5 min",
+    tags: ["Engineering", "CSS"],
+    excerpt:
+      "Tailwind CSS gets a bad reputation for verbose HTML. Here is how we keep it manageable in large codebases without sacrificing the utility-first approach.",
+    featured: false,
+  },
+];
 
-const { data: posts } = await useAsyncData("writing-index", () =>
-  queryCollection("writing")
-    .where("draft", "=", false)
-    .order("date", "DESC")
-    .all()
-);
-
-const selectedTag = ref<string | null>(null);
+const featuredPost = computed(() => posts.find((p) => p.featured) ?? null);
+const nonFeaturedPosts = computed(() => posts.filter((p) => !p.featured));
 
 const allTags = computed(() => {
-  if (!posts.value) return [];
-  const tagSet = new Set<string>();
-  for (const post of posts.value) {
-    for (const tag of post.tags ?? []) {
-      tagSet.add(tag);
-    }
-  }
-  return Array.from(tagSet).sort();
+  const tags = new Set<string>(["All"]);
+  nonFeaturedPosts.value.forEach((p) => p.tags.forEach((t) => tags.add(t)));
+  return Array.from(tags);
 });
 
-const filteredPosts = computed(() => {
-  if (!posts.value) return [];
-  if (!selectedTag.value) return posts.value;
-  return posts.value.filter((post) => post.tags?.includes(selectedTag.value!));
-});
+const activeTag = ref("All");
 
-// When no tag filter is active, the first post is shown as FeaturedPost — skip it in the list
-const remainingPosts = computed(() => {
-  if (!filteredPosts.value.length) return [];
-  if (!selectedTag.value) return filteredPosts.value.slice(1);
-  return filteredPosts.value;
-});
-
-function getReadingTime(post: any): string {
-  // Estimate reading time from title + description
-  const content = `${post.title || ''} ${post.description || ''}`
-  const { text } = useReadingTime(content)
-  return text
-}
+const filteredPosts = computed(() =>
+  activeTag.value === "All"
+    ? nonFeaturedPosts.value
+    : nonFeaturedPosts.value.filter((p) => p.tags.includes(activeTag.value))
+);
 </script>

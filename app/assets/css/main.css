@@ -1,67 +1,168 @@
-/* Global CSS — Portfolio design system */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+/* ============================================
+   FONTS
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+@layer base {
+  html {
+    @apply scroll-smooth;
+    font-family: 'Inter Tight', system-ui, sans-serif;
+  }
+
+  body {
+    @apply antialiased;
+  }
+
+  /* Better focus styles */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-black dark:outline-white;
+  }
+
+  /* Remove default focus ring, rely on focus-visible */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
 }
 
-/* Better text rendering */
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+@layer utilities {
+  /* Full-bleed page padding — matches the layout's px values */
+  .page-padding {
+    @apply px-6 md:px-12 lg:px-20;
+  }
+
+  /* Consistent vertical section padding */
+  .section-padding {
+    @apply py-12 md:py-16 lg:py-24;
+  }
+
+  /* Section border separator */
+  .section-border {
+    @apply border-b border-black/10 dark:border-white/10;
+  }
+
+  /* Monospace label — small all-caps tracking */
+  .label-mono {
+    font-family: 'Space Mono', monospace;
+    @apply text-xs tracking-widest uppercase opacity-40;
+  }
+
+  /* Full-bleed grid gap using 1px border trick */
+  .grid-gap-px {
+    @apply grid gap-px bg-black/10 dark:bg-white/10 border border-black/10 dark:border-white/10;
+  }
 }
 
-/* Selection color matching design system */
-::selection {
-  background-color: #000;
-  color: #fff;
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+@layer components {
+  /* Display / hero heading */
+  .heading-display {
+    font-family: 'Space Mono', monospace;
+    @apply text-5xl md:text-7xl lg:text-[8vw] font-bold leading-none tracking-tighter uppercase;
+  }
+
+  /* Section heading */
+  .heading-section {
+    @apply text-2xl md:text-3xl font-bold leading-tight tracking-tight;
+  }
+
+  /* Body text */
+  .text-body {
+    @apply text-sm leading-relaxed opacity-70;
+  }
+
+  /* Muted / secondary text */
+  .text-muted {
+    @apply text-xs opacity-50;
+  }
+
+  /* Link hover pattern */
+  .link-hover {
+    @apply opacity-50 hover:opacity-100 transition-opacity duration-200;
+  }
 }
 
-.dark ::selection {
-  background-color: #fff;
-  color: #000;
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.25; }
 }
 
-/* Custom scrollbar — thin, minimal, matches dark/light mode */
-::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
+.blink {
+  animation: blink 1s ease-in-out infinite;
 }
 
-::-webkit-scrollbar-track {
-  background: transparent;
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
-::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 2px;
+.marquee-track {
+  animation: marquee 20s linear infinite;
+  will-change: transform;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.4);
+.marquee-track:hover {
+  animation-play-state: paused;
 }
 
-.dark ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
+/* ============================================
+   PROSE OVERRIDES (for writing/[slug].vue)
+   ============================================ */
+.prose {
+  --tw-prose-body: currentColor;
+  --tw-prose-headings: currentColor;
+  --tw-prose-lead: currentColor;
+  --tw-prose-links: currentColor;
+  --tw-prose-bold: currentColor;
+  --tw-prose-counters: currentColor;
+  --tw-prose-bullets: currentColor;
+  --tw-prose-hr: oklch(0 0 0 / 0.1);
+  --tw-prose-quotes: currentColor;
+  --tw-prose-quote-borders: oklch(0 0 0 / 0.2);
+  --tw-prose-captions: currentColor;
+  --tw-prose-code: currentColor;
+  --tw-prose-pre-code: currentColor;
+  --tw-prose-pre-bg: oklch(0 0 0 / 0.05);
+  --tw-prose-th-borders: oklch(0 0 0 / 0.1);
+  --tw-prose-td-borders: oklch(0 0 0 / 0.05);
 }
 
-.dark ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.4);
+.dark .prose {
+  --tw-prose-hr: oklch(1 0 0 / 0.1);
+  --tw-prose-quote-borders: oklch(1 0 0 / 0.2);
+  --tw-prose-pre-bg: oklch(1 0 0 / 0.05);
+  --tw-prose-th-borders: oklch(1 0 0 / 0.1);
+  --tw-prose-td-borders: oklch(1 0 0 / 0.05);
 }
 
-/* Firefox scrollbar */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+/* ============================================
+   PAGE TRANSITIONS
+   ============================================ */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.dark * {
-  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(4px);
 }
 
-/* Focus visible styles — accessible without being intrusive */
-:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 2px;
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-4px);
 }

@@ -1,17 +1,22 @@
 <template>
-  <div class="flex items-center gap-2 w-fit">
-    <span class="relative flex h-2 w-2">
-      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-      <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+  <span
+    class="inline-flex items-center gap-2 px-3 py-1.5 border border-black/10 dark:border-white/10 rounded-full text-black dark:text-white">
+    <!-- Pulsing dot -->
+    <span class="relative flex w-1.5 h-1.5">
+      <span
+        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75" />
+      <span class="relative inline-flex rounded-full w-1.5 h-1.5 bg-green-500" />
     </span>
-    <span class="text-xs text-green-600 dark:text-green-400 font-medium tracking-wide">
-      Available for Freelance & Fulltime
+
+    <!-- Text -->
+    <span class="text-xs tracking-wider">
+      <slot>{{ text }}</slot>
     </span>
-  </div>
+  </span>
 </template>
 
 <script setup lang="ts">
-// Animated availability status badge component
-// Shows a pulsing green dot + availability text
-// Dark mode aware
+defineProps<{
+  text?: string
+}>()
 </script>

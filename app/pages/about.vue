@@ -1,289 +1,300 @@
 <template>
-  <NuxtLayout name="simple">
-    <template #default>
-      <div class="flex flex-col gap-12 mt-10">
+  <div class="w-full">
 
-        <!-- Magazine-style header (full width) -->
-        <div class="flex flex-col gap-6">
-          <!-- Byline label -->
-          <span class="text-[10px] tracking-widest opacity-40">ABOUT THE DESIGNER</span>
+    <!-- ============================================ -->
+    <!-- HERO: page heading                           -->
+    <!-- ============================================ -->
+    <section class="w-full border-b border-black/10 dark:border-white/10 px-6 md:px-12 lg:px-20 py-16 lg:py-24">
+      <h1
+        class="text-5xl md:text-7xl lg:text-[8vw] font-bold leading-none tracking-tighter uppercase"
+        style="font-family: 'Space Mono', monospace">
+        About
+      </h1>
+      <p class="mt-4 text-sm opacity-60 max-w-lg leading-relaxed">
+        Designer, developer, and occasional over-thinker. Based in Cyberjaya, Malaysia.
+      </p>
+    </section>
 
-          <!-- Large name display -->
-          <div class="flex flex-col gap-1">
-            <h1 class="text-4xl leading-none tracking-tight dark:font-light">Khairin</h1>
-            <h1 class="text-4xl leading-none tracking-tight dark:font-light opacity-40">Kamarizal</h1>
+    <!-- ============================================ -->
+    <!-- MAIN CONTENT: 2-col desktop, stacked mobile  -->
+    <!-- ============================================ -->
+    <section class="w-full px-6 md:px-12 lg:px-20 py-12 lg:py-16">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+
+        <!-- LEFT COL: bio + skills + certs -->
+        <div class="flex flex-col gap-12">
+
+          <!-- Bio -->
+          <div>
+            <h2
+              class="text-xs tracking-widest uppercase opacity-40 mb-6"
+              style="font-family: 'Space Mono', monospace">
+              Bio
+            </h2>
+            <div class="flex flex-col gap-4 text-sm leading-relaxed opacity-80">
+              <p>
+                I'm Khairin — a designer and developer with 5+ years of experience
+                building digital products that balance form and function. I believe
+                great software is the result of careful thinking, not just clever code.
+              </p>
+              <p>
+                My work spans product design, front-end engineering, and brand identity.
+                I'm comfortable moving between Figma and the terminal, and I care deeply
+                about the details that make an experience feel right.
+              </p>
+              <p>
+                When I'm not building things, I'm writing about design, reading about
+                systems, or making coffee with too much deliberation.
+              </p>
+            </div>
           </div>
 
-          <!-- Title + location row -->
-          <div class="flex flex-wrap items-center gap-3">
-            <span class="text-sm opacity-70">Creative Designer &amp; Developer</span>
-            <span class="text-xs opacity-30">—</span>
-            <span class="text-xs opacity-50">Cyberjaya, Malaysia</span>
+          <!-- Skills -->
+          <div>
+            <h2
+              class="text-xs tracking-widest uppercase opacity-40 mb-6"
+              style="font-family: 'Space Mono', monospace">
+              Skills
+            </h2>
+            <div class="grid grid-cols-2 gap-px bg-black/10 dark:bg-white/10 border border-black/10 dark:border-white/10">
+              <div
+                v-for="(group, i) in skillGroups"
+                :key="group.category"
+                class="bg-white dark:bg-black p-4">
+                <h3
+                  class="text-xs tracking-widest uppercase opacity-40 mb-3"
+                  style="font-family: 'Space Mono', monospace">
+                  {{ group.category }}
+                </h3>
+                <ul class="flex flex-col gap-1.5">
+                  <li
+                    v-for="skill in group.items"
+                    :key="skill"
+                    class="text-sm opacity-70">
+                    {{ skill }}
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
 
-          <!-- Availability badge -->
-          <div class="flex items-center gap-2 self-start border border-black/10 dark:border-white/10 px-3 py-1.5">
-            <span class="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0"></span>
-            <span class="text-xs opacity-60">Available — Freelance &amp; Fulltime</span>
+          <!-- Certifications -->
+          <div>
+            <h2
+              class="text-xs tracking-widest uppercase opacity-40 mb-6"
+              style="font-family: 'Space Mono', monospace">
+              Education & Certs
+            </h2>
+            <div class="flex flex-col divide-y divide-black/10 dark:divide-white/10 border-t border-black/10 dark:border-white/10">
+              <div
+                v-for="cert in certs"
+                :key="cert.title"
+                class="py-4 flex flex-col gap-1">
+                <span class="text-sm font-medium">{{ cert.title }}</span>
+                <span class="text-xs opacity-50">{{ cert.issuer }} · {{ cert.year }}</span>
+              </div>
+            </div>
           </div>
-
-          <!-- Tagline / quote -->
-          <p class="text-base leading-relaxed dark:font-light max-w-md">
-            I sit at the intersection of visual craft and technical execution — turning ideas into digital experiences that feel both considered and alive.
-          </p>
-
-          <!-- Resume download -->
-          <a
-            href="#"
-            class="self-start text-xs tracking-wider px-4 py-2 border border-black/20 dark:border-white/20 hover:border-black dark:hover:border-white flex items-center gap-1.5 transition-colors duration-150"
-            aria-label="Download resume (coming soon)">
-            <Download :size="12" />
-            <span>Download Resume</span>
-          </a>
         </div>
 
-        <!-- Desktop: 2-column layout. Left: bio info/availability/contact. Right: experience/skills/certs/tools -->
-        <div class="lg:grid lg:grid-cols-2 lg:gap-12">
-
-          <!-- Left column -->
-          <div class="flex flex-col gap-8">
-            <!-- Availability + Local time -->
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-1">
-              <AvailabilityCard />
-              <LocationTime />
-            </div>
-
-            <!-- Currently working on -->
-            <CurrentlyWorking />
-
-            <!-- Get in touch -->
-            <div class="flex flex-col gap-4">
-              <h2 class="text-xs opacity-50 tracking-widest">Get in touch</h2>
-              <ContactCTA />
-              <ContactForm />
-            </div>
-          </div>
-
-          <!-- Right column -->
-          <div class="flex flex-col gap-8 mt-8 lg:mt-0">
-            <!-- Skills -->
-            <div class="flex flex-col gap-4">
-              <h2 class="text-xs opacity-50 tracking-widest">Skills</h2>
-              <SkillGrid :skills="skills" />
-            </div>
-
-            <!-- Experience -->
-            <div class="flex flex-col gap-4">
-              <h2 class="text-xs opacity-50 tracking-widest">Experience</h2>
-              <ExperienceTimeline :items="experienceItems" />
-            </div>
-
-            <!-- Certifications -->
-            <div class="flex flex-col gap-4">
-              <h2 class="text-xs opacity-50 tracking-widest">Certifications</h2>
-              <div class="flex flex-col gap-2">
-                <div
-                  v-for="cert in certifications"
-                  :key="cert"
-                  class="flex items-start gap-2 text-sm opacity-70">
-                  <span class="text-xs opacity-40 mt-0.5">✓</span>
-                  <span>{{ cert }}</span>
+        <!-- RIGHT COL: experience timeline -->
+        <div>
+          <h2
+            class="text-xs tracking-widest uppercase opacity-40 mb-6"
+            style="font-family: 'Space Mono', monospace">
+            Experience
+          </h2>
+          <div class="flex flex-col gap-0 divide-y divide-black/10 dark:divide-white/10 border-t border-black/10 dark:border-white/10">
+            <div
+              v-for="job in experience"
+              :key="`${job.company}-${job.period}`"
+              class="py-6 flex flex-col gap-2">
+              <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
+                <div>
+                  <h3 class="text-sm font-semibold">{{ job.role }}</h3>
+                  <span class="text-sm opacity-60">{{ job.company }}</span>
                 </div>
-              </div>
-            </div>
-
-            <!-- Education -->
-            <div class="flex flex-col gap-4">
-              <h2 class="text-xs opacity-50 tracking-widest">Education</h2>
-              <div class="flex flex-col gap-1">
-                <span class="text-sm font-medium">Diploma, New Media Communication & Contentpreneurship</span>
-                <span class="text-xs opacity-50 tracking-wide">UNIVERSITI TEKNOLOGI MARA (UITM)</span>
-                <span class="text-xs opacity-40 font-mono">July 2019 — January 2022</span>
-              </div>
-            </div>
-
-            <!-- Tools -->
-            <div class="flex flex-col gap-4">
-              <h2 class="text-xs opacity-50 tracking-widest">Tools</h2>
-              <div class="flex flex-wrap gap-1.5">
                 <span
-                  v-for="tool in tools"
-                  :key="tool"
-                  class="text-xs border border-black/20 dark:border-white/20 px-2.5 py-1 opacity-70">
-                  {{ tool }}
+                  class="text-xs tracking-widest opacity-40 shrink-0"
+                  style="font-family: 'Space Mono', monospace">
+                  {{ job.period }}
+                </span>
+              </div>
+              <p class="text-sm opacity-60 leading-relaxed">{{ job.description }}</p>
+              <div class="flex flex-wrap gap-2 mt-1">
+                <span
+                  v-for="tag in job.tags"
+                  :key="tag"
+                  class="text-xs tracking-wide opacity-40 border border-black/10 dark:border-white/10 px-2 py-0.5">
+                  {{ tag }}
                 </span>
               </div>
             </div>
           </div>
-
         </div>
-
       </div>
-    </template>
+    </section>
 
-    <template #footer-actions>
-      <NuxtLink
-        :to="`mailto:${siteConfig.email}`"
-        class="group flex items-center">
-        <div class="flex-none group-hover:flex-1 transition-all duration-300 h-1"></div>
-        <span>Get in touch</span>
-        <div class="flex-1 group-hover:flex-none transition-all duration-300 group-hover:w-2 h-1"></div>
-        <ArrowUpRight class="group-hover:rotate-45 transition-transform duration-300" />
-      </NuxtLink>
-      <NuxtLink
-        :to="siteConfig.social.linkedin"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="group flex items-center">
-        <div class="flex-none group-hover:flex-1 transition-all duration-300 h-1"></div>
-        <span>LinkedIn</span>
-        <div class="flex-1 group-hover:flex-none transition-all duration-300 group-hover:w-2 h-1"></div>
-        <ArrowUpRight class="group-hover:rotate-45 transition-transform duration-300" />
-      </NuxtLink>
-    </template>
-  </NuxtLayout>
+    <!-- ============================================ -->
+    <!-- TOOLS & STACK                                -->
+    <!-- ============================================ -->
+    <section class="w-full border-t border-black/10 dark:border-white/10 px-6 md:px-12 lg:px-20 py-12 lg:py-16">
+      <h2
+        class="text-xs tracking-widest uppercase opacity-40 mb-8"
+        style="font-family: 'Space Mono', monospace">
+        Tools &amp; Stack
+      </h2>
+      <div class="flex flex-col gap-8">
+        <div v-for="group in toolGroups" :key="group.label">
+          <h3
+            class="text-xs tracking-widest uppercase opacity-30 mb-3"
+            style="font-family: 'Space Mono', monospace">
+            {{ group.label }}
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            <ToolBadge
+              v-for="tool in group.tools"
+              :key="tool"
+              :name="tool"
+              :type="group.type" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- MY PROCESS                                   -->
+    <!-- ============================================ -->
+    <section class="w-full border-t border-black/10 dark:border-white/10 px-6 md:px-12 lg:px-20 py-12 lg:py-16">
+      <h2
+        class="text-xs tracking-widest uppercase opacity-40 mb-8"
+        style="font-family: 'Space Mono', monospace">
+        My Process
+      </h2>
+      <div class="max-w-2xl">
+        <ProcessStep
+          v-for="step in processSteps"
+          :key="step.number"
+          :number="step.number"
+          :title="step.title"
+          :description="step.description" />
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- CTA: footer strip                            -->
+    <!-- ============================================ -->
+    <section class="w-full border-t border-black/10 dark:border-white/10 px-6 md:px-12 lg:px-20 py-12">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <p class="text-sm opacity-60">Want to work together or just say hello?</p>
+        <NuxtLink
+          to="/message"
+          class="text-xs tracking-widest uppercase border border-black/20 dark:border-white/20 px-6 py-3 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-200 self-start sm:self-auto"
+          style="font-family: 'Space Mono', monospace">
+          Get in Touch →
+        </NuxtLink>
+      </div>
+    </section>
+
+  </div>
 </template>
 
 <script setup lang="ts">
-import { ArrowUpRight, Download } from "lucide-vue-next";
-
-const siteConfig = useSiteConfig()
+useSeoMeta({
+  title: "About",
+  description:
+    "Designer & developer based in Cyberjaya, Malaysia. 5+ years building thoughtful digital products.",
+});
 
 definePageMeta({
-  layout: false,
+  layout: "simple",
 });
 
-useHead({
-  title: "About — Khairin Kamarizal",
-  meta: [
-    {
-      name: "description",
-      content: "Khairin Kamarizal — Creative Designer & Developer based in Cyberjaya, Malaysia. Senior Graphic Designer at Trustori. Skilled in branding, UI/UX, motion design, and web development.",
-    },
-    {
-      property: "og:title",
-      content: "About — Khairin Kamarizal",
-    },
-    {
-      property: "og:description",
-      content: "Khairin Kamarizal — Creative Designer & Developer based in Cyberjaya, Malaysia. Skilled in branding, UI/UX, motion design, and web development.",
-    },
-  ],
-});
+const processSteps = [
+  {
+    number: '01',
+    title: 'Discover',
+    description: 'Research, brief, and goals. Understanding the problem space before proposing solutions. Asking questions that surface constraints and opportunities.',
+  },
+  {
+    number: '02',
+    title: 'Define',
+    description: 'Strategy and visual direction. Translating research into clear design principles and a creative direction that aligns with the project goals.',
+  },
+  {
+    number: '03',
+    title: 'Design',
+    description: 'Concepts, iteration, and refinement. Exploring multiple directions, testing ideas quickly, and refining toward the strongest solution.',
+  },
+  {
+    number: '04',
+    title: 'Deliver',
+    description: 'Production, handoff, and launch. Building with precision, documenting decisions, and ensuring the implementation matches the intent.',
+  },
+]
 
-const skills = [
-  // Design
-  { name: "Figma", level: "expert", category: "Design" },
-  { name: "Adobe Illustrator", level: "expert", category: "Design" },
-  { name: "Photoshop", level: "expert", category: "Design" },
-  { name: "After Effects", level: "advanced", category: "Design" },
-  { name: "Typography", level: "expert", category: "Design" },
-  { name: "Motion Design", level: "advanced", category: "Design" },
-  // Development
-  { name: "Nuxt/Vue.js", level: "expert", category: "Development" },
-  { name: "Tailwind CSS", level: "expert", category: "Development" },
-  { name: "HTML/CSS", level: "expert", category: "Development" },
-  { name: "Responsive Design", level: "expert", category: "Development" },
-  { name: "Web Development", level: "expert", category: "Development" },
-  // Strategy
-  { name: "Project Management", level: "expert", category: "Strategy" },
-  { name: "Brand Identity", level: "expert", category: "Strategy" },
-  { name: "UI/UX Design", level: "expert", category: "Strategy" },
-  { name: "Creative Direction", level: "advanced", category: "Strategy" },
-];
+const toolGroups = [
+  {
+    label: 'Design',
+    type: 'design' as const,
+    tools: ['Figma', 'Adobe Illustrator', 'Photoshop', 'After Effects'],
+  },
+  {
+    label: 'Development',
+    type: 'dev' as const,
+    tools: ['Nuxt', 'Vue', 'Tailwind', 'TypeScript'],
+  },
+]
 
-const languages = [
-  { name: "English", level: "Full Professional" },
-  { name: "Malay", level: "Native or Bilingual" },
-];
-
-const certifications = [
-  "Full Stack Web Development with Flask",
-  "Adobe Creative Educator Level 2",
-  "Typography: Type in Motion",
-  "AI Appreciate Badge — AI untuk Rakyat",
-  "Adobe Creative Educator Level 1",
-];
-
-const experienceItems = [
+const skillGroups = [
   {
-    role: "Senior Graphic Designer",
-    company: "Trustori",
-    period: "Nov 2025 — Present",
-    location: "Kuala Lumpur, Malaysia",
-    current: true,
-    description: "Leading design work across brand and digital at Trustori. Turn ideas into visuals that actually communicate. Work closely with different teams to shape campaigns, product visuals, and overall brand direction.",
+    category: "Design",
+    items: ["Figma", "Design Systems", "Typography", "Motion"],
   },
   {
-    role: "Creative Designer-Developer",
-    company: "Ahoi Studio",
-    period: "Dec 2017 — Present",
-    location: "Kuala Lumpur, Malaysia",
-    current: true,
-    description: "Take on selected branding and digital projects, supporting startups and independent brands with identity design, visual systems, and digital experiences. Lead concept development, art direction, and brand storytelling.",
+    category: "Engineering",
+    items: ["Vue / Nuxt", "TypeScript", "Node.js", "Tailwind CSS"],
   },
   {
-    role: "Digital Strategist cum Front-End Developer",
-    company: "Horuz Technology",
-    period: "Oct 2024 — Nov 2025",
-    location: "Cyberjaya",
-    current: false,
-    description: "Lead the intersection of strategy, design, and development. Developed HR automation tools including leave management and payslip systems, reducing manual workload by over 100 hours per month.",
+    category: "Tools",
+    items: ["Git", "Docker", "Vercel", "Supabase"],
   },
   {
-    role: "Creative Lead",
-    company: "EFS Worldwide",
-    period: "May 2023 — Oct 2024",
-    location: "Ipoh",
-    current: false,
-    description: "Led creative direction for high-volume custom apparel operation. Oversaw jersey design, print execution, and brand alignment across multiple client accounts.",
-  },
-  {
-    role: "Creative Designer",
-    company: "EFS Worldwide",
-    period: "Mar 2022 — May 2023",
-    location: "Ipoh",
-    current: false,
-    description: "Designed customised sports and corporate jerseys. Produced print-accurate artwork for digital and sublimation processes.",
-  },
-  {
-    role: "Creative Lead & Designer",
-    company: "Zero Float Club",
-    period: "Aug 2023 — Feb 2024",
-    location: "Cyberjaya",
-    current: false,
-    description: "Led creative direction for a wellness startup. Shaped visual identity, campaign strategy, and brand positioning across digital and physical touchpoints.",
-  },
-  {
-    role: "Graphic Designer",
-    company: "Zero Float Club",
-    period: "Aug 2022 — Aug 2023",
-    location: "Cyberjaya",
-    current: false,
-    description: "Contributed to brand visuals, campaign assets, and marketing materials.",
-  },
-  {
-    role: "Graphic Designer",
-    company: "Tarbiah Kreatif",
-    period: "Aug 2021 — Jan 2022",
-    location: "Kuala Terengganu",
-    current: false,
-    description: "Supported creative team in branding, marketing materials, and digital assets.",
+    category: "Soft Skills",
+    items: ["Systems Thinking", "Technical Writing", "Mentoring"],
   },
 ];
 
-const tools = [
-  "Figma",
-  "Adobe Illustrator",
-  "Adobe Photoshop",
-  "After Effects",
-  "VS Code",
-  "Nuxt",
-  "Vue",
-  "Tailwind CSS",
-  "TypeScript",
-  "Git",
-  "Cloudflare",
-  "Notion",
+const certs = [
+  { title: "B.Sc. Computer Science", issuer: "Universiti Putra Malaysia", year: "2019" },
+  { title: "AWS Certified Developer", issuer: "Amazon Web Services", year: "2022" },
+  { title: "Google UX Design Certificate", issuer: "Google / Coursera", year: "2021" },
+];
+
+const experience = [
+  {
+    role: "Senior Product Designer",
+    company: "Acme Corp",
+    period: "2023 — Present",
+    description:
+      "Leading design for core product features, managing the design system, and collaborating with engineering on implementation.",
+    tags: ["Figma", "Vue", "Design Systems"],
+  },
+  {
+    role: "Frontend Engineer",
+    company: "Startup XYZ",
+    period: "2021 — 2023",
+    description:
+      "Built and maintained customer-facing web application. Introduced component library that reduced development time by 40%.",
+    tags: ["Vue", "TypeScript", "Tailwind"],
+  },
+  {
+    role: "UI/UX Designer",
+    company: "Agency ABC",
+    period: "2019 — 2021",
+    description:
+      "Designed digital experiences for clients across fintech, e-commerce, and healthcare verticals.",
+    tags: ["Figma", "Prototyping", "User Research"],
+  },
 ];
 </script>

@@ -1,288 +1,91 @@
 <template>
-  <NuxtLayout name="simple">
-    <template #default>
-      <div class="flex flex-col gap-10 mt-10">
-        <div class="flex flex-col gap-2">
-          <div class="flex items-center justify-between">
-            <h1 class="text-xs opacity-50 tracking-widest">Selected Work</h1>
-            <ClientOnly>
-              <ProjectCount :count="projects.length" />
-            </ClientOnly>
-          </div>
-          <p class="text-2xl leading-tight dark:font-light">
-            Projects spanning brand identity, UI/UX, and digital design.
-          </p>
-        </div>
+  <div class="w-full px-6 md:px-12 lg:px-20 py-12 md:py-16">
+    <!-- Page header with decorative background text -->
+    <div class="relative overflow-hidden">
+      <BackgroundText text="WORK" :opacity="0.04" />
+      <PageHeader
+        label="Portfolio"
+        title="Work"
+        description="A selection of projects spanning branding, motion, and digital design." />
+    </div>
 
-        <WorkStats />
+    <!-- Featured section -->
+    <section class="mt-12 mb-16" aria-label="Featured work">
+      <SectionDivider number="01" title="Featured Work" class="mb-10" />
 
-        <Divider variant="dots" />
+      <div class="grid grid-cols-1 gap-12">
+        <FeaturedProject
+          title="Brand Identity System"
+          category="Branding"
+          year="2024"
+          description="A comprehensive identity system built around geometric forms and typographic precision. Spans print, digital, and environmental applications."
+          :tags="['Identity', 'Print', 'Digital']"
+          href="/work/brand-identity" />
 
-        <!-- Featured projects -->
-        <div v-if="featuredProjects.length" class="flex flex-col gap-3">
-          <SectionLabel label="Featured" variant="numbered" :number="1" />
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            <FeaturedProject
-              v-for="project in featuredProjects"
-              :key="project.title"
-              :title="project.title"
-              :description="project.description"
-              :year="project.year"
-              :tags="project.tags"
-              :url="project.behanceUrl"
-              :category="project.category" />
-          </div>
-        </div>
-
-        <div class="flex flex-col gap-3">
-          <SectionLabel label="All Work" variant="numbered" :number="2" />
-          <div class="flex items-center justify-between gap-4">
-            <ProjectTypeFilter
-              :types="projectTypes"
-              :selected="selectedType"
-              @select="selectedType = $event" />
-            <!-- View toggle -->
-            <div class="flex items-center gap-1 shrink-0">
-              <button
-                type="button"
-                @click="viewMode = 'card'"
-                :aria-pressed="viewMode === 'card'"
-                :class="['p-1.5 border transition-colors duration-150', viewMode === 'card' ? 'border-black dark:border-white' : 'border-transparent opacity-40 hover:opacity-70']"
-                aria-label="Card view">
-                <LayoutGrid class="w-3 h-3" />
-              </button>
-              <button
-                type="button"
-                @click="viewMode = 'list'"
-                :aria-pressed="viewMode === 'list'"
-                :class="['p-1.5 border transition-colors duration-150', viewMode === 'list' ? 'border-black dark:border-white' : 'border-transparent opacity-40 hover:opacity-70']"
-                aria-label="List view">
-                <List class="w-3 h-3" />
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <Divider variant="line" />
-
-        <!-- Card view -->
-        <WorkGrid v-if="viewMode === 'card'" :projects="filteredProjects" />
-
-        <!-- List view -->
-        <div v-else class="flex flex-col gap-0 divide-y divide-black/10 dark:divide-white/10">
-          <WorkListItem
-            v-for="project in filteredProjects"
-            :key="project.title"
-            :title="project.title"
-            :year="project.year"
-            :category="project.category"
-            :url="project.behanceUrl" />
-        </div>
-
-        <!-- Tag cloud -->
-        <TagCloud :tags="tagCounts" @filter="handleTagFilter" />
-
-        <!-- Behance CTA -->
-        <a
-          href="https://be.net/khairinkamarizal"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="self-start text-xs tracking-wider flex items-center gap-1.5 opacity-50 hover:opacity-100 transition-opacity duration-150">
-          <ExternalLink :size="12" />
-          <span>View all on Behance</span>
-        </a>
-
-        <!-- Open to work -->
-        <SectionLabel label="Get in Touch" variant="numbered" :number="3" />
-        <OpenToWork />
+        <FeaturedProject
+          title="Motion Design Toolkit"
+          category="Motion"
+          year="2023"
+          description="A reusable animation framework for product UI — transitions, micro-interactions, and loading states designed with rhythm and intent."
+          :tags="['Motion', 'UI', 'Animation']"
+          href="/work/motion-toolkit" />
       </div>
-    </template>
+    </section>
 
-    <template #footer-actions>
-      <NuxtLink
-        to="https://be.net/khairinkamarizal"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="group flex items-center">
-        <div class="flex-none group-hover:flex-1 transition-all duration-300 h-1"></div>
-        <span>View all on Behance</span>
-        <div class="flex-1 group-hover:flex-none transition-all duration-300 group-hover:w-2 h-1"></div>
-        <ArrowUpRight class="group-hover:rotate-45 transition-transform duration-300" />
-      </NuxtLink>
-    </template>
-  </NuxtLayout>
+    <!-- All work section -->
+    <section aria-label="All work">
+      <SectionDivider number="02" title="All Work" class="mb-10" />
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <WorkCard
+          title="Jersey Collection"
+          year="2024"
+          category="jersey"
+          description="Sport apparel design system featuring bold typography and performance-first aesthetics."
+          :tags="['Apparel', 'Sport', 'Print']" />
+
+        <WorkCard
+          title="Logo Suite"
+          year="2023"
+          category="logo"
+          description="Mark design for a series of startups in the fintech space."
+          :tags="['Logo', 'Identity']" />
+
+        <WorkCard
+          title="Editorial Design"
+          year="2023"
+          category="branding"
+          description="Magazine layout and typographic systems for an independent publication."
+          :tags="['Editorial', 'Print']" />
+
+        <WorkCard
+          title="Product Animation"
+          year="2022"
+          category="motion"
+          description="UI motion language for a B2B SaaS product launch."
+          :tags="['Motion', 'Product']" />
+
+        <WorkCard
+          title="Packaging Design"
+          year="2022"
+          category="branding"
+          description="Retail packaging for a consumer goods brand entering a new market."
+          :tags="['Packaging', 'Print']" />
+
+        <WorkCard
+          title="Type Specimen"
+          year="2021"
+          category="logo"
+          description="Custom lettering and type exploration for an editorial client."
+          :tags="['Type', 'Lettering']" />
+      </div>
+    </section>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { ArrowUpRight, ExternalLink, LayoutGrid, List } from "lucide-vue-next";
-
-definePageMeta({
-  layout: false,
-});
-
-const selectedType = ref('All')
-
-const projectTypes = ['Branding', 'Motion', 'Jersey', 'Logo']
-
-const featuredProjects = computed(() => projects.filter(p => p.featured))
-
-const filteredProjects = computed(() =>
-  selectedType.value === 'All'
-    ? projects
-    : projects.filter(p => p.category === selectedType.value)
-)
-
-const { get: lsGet, set: lsSet } = useLocalStorage()
-const viewMode = ref<'card' | 'list'>('card')
-
-onMounted(() => {
-  viewMode.value = lsGet<'card' | 'list'>('work-view-mode', 'card')
+useSeoMeta({
+  title: 'Work',
+  description: 'A selection of projects spanning branding, motion, and digital design.',
 })
-
-watch(viewMode, (val) => {
-  lsSet('work-view-mode', val)
-})
-
-const tagCounts = computed(() => {
-  const counts: Record<string, number> = {}
-  for (const project of projects) {
-    for (const tag of project.tags) {
-      counts[tag] = (counts[tag] || 0) + 1
-    }
-  }
-  return Object.entries(counts).map(([name, count]) => ({ name, count }))
-})
-
-function handleTagFilter(tag: string) {
-  selectedType.value = 'All'
-}
-
-useHead({
-  title: "Work — Khairinkamarizal",
-  meta: [
-    {
-      name: "description",
-      content: "Selected work and projects",
-    },
-    {
-      property: "og:title",
-      content: "Work — Khairinkamarizal",
-    },
-    {
-      property: "og:description",
-      content: "Selected work and projects spanning brand identity, UI/UX design, and digital experiences.",
-    },
-  ],
-});
-
-const projects = [
-  {
-    title: "FRONTFACE® — Branding & Identity",
-    year: 2024,
-    tags: ["Branding", "Identity"],
-    description: "Brand identity and visual system for FRONTFACE®. A modern and bold approach to brand development.",
-    behanceUrl: "https://www.behance.net/gallery/217073883/FRONTFACE",
-    category: "Branding",
-    featured: true,
-  },
-  {
-    title: "Flavisse Pâtisserie — Brand Identity",
-    year: 2024,
-    tags: ["Branding", "Identity", "Logo"],
-    description: "Brand identity for a French-inspired pastry brand. Elegant and refined visual language.",
-    behanceUrl: "https://www.behance.net/khairinkamarizal",
-    category: "Branding",
-    featured: false,
-  },
-  {
-    title: "Qal Full Swing — Sports Brand Identity",
-    year: 2024,
-    tags: ["Branding", "Sports", "Logo"],
-    description: "Sports brand identity for Qal Full Swing. Dynamic and energetic visual system.",
-    behanceUrl: "https://www.behance.net/khairinkamarizal",
-    category: "Branding",
-    featured: false,
-  },
-  {
-    title: "HighRisk Mal — Streetwear Brand Identity",
-    year: 2024,
-    tags: ["Branding", "Streetwear", "Identity"],
-    description: "Bold streetwear brand identity for HighRisk Mal. Urban and contemporary aesthetic.",
-    behanceUrl: "https://www.behance.net/khairinkamarizal",
-    category: "Branding",
-    featured: false,
-  },
-  {
-    title: "Tempatan Fest 2024 — Stage Motion",
-    year: 2024,
-    tags: ["Motion", "Event", "Design"],
-    description: "Motion graphics for live event stage at Tempatan Fest 2024. Dynamic visuals for festival atmosphere.",
-    behanceUrl: "https://www.behance.net/khairinkamarizal",
-    category: "Motion",
-    featured: false,
-  },
-  {
-    title: "Extravaganza Jersey — Jersey Design",
-    year: 2023,
-    tags: ["Jersey", "Apparel", "Design"],
-    description: "Jersey design for local sports team. Bold graphics and team identity integration.",
-    behanceUrl: "https://www.behance.net/khairinkamarizal",
-    category: "Jersey",
-    featured: false,
-  },
-  {
-    title: "Visions of Saints — Illustration & Branding",
-    year: 2023,
-    tags: ["Illustration", "Branding", "Identity"],
-    description: "Illustration and brand identity for Visions of Saints. Creative storytelling through visual design.",
-    behanceUrl: "https://www.behance.net/khairinkamarizal",
-    category: "Branding",
-    featured: false,
-  },
-  {
-    title: "Mero&Kero — Brand Identity",
-    year: 2023,
-    tags: ["Branding", "Identity", "Logo"],
-    description: "Brand identity for Mero&Kero. Top performer with 4 appreciations. Playful and memorable visual system.",
-    behanceUrl: "https://www.behance.net/khairinkamarizal",
-    category: "Branding",
-    featured: true,
-  },
-  {
-    title: "Valley Machines — Industrial Brand Identity",
-    year: 2023,
-    tags: ["Branding", "Industrial", "Logo"],
-    description: "Industrial brand identity for Valley Machines. Strong and technical visual language.",
-    behanceUrl: "https://www.behance.net/khairinkamarizal",
-    category: "Branding",
-    featured: false,
-  },
-  {
-    title: "Datalyse Logo — Logo Design",
-    year: 2023,
-    tags: ["Logo", "Design", "Identity"],
-    description: "Logo design for Datalyse. Top performer with 5 appreciations. Clean and modern approach.",
-    behanceUrl: "https://www.behance.net/khairinkamarizal",
-    category: "Logo",
-    featured: true,
-  },
-  {
-    title: "Stopa Jersey Design",
-    year: 2022,
-    tags: ["Jersey", "Apparel", "Design"],
-    description: "Jersey design for Stopa. Athletic and contemporary style.",
-    behanceUrl: "https://www.behance.net/khairinkamarizal",
-    category: "Jersey",
-    featured: false,
-  },
-  {
-    title: "University Malaysia Away Jersey",
-    year: 2022,
-    tags: ["Jersey", "Apparel", "University"],
-    description: "University sports jersey design for University Malaysia. Collegiate branding and team spirit.",
-    behanceUrl: "https://www.behance.net/khairinkamarizal",
-    category: "Jersey",
-    featured: false,
-  },
-];
 </script>

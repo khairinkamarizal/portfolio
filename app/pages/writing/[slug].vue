@@ -1,178 +1,185 @@
 <template>
-  <NuxtLayout name="simple">
-    <!-- Reading progress bar -->
-    <template #default>
-      <ClientOnly>
-        <ProgressBar />
-      </ClientOnly>
-      <div class="flex flex-col gap-8 mt-10">
+  <div>
+    <ReadingProgress />
 
-        <!-- Back link -->
+    <article class="w-full px-6 md:px-12 lg:px-20 py-12 lg:py-16">
+      <!-- Back link -->
+      <div class="mb-10">
         <NuxtLink
           to="/writing"
-          class="flex items-center gap-1.5 text-xs opacity-50 hover:opacity-100 transition-opacity duration-200 w-fit">
-          <ArrowLeft class="w-3 h-3" />
-          <span>Writing</span>
+          class="text-xs tracking-widest uppercase opacity-40 hover:opacity-100 transition-opacity duration-200"
+          style="font-family: 'Space Mono', monospace">
+          ← Writing
         </NuxtLink>
-
-        <!-- Post header -->
-        <div class="flex flex-col gap-6" v-if="post">
-          <h1 class="text-3xl md:text-4xl leading-tight dark:font-light">{{ post.title }}</h1>
-          <div class="flex items-center gap-4 flex-wrap">
-            <PostMeta :date="post.date" :reading-time="readingTime" :tags="post.tags" />
-            <ViewCounter :slug="route.params.slug as string" />
-          </div>
-          <!-- Decorative separator -->
-          <div class="w-12 h-px bg-black dark:bg-white opacity-20"></div>
-        </div>
-
-        <!-- Post body — wrapped in prose for @tailwindcss/typography rendering -->
-        <div
-          v-if="post"
-          class="prose prose-sm dark:prose-invert max-w-none
-            prose-headings:font-medium prose-headings:tracking-tight
-            prose-h1:text-xl prose-h2:text-lg prose-h3:text-base
-            prose-p:opacity-70 prose-p:leading-relaxed prose-p:dark:font-light
-            prose-a:underline prose-a:underline-offset-2
-            prose-code:text-sm prose-code:font-mono
-            prose-pre:bg-black/5 dark:prose-pre:bg-white/5 prose-pre:rounded-none
-            prose-blockquote:border-l-2 prose-blockquote:border-black/20 dark:prose-blockquote:border-white/20 prose-blockquote:pl-4 prose-blockquote:opacity-70
-            prose-li:opacity-70">
-          <ContentRenderer :value="post" />
-        </div>
-
-        <!-- Related posts -->
-        <RelatedPosts
-          v-if="post?.tags?.length"
-          :tags="post.tags"
-          :current-slug="route.params.slug as string" />
-
-        <!-- Post navigation -->
-        <PostNavigation
-          :prev-post="prevPost"
-          :next-post="nextPost" />
-
-        <!-- Emoji reactions -->
-        <EmojiReaction :post-slug="route.params.slug as string" />
-
-        <!-- Author bio -->
-        <AuthorCard v-if="post" />
-
-        <!-- Share buttons -->
-        <ClientOnly>
-          <ShareButtons
-            v-if="post"
-            :title="post.title"
-            :url="pageUrl" />
-        </ClientOnly>
-
       </div>
-    </template>
 
-    <template #footer-actions>
-      <NuxtLink
-        to="/writing"
-        class="group flex items-center">
-        <div class="flex-none group-hover:flex-1 transition-all duration-300 h-1"></div>
-        <span>Back to writing</span>
-        <div class="flex-1 group-hover:flex-none transition-all duration-300 group-hover:w-2 h-1"></div>
-        <ArrowUpRight class="group-hover:rotate-45 transition-transform duration-300" />
-      </NuxtLink>
-    </template>
-  </NuxtLayout>
+      <!-- Post header -->
+      <header class="max-w-2xl mb-12 pb-8 border-b border-black/10 dark:border-white/10">
+        <div
+          v-if="post?.tags?.length"
+          class="flex flex-wrap gap-2 mb-4">
+          <span
+            v-for="tag in post.tags"
+            :key="tag"
+            class="text-xs tracking-widest uppercase opacity-40"
+            style="font-family: 'Space Mono', monospace">
+            {{ tag }}
+          </span>
+        </div>
+
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight mb-4">
+          {{ post?.title }}
+        </h1>
+
+        <p v-if="post?.description" class="text-base opacity-60 leading-relaxed mb-6">
+          {{ post?.description }}
+        </p>
+
+        <div class="flex items-center gap-4 text-xs tracking-widest uppercase opacity-40" style="font-family: 'Space Mono', monospace">
+          <time v-if="post?.date">{{ formatDate(post.date) }}</time>
+          <span v-if="post?.readTime">{{ post.readTime }}</span>
+        </div>
+      </header>
+
+      <!-- Prose content -->
+      <div class="prose-content max-w-2xl">
+        <ContentRenderer v-if="post" :value="post" />
+      </div>
+    </article>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { ArrowLeft, ArrowUpRight } from "lucide-vue-next";
-
-definePageMeta({
-  layout: false,
-});
-
-const route = useRoute();
-
-const { data: post } = await useAsyncData("writing-" + route.path, () =>
-  queryCollection("writing").path(route.path).first()
-);
-
-if (!post.value) {
-  throw createError({
-    statusCode: 404,
-    statusMessage: "Post not found",
-    fatal: true,
-  });
-}
-
-// Fetch all posts sorted by date to find prev/next neighbors
-const { data: allPosts } = await useAsyncData("all-writing-nav", () =>
-  queryCollection("writing")
-    .where("draft", "=", false)
-    .order("date", "DESC")
-    .all()
+const route = useRoute()
+const { data: post } = await useAsyncData(
+  `writing-${route.params.slug}`,
+  () => queryContent('writing', route.params.slug as string).findOne()
 )
 
-const currentSlug = route.params.slug as string
-
-const prevPost = computed(() => {
-  if (!allPosts.value) return null
-  const idx = allPosts.value.findIndex(p => p.slug === currentSlug)
-  if (idx < allPosts.value.length - 1) {
-    const p = allPosts.value[idx + 1]
-    return { title: p.title, slug: p.slug }
-  }
-  return null
-})
-
-const nextPost = computed(() => {
-  if (!allPosts.value) return null
-  const idx = allPosts.value.findIndex(p => p.slug === currentSlug)
-  if (idx > 0) {
-    const p = allPosts.value[idx - 1]
-    return { title: p.title, slug: p.slug }
-  }
-  return null
-})
+if (!post.value) {
+  throw createError({ statusCode: 404, statusMessage: 'Post not found' })
+}
 
 useHead({
-  title: computed(() => post.value?.title ? `${post.value.title} — Khairinkamarizal` : "Khairinkamarizal"),
+  title: post.value?.title,
   meta: [
-    {
-      name: "description",
-      content: computed(() => post.value?.description || ""),
-    },
-    {
-      property: "og:title",
-      content: computed(() => post.value?.title ? `${post.value.title} — Khairinkamarizal` : "Khairinkamarizal"),
-    },
-    {
-      property: "og:description",
-      content: computed(() => post.value?.description || ""),
-    },
+    { name: 'description', content: post.value?.description },
   ],
-});
-
-const pageUrl = computed(() => {
-  if (import.meta.client) {
-    return window.location.href
-  }
-  return `https://khairinkamarizal.com/writing/${route.params.slug}`
-})
-
-const readingTime = computed(() => {
-  if (!post.value?.body) return ""
-  // Convert AST body to text by extracting from description and title
-  const content = `${post.value.title || ''} ${post.value.description || ''}`
-  const { text } = useReadingTime(content)
-  return text
 })
 
 function formatDate(dateStr: string): string {
-  if (!dateStr) return "";
-  const date = new Date(dateStr);
-  return date.toLocaleDateString("en-GB", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  return new Date(dateStr).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
 }
 </script>
+
+<style>
+/* Prose typography — scoped globally so it applies to rendered markdown */
+.prose-content {
+  color: inherit;
+}
+
+.prose-content p {
+  font-size: 1.0625rem;
+  line-height: 1.85;
+  margin-bottom: 1.5rem;
+  opacity: 0.85;
+}
+
+.prose-content h2 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.prose-content h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-content ul,
+.prose-content ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.prose-content li {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  opacity: 0.85;
+  margin-bottom: 0.375rem;
+}
+
+.prose-content a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.prose-content a:hover {
+  opacity: 0.6;
+}
+
+.prose-content blockquote {
+  border-left: 2px solid currentColor;
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  opacity: 0.7;
+}
+
+.prose-content code {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.875em;
+  background: rgba(0, 0, 0, 0.06);
+  padding: 0.15em 0.4em;
+  border-radius: 2px;
+}
+
+.dark .prose-content code {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.prose-content pre {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  margin: 1.75rem 0;
+}
+
+.dark .prose-content pre {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.prose-content pre code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+}
+
+.prose-content hr {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin: 2.5rem 0;
+}
+
+.dark .prose-content hr {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+</style>

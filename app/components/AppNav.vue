@@ -1,40 +1,29 @@
 <template>
-  <nav
-    :class="[
-      'flex items-center gap-4',
-      direction === 'vertical' ? 'flex-col items-start gap-6' : 'flex-row flex-wrap',
-    ]">
+  <nav class="flex items-center gap-6" aria-label="Main navigation">
     <NuxtLink
       v-for="link in links"
-      :key="link.to"
-      :to="link.to"
-      class="text-xs tracking-wider transition-opacity duration-200"
-      :class="isActive(link.to) ? 'opacity-100 font-medium' : 'opacity-40 hover:opacity-70'">
-      {{ link.label.toUpperCase() }}
+      :key="link.href"
+      :to="link.href"
+      class="text-xs tracking-wider uppercase font-mono transition-opacity duration-200 text-black dark:text-white"
+      :class="isActive(link.href) ? 'font-bold opacity-100' : 'opacity-40 hover:opacity-70'"
+      style="font-family: 'Space Mono', monospace"
+      :aria-current="isActive(link.href) ? 'page' : undefined">
+      {{ link.label }}
     </NuxtLink>
   </nav>
 </template>
 
 <script setup lang="ts">
-const route = useRoute();
-
-defineProps<{
-  direction?: 'horizontal' | 'vertical'
-}>()
+const route = useRoute()
 
 const links = [
-  { to: "/", label: "Home" },
-  { to: "/work", label: "Work" },
-  { to: "/about", label: "About" },
-  { to: "/writing", label: "Writing" },
-  { to: "/message", label: "Message" },
-  { to: "/brutalist", label: "Brutalist" },
-];
+  { label: 'Work', href: '/work' },
+  { label: 'Writing', href: '/writing' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
+]
 
-function isActive(path: string): boolean {
-  if (path === "/") {
-    return route.path === "/";
-  }
-  return route.path.startsWith(path);
+function isActive(href: string): boolean {
+  return route.path === href || route.path.startsWith(href + '/')
 }
 </script>

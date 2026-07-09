@@ -1,55 +1,40 @@
 <template>
-  <div class="flex flex-col gap-6 p-6 border border-black/10 dark:border-white/10 text-center items-center">
-    <!-- Headline -->
-    <div class="flex flex-col gap-2">
-      <h2 class="text-2xl leading-tight dark:font-light">Let's Build Something</h2>
-      <p class="text-sm opacity-60 leading-relaxed dark:font-light max-w-sm">
-        Open to freelance work in branding and web, and exploring full-time roles with product teams that care about craft.
-      </p>
+  <section class="w-full px-6 md:px-12 lg:px-20 py-16 md:py-24 border-t border-black/10 dark:border-white/10">
+    <!-- Eyebrow -->
+    <p
+      class="text-xs tracking-widest uppercase opacity-40 mb-6 font-mono text-black dark:text-white"
+      style="font-family: 'Space Mono', monospace">
+      Let's Talk
+    </p>
+
+    <!-- Large headline -->
+    <h2 class="text-3xl md:text-4xl font-bold leading-tight text-black dark:text-white mb-4 max-w-2xl">
+      Have a project in mind?
+    </h2>
+
+    <!-- Sub-text -->
+    <p class="text-sm opacity-60 leading-relaxed max-w-md text-black dark:text-white mb-10">
+      Whether it's a brand identity, a motion project, or something entirely new — I'm always open to a conversation.
+    </p>
+
+    <!-- Links -->
+    <div class="flex items-center gap-4 flex-wrap">
+      <a
+        href="mailto:hello@example.com"
+        class="text-xs tracking-widest uppercase font-mono border border-black dark:border-white px-5 py-3 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-200 text-black dark:text-white"
+        style="font-family: 'Space Mono', monospace">
+        Send Email →
+      </a>
+      <NuxtLink
+        to="/about"
+        class="text-xs tracking-widest uppercase font-mono opacity-40 hover:opacity-100 transition-opacity duration-200 text-black dark:text-white"
+        style="font-family: 'Space Mono', monospace">
+        Learn More
+      </NuxtLink>
     </div>
-
-    <!-- Decorative line -->
-    <div class="w-8 h-px bg-black dark:bg-white opacity-20"></div>
-
-    <!-- Email CTA -->
-    <a
-      href="mailto:khairinkamarizal@gmail.com"
-      class="text-sm tracking-wider px-6 py-3 border border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-150">
-      khairinkamarizal@gmail.com
-    </a>
-
-    <!-- Social links -->
-    <div class="flex items-center gap-6">
-      <a
-        href="https://be.net/khairinkamarizal"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="text-xs tracking-widest opacity-40 hover:opacity-100 transition-opacity duration-150">
-        BEHANCE
-      </a>
-      <a
-        href="https://linkedin.com/in/khairinkamarizal"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="text-xs tracking-widest opacity-40 hover:opacity-100 transition-opacity duration-150">
-        LINKEDIN
-      </a>
-      <a
-        href="https://github.com/khairinkamarizal"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="text-xs tracking-widest opacity-40 hover:opacity-100 transition-opacity duration-150">
-        GITHUB
-      </a>
-    </div>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
-/**
- * ContactCTA — call-to-action section for contact.
- * Shows headline, subtext about open-to-work, email link, Behance link, LinkedIn link.
- * Bold, centered design with subtle border.
- * Used on the about page above the ContactForm.
- */
+// No props — static CTA section
 </script>

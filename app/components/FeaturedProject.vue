@@ -1,62 +1,79 @@
 <template>
-  <a
-    :href="url"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="group flex flex-col gap-0 border border-black/10 dark:border-white/10 hover:border-black dark:hover:border-white transition-all duration-200 overflow-hidden">
-
-    <!-- Full-width thumbnail -->
-    <div class="w-full overflow-hidden">
+  <article class="group w-full">
+    <!-- Thumbnail -->
+    <div class="w-full aspect-[16/9] overflow-hidden bg-black/5 dark:bg-white/5 mb-5">
       <img
-        v-if="image"
-        :src="image"
+        v-if="thumbnail"
+        :src="thumbnail"
         :alt="title"
-        class="w-full object-cover aspect-video group-hover:scale-[1.02] transition-transform duration-300" />
+        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
       <ProjectThumbnail
         v-else
-        :title="title"
         :category="category"
-        :year="year" />
+        :title="title"
+        class="w-full h-full transition-transform duration-700 group-hover:scale-105" />
     </div>
 
     <!-- Content -->
-    <div class="flex flex-col gap-4 p-5">
-      <div class="flex items-start justify-between gap-4">
-        <span class="text-[10px] tracking-widest opacity-40">{{ category.toUpperCase() }}</span>
-        <span class="text-[10px] font-mono opacity-40">{{ year }}</span>
-      </div>
-      <div class="flex flex-col gap-2">
-        <h2 class="text-xl leading-tight dark:font-light group-hover:opacity-70 transition-opacity duration-200">{{ title }}</h2>
-        <p class="text-sm opacity-60 leading-relaxed dark:font-light">{{ description }}</p>
-      </div>
-      <div class="flex items-center justify-between mt-1">
-        <div class="flex flex-wrap gap-1.5">
+    <div class="flex flex-col gap-3">
+      <!-- Eyebrow category -->
+      <p
+        v-if="category"
+        class="text-xs tracking-widest uppercase opacity-40 font-mono text-black dark:text-white"
+        style="font-family: 'Space Mono', monospace">
+        {{ category }}
+      </p>
+
+      <!-- Title -->
+      <h2 class="text-2xl md:text-3xl font-bold leading-tight text-black dark:text-white">
+        {{ title }}
+      </h2>
+
+      <!-- Description -->
+      <p
+        v-if="description"
+        class="text-sm opacity-60 leading-relaxed max-w-2xl text-black dark:text-white">
+        {{ description }}
+      </p>
+
+      <!-- Year + tags + CTA row -->
+      <div class="flex items-center justify-between flex-wrap gap-3 pt-1">
+        <div class="flex items-center gap-3 flex-wrap">
+          <span
+            v-if="year"
+            class="text-xs font-mono opacity-40 text-black dark:text-white"
+            style="font-family: 'Space Mono', monospace">
+            {{ year }}
+          </span>
           <span
             v-for="tag in tags"
             :key="tag"
-            class="text-[10px] tracking-wider border border-black/20 dark:border-white/20 px-2 py-0.5">
-            {{ tag.toUpperCase() }}
+            class="text-[10px] tracking-wide uppercase px-2 py-0.5 border border-black/15 dark:border-white/15 text-black/60 dark:text-white/60">
+            {{ tag }}
           </span>
         </div>
-        <span class="text-[10px] tracking-wider flex items-center gap-1 opacity-50 group-hover:opacity-100 transition-opacity duration-200 shrink-0">
-          <span>View Project</span>
-          <ArrowUpRight class="w-3 h-3 group-hover:rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200" />
-        </span>
+
+        <!-- CTA -->
+        <NuxtLink
+          v-if="href"
+          :to="href"
+          class="relative text-xs tracking-widest uppercase font-mono text-black dark:text-white after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-current after:transition-all after:duration-300 hover:after:w-full"
+          style="font-family: 'Space Mono', monospace">
+          View Project →
+        </NuxtLink>
       </div>
     </div>
-  </a>
+  </article>
 </template>
 
 <script setup lang="ts">
-import { ArrowUpRight } from 'lucide-vue-next'
-
 defineProps<{
   title: string
-  description: string
-  year: string | number
-  tags: string[]
-  url: string
-  category: string
-  image?: string
+  description?: string
+  category?: string
+  year?: string | number
+  tags?: string[]
+  thumbnail?: string
+  href?: string
 }>()
 </script>

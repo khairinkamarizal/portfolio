@@ -1,57 +1,45 @@
 <template>
-  <div class="flex flex-col gap-4 p-5 border border-black/10 dark:border-white/10">
-    <!-- Author row -->
-    <div class="flex items-center gap-4">
-      <!-- Avatar -->
+  <div class="flex gap-4 items-start">
+    <!-- Photo: square, editorial -->
+    <div class="w-12 h-12 shrink-0 overflow-hidden bg-black/10 dark:bg-white/10">
       <img
-        src="/assets/dp.webp"
-        alt="Khairin Kamarizal"
-        width="48"
-        height="48"
-        class="w-12 h-12 object-cover grayscale" />
-      <!-- Name + title -->
-      <div class="flex flex-col gap-0.5">
-        <span class="text-sm font-medium">Khairin Kamarizal</span>
-        <span class="text-xs opacity-50">Creative Designer &amp; Developer</span>
+        v-if="photo"
+        :src="photo"
+        :alt="name"
+        class="w-full h-full object-cover" />
+      <div
+        v-else
+        class="w-full h-full flex items-center justify-center text-sm font-bold text-black/40 dark:text-white/40">
+        {{ initial }}
       </div>
     </div>
 
-    <!-- Short bio -->
-    <p class="text-xs opacity-60 leading-relaxed dark:font-light">
-      Ambitious and versatile creative designer skilled in branding, UI/UX, motion content and web development. Passionate about crafting designs that communicate clearly, inspire action and connect with people.
-    </p>
-
-    <!-- Social links -->
-    <div class="flex items-center gap-4">
-      <a
-        href="https://instagram.com/khairinkamarizal"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="text-[11px] opacity-40 hover:opacity-100 transition-opacity duration-150 tracking-wider">
-        INSTAGRAM
-      </a>
-      <a
-        href="https://be.net/khairinkamarizal"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="text-[11px] opacity-40 hover:opacity-100 transition-opacity duration-150 tracking-wider">
-        BEHANCE
-      </a>
-      <a
-        href="https://linkedin.com/in/khairinkamarizal"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="text-[11px] opacity-40 hover:opacity-100 transition-opacity duration-150 tracking-wider">
-        LINKEDIN
-      </a>
+    <!-- Text -->
+    <div class="flex-1 min-w-0">
+      <p class="text-sm font-bold text-black dark:text-white leading-tight">
+        {{ name }}
+      </p>
+      <p
+        v-if="title"
+        class="text-xs opacity-50 text-black dark:text-white mt-0.5">
+        {{ title }}
+      </p>
+      <p
+        v-if="bio"
+        class="text-xs opacity-60 leading-relaxed text-black dark:text-white mt-2">
+        {{ bio }}
+      </p>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-/**
- * AuthorCard — author bio card for the bottom of writing posts.
- * Shows avatar, name, title, short bio, and social links.
- * Uses /assets/dp.webp for the avatar.
- */
+const props = defineProps<{
+  name: string
+  title?: string
+  bio?: string
+  photo?: string
+}>()
+
+const initial = computed(() => props.name?.[0]?.toUpperCase() ?? '?')
 </script>

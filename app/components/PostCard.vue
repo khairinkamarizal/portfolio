@@ -1,25 +1,52 @@
 <template>
-  <NuxtLink
-    :to="`/writing/${slug}`"
-    class="group flex flex-col gap-1.5 py-5 first:pt-0 hover:opacity-70 transition-opacity duration-200 lg:border-b lg:border-black/10 lg:dark:border-white/10 lg:pb-6">
-    <h2 class="text-sm font-medium leading-snug">{{ title }}</h2>
-    <p class="text-sm opacity-60 leading-relaxed dark:font-light line-clamp-2">{{ description }}</p>
-    <PostMeta :date="date" :reading-time="readingTime" :tags="tags" class="mt-0.5" />
-  </NuxtLink>
+  <article
+    class="group w-full border-b border-black/10 dark:border-white/10 py-6 hover:border-black/30 dark:hover:border-white/30 transition-colors duration-200">
+    <!-- Date -->
+    <p
+      class="text-xs font-mono opacity-40 mb-2 text-black dark:text-white"
+      style="font-family: 'Space Mono', monospace">
+      {{ date }}
+    </p>
+
+    <!-- Title -->
+    <h2
+      class="text-xl font-bold leading-tight mb-2 text-black dark:text-white group-hover:opacity-70 transition-opacity duration-200">
+      {{ title }}
+    </h2>
+
+    <!-- Description -->
+    <p
+      v-if="description"
+      class="text-sm opacity-60 line-clamp-2 leading-relaxed mb-3 text-black dark:text-white">
+      {{ description }}
+    </p>
+
+    <!-- Footer: tags + reading time -->
+    <div class="flex items-center gap-3 flex-wrap">
+      <span
+        v-for="tag in tags"
+        :key="tag"
+        class="text-xs opacity-40 text-black dark:text-white"
+        style="font-family: 'Space Mono', monospace">
+        #{{ tag }}
+      </span>
+      <span
+        v-if="readingTime"
+        class="text-xs opacity-40 ml-auto text-black dark:text-white"
+        style="font-family: 'Space Mono', monospace">
+        {{ readingTime }} min read
+      </span>
+    </div>
+  </article>
 </template>
 
 <script setup lang="ts">
-/**
- * PostCard — compact post list item.
- * Works in both single-column list (divided by parent) and 2-column grid contexts.
- * In grid context (lg:grid-cols-2), each card gets its own bottom border.
- */
 defineProps<{
   title: string
-  description: string
   date: string
+  description?: string
   tags?: string[]
-  slug: string
-  readingTime?: string
+  readingTime?: number
+  slug?: string
 }>()
 </script>

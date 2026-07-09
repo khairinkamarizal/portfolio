@@ -1,63 +1,63 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  compatibilityDate: "2024-11-01",
+
+  // Nuxt 4 app directory structure
+  future: {
+    compatibilityVersion: 4,
+  },
+
+  // Global CSS
+  css: ["~/assets/css/main.css"],
+
+  // Modules
   modules: [
-    "@nuxt/content",
-    "@nuxt/image",
-    "@nuxtjs/color-mode",
-    "@nuxtjs/google-fonts",
     "@nuxtjs/tailwindcss",
+    "@nuxtjs/color-mode",
+    "@nuxt/content",
   ],
-  css: [
-    "~/assets/css/main.css",
-  ],
-  experimental: {
-    payloadExtraction: false,
-  },
-  app: {
-    head: {
-      link: [
-        { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
-        { rel: "canonical", href: "https://khair.ink" },
-      ],
-      meta: [
-        { property: "og:site_name", content: "Khairinkamarizal" },
-        { property: "og:type", content: "website" },
-        { property: "og:url", content: "https://khair.ink" },
-        { name: "twitter:card", content: "summary" },
-        { name: "twitter:creator", content: "@khairinkamarizal" },
-      ],
-    },
-  },
+
+  // Color mode config (dark mode via class)
   colorMode: {
     classSuffix: "",
     preference: "system",
     fallback: "light",
   },
-  googleFonts: {
-    families: {
-      "Inter Tight": "100..900",
-      "Space Mono": [400, 700],
-    },
-  },
+
+  // Tailwind config
   tailwindcss: {
-    config: {
-      darkMode: "class",
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Inter Tight"', "sans-serif"],
-          },
+    cssPath: "~/assets/css/main.css",
+    configPath: "tailwind.config.ts",
+  },
+
+  // App head defaults
+  app: {
+    head: {
+      htmlAttrs: { lang: "en" },
+      meta: [
+        { charset: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { name: "theme-color", content: "#ffffff", media: "(prefers-color-scheme: light)" },
+        { name: "theme-color", content: "#000000", media: "(prefers-color-scheme: dark)" },
+      ],
+      link: [
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        {
+          rel: "preconnect",
+          href: "https://fonts.gstatic.com",
+          crossorigin: "",
         },
-      },
-      plugins: [require("@tailwindcss/typography")],
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap",
+        },
+      ],
     },
+    // Page transitions
+    pageTransition: { name: "page", mode: "out-in" },
+    layoutTransition: { name: "page", mode: "out-in" },
   },
-  devtools: { enabled: false },
-  runtimeConfig: {
-    geminiApiKey: process.env.GEMINI_API_KEY || "",
-  },
-  nitro: {
-    preset: "cloudflare_module",
-  },
-  compatibilityDate: "2024-11-01",
+
+  // Dev tools
+  devtools: { enabled: true },
 });

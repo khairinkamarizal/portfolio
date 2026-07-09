@@ -1,50 +1,61 @@
 <template>
-  <a
-    :href="url"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="group flex flex-col gap-0 border border-black/10 dark:border-white/10 hover:border-black dark:hover:border-white transition-all duration-200 overflow-hidden h-full">
-
-    <!-- Thumbnail area: consistent aspect ratio in grid -->
-    <div v-if="thumbnail || image" class="w-full overflow-hidden shrink-0">
+  <article
+    class="group border border-black/10 dark:border-white/10 hover:border-black/30 dark:hover:border-white/30 transition-all duration-300 hover:shadow-lg dark:hover:shadow-white/5 bg-white dark:bg-black">
+    <!-- Thumbnail -->
+    <div class="w-full aspect-[4/3] overflow-hidden bg-black/5 dark:bg-white/5">
       <img
-        v-if="image"
-        :src="image"
+        v-if="thumbnail"
+        :src="thumbnail"
         :alt="title"
-        class="w-full object-cover aspect-video group-hover:scale-[1.02] transition-transform duration-300" />
+        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
       <ProjectThumbnail
         v-else
+        :category="category"
         :title="title"
-        :category="category || 'default'"
-        :year="year" />
+        class="w-full h-full transition-transform duration-500 group-hover:scale-105" />
     </div>
 
-    <!-- Text content: fills remaining height -->
-    <div class="flex flex-col gap-2 p-4 flex-1">
-      <div class="flex flex-row justify-between items-start gap-4">
-        <h2 class="text-sm font-medium leading-snug">{{ title }}</h2>
-        <div class="flex items-center gap-1 shrink-0">
-          <span class="text-xs opacity-50">{{ year }}</span>
-          <ArrowUpRight class="w-3.5 h-3.5 opacity-40 group-hover:opacity-100 group-hover:rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200" />
-        </div>
+    <!-- Content -->
+    <div class="p-4 md:p-5">
+      <!-- Title + Year row -->
+      <div class="flex items-start justify-between gap-2 mb-2">
+        <h3 class="text-lg font-bold leading-tight text-black dark:text-white">
+          {{ title }}
+        </h3>
+        <span
+          class="text-xs font-mono opacity-40 shrink-0 mt-0.5 text-black dark:text-white"
+          style="font-family: 'Space Mono', monospace">
+          {{ year }}
+        </span>
       </div>
-      <p class="text-xs opacity-60 leading-relaxed dark:font-light line-clamp-2">{{ description }}</p>
-      <TagList v-if="tags?.length" :tags="tags" size="sm" class="mt-auto pt-2" />
+
+      <!-- Description -->
+      <p
+        v-if="description"
+        class="text-sm opacity-60 line-clamp-2 leading-relaxed mb-3 text-black dark:text-white">
+        {{ description }}
+      </p>
+
+      <!-- Tags -->
+      <div v-if="tags && tags.length" class="flex flex-wrap gap-1.5">
+        <span
+          v-for="tag in tags"
+          :key="tag"
+          class="text-[10px] tracking-wide uppercase px-2 py-0.5 border border-black/15 dark:border-white/15 text-black/60 dark:text-white/60">
+          {{ tag }}
+        </span>
+      </div>
     </div>
-  </a>
+  </article>
 </template>
 
 <script setup lang="ts">
-import { ArrowUpRight } from "lucide-vue-next"
-
 defineProps<{
   title: string
-  year: string | number
+  year?: string | number
+  description?: string
   tags?: string[]
-  description: string
-  url: string
-  thumbnail?: boolean
-  image?: string
+  thumbnail?: string
   category?: string
 }>()
 </script>

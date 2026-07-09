@@ -1,92 +1,64 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+All notable changes to khair.ink are documented here.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
+## [0.3.0] — 2026-07-08
 
-## [0.2.0] - 2026-07-09
+### Overview
+Full micro-interaction pass, visual polish, new UI components, and three new writing posts. Establishes the complete component library for the portfolio.
 
-### Added
+### New Components
+- **HoverUnderline** — CSS-only animated underline that slides in from left on hover
+- **RevealOnScroll** — IntersectionObserver-based fade+slide reveal, animates once
+- **TextSplit** — Character or word stagger animation using CSS custom property delays
+- **MagneticButton** — JS mouse-tracking magnetic attraction effect, desktop only
+- **GlitchText** — Hover-triggered CSS clip-path glitch effect, three intensity levels
+- **NumberedList** — Editorial magazine-style numbered list with large monospace numbers
+- **Blockquote** — Styled blockquote with large quotation mark, for use in MDC posts
+- **ReadingProgress** — Fixed thin top bar reading progress indicator (black/white)
+- **ImageCaption** — Image with micro-typography caption for writing posts
+- **TagPill** — Standalone tag pill with active/inactive states and size variants
+- **TagList** — Tag list using TagPill with active state management and click events
+- **ProjectMeta** — Compact year · category · tags metadata row for work cards
+- **EmptyState** — Reusable centered empty state with optional icon
+- **ToolBadge** — Tool/technology badge with design/dev/other type variants
+- **Testimonial** — Quote card with large quotation mark and attribution footer
+- **ProcessStep** — Design process step with large monospace number and description
+- **BackgroundText** — Decorative large background text at 20vw scale
+- **GridLines** — CSS-only decorative vertical grid lines, fixed, pointer-events-none
 
-#### Content
-- 7 new writing posts: Figma to Code Workflow, Building a Brutalist Critique Tool, Real-time Guestbook with Durable Objects, UI/UX Design Scene in Malaysia, Color Theory for Web Designers, Accessibility in Web Design, Being a Freelance Designer-Developer in Malaysia
+### Page Updates
+- **index.vue** — Wrapped stats, featured work, and writing sections in RevealOnScroll; hero name uses TextSplit character animation
+- **writing/index.vue** — Empty state replaced with EmptyState component
+- **writing/[slug].vue** — Added ReadingProgress; improved prose typography with larger line-height, better code block styling
+- **about.vue** — Added Tools & Stack section (ToolBadge) and My Process section (ProcessStep)
+- **work.vue** — Added BackgroundText "WORK" as decorative hero background element
 
-#### Pages
-- **Home** — Latest writing section showing 3 most recent posts fetched from content collection
-- **Home** — Selected work section showing 3 featured projects
-- **Work** — WorkStats component displaying project count, years experience, and technology count
+### Layout Updates
+- **simple.vue** — Added GridLines as decorative background layer for editorial feel
 
-#### Components
-- `TagList` — reusable tag list with size, clickable, selectedTag, and onTagClick props
-- `RelatedPosts` — shows up to 3 posts sharing tags with the current post, excludes current slug
-- `PostNavigation` — previous/next post links at the bottom of each post
-- `WorkStats` — hardcoded fun stats: projects, years experience, technologies
-- `CurrentlyWorking` — shows current project, learning, and reading
+### Content
+- **portfolio-design-decisions.md** — Why full-bleed, why Space Mono, why minimal palette, the editorial approach (~700 words)
+- **balancing-design-dev.md** — Thoughts on being a hybrid designer-developer (~600 words)
+- **visual-hierarchy-principles.md** — Scale, contrast, weight, spacing — core hierarchy principles (~700 words)
 
-#### Composables
-- `useSiteConfig` — central site config constants: name, URL, description, author, email, social links
-- `useTheme` — wraps `@nuxtjs/color-mode`, exposes `isDark`, `isLight`, `toggleTheme`, `setTheme`
+---
 
-#### API
-- `GET /api/health` — health check endpoint returning status and timestamp
-- `POST /api/contact` — contact form endpoint with server-side validation
+## [0.2.0] — 2026-07-07
 
-### Changed
-- `PostCard` — tags now rendered via `TagList` component
-- `WorkCard` — tags now rendered via `TagList` component
-- `ContactForm` — wired up to `/api/contact` with success and error states
-- `ColorToggle` — refactored to use `useTheme` composable
-- `about.vue` — email and social links sourced from `useSiteConfig`; added `CurrentlyWorking` section
-- `writing/[slug].vue` — added `RelatedPosts` and `PostNavigation` at bottom of each post
-- `work.vue` — added `WorkStats` at top of page
-- `nuxt.config.ts` — added canonical link tag and `twitter:creator` meta tag
+### Overview
+Full-bleed layout redesign. Rebuilt the layout system from the ground up with a sticky header and newspaper-style typographic hierarchy.
 
+### Changes
+- **simple.vue** — Full-bleed rewrite with sticky header, backdrop blur, clock, color toggle, and mobile menu
+- **AppNav** — Redesigned for sticky header with mobile prop and close emit
+- **MobileMenu** — New hamburger component with route-aware close
+- **SectionLabel** — Redesigned as newspaper-style section header
+- **PageHeader** — Strong typographic hierarchy with label + title + description
 
+---
 
-### Added
+## [0.1.0] — 2026-07-06
 
-#### Pages
-- **Home** (`/`) — hero section with animated tagline, featured work preview, and social links
-- **About** (`/about`) — bio, skills by category, experience timeline, tools list
-- **Work** (`/work`) — selected projects with tags, descriptions, and Behance links
-- **Writing** (`/writing`) — blog index with tag filtering and reading time estimates
-- **Writing post** (`/writing/[slug]`) — full post view with prose styling and metadata
-- **Message** (`/message`) — AI-powered message/contact interface via Gemini API
-- **Brutalist** (`/brutalist`) — experimental brutalist design page
-
-#### Components
-- `AppLogo` — SVG logo with hover animation
-- `AppNav` — main navigation with active state
-- `ColorToggle` — dark/light mode toggle button
-- `PageHeader` — reusable page title + description block
-- `PostCard` — writing list item with date, tags, reading time
-- `SkillBadge` — pill badge for skill tags
-- `WorkCard` — project list item with year, tags, description, external link
-- `NewsletterSignup` — email subscribe form (UI only)
-- `CopyButton` — clipboard copy button with feedback state
-
-#### Layout
-- `simple.vue` — base layout with header, nav, footer slot, local time display
-
-#### SEO & Meta
-- Open Graph tags on all pages
-- Twitter card meta
-- Canonical URL configured
-- Favicon (SVG)
-
-#### Accessibility
-- Skip to content link for keyboard users
-- ARIA labels on header, nav, interactive elements
-- Semantic HTML throughout
-- Focus-visible styles
-
-#### Content
-- `@nuxt/content` v3 integration with writing collection schema
-- Markdown rendering with prose typography classes
-
-#### Infrastructure
-- Nuxt 4 with Cloudflare Pages deployment (`cloudflare_module` preset)
-- `@nuxtjs/color-mode` with system preference detection
-- `@nuxtjs/google-fonts` — Inter Tight + Space Mono
-- `@nuxtjs/tailwindcss` with dark mode class strategy
-- Runtime config for Gemini API key
+### Overview
+Initial commit. Project scaffolding with Nuxt 4, Tailwind CSS, Space Mono + Inter Tight typography, black/white design system.
