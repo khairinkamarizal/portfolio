@@ -231,6 +231,11 @@
 
   .hover-dim { @apply hover:opacity-60 transition-opacity duration-150; }
   .hover-bright { @apply opacity-60 hover:opacity-100 transition-opacity duration-150; }
+
+  .full-bleed {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+  }
 }
 
 /* ============================================
