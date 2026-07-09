@@ -97,7 +97,7 @@
 
         <!-- RIGHT COL: experience timeline -->
         <RevealOnScroll variant="fade-left" :delay="50">
-          <div>
+          <div class="lg:border-l border-black/8 dark:border-white/8 lg:pl-20">
             <h2 class="mono-label mb-4">
               Experience
             </h2>
