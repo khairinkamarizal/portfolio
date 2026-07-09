@@ -12,9 +12,11 @@
           class="text-4xl md:text-6xl lg:text-7xl font-bold leading-none uppercase font-mono tracking-[-0.04em]">
           About
         </h1>
-        <p class="mt-4 text-sm opacity-60 max-w-lg leading-relaxed text-balance">
-          Designer, developer, and deliberate craftsperson. Cyberjaya, Malaysia.
-        </p>
+        <FadeText :delay="150">
+          <p class="mt-4 text-sm opacity-60 max-w-lg leading-relaxed text-balance">
+            Designer, developer, and deliberate craftsperson. Cyberjaya, Malaysia.
+          </p>
+        </FadeText>
       </section>
     </RevealOnScroll>
 
