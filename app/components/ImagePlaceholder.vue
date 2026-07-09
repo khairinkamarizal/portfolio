@@ -7,12 +7,12 @@
     class="border border-black/10 dark:border-white/10">
     <!-- Geometric pattern background -->
     <defs>
-      <pattern id="grid" :width="20" :height="20" patternUnits="userSpaceOnUse">
+      <pattern :id="patternId" :width="20" :height="20" patternUnits="userSpaceOnUse">
         <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.1" />
       </pattern>
     </defs>
     <rect :width="width" :height="height" fill="currentColor" opacity="0.02" />
-    <rect :width="width" :height="height" fill="url(#grid)" />
+    <rect :width="width" :height="height" :fill="'url(#' + patternId + ')'" />
     <!-- Diagonal lines -->
     <line x1="0" y1="0" :x2="width" :y2="height" stroke="currentColor" stroke-width="0.5" opacity="0.1" />
     <line :x1="width" y1="0" x2="0" :y2="height" stroke="currentColor" stroke-width="0.5" opacity="0.1" />
@@ -37,4 +37,6 @@ defineProps<{
   height: number
   label?: string
 }>()
+
+const patternId = 'grid-' + Math.random().toString(36).slice(2, 8)
 </script>
