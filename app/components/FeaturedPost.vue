@@ -29,14 +29,15 @@
         <TagList v-if="tags?.length" :tags="tags" size="sm" />
         <span class="text-xs opacity-40">{{ formattedDate }}</span>
       </div>
-      <span class="text-xs tracking-wider opacity-60 group-hover:opacity-100 transition-opacity duration-200 shrink-0">
-        Read →
+      <span class="text-xs tracking-wider opacity-60 group-hover:opacity-100 transition-opacity duration-200 shrink-0 flex items-center">
+        <span>Read</span><ArrowRight class="w-3 h-3 ml-1" aria-hidden="true" />
       </span>
     </div>
   </NuxtLink>
 </template>
 
 <script setup lang="ts">
+import { ArrowRight } from 'lucide-vue-next'
 /**
  * FeaturedPost — hero/pinned post card, larger than PostCard.
  * Props: title, description, date, tags, slug, readingTime
