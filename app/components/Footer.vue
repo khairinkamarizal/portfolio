@@ -58,6 +58,15 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * Footer — site-wide footer component.
+ *
+ * Renders a three-column layout with the site logo and tagline, primary
+ * navigation links, and social/contact links. A full-width copyright row
+ * spans all columns at the bottom. Adapts to a single-column stack on mobile.
+ *
+ * @example <Footer />
+ */
 import { computed } from "vue";
 
 const currentYear = computed(() => new Date().getFullYear());
