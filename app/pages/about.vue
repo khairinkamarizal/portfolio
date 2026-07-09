@@ -79,6 +79,7 @@
         <!-- Get in touch -->
         <div class="flex flex-col gap-4">
           <h2 class="text-xs opacity-50 tracking-widest">Get in touch</h2>
+          <ContactCTA />
           <ContactForm />
         </div>
 
