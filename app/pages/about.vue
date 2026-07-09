@@ -55,7 +55,7 @@
           <RevealOnScroll variant="fade-up" :delay="50">
             <div>
               <h2
-                class="text-xs tracking-widest uppercase opacity-50 mb-4 font-mono">
+                class="text-xs tracking-widest uppercase opacity-50 mb-4 font-mono sticky top-0 bg-white dark:bg-black py-2 -mx-2 px-2 z-10">
                 Skills
               </h2>
               <div class="grid grid-cols-2 gap-px bg-black/8 dark:bg-white/8 border border-black/8 dark:border-white/8">
