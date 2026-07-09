@@ -393,6 +393,11 @@
     font-family: 'Space Mono', monospace;
     @apply text-3xl font-light tabular-nums tracking-tight;
   }
+
+  .eyebrow {
+    font-family: 'Space Mono', monospace;
+    @apply text-[9px] tracking-[0.3em] uppercase opacity-30;
+  }
 }
 
 /* ============================================
