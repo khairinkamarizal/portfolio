@@ -438,6 +438,14 @@
     font-family: 'Space Mono', monospace;
     @apply text-[9px] tracking-[0.3em] uppercase opacity-30;
   }
+
+  /* Article prose text indent */
+  .prose-article > p:first-of-type {
+    text-indent: 0;
+  }
+  .prose-article > p + p {
+    text-indent: 1em;
+  }
 }
 
 /* ============================================
