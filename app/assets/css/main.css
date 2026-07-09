@@ -270,6 +270,10 @@
       border border-black/8 dark:border-white/8 opacity-60;
   }
 
+  .mono-label {
+    @apply font-mono text-[10px] tracking-[0.25em] uppercase opacity-40;
+  }
+
   /* Animated underline from left */
   .link-underline {
     position: relative;
