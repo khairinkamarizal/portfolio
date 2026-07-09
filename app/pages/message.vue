@@ -8,7 +8,7 @@
         <!-- ============================================ -->
         <div class="flex flex-col gap-3">
           <div class="mb-10">
-            <p class="mono-label mb-2">001 / Get in touch</p>
+            <p class="mono-label opacity-20 mb-2">001 / Get in touch</p>
             <h1 class="font-mono text-5xl md:text-6xl font-bold tracking-tight leading-none uppercase text-balance">Let's<br/>Talk.</h1>
           </div>
           <p class="text-sm opacity-60 max-w-lg leading-relaxed">
