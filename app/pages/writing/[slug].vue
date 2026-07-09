@@ -52,6 +52,9 @@
           :prev-post="prevPost"
           :next-post="nextPost" />
 
+        <!-- Emoji reactions -->
+        <EmojiReaction :post-slug="route.params.slug as string" />
+
       </div>
     </template>
 
