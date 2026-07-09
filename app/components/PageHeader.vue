@@ -3,8 +3,7 @@
     <!-- Eyebrow label -->
     <p
       v-if="label"
-      class="text-xs tracking-widest uppercase opacity-40 mb-4 font-mono"
-      style="font-family: 'Space Mono', monospace">
+      class="text-xs tracking-widest uppercase opacity-40 mb-4 font-mono">
       {{ label }}
     </p>
 
