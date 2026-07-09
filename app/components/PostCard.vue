@@ -5,6 +5,7 @@
     <!-- Date -->
     <p class="text-xs font-mono opacity-50 mb-2 text-black dark:text-white">
       {{ formattedDate }}
+      <span v-if="post.readingTime" class="font-mono text-[9px] opacity-40">· {{ post.readingTime }} min read</span>
     </p>
 
     <!-- Title -->
