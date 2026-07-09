@@ -253,6 +253,18 @@
       placeholder:opacity-30;
   }
 
+  .btn-primary {
+    @apply font-mono text-xs tracking-[0.15em] uppercase px-5 py-2.5
+      bg-black dark:bg-white text-white dark:text-black
+      hover:opacity-75 transition-opacity duration-200;
+  }
+  .btn-ghost {
+    @apply font-mono text-xs tracking-[0.15em] uppercase px-5 py-2.5
+      border border-black/20 dark:border-white/20
+      hover:border-black dark:hover:border-white
+      transition-colors duration-200;
+  }
+
   /* Animated underline from left */
   .link-underline {
     position: relative;
