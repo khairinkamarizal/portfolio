@@ -52,6 +52,22 @@
   </div>
 </template>
 
+/**
+ * ExperienceTimeline component.
+ *
+ * Renders a vertical timeline of work experience entries. Each item shows a
+ * dot-and-line spine on the left alongside company, role, period, optional
+ * location, and optional description. A "NOW" badge is shown for the current
+ * position when `current: true`.
+ *
+ * @prop {Array} items - List of experience entries to render.
+ *   @prop {string}  items[].company     - Company or organisation name.
+ *   @prop {string}  items[].role        - Job title or role.
+ *   @prop {string}  items[].period      - Display string for the date range (e.g. "2022 – Present").
+ *   @prop {string}  [items[].location]  - Optional location string.
+ *   @prop {string}  [items[].description] - Optional short description of responsibilities.
+ *   @prop {boolean} [items[].current]   - When true, renders a "NOW" badge next to the company name.
+ */
 <script setup lang="ts">
 defineProps<{
   items: Array<{
