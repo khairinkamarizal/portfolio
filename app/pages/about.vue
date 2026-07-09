@@ -328,7 +328,7 @@ const experience = [
   {
     role: "UI/UX Designer",
     company: "Digital Agency",
-    period: "2019 — 2021",
+    period: "2020 — 2021",
     description:
       "Designed digital experiences for clients across fintech, e-commerce, and healthcare verticals.",
     tags: ["Figma", "Prototyping", "User Research"],
