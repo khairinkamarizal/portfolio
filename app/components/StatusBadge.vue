@@ -5,9 +5,9 @@
     <span class="relative flex w-1.5 h-1.5">
       <span
         v-if="pulse"
-        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"
+        :class="['animate-ping absolute inline-flex h-full w-full rounded-full opacity-75', pingColors[color]]"
         :style="{ animationDuration: '2s' }" />
-      <span class="relative inline-flex rounded-full w-1.5 h-1.5 bg-green-500" />
+      <span :class="['relative inline-flex rounded-full w-1.5 h-1.5', dotColors[color]]" />
     </span>
 
     <!-- Text -->
@@ -18,10 +18,15 @@
 </template>
 
 <script setup lang="ts">
+const dotColors = { green: 'bg-green-500', yellow: 'bg-yellow-500', red: 'bg-red-500' }
+const pingColors = { green: 'bg-green-400', yellow: 'bg-yellow-400', red: 'bg-red-400' }
+
 withDefaults(defineProps<{
   text?: string
   pulse?: boolean
+  color?: 'green' | 'yellow' | 'red'
 }>(), {
   pulse: true,
+  color: 'green',
 })
 </script>
