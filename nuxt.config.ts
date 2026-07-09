@@ -2,9 +2,13 @@
 export default defineNuxtConfig({
   modules: [
     "@nuxt/content",
+    "@nuxt/image",
     "@nuxtjs/color-mode",
     "@nuxtjs/google-fonts",
     "@nuxtjs/tailwindcss",
+  ],
+  css: [
+    "~/assets/css/main.css",
   ],
   experimental: {
     payloadExtraction: false,
