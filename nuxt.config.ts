@@ -5,7 +5,6 @@ export default defineNuxtConfig({
     "@nuxtjs/color-mode",
     "@nuxtjs/google-fonts",
     "@nuxtjs/tailwindcss",
-    "@tailwindcss/typography",
   ],
   experimental: {
     payloadExtraction: false,
@@ -46,6 +45,7 @@ export default defineNuxtConfig({
           },
         },
       },
+      plugins: [require("@tailwindcss/typography")],
     },
   },
   devtools: { enabled: false },
