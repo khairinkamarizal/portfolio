@@ -2,7 +2,7 @@
   <a v-if="url" :href="url" target="_blank" rel="noopener noreferrer" class="block"
     :aria-label="title + (category ? ' — ' + category : '') + ' (opens in new tab)'"
   >
-  <article class="group relative border-l-2 border-transparent hover:border-black dark:hover:border-white transition-colors duration-200">
+  <article class="group/card relative border-l-2 border-transparent hover:border-black dark:hover:border-white transition-colors duration-200">
     <!-- Thumbnail -->
     <div class="relative w-full aspect-[4/3] overflow-hidden bg-black/[0.03] dark:bg-white/[0.03] border border-black/8 dark:border-white/8">
       <img
@@ -11,16 +11,16 @@
         :alt="title"
         loading="lazy"
         decoding="async"
-        class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]" />
+        class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/card:scale-[1.02]" />
       <ProjectThumbnail
         v-else
         :category="category"
         :title="title"
-        class="w-full h-full transition-transform duration-700 ease-out group-hover:scale-[1.02]" />
+        class="w-full h-full transition-transform duration-700 ease-out group-hover/card:scale-[1.02]" />
       <!-- Hover overlay -->
-      <div class="absolute inset-0 bg-black/0 group-hover:bg-black/[0.04] dark:group-hover:bg-white/[0.04] transition-colors duration-500" />
+      <div class="absolute inset-0 bg-black/0 group-hover/card:bg-black/[0.04] dark:group-hover/card:bg-white/[0.04] transition-colors duration-500" />
       <!-- Year badge top-right -->
-      <span class="absolute top-3 right-3 font-mono text-[10px] tracking-[0.15em] opacity-0 group-hover:opacity-60 transition-opacity duration-300 bg-white dark:bg-black px-2 py-0.5 tabular-nums">
+      <span class="absolute top-3 right-3 font-mono text-[10px] tracking-[0.15em] opacity-0 group-hover/card:opacity-60 transition-opacity duration-300 bg-white dark:bg-black px-2 py-0.5 tabular-nums">
         {{ year }}
       </span>
     </div>
@@ -34,7 +34,7 @@
           <h3 class="text-sm font-semibold tracking-tight leading-snug truncate">{{ title }}</h3>
         </div>
         <!-- Arrow that appears on hover -->
-        <span class="opacity-0 group-hover:opacity-40 transition-opacity duration-200 shrink-0 mt-0.5 text-xs">↗</span>
+        <span class="opacity-0 group-hover/card:opacity-40 transition-opacity duration-200 shrink-0 mt-0.5 text-xs">↗</span>
       </div>
 
       <!-- Description -->
@@ -48,7 +48,7 @@
           v-for="(tag, index) in tags.slice(0, 3)"
           :key="tag"
           :style="{ transitionDelay: (index * 30) + 'ms' }"
-          class="tag-base opacity-0 group-hover:opacity-60 transition-opacity duration-150">
+          class="tag-base opacity-0 group-hover/card:opacity-60 transition-opacity duration-150">
           {{ tag }}
         </span>
       </div>
@@ -56,7 +56,7 @@
   </article>
   </a>
   <div v-else class="block">
-  <article class="group relative border-l-2 border-transparent hover:border-black dark:hover:border-white transition-colors duration-200">
+  <article class="group/card relative border-l-2 border-transparent hover:border-black dark:hover:border-white transition-colors duration-200">
     <!-- Thumbnail -->
     <div class="relative w-full aspect-[4/3] overflow-hidden bg-black/[0.03] dark:bg-white/[0.03] border border-black/8 dark:border-white/8">
       <img
@@ -65,16 +65,16 @@
         :alt="title"
         loading="lazy"
         decoding="async"
-        class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]" />
+        class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/card:scale-[1.02]" />
       <ProjectThumbnail
         v-else
         :category="category"
         :title="title"
-        class="w-full h-full transition-transform duration-700 ease-out group-hover:scale-[1.02]" />
+        class="w-full h-full transition-transform duration-700 ease-out group-hover/card:scale-[1.02]" />
       <!-- Hover overlay -->
-      <div class="absolute inset-0 bg-black/0 group-hover:bg-black/[0.04] dark:group-hover:bg-white/[0.04] transition-colors duration-500" />
+      <div class="absolute inset-0 bg-black/0 group-hover/card:bg-black/[0.04] dark:group-hover/card:bg-white/[0.04] transition-colors duration-500" />
       <!-- Year badge top-right -->
-      <span class="absolute top-3 right-3 font-mono text-[10px] tracking-[0.15em] opacity-0 group-hover:opacity-60 transition-opacity duration-300 bg-white dark:bg-black px-2 py-0.5 tabular-nums">
+      <span class="absolute top-3 right-3 font-mono text-[10px] tracking-[0.15em] opacity-0 group-hover/card:opacity-60 transition-opacity duration-300 bg-white dark:bg-black px-2 py-0.5 tabular-nums">
         {{ year }}
       </span>
     </div>
@@ -88,7 +88,7 @@
           <h3 class="text-sm font-semibold tracking-tight leading-snug truncate">{{ title }}</h3>
         </div>
         <!-- Arrow that appears on hover -->
-        <span class="opacity-0 group-hover:opacity-40 transition-opacity duration-200 shrink-0 mt-0.5 text-xs">↗</span>
+        <span class="opacity-0 group-hover/card:opacity-40 transition-opacity duration-200 shrink-0 mt-0.5 text-xs">↗</span>
       </div>
 
       <!-- Description -->
@@ -102,7 +102,7 @@
           v-for="(tag, index) in tags.slice(0, 3)"
           :key="tag"
           :style="{ transitionDelay: (index * 30) + 'ms' }"
-          class="tag-base opacity-0 group-hover:opacity-60 transition-opacity duration-150">
+          class="tag-base opacity-0 group-hover/card:opacity-60 transition-opacity duration-150">
           {{ tag }}
         </span>
       </div>
@@ -111,6 +111,19 @@
   </div>
 </template>
 
+/**
+ * Displays a project card with thumbnail, title, category, description, and tags.
+ * Links to an external URL when provided. Falls back to a generated ProjectThumbnail
+ * when no thumbnail image is supplied.
+ *
+ * @prop title - Project title (required)
+ * @prop year - Year the project was completed
+ * @prop description - Short description shown below the title
+ * @prop tags - Up to 3 technology/skill tags displayed on hover
+ * @prop thumbnail - Optional image URL; uses ProjectThumbnail when omitted
+ * @prop category - Project category shown as a small label above the title
+ * @prop url - External link; wraps the card in an <a> tag when provided
+ */
 <script setup lang="ts">
 defineProps<{
   title: string
