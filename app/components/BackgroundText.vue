@@ -5,6 +5,18 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * BackgroundText — large decorative watermark text for section backgrounds.
+ *
+ * @prop {string} text - The text string to display as a background watermark.
+ * @prop {number} [opacity=0.04] - CSS opacity applied to the element (0–1). Defaults to 0.04
+ *   for a very subtle effect that doesn't interfere with foreground content.
+ *
+ * Renders aria-hidden so screen readers skip it entirely.
+ * Absolutely positioned to fill its nearest positioned ancestor.
+ * Font size is viewport-relative (20vw) for a bold, full-bleed typographic effect.
+ * Pointer events are disabled to avoid blocking interactive content beneath it.
+ */
 withDefaults(defineProps<{
   text: string
   opacity?: number
