@@ -4,7 +4,7 @@
       <div class="flex flex-col gap-10 px-8 py-10">
         <div class="flex flex-col gap-2">
           <div class="flex items-center justify-between mb-3">
-            <p class="text-xs font-mono opacity-50 tracking-widest">Selected Work</p>
+            <p class="text-xs font-mono opacity-50 tracking-widest">Selected Work <span class="opacity-50">({{ projects.length }})</span></p>
             <ClientOnly>
               <ProjectCount :count="projects.length" />
             </ClientOnly>
