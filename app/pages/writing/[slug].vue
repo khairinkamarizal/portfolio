@@ -22,9 +22,10 @@
             </span>
           </div>
           <h1 class="text-2xl leading-tight dark:font-light">{{ post.title }}</h1>
-          <div class="flex items-center gap-2">
+          <div class="flex items-center gap-3">
             <span class="text-xs opacity-30">{{ readingTime }}</span>
             <span class="text-xs opacity-50">{{ formatDate(post.date) }}</span>
+            <ViewCounter :slug="route.params.slug as string" />
           </div>
         </div>
 
