@@ -1,5 +1,5 @@
 <template>
-  <span aria-label="text" class="text-split-wrapper">
+  <span :aria-label="text" class="text-split-wrapper">
     <span
       v-for="(unit, index) in units"
       :key="index"
