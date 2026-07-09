@@ -485,6 +485,13 @@
   --tw-prose-td-borders: oklch(1 0 0 / 0.05);
 }
 
+.prose code {
+  font-size: 0.875em;
+}
+.prose pre {
+  border: 1px solid var(--border-subtle);
+}
+
 /* ============================================
    PAGE TRANSITIONS
    ============================================ */
