@@ -94,6 +94,8 @@
   /* Hanging punctuation for prose paragraphs */
   p {
     hanging-punctuation: first last;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   /* Reduced motion override for accessibility */
