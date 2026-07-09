@@ -26,13 +26,24 @@ defineEmits<{
   filter: [tag: string]
 }>()
 
+// Generate stable rotations keyed by tag name using string hash
+function hashString(s: string): number {
+  let hash = 0
+  for (let i = 0; i < s.length; i++) {
+    hash = ((hash << 5) - hash) + s.charCodeAt(i)
+    hash |= 0
+  }
+  return hash
+}
+const getRotation = (tag: string) => ((hashString(tag) % 7) - 3) // -3 to +3 degrees
+
 const sortedTags = computed(() => {
   return props.tags
     .slice()
     .sort((a, b) => b.count - a.count)
     .map(tag => ({
       ...tag,
-      rotation: (Math.random() - 0.5) * 6, // Slight rotation for creative effect
+      rotation: getRotation(tag.name), // Slight rotation for creative effect
     }))
 })
 </script>
