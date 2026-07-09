@@ -2,7 +2,7 @@
   <div
     v-if="isDesktop"
     class="cursor-follower"
-    :class="{ 'is-visible': isVisible }"
+    :class="{ 'is-visible': isVisible, 'is-hovering-link': isHoveringLink }"
     :style="{ transform: `translate(${x}px, ${y}px)` }"
     aria-hidden="true" />
 </template>
@@ -17,6 +17,7 @@ const x = ref(-100)
 const y = ref(-100)
 const isVisible = ref(false)
 const isDesktop = ref(false)
+const isHoveringLink = ref(false)
 
 onMounted(() => {
   // Only activate on devices with fine pointer (mouse)
@@ -51,6 +52,13 @@ onMounted(() => {
     isVisible.value = false
   }
 
+  const onLinkEnter = () => { isHoveringLink.value = true }
+  const onLinkLeave = () => { isHoveringLink.value = false }
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', onLinkEnter)
+    el.addEventListener('mouseleave', onLinkLeave)
+  })
+
   window.addEventListener('mousemove', handleMouseMove)
   document.addEventListener('mouseleave', handleMouseLeave)
   rafId = requestAnimationFrame(animate)
@@ -59,6 +67,10 @@ onMounted(() => {
     window.removeEventListener('mousemove', handleMouseMove)
     document.removeEventListener('mouseleave', handleMouseLeave)
     cancelAnimationFrame(rafId)
+    document.querySelectorAll('a, button').forEach(el => {
+      el.removeEventListener('mouseenter', onLinkEnter)
+      el.removeEventListener('mouseleave', onLinkLeave)
+    })
   })
 })
 </script>
@@ -82,6 +94,12 @@ onMounted(() => {
 
 .cursor-follower.is-visible {
   opacity: 1;
+}
+
+.cursor-follower.is-hovering-link {
+  width: 24px;
+  height: 24px;
+  transition: opacity 0.2s ease, width 0.15s ease, height 0.15s ease;
 }
 
 :global(.dark) .cursor-follower {
