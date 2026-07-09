@@ -47,10 +47,18 @@ definePageMeta({
 });
 
 useHead({
-  title: "Writing",
+  title: "Writing — Khairinkamarizal",
   meta: [
     {
       name: "description",
+      content: "Thoughts on design, development, and the space between.",
+    },
+    {
+      property: "og:title",
+      content: "Writing — Khairinkamarizal",
+    },
+    {
+      property: "og:description",
       content: "Thoughts on design, development, and the space between.",
     },
   ],
