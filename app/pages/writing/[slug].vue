@@ -78,11 +78,19 @@ if (!post.value) {
 }
 
 useHead({
-  title: post.value?.title,
+  title: computed(() => post.value?.title ? `${post.value.title} — Khairinkamarizal` : "Khairinkamarizal"),
   meta: [
     {
       name: "description",
-      content: post.value?.description,
+      content: computed(() => post.value?.description || ""),
+    },
+    {
+      property: "og:title",
+      content: computed(() => post.value?.title ? `${post.value.title} — Khairinkamarizal` : "Khairinkamarizal"),
+    },
+    {
+      property: "og:description",
+      content: computed(() => post.value?.description || ""),
     },
   ],
 });
