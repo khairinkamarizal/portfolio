@@ -104,10 +104,18 @@ definePageMeta({
 });
 
 useHead({
-  title: "About",
+  title: "About — Khairinkamarizal",
   meta: [
     {
       name: "description",
+      content: "Creative designer and developer based in Cyberjaya, Malaysia. Skilled in branding, UI/UX, motion design, and web development.",
+    },
+    {
+      property: "og:title",
+      content: "About — Khairinkamarizal",
+    },
+    {
+      property: "og:description",
       content: "Creative designer and developer based in Cyberjaya, Malaysia. Skilled in branding, UI/UX, motion design, and web development.",
     },
   ],
