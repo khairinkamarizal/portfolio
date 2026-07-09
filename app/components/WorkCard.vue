@@ -48,7 +48,7 @@
           v-for="(tag, index) in tags.slice(0, 3)"
           :key="tag"
           :style="{ transitionDelay: (index * 30) + 'ms' }"
-          class="font-mono text-[9px] tracking-[0.1em] uppercase px-2 py-0.5 border border-black/8 dark:border-white/8 opacity-0 group-hover:opacity-60 transition-opacity duration-150">
+          class="font-mono text-[10px] tracking-[0.1em] uppercase px-2 py-0.5 border border-black/8 dark:border-white/8 opacity-0 group-hover:opacity-60 transition-opacity duration-150">
           {{ tag }}
         </span>
       </div>
