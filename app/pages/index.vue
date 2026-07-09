@@ -10,7 +10,7 @@
         <GridBackground variant="dots" class="z-0" />
         <!-- Top row: number + avatar cluster -->
         <div class="relative z-10 flex items-start justify-between">
-          <span class="mono-label opacity-30">001 / Index</span>
+          <span class="font-mono text-[9px] tracking-[0.3em] uppercase opacity-20">001 / Index</span>
           <div class="flex flex-row relative items-center">
             <img
               src="/assets/dp.webp"

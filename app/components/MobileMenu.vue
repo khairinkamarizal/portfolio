@@ -75,6 +75,20 @@
   </div>
 </template>
 
+/**
+ * MobileMenu component.
+ *
+ * Renders a hamburger toggle button that opens/closes a dropdown navigation
+ * panel for small-screen viewports. Features include:
+ *
+ * - Animated enter/leave transitions (fade + slide)
+ * - Focus trap while the menu is open (via useFocusTrap)
+ * - Swipe-left gesture to dismiss on touch devices
+ * - Auto-close on outside click and on route change
+ * - Keyboard-accessible: aria-expanded, aria-controls on the trigger button
+ *
+ * No props. State is fully internal.
+ */
 <script setup lang="ts">
 import { ref, watch, onMounted, onBeforeUnmount } from "vue";
 import { Menu, X } from "lucide-vue-next";
