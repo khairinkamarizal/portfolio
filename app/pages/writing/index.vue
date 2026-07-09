@@ -5,7 +5,7 @@
       <!-- ============================================ -->
       <!-- HERO: page heading                           -->
       <!-- ============================================ -->
-      <section class="w-full border-b border-black/10 dark:border-white/10">
+      <section id="main-content" class="w-full border-b border-black/10 dark:border-white/10">
         <div class="px-8 pt-10 pb-8 border-b border-black/8 dark:border-white/8">
           <p class="font-mono text-[10px] tracking-[0.3em] uppercase opacity-30 mb-2">001 / Writing</p>
           <h1 class="font-mono text-4xl md:text-5xl font-bold tracking-tight leading-none uppercase">
