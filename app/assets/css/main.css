@@ -372,6 +372,9 @@
   .blend-multiply { mix-blend-mode: multiply; }
   .blend-screen { mix-blend-mode: screen; }
   .blend-overlay { mix-blend-mode: overlay; }
+
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 }
 
 /* ============================================
