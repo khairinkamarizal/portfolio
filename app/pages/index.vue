@@ -36,9 +36,11 @@
               Khairin<br />Kamarizal
             </h1>
           </div>
-          <span class="mono-label italic tracking-[-0.02em] mt-5">
-            Creative Designer &amp; Developer
-          </span>
+          <FadeText :delay="200" class="mt-5">
+            <span class="mono-label italic tracking-[-0.02em]">
+              Creative Designer &amp; Developer
+            </span>
+          </FadeText>
           <div class="mt-4 flex flex-col gap-3 max-w-xs">
             <p id="hero-bio" class="text-sm leading-relaxed opacity-55 font-sans font-light max-w-[280px]">
               Designer and developer crafting digital experiences at the intersection of aesthetics and function. Cyberjaya, Malaysia.
