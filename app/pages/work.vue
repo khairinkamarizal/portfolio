@@ -21,15 +21,17 @@
         <!-- Featured projects -->
         <div v-if="featuredProjects.length" class="flex flex-col gap-3">
           <SectionLabel label="Featured" variant="numbered" :number="1" />
-          <FeaturedProject
-            v-for="project in featuredProjects"
-            :key="project.title"
-            :title="project.title"
-            :description="project.description"
-            :year="project.year"
-            :tags="project.tags"
-            :url="project.behanceUrl"
-            :category="project.category" />
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <FeaturedProject
+              v-for="project in featuredProjects"
+              :key="project.title"
+              :title="project.title"
+              :description="project.description"
+              :year="project.year"
+              :tags="project.tags"
+              :url="project.behanceUrl"
+              :category="project.category" />
+          </div>
         </div>
 
         <div class="flex flex-col gap-3">
