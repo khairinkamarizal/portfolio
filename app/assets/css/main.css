@@ -98,6 +98,14 @@
     word-break: break-word;
   }
 
+  /* Smooth color transitions for theme switching */
+  *, *::before, *::after {
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+  [class*="animate-"], [class*="transition-"] {
+    transition: initial;
+  }
+
   /* Reduced motion override for accessibility */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
