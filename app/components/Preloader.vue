@@ -2,6 +2,8 @@
   <Transition name="fade-overlay">
     <div
       v-if="isLoading"
+      role="status"
+      aria-label="Page loading"
       class="fixed inset-0 z-[9999] flex items-center justify-center bg-white dark:bg-black">
       <div class="w-24 h-24 md:w-32 md:h-32 text-black dark:text-white">
         <AppLogo />
