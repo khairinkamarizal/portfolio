@@ -11,7 +11,7 @@
         {{ prevPost.title }}
       </span>
     </NuxtLink>
-    <div v-else class="w-1/2" />
+    <div v-else class="w-1/2" aria-hidden="true" />
 
     <NuxtLink
       v-if="nextPost"
@@ -24,7 +24,7 @@
         {{ nextPost.title }}
       </span>
     </NuxtLink>
-    <div v-else class="w-1/2" />
+    <div v-else class="w-1/2" aria-hidden="true" />
   </div>
 </template>
 
