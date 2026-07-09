@@ -1,7 +1,7 @@
 <template>
   <NuxtLayout name="simple">
     <template #default>
-      <div class="flex flex-col gap-10 px-8 py-10 pb-16">
+      <div id="main-content" class="flex flex-col gap-10 px-8 py-10 pb-16">
         <RevealOnScroll variant="fade-up">
           <div class="flex flex-col gap-2">
             <div class="flex items-center justify-between mb-3">
