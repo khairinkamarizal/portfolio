@@ -1,7 +1,7 @@
 <template>
   <span
     aria-live="polite"
-    class="inline-flex items-center gap-2 px-2 py-0.5 border border-black/15 dark:border-white/15 text-black dark:text-white">
+    class="inline-flex items-center gap-2 px-2 py-0.5 border border-black/12 dark:border-white/12 text-black dark:text-white">
     <!-- Pulsing dot -->
     <span class="relative flex w-1.5 h-1.5">
       <span
