@@ -42,7 +42,7 @@
 
         <!-- Bottom row: role + CTAs -->
         <div class="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between flex-wrap gap-3">
-          <span class="mono-label italic">
+          <span class="mono-label italic tracking-[-0.02em]">
             Creative Designer &amp; Developer
           </span>
           <span class="hidden lg:block mono-label opacity-0 hover:opacity-20 transition-opacity duration-300">
