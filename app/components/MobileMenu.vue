@@ -39,7 +39,7 @@
 
         <!-- Nav links -->
         <div class="py-1">
-          <AppNav direction="vertical" />
+          <AppNav direction="vertical" bordered />
         </div>
 
         <!-- Social links -->
