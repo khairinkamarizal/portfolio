@@ -6,6 +6,8 @@
         v-if="photo"
         :src="photo"
         :alt="name"
+        loading="lazy"
+        decoding="async"
         class="w-full h-full object-cover" />
       <div
         v-else
