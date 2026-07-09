@@ -54,7 +54,7 @@
             <a
               href="mailto:khairinkamarizal@gmail.com"
               class="font-mono text-xs tracking-[0.15em] uppercase px-5 py-2.5 border border-black/20 dark:border-white/20 hover:border-black dark:hover:border-white transition-colors duration-200 opacity-70 hover:opacity-100">
-              Get in Touch
+              Contact
             </a>
           </div>
         </div>
