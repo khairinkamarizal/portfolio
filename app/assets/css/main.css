@@ -43,7 +43,8 @@
 
   /* Better focus styles */
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-black dark:outline-white;
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
   }
 
   /* Remove default focus ring, rely on focus-visible */
