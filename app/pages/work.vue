@@ -78,6 +78,9 @@
             :url="project.behanceUrl" />
         </div>
 
+        <!-- Tag cloud -->
+        <TagCloud :tags="tagCounts" @filter="handleTagFilter" />
+
         <!-- Behance CTA -->
         <a
           href="https://be.net/khairinkamarizal"
@@ -134,6 +137,20 @@ onMounted(() => {
 watch(viewMode, (val) => {
   lsSet('work-view-mode', val)
 })
+
+const tagCounts = computed(() => {
+  const counts: Record<string, number> = {}
+  for (const project of projects) {
+    for (const tag of project.tags) {
+      counts[tag] = (counts[tag] || 0) + 1
+    }
+  }
+  return Object.entries(counts).map(([name, count]) => ({ name, count }))
+})
+
+function handleTagFilter(tag: string) {
+  selectedType.value = 'All'
+}
 
 useHead({
   title: "Work — Khairinkamarizal",
