@@ -108,19 +108,19 @@ definePageMeta({
 });
 
 useHead({
-  title: "About — Khairinkamarizal",
+  title: "About — Khairin Kamarizal",
   meta: [
     {
       name: "description",
-      content: "Creative designer and developer based in Cyberjaya, Malaysia. Skilled in branding, UI/UX, motion design, and web development.",
+      content: "Khairin Kamarizal — Creative Designer & Developer based in Cyberjaya, Malaysia. Senior Graphic Designer at Trustori. Skilled in branding, UI/UX, motion design, and web development.",
     },
     {
       property: "og:title",
-      content: "About — Khairinkamarizal",
+      content: "About — Khairin Kamarizal",
     },
     {
       property: "og:description",
-      content: "Creative designer and developer based in Cyberjaya, Malaysia. Skilled in branding, UI/UX, motion design, and web development.",
+      content: "Khairin Kamarizal — Creative Designer & Developer based in Cyberjaya, Malaysia. Skilled in branding, UI/UX, motion design, and web development.",
     },
   ],
 });
@@ -128,36 +128,39 @@ useHead({
 const skillGroups = [
   {
     category: "Design",
-    items: ["Brand Identity", "UI/UX Design", "Motion Design", "Typography", "Art Direction"],
+    items: ["Brand Identity", "UI/UX Design", "Motion Design", "Typography", "Art Direction", "Visual Design"],
   },
   {
     category: "Development",
-    items: ["Nuxt / Vue", "Tailwind CSS", "TypeScript", "HTML / CSS"],
+    items: ["Nuxt / Vue.js", "Tailwind CSS", "TypeScript", "HTML / CSS", "Web Development"],
   },
   {
     category: "Craft",
-    items: ["Figma", "Adobe Illustrator", "After Effects", "Photoshop"],
+    items: ["Figma", "Adobe Creative Suite", "After Effects", "Photoshop", "Illustrator"],
   },
 ];
 
 const experienceItems = [
   {
-    role: "Freelance Designer & Developer",
-    company: "Independent",
-    period: "2022 — Present",
-    description: "Working with startups and small businesses on brand identity, UI/UX design, and web development projects. Clients across Malaysia, Singapore, and the UK.",
+    role: "Senior Graphic Designer",
+    company: "Trustori",
+    period: "Present",
+    location: "Cheras, MY",
+    description: "Leading visual design and brand direction at Trustori. Responsible for brand identity systems, marketing materials, and digital design across all touchpoints.",
   },
   {
-    role: "UI/UX Designer",
-    company: "Axiata Digital Services",
-    period: "2021 — 2022",
-    description: "Designed digital products and internal tooling for a major Malaysian telecommunications group. Led end-to-end design for a customer-facing mobile app feature used by 200k+ users.",
+    role: "Creative Designer & Developer",
+    company: "Self-Employed",
+    period: "Ongoing",
+    location: "Remote",
+    description: "Working independently with clients on brand identity, UI/UX design, and web development projects. Building digital experiences with Nuxt, Vue.js, and Tailwind CSS.",
   },
   {
-    role: "Junior Graphic Designer",
-    company: "Studio Lapan",
-    period: "2020 — 2021",
-    description: "Contributed to branding, print, and digital design projects at a boutique creative studio in Kuala Lumpur. Worked on identity systems, packaging, and editorial layouts.",
+    role: "Digital Strategist & Front-End Developer",
+    company: "Horuz Technology",
+    period: "Previous",
+    location: "Malaysia",
+    description: "Drove digital strategy and front-end development at Horuz Technology. Built and maintained web products, contributed to UI/UX decisions, and translated design systems into code.",
   },
 ];
 
