@@ -17,13 +17,13 @@
 <script setup lang="ts">
 // Subtle CSS noise/grain overlay for the page
 // Creates a film grain effect using an inline SVG feTurbulence filter
-// Very subtle — default opacity 0.03
-// Optional prop: opacity (default 0.03)
+// Very subtle — default opacity 0.04
+// Optional prop: opacity (default 0.04)
 
 withDefaults(defineProps<{
   opacity?: number
 }>(), {
-  opacity: 0.03,
+  opacity: 0.04,
 })
 
 const filterId = 'noise-' + Math.random().toString(36).slice(2, 8)
