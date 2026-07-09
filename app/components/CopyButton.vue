@@ -4,7 +4,9 @@
     class="text-xs tracking-wider px-3 py-1.5 border border-black/20 dark:border-white/20 hover:border-black dark:hover:border-white transition-all duration-150 flex items-center gap-1.5"
     :aria-label="copied ? 'Copied to clipboard' : 'Copy to clipboard'">
     <Copy :size="14" aria-hidden="true" />
-    <span>{{ copied ? 'Copied!' : 'Copy' }}</span>
+    <Transition name="swap" mode="out-in">
+      <span :key="copied ? 'copied' : 'copy'">{{ copied ? 'Copied!' : 'Copy' }}</span>
+    </Transition>
   </button>
 </template>
 
@@ -31,3 +33,8 @@ async function handleCopy() {
   }
 }
 </script>
+
+<style scoped>
+.swap-enter-active, .swap-leave-active { transition: opacity 0.15s ease; }
+.swap-enter-from, .swap-leave-to { opacity: 0; }
+</style>
