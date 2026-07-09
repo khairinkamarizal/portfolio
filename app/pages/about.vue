@@ -13,7 +13,7 @@
         About
       </h1>
       <p class="mt-4 text-sm opacity-60 max-w-lg leading-relaxed text-balance">
-        Designer, developer, and occasional over-thinker. Based in Cyberjaya, Malaysia.
+        Designer, developer, and deliberate craftsperson. Cyberjaya, Malaysia.
       </p>
     </section>
 
