@@ -53,64 +53,72 @@
         </div>
 
         <!-- Skills marquee strip -->
-        <div class="border-y border-black/10 dark:border-white/10 py-2.5 -mx-5">
-          <MarqueeTicker :items="skills" :speed="30" />
-        </div>
+        <RevealOnScroll variant="fade-up">
+          <div class="border-y border-black/10 dark:border-white/10 py-2.5 -mx-5">
+            <MarqueeTicker :items="skills" :speed="30" />
+          </div>
+        </RevealOnScroll>
 
         <!-- Stats row -->
-        <div class="grid grid-cols-4 divide-x divide-black/10 dark:divide-white/10 border border-black/10 dark:border-white/10 py-4">
-          <ClientOnly>
-            <StatCounter :value="1423" label="BEHANCE VIEWS" />
-            <StatCounter :value="38" label="APPRECIATIONS" />
-            <StatCounter :value="43" label="FOLLOWERS" />
-            <StatCounter :value="5" label="YEARS EXP" suffix="+" />
-            <template #fallback>
-              <div class="col-span-4 flex items-center justify-center py-4 opacity-30 text-xs">Loading stats...</div>
-            </template>
-          </ClientOnly>
-        </div>
+        <RevealOnScroll variant="fade-up" :delay="100">
+          <div class="grid grid-cols-4 divide-x divide-black/10 dark:divide-white/10 border border-black/10 dark:border-white/10 py-4">
+            <ClientOnly>
+              <StatCounter :value="1423" label="BEHANCE VIEWS" />
+              <StatCounter :value="38" label="APPRECIATIONS" />
+              <StatCounter :value="43" label="FOLLOWERS" />
+              <StatCounter :value="5" label="YEARS EXP" suffix="+" />
+              <template #fallback>
+                <div class="col-span-4 flex items-center justify-center py-4 opacity-30 text-xs">Loading stats...</div>
+              </template>
+            </ClientOnly>
+          </div>
+        </RevealOnScroll>
 
         <!-- Featured work -->
-        <div class="flex flex-col gap-4 normal-case">
-          <div class="flex items-center justify-between">
-            <span class="text-xs opacity-40 tracking-widest uppercase" style="font-family: 'Space Mono', monospace">Featured Work</span>
-            <NuxtLink to="/work" class="text-xs opacity-40 hover:opacity-100 transition-opacity tracking-wider flex items-center gap-1">
-              View all <ArrowUpRight class="w-3 h-3" />
-            </NuxtLink>
+        <RevealOnScroll variant="fade-up" :delay="50">
+          <div class="flex flex-col gap-4 normal-case">
+            <div class="flex items-center justify-between">
+              <span class="text-xs opacity-40 tracking-widest uppercase" style="font-family: 'Space Mono', monospace">Featured Work</span>
+              <NuxtLink to="/work" class="text-xs opacity-40 hover:opacity-100 transition-opacity tracking-wider flex items-center gap-1">
+                View all <ArrowUpRight class="w-3 h-3" />
+              </NuxtLink>
+            </div>
+            <div class="grid grid-cols-1 gap-4">
+              <WorkCard
+                v-for="project in featuredProjects"
+                :key="project.title"
+                :title="project.title"
+                :year="project.year"
+                :tags="project.tags"
+                :description="project.description"
+                :url="project.behanceUrl"
+                :category="project.category"
+                :thumbnail="true" />
+            </div>
           </div>
-          <div class="grid grid-cols-1 gap-4">
-            <WorkCard
-              v-for="project in featuredProjects"
-              :key="project.title"
-              :title="project.title"
-              :year="project.year"
-              :tags="project.tags"
-              :description="project.description"
-              :url="project.behanceUrl"
-              :category="project.category"
-              :thumbnail="true" />
-          </div>
-        </div>
+        </RevealOnScroll>
 
         <!-- Latest writing -->
-        <div v-if="latestPosts?.length" class="flex flex-col gap-4 normal-case">
-          <div class="flex items-center justify-between">
-            <span class="text-xs opacity-40 tracking-widest uppercase" style="font-family: 'Space Mono', monospace">Latest Writing</span>
-            <NuxtLink to="/writing" class="text-xs opacity-40 hover:opacity-100 transition-opacity tracking-wider flex items-center gap-1">
-              View all <ArrowUpRight class="w-3 h-3" />
-            </NuxtLink>
+        <RevealOnScroll variant="fade-up" :delay="50">
+          <div v-if="latestPosts?.length" class="flex flex-col gap-4 normal-case">
+            <div class="flex items-center justify-between">
+              <span class="text-xs opacity-40 tracking-widest uppercase" style="font-family: 'Space Mono', monospace">Latest Writing</span>
+              <NuxtLink to="/writing" class="text-xs opacity-40 hover:opacity-100 transition-opacity tracking-wider flex items-center gap-1">
+                View all <ArrowUpRight class="w-3 h-3" />
+              </NuxtLink>
+            </div>
+            <div class="flex flex-col divide-y divide-black/10 dark:divide-white/10">
+              <PostCard
+                v-for="post in latestPosts"
+                :key="post.path"
+                :title="post.title"
+                :description="post.description"
+                :date="post.date"
+                :tags="post.tags || []"
+                :slug="post.path?.split('/').pop() || ''" />
+            </div>
           </div>
-          <div class="flex flex-col divide-y divide-black/10 dark:divide-white/10">
-            <PostCard
-              v-for="post in latestPosts"
-              :key="post.path"
-              :title="post.title"
-              :description="post.description"
-              :date="post.date"
-              :tags="post.tags || []"
-              :slug="post.path?.split('/').pop() || ''" />
-          </div>
-        </div>
+        </RevealOnScroll>
 
       </div>
     </template>

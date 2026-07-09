@@ -1,5 +1,15 @@
 <template>
-  <div ref="el" :class="['reveal-on-scroll', revealed ? 'revealed' : 'hidden-initial', `direction-${direction}`]" :style="{ transitionDelay: `${delay}ms` }">
+  <div
+    ref="el"
+    :class="[
+      'transition-[opacity,transform] ease-out',
+      isVisible ? 'opacity-100 translate-y-0' : (variant === 'fade-up' ? 'opacity-0 translate-y-4' : 'opacity-0'),
+    ]"
+    :style="{
+      transitionDuration: '0.5s',
+      transitionDelay: `${delay}ms`,
+    }"
+  >
     <slot />
   </div>
 </template>
@@ -9,25 +19,32 @@ import { ref, onMounted, onUnmounted } from 'vue'
 
 const props = withDefaults(defineProps<{
   delay?: number
-  direction?: 'up' | 'left'
+  variant?: 'fade-up' | 'fade-in'
 }>(), {
   delay: 0,
-  direction: 'up',
+  variant: 'fade-up',
 })
 
 const el = ref<HTMLElement | null>(null)
-const revealed = ref(false)
+// Default true so SSR renders content visible; flipped to false on mount before observer fires
+const isVisible = ref(true)
 
 let observer: IntersectionObserver | null = null
 
 onMounted(() => {
-  if (!el.value) return
+  if (!el.value || typeof IntersectionObserver === 'undefined') {
+    isVisible.value = true
+    return
+  }
+
+  // Hide once we're on the client, then let the observer reveal
+  isVisible.value = false
 
   observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting && !revealed.value) {
-          revealed.value = true
+        if (entry.isIntersecting) {
+          isVisible.value = true
           observer?.disconnect()
         }
       })
@@ -42,24 +59,3 @@ onUnmounted(() => {
   observer?.disconnect()
 })
 </script>
-
-<style scoped>
-.reveal-on-scroll {
-  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.hidden-initial.direction-up {
-  opacity: 0;
-  transform: translateY(24px);
-}
-
-.hidden-initial.direction-left {
-  opacity: 0;
-  transform: translateX(-24px);
-}
-
-.revealed {
-  opacity: 1;
-  transform: translate(0, 0);
-}
-</style>
