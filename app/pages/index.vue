@@ -1,7 +1,8 @@
 <template>
   <NuxtLayout name="simple">
     <template #default>
-      <div class="flex flex-col gap-12 mt-8">
+      <GridBackground variant="dots" />
+      <div class="flex flex-col gap-12 mt-8 relative z-10">
 
         <!-- Hero -->
         <div class="flex flex-col gap-6">
