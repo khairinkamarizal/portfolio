@@ -18,6 +18,7 @@
 
         <!-- Featured projects -->
         <div v-if="featuredProjects.length" class="flex flex-col gap-3">
+          <SectionLabel label="Featured" variant="numbered" :number="1" />
           <FeaturedProject
             v-for="project in featuredProjects"
             :key="project.title"
@@ -29,29 +30,32 @@
             :category="project.category" />
         </div>
 
-        <div class="flex items-center justify-between gap-4">
-          <ProjectTypeFilter
-            :types="projectTypes"
-            :selected="selectedType"
-            @select="selectedType = $event" />
-          <!-- View toggle -->
-          <div class="flex items-center gap-1 shrink-0">
-            <button
-              type="button"
-              @click="viewMode = 'card'"
-              :aria-pressed="viewMode === 'card'"
-              :class="['p-1.5 border transition-colors duration-150', viewMode === 'card' ? 'border-black dark:border-white' : 'border-transparent opacity-40 hover:opacity-70']"
-              aria-label="Card view">
-              <LayoutGrid class="w-3 h-3" />
-            </button>
-            <button
-              type="button"
-              @click="viewMode = 'list'"
-              :aria-pressed="viewMode === 'list'"
-              :class="['p-1.5 border transition-colors duration-150', viewMode === 'list' ? 'border-black dark:border-white' : 'border-transparent opacity-40 hover:opacity-70']"
-              aria-label="List view">
-              <List class="w-3 h-3" />
-            </button>
+        <div class="flex flex-col gap-3">
+          <SectionLabel label="All Work" variant="numbered" :number="2" />
+          <div class="flex items-center justify-between gap-4">
+            <ProjectTypeFilter
+              :types="projectTypes"
+              :selected="selectedType"
+              @select="selectedType = $event" />
+            <!-- View toggle -->
+            <div class="flex items-center gap-1 shrink-0">
+              <button
+                type="button"
+                @click="viewMode = 'card'"
+                :aria-pressed="viewMode === 'card'"
+                :class="['p-1.5 border transition-colors duration-150', viewMode === 'card' ? 'border-black dark:border-white' : 'border-transparent opacity-40 hover:opacity-70']"
+                aria-label="Card view">
+                <LayoutGrid class="w-3 h-3" />
+              </button>
+              <button
+                type="button"
+                @click="viewMode = 'list'"
+                :aria-pressed="viewMode === 'list'"
+                :class="['p-1.5 border transition-colors duration-150', viewMode === 'list' ? 'border-black dark:border-white' : 'border-transparent opacity-40 hover:opacity-70']"
+                aria-label="List view">
+                <List class="w-3 h-3" />
+              </button>
+            </div>
           </div>
         </div>
 
@@ -92,6 +96,7 @@
         </a>
 
         <!-- Open to work -->
+        <SectionLabel label="Get in Touch" variant="numbered" :number="3" />
         <OpenToWork />
       </div>
     </template>
