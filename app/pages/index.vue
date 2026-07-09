@@ -5,13 +5,13 @@
       <ClientOnly>
         <ScrollIndicator />
       </ClientOnly>
-      <div class="flex flex-col gap-14 mt-8 pb-8 relative z-10">
+      <div class="flex flex-col gap-12 mt-8 pb-8 relative z-10">
 
         <!-- Hero -->
         <div class="flex flex-col gap-4 pb-8 border-b border-black/10 dark:border-white/10">
           <div class="flex flex-row items-center justify-between">
             <div class="flex flex-col gap-1.5">
-              <h1 class="text-4xl md:text-5xl font-bold tracking-tight leading-[0.9]" style="font-family: 'Space Mono', monospace">
+              <h1 class="text-4xl md:text-5xl font-bold tracking-tight leading-[0.9] font-mono">
                 KHAIRIN<br />KAMARIZAL
               </h1>
               <span class="text-xs opacity-50 tracking-widest normal-case font-sans mt-2">Creative Designer & Developer</span>
@@ -44,24 +44,22 @@
               class="text-xs tracking-wider font-medium px-5 py-2.5 bg-black dark:bg-white text-white dark:text-black hover:opacity-80 transition-opacity duration-150">
               VIEW WORK
             </NuxtLink>
-            <NuxtLink
-              to="mailto:khairinkamarizal@gmail.com"
+            <a
+              href="mailto:khairinkamarizal@gmail.com"
               class="text-xs tracking-wider px-5 py-2.5 border border-black/20 dark:border-white/20 hover:border-black dark:hover:border-white transition-colors duration-150">
               HIT ME UP
-            </NuxtLink>
+            </a>
           </div>
         </div>
 
         <!-- Skills marquee strip -->
         <RevealOnScroll variant="fade-up">
-          <div class="border-y border-black/10 dark:border-white/10 py-2.5 -mx-5">
-            <MarqueeTicker :items="skills" :speed="30" />
-          </div>
+          <MarqueeTicker :items="skills" :speed="30" />
         </RevealOnScroll>
 
         <!-- Stats row -->
         <RevealOnScroll variant="fade-up" :delay="100">
-          <div class="grid grid-cols-4 divide-x divide-black/10 dark:divide-white/10 border border-black/10 dark:border-white/10 py-4">
+          <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-black/10 dark:divide-white/10 border border-black/10 dark:border-white/10 py-4">
             <ClientOnly>
               <StatCounter :value="1423" label="BEHANCE VIEWS" />
               <StatCounter :value="38" label="APPRECIATIONS" />
@@ -78,8 +76,8 @@
         <RevealOnScroll variant="fade-up" :delay="50">
           <div class="flex flex-col gap-4 normal-case">
             <div class="flex items-center justify-between">
-              <span class="text-xs opacity-40 tracking-widest uppercase" style="font-family: 'Space Mono', monospace">Featured Work</span>
-              <NuxtLink to="/work" class="text-xs opacity-40 hover:opacity-100 transition-opacity tracking-wider flex items-center gap-1">
+              <SectionLabel label="Featured Work" />
+              <NuxtLink to="/work" class="text-xs opacity-50 hover:opacity-100 transition-opacity tracking-wider flex items-center gap-1">
                 View all <ArrowUpRight class="w-3 h-3" />
               </NuxtLink>
             </div>
@@ -92,8 +90,7 @@
                 :tags="project.tags"
                 :description="project.description"
                 :url="project.behanceUrl"
-                :category="project.category"
-                :thumbnail="true" />
+                :category="project.category" />
             </div>
           </div>
         </RevealOnScroll>
@@ -102,8 +99,8 @@
         <RevealOnScroll variant="fade-up" :delay="50">
           <div v-if="latestPosts?.length" class="flex flex-col gap-4 normal-case">
             <div class="flex items-center justify-between">
-              <span class="text-xs opacity-40 tracking-widest uppercase" style="font-family: 'Space Mono', monospace">Latest Writing</span>
-              <NuxtLink to="/writing" class="text-xs opacity-40 hover:opacity-100 transition-opacity tracking-wider flex items-center gap-1">
+              <SectionLabel label="Latest Writing" />
+              <NuxtLink to="/writing" class="text-xs opacity-50 hover:opacity-100 transition-opacity tracking-wider flex items-center gap-1">
                 View all <ArrowUpRight class="w-3 h-3" />
               </NuxtLink>
             </div>
@@ -124,14 +121,14 @@
     </template>
 
     <template #footer-actions>
-      <NuxtLink
-        to="mailto:khairinkamarizal@gmail.com"
+      <a
+        href="mailto:khairinkamarizal@gmail.com"
         class="group flex items-center">
         <div class="flex-none group-hover:flex-1 transition-all duration-300 h-1"></div>
         <span>Hit me up</span>
         <div class="flex-1 group-hover:flex-none transition-all duration-300 group-hover:w-2 h-1"></div>
         <ArrowUpRight class="group-hover:rotate-45 transition-transform duration-300" />
-      </NuxtLink>
+      </a>
       <NuxtLink
         to="https://be.net/khairinkamarizal"
         class="group flex items-center">
