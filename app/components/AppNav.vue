@@ -16,6 +16,7 @@
           : isActive(link.href)
             ? 'font-bold opacity-100'
             : 'opacity-40 hover:opacity-70',
+        bordered ? 'border-b border-black/8 dark:border-white/8 py-3' : '',
       ]"
       :aria-current="isActive(link.href) ? 'page' : undefined">
       {{ link.label }}
@@ -26,17 +27,19 @@
 <script setup lang="ts">
 withDefaults(defineProps<{
   direction?: 'horizontal' | 'vertical'
+  bordered?: boolean
 }>(), {
   direction: 'horizontal',
+  bordered: false,
 })
 
 const route = useRoute()
 
 const links = [
-  { label: 'Work', href: '/work' },
-  { label: 'Writing', href: '/writing' },
-  { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/message' },
+  { label: 'Work', href: '/work', ariaLabel: 'View selected work' },
+  { label: 'Writing', href: '/writing', ariaLabel: 'Read writing and articles' },
+  { label: 'About', href: '/about', ariaLabel: 'Learn about Khairin' },
+  { label: 'Contact', href: '/message', ariaLabel: 'Get in touch' },
 ]
 
 function isActive(href: string): boolean {
