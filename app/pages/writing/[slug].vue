@@ -55,6 +55,9 @@
         <!-- Emoji reactions -->
         <EmojiReaction :post-slug="route.params.slug as string" />
 
+        <!-- Author bio -->
+        <AuthorCard v-if="post" />
+
       </div>
     </template>
 
