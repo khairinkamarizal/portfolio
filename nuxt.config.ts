@@ -46,6 +46,8 @@ export default defineNuxtConfig({
         { property: "og:image", content: "https://khair.ink/og-image.png" },
         { name: "twitter:image", content: "https://khair.ink/og-image.png" },
         { name: "robots", content: "index, follow" },
+        { name: "apple-mobile-web-app-capable", content: "yes" },
+        { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
       ],
       link: [
         { rel: "canonical", href: "https://khair.ink" },
