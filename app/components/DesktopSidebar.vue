@@ -56,6 +56,15 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * DesktopSidebar
+ *
+ * Persistent left-side navigation panel for desktop viewports. Displays the
+ * site logo, color mode toggle, vertical AppNav, and a footer showing the
+ * author's local time (Asia/Kuala_Lumpur) and availability status.
+ * Supports a `transparent` prop for mix-blend-difference overlay mode.
+ * Updates the clock every second via a setInterval that is cleaned up on unmount.
+ */
 import { ref, onMounted, onUnmounted } from "vue";
 
 defineProps({
