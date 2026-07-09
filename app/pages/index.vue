@@ -76,8 +76,8 @@
 
       <!-- ==================== STATS ==================== -->
       <RevealOnScroll variant="fade-up" :delay="100">
-        <section aria-label="Statistics">
-          <div class="grid grid-cols-2 md:grid-cols-4 border-b border-black/8 dark:border-white/8">
+        <section aria-label="Statistics" class="border-b border-black/8 dark:border-white/8">
+          <div class="grid grid-cols-2 md:grid-cols-4">
             <ClientOnly>
               <div class="hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors duration-150 tabular-nums"><StatCounter :value="1423" label="BEHANCE VIEWS" /></div>
               <div class="hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors duration-150 tabular-nums"><StatCounter :value="38" label="APPRECIATIONS" /></div>
