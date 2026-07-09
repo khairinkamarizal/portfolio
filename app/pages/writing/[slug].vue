@@ -50,6 +50,11 @@
               <ShareButtons :url="pageUrl" :title="post.title" />
             </footer>
 
+            <!-- Next/prev navigation -->
+            <div v-if="prevPost || nextPost" class="mt-8 pt-8 border-t border-black/8 dark:border-white/8">
+              <PostNavigation :prev-post="prevPost" :next-post="nextPost" />
+            </div>
+
             <!-- Related posts -->
             <RelatedPosts
               v-if="post?.tags?.length"
