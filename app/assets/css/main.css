@@ -126,6 +126,11 @@
   .focus-ring {
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2;
   }
+
+  /* Container for readable prose width */
+  .container-prose {
+    @apply max-w-2xl mx-auto;
+  }
 }
 
 /* ============================================
