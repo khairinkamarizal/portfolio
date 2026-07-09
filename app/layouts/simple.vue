@@ -154,7 +154,8 @@
       </div>
 
     </div>
-    <!-- Back to top button -->
+    <!-- Back to top button — intentionally in ClientOnly for lazy loading;
+         only needed after scroll, so we avoid SSR and defer hydration -->
     <ClientOnly>
       <BackToTop />
     </ClientOnly>
