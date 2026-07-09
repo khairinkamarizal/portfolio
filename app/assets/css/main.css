@@ -206,6 +206,11 @@
   .section-gap { @apply gap-10 md:gap-14; }
   .content-gap { @apply gap-6 md:gap-8; }
   .item-gap { @apply gap-3 md:gap-4; }
+
+  .z-nav { z-index: 40; }
+  .z-overlay { z-index: 50; }
+  .z-modal { z-index: 60; }
+  .z-toast { z-index: 70; }
 }
 
 /* ============================================
