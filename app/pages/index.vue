@@ -48,7 +48,7 @@
           <div class="flex items-center gap-3 mt-5">
             <NuxtLink
               to="/work"
-              class="font-mono text-xs tracking-[0.15em] uppercase px-5 py-2.5 bg-black dark:bg-white text-white dark:text-black hover:opacity-75 transition-all duration-200">
+              class="font-mono font-medium text-xs tracking-[0.15em] uppercase px-5 py-2.5 bg-black dark:bg-white text-white dark:text-black hover:opacity-75 transition-all duration-200">
               View Work
             </NuxtLink>
             <a
