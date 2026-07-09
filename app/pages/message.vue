@@ -1,7 +1,7 @@
 <template>
   <NuxtLayout name="simple">
     <template #default>
-      <div class="flex flex-col gap-10 mt-10 min-h-[60vh]">
+      <div id="main-content" class="flex flex-col gap-10 mt-10 min-h-[60vh]">
 
         <!-- ============================================ -->
         <!-- HERO: page heading                           -->
