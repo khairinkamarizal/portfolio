@@ -3,6 +3,7 @@
     <Transition name="fade" mode="out-in">
       <div v-if="submitted" key="success" class="flex flex-col gap-2">
         <p class="text-sm opacity-70">Message received. I'll get back to you soon.</p>
+        <button type="button" @click="submitted = false; form = { name: '', email: '', message: '' }" class="text-xs font-mono opacity-50 hover:opacity-100 transition-opacity duration-150 underline mt-3">Send another message</button>
       </div>
 
       <form v-else key="form" class="flex flex-col gap-3" @submit.prevent="handleSubmit">
