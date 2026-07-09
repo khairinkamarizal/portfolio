@@ -247,6 +247,25 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
+  .bg-ink-wash {
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 1px,
+      oklch(0 0 0 / 0.015) 1px,
+      oklch(0 0 0 / 0.015) 2px
+    );
+  }
+  .dark .bg-ink-wash {
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 1px,
+      oklch(1 0 0 / 0.015) 1px,
+      oklch(1 0 0 / 0.015) 2px
+    );
+  }
 }
 
 /* ============================================
