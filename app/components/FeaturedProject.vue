@@ -19,8 +19,7 @@
       <!-- Eyebrow category -->
       <p
         v-if="category"
-        class="text-xs tracking-widest uppercase opacity-50 font-mono text-black dark:text-white"
-        style="font-family: 'Space Mono', monospace">
+        class="text-xs tracking-widest uppercase opacity-50 font-mono text-black dark:text-white">
         {{ category }}
       </p>
 
@@ -32,7 +31,7 @@
       <!-- Description -->
       <p
         v-if="description"
-        class="text-sm opacity-55 leading-relaxed text-black dark:text-white">
+        class="text-sm opacity-60 leading-relaxed text-black dark:text-white">
         {{ description }}
       </p>
 
@@ -41,8 +40,7 @@
         <div class="flex items-center gap-3 flex-wrap">
           <span
             v-if="year"
-            class="text-xs font-mono tabular-nums opacity-40 text-black dark:text-white"
-            style="font-family: 'Space Mono', monospace">
+            class="text-xs font-mono tabular-nums opacity-40 text-black dark:text-white">
             {{ year }}
           </span>
           <span
@@ -54,13 +52,14 @@
         </div>
 
         <!-- CTA -->
-        <NuxtLink
+        <a
           v-if="href"
-          :to="href"
-          class="link-underline relative text-xs tracking-widest uppercase font-mono text-black dark:text-white"
-          style="font-family: 'Space Mono', monospace">
-          View on Behance →
-        </NuxtLink>
+          :href="href"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-underline relative text-xs tracking-widest uppercase font-mono text-black dark:text-white">
+          View on Behance &rarr;
+        </a>
       </div>
     </div>
   </article>

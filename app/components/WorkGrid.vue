@@ -9,7 +9,6 @@
       :tags="project.tags"
       :description="project.description"
       :url="project.behanceUrl"
-      :thumbnail="true"
       :category="project.category" />
   </div>
 </template>
