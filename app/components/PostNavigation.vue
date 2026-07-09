@@ -5,7 +5,7 @@
       :to="`/writing/${prevPost.slug}`"
       class="flex flex-col gap-1 group w-1/2">
       <span class="text-[10px] opacity-40 tracking-wider flex items-center gap-1">
-        <ArrowLeft class="w-3 h-3" /> Previous
+        <ArrowLeft class="w-3 h-3" aria-hidden="true" /> Previous
       </span>
       <span class="text-sm font-medium leading-snug group-hover:opacity-70 transition-opacity duration-200">
         {{ prevPost.title }}
@@ -18,7 +18,7 @@
       :to="`/writing/${nextPost.slug}`"
       class="flex flex-col gap-1 items-end text-right group w-1/2">
       <span class="text-[10px] opacity-40 tracking-wider flex items-center gap-1">
-        Next <ArrowRight class="w-3 h-3" />
+        Next <ArrowRight class="w-3 h-3" aria-hidden="true" />
       </span>
       <span class="text-sm font-medium leading-snug group-hover:opacity-70 transition-opacity duration-200">
         {{ nextPost.title }}
