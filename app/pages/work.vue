@@ -19,6 +19,16 @@
             :description="project.description"
             :url="project.behanceUrl" />
         </div>
+
+        <!-- Behance CTA -->
+        <a
+          href="https://be.net/khairinkamarizal"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="self-start text-xs tracking-wider flex items-center gap-1.5 opacity-50 hover:opacity-100 transition-opacity duration-150">
+          <ExternalLink :size="12" />
+          <span>View all on Behance</span>
+        </a>
       </div>
     </template>
 
@@ -38,7 +48,7 @@
 </template>
 
 <script setup lang="ts">
-import { ArrowUpRight } from "lucide-vue-next";
+import { ArrowUpRight, ExternalLink } from "lucide-vue-next";
 
 definePageMeta({
   layout: false,
