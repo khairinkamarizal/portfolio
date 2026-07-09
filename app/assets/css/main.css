@@ -203,7 +203,7 @@
     transform: translateY(-2px);
   }
 
-  /* Fluid typography scale */
+  /* Fluid typography scale — viewport-responsive font sizes */
   .text-fluid-sm { font-size: clamp(0.75rem, 1.5vw, 0.875rem); }
   .text-fluid-base { font-size: clamp(0.875rem, 2vw, 1rem); }
   .text-fluid-lg { font-size: clamp(1rem, 2.5vw, 1.25rem); }
@@ -249,6 +249,7 @@
   .tracking-tight-editorial { letter-spacing: -0.03em; }
   .tracking-ultra-wide { letter-spacing: 0.4em; }
 
+  /* Semantic color tokens — use these instead of raw opacity values */
   .text-foreground { @apply text-black dark:text-white; }
   .text-muted-foreground { @apply text-black/60 dark:text-white/60; }
   .text-subtle { @apply text-black/40 dark:text-white/40; }
