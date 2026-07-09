@@ -17,6 +17,8 @@ export default defineNuxtConfig({
   modules: [
     "@nuxtjs/tailwindcss",
     "@nuxtjs/color-mode",
+    // @nuxt/content reads from the content/ directory by default.
+    // Structure: content/writing/*.md for blog posts, content/work/*.md for projects.
     "@nuxt/content",
   ],
 
