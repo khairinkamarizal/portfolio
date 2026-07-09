@@ -41,6 +41,11 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * AvailabilityCard — compact sidebar card showing current work availability.
+ * @props available {boolean} - When true shows "Available Now"; false shows "Currently Busy".
+ * Uses StatusBadge for the visual indicator and dl/dt/dd for structured detail rows.
+ */
 defineProps<{
   available?: boolean
 }>()
