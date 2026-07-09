@@ -347,6 +347,10 @@
   .prose-mono h1, .prose-mono h2, .prose-mono h3 {
     @apply uppercase tracking-tight;
   }
+
+  .section-heading {
+    @apply text-xs font-mono tracking-[0.2em] uppercase opacity-50 mb-4;
+  }
 }
 
 /* ============================================
