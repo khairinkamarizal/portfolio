@@ -64,6 +64,11 @@
     @apply max-w-full;
   }
 
+  /* Tab size for code blocks */
+  pre, code {
+    tab-size: 2;
+  }
+
   /* Reduced motion override for accessibility */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
