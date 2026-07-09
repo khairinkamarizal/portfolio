@@ -51,20 +51,7 @@
         <!-- Skills -->
         <div class="flex flex-col gap-4">
           <h2 class="text-xs opacity-50 tracking-widest">Skills</h2>
-          <div class="flex flex-col gap-3">
-            <div
-              v-for="group in skillGroups"
-              :key="group.category"
-              class="flex flex-col gap-1.5">
-              <span class="text-xs opacity-40 tracking-wider">{{ group.category.toUpperCase() }}</span>
-              <div class="flex flex-wrap gap-1.5">
-                <SkillBadge
-                  v-for="skill in group.items"
-                  :key="skill"
-                  :label="skill" />
-              </div>
-            </div>
-          </div>
+          <SkillGrid :skills="skills" />
         </div>
 
         <!-- Experience -->
@@ -148,23 +135,26 @@ useHead({
   ],
 });
 
-const skillGroups = [
-  {
-    category: "Design Tools",
-    items: ["Figma", "Adobe Illustrator", "Photoshop", "After Effects", "Prototyping", "Art Direction"],
-  },
-  {
-    category: "Dev Stack",
-    items: ["Nuxt / Vue.js", "Tailwind CSS", "TypeScript", "HTML / CSS", "Responsive Design"],
-  },
-  {
-    category: "Craft",
-    items: ["Brand Identity", "UI/UX Design", "Motion Design", "Typography", "Design Systems"],
-  },
-  {
-    category: "Soft Skills",
-    items: ["Client Communication", "Creative Direction", "Cross-functional Collaboration"],
-  },
+const skills = [
+  // Design Tools
+  { name: "Figma", level: "expert", category: "Design Tools" },
+  { name: "Adobe Illustrator", level: "expert", category: "Design Tools" },
+  { name: "Photoshop", level: "advanced", category: "Design Tools" },
+  { name: "After Effects", level: "advanced", category: "Design Tools" },
+  { name: "Prototyping", level: "expert", category: "Design Tools" },
+  { name: "Art Direction", level: "advanced", category: "Design Tools" },
+  // Dev Stack
+  { name: "Nuxt / Vue.js", level: "advanced", category: "Dev Stack" },
+  { name: "Tailwind CSS", level: "expert", category: "Dev Stack" },
+  { name: "TypeScript", level: "intermediate", category: "Dev Stack" },
+  { name: "HTML / CSS", level: "expert", category: "Dev Stack" },
+  { name: "Responsive Design", level: "expert", category: "Dev Stack" },
+  // Craft
+  { name: "Brand Identity", level: "expert", category: "Craft" },
+  { name: "UI/UX Design", level: "advanced", category: "Craft" },
+  { name: "Motion Design", level: "advanced", category: "Craft" },
+  { name: "Typography", level: "expert", category: "Craft" },
+  { name: "Design Systems", level: "advanced", category: "Craft" },
 ];
 
 const experienceItems = [
