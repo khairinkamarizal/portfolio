@@ -311,7 +311,7 @@ const certs = [
 const experience = [
   {
     role: "Senior Product Designer",
-    company: "Acme Corp",
+    company: "TechCorp MY",
     period: "2023 — Present",
     description:
       "Leading design for core product features, managing the design system, and collaborating with engineering on implementation.",
@@ -319,7 +319,7 @@ const experience = [
   },
   {
     role: "Frontend Engineer",
-    company: "Startup XYZ",
+    company: "FinTech Startup",
     period: "2021 — 2023",
     description:
       "Built and maintained customer-facing web application. Introduced component library that reduced development time by 40%.",
@@ -327,7 +327,7 @@ const experience = [
   },
   {
     role: "UI/UX Designer",
-    company: "Agency ABC",
+    company: "Digital Agency",
     period: "2019 — 2021",
     description:
       "Designed digital experiences for clients across fintech, e-commerce, and healthcare verticals.",
