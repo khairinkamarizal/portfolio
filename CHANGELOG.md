@@ -4,7 +4,44 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## [0.1.0] - 2026-07-09
+## [0.2.0] - 2026-07-09
+
+### Added
+
+#### Content
+- 7 new writing posts: Figma to Code Workflow, Building a Brutalist Critique Tool, Real-time Guestbook with Durable Objects, UI/UX Design Scene in Malaysia, Color Theory for Web Designers, Accessibility in Web Design, Being a Freelance Designer-Developer in Malaysia
+
+#### Pages
+- **Home** — Latest writing section showing 3 most recent posts fetched from content collection
+- **Home** — Selected work section showing 3 featured projects
+- **Work** — WorkStats component displaying project count, years experience, and technology count
+
+#### Components
+- `TagList` — reusable tag list with size, clickable, selectedTag, and onTagClick props
+- `RelatedPosts` — shows up to 3 posts sharing tags with the current post, excludes current slug
+- `PostNavigation` — previous/next post links at the bottom of each post
+- `WorkStats` — hardcoded fun stats: projects, years experience, technologies
+- `CurrentlyWorking` — shows current project, learning, and reading
+
+#### Composables
+- `useSiteConfig` — central site config constants: name, URL, description, author, email, social links
+- `useTheme` — wraps `@nuxtjs/color-mode`, exposes `isDark`, `isLight`, `toggleTheme`, `setTheme`
+
+#### API
+- `GET /api/health` — health check endpoint returning status and timestamp
+- `POST /api/contact` — contact form endpoint with server-side validation
+
+### Changed
+- `PostCard` — tags now rendered via `TagList` component
+- `WorkCard` — tags now rendered via `TagList` component
+- `ContactForm` — wired up to `/api/contact` with success and error states
+- `ColorToggle` — refactored to use `useTheme` composable
+- `about.vue` — email and social links sourced from `useSiteConfig`; added `CurrentlyWorking` section
+- `writing/[slug].vue` — added `RelatedPosts` and `PostNavigation` at bottom of each post
+- `work.vue` — added `WorkStats` at top of page
+- `nuxt.config.ts` — added canonical link tag and `twitter:creator` meta tag
+
+
 
 ### Added
 
