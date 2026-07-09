@@ -2,17 +2,19 @@
   <NuxtLayout name="simple">
     <template #default>
       <div class="flex flex-col gap-10 px-8 py-10 pb-16">
-        <div class="flex flex-col gap-2">
-          <div class="flex items-center justify-between mb-3">
-            <p class="text-xs font-mono opacity-50 tracking-widest">Selected Work <span class="opacity-50">({{ projects.length }})</span></p>
-            <ClientOnly>
-              <ProjectCount :count="projects.length" />
-            </ClientOnly>
+        <RevealOnScroll variant="fade-up">
+          <div class="flex flex-col gap-2">
+            <div class="flex items-center justify-between mb-3">
+              <p class="text-xs font-mono opacity-50 tracking-widest">Selected Work <span class="opacity-50">({{ projects.length }})</span></p>
+              <ClientOnly>
+                <ProjectCount :count="projects.length" />
+              </ClientOnly>
+            </div>
+            <h1 class="text-3xl md:text-4xl font-light leading-tight tracking-tight text-balance">
+              Projects spanning brand identity, UI/UX, and digital design.
+            </h1>
           </div>
-          <h1 class="text-3xl md:text-4xl font-light leading-tight tracking-tight text-balance">
-            Projects spanning brand identity, UI/UX, and digital design.
-          </h1>
-        </div>
+        </RevealOnScroll>
 
         <RevealOnScroll variant="fade-up">
           <WorkStats />
