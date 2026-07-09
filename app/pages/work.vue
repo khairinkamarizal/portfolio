@@ -50,6 +50,7 @@
                 :types="projectTypes"
                 :selected="selectedType"
                 @select="selectedType = $event" />
+              <button v-if="selectedType !== 'All'" @click="selectedType = 'All'" type="button" class="font-mono text-[9px] tracking-[0.2em] uppercase opacity-40 hover:opacity-100 transition-opacity duration-150 ml-2">× Clear</button>
             </div>
             <!-- View toggle -->
             <div class="flex items-center gap-1 shrink-0">
