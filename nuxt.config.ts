@@ -17,7 +17,9 @@ export default defineNuxtConfig({
     "@nuxt/content",
   ],
 
-  // Color mode config (dark mode via class)
+  // Color mode: defaults to system, persisted in localStorage
+  // Light: bg-white, text-black
+  // Dark: bg-[#0a0a0a], text-white
   colorMode: {
     classSuffix: "",
     preference: "system",
