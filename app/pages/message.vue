@@ -53,8 +53,9 @@
                       ? 'border-red-500'
                       : 'border-black/20 dark:border-white/20',
                   ]"
+                  :aria-describedby="errors.name ? 'name-error' : undefined"
                   placeholder="Your name" />
-                <span v-if="errors.name" class="text-xs text-red-500">{{ errors.name }}</span>
+                <span v-if="errors.name" id="name-error" class="text-xs text-red-500">{{ errors.name }}</span>
               </div>
 
               <!-- Email -->
@@ -78,8 +79,9 @@
                       ? 'border-red-500'
                       : 'border-black/20 dark:border-white/20',
                   ]"
+                  :aria-describedby="errors.email ? 'email-error' : undefined"
                   placeholder="your@email.com" />
-                <span v-if="errors.email" class="text-xs text-red-500">{{ errors.email }}</span>
+                <span v-if="errors.email" id="email-error" class="text-xs text-red-500">{{ errors.email }}</span>
               </div>
 
               <!-- Subject -->
@@ -118,29 +120,39 @@
                       ? 'border-red-500'
                       : 'border-black/20 dark:border-white/20',
                   ]"
+                  :aria-describedby="errors.message ? 'message-error' : undefined"
                   placeholder="Tell me what you're thinking..." />
-                <span v-if="errors.message" class="text-xs text-red-500">{{ errors.message }}</span>
+                <span v-if="errors.message" id="message-error" class="text-xs text-red-500">{{ errors.message }}</span>
               </div>
 
               <!-- Submit -->
-              <div class="flex items-center gap-4">
-                <button
-                  type="submit"
-                  :disabled="submitting"
-                  class="px-5 py-2.5 bg-black dark:bg-white text-white dark:text-black text-xs tracking-wider font-medium hover:opacity-80 transition-opacity duration-150 disabled:opacity-40 disabled:cursor-not-allowed">
-                  {{ submitting ? "Sending..." : "Send Message" }}
-                </button>
+              <div class="flex flex-col gap-4">
+                <p
+                  v-if="hasErrors"
+                  aria-live="assertive"
+                  class="text-xs text-red-500 font-mono">
+                  Please fix the errors above before submitting.
+                </p>
+                <div class="flex items-center gap-4">
+                  <button
+                    type="submit"
+                    :disabled="submitting"
+                    class="px-5 py-2.5 bg-black dark:bg-white text-white dark:text-black text-xs tracking-wider font-medium hover:opacity-80 transition-opacity duration-150 disabled:opacity-40 disabled:cursor-not-allowed">
+                    {{ submitting ? "Sending..." : "Send Message" }}
+                  </button>
 
-                <Transition
-                  enter-active-class="transition duration-300 ease-out"
-                  enter-from-class="opacity-0 translate-y-1"
-                  enter-to-class="opacity-100 translate-y-0">
-                  <span
-                    v-if="submitted"
-                    class="text-xs tracking-widest uppercase font-mono opacity-60">
-                    Message sent ✓
-                  </span>
-                </Transition>
+                  <Transition
+                    enter-active-class="transition duration-300 ease-out"
+                    enter-from-class="opacity-0 translate-y-1"
+                    enter-to-class="opacity-100 translate-y-0">
+                    <span
+                      v-if="submitted"
+                      aria-live="polite"
+                      class="text-xs tracking-widest uppercase font-mono opacity-60">
+                      Message sent ✓
+                    </span>
+                  </Transition>
+                </div>
               </div>
             </form>
           </div>
@@ -206,7 +218,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from "vue";
+import { ref, reactive, computed } from "vue";
 
 useSeoMeta({
   title: "Message",
@@ -232,6 +244,8 @@ const errors = reactive({
 
 const submitting = ref(false);
 const submitted = ref(false);
+
+const hasErrors = computed(() => Object.values(errors).some((e) => e !== ""));
 
 function validate() {
   let valid = true;
