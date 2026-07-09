@@ -211,6 +211,11 @@
   .z-overlay { z-index: 50; }
   .z-modal { z-index: 60; }
   .z-toast { z-index: 70; }
+
+  .aspect-card { aspect-ratio: 4/3; }
+  .aspect-wide { aspect-ratio: 16/9; }
+  .aspect-square { aspect-ratio: 1/1; }
+  .aspect-portrait { aspect-ratio: 3/4; }
 }
 
 /* ============================================
