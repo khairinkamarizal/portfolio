@@ -44,6 +44,7 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: "canonical", href: "https://khair.ink" },
+        // Preconnect to Google Fonts origins to reduce DNS + TLS handshake latency
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
         {
           rel: "preconnect",
