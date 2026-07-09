@@ -10,7 +10,7 @@
     <!-- Title -->
     <div class="flex items-center gap-2 mb-2">
       <h2
-        class="text-base font-semibold tracking-tight leading-tight text-black dark:text-white group-hover:translate-x-0.5 transition-transform duration-200">
+        class="text-sm font-medium tracking-tight leading-tight text-black dark:text-white group-hover:translate-x-0.5 transition-transform duration-200">
         {{ post.title }}
       </h2>
       <span class="opacity-0 group-hover:opacity-60 transition-opacity duration-200 text-black dark:text-white">→</span>
