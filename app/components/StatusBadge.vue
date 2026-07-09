@@ -19,6 +19,14 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * StatusBadge
+ *
+ * Displays an availability indicator with a colored pulsing dot and a text label.
+ * Color can be green, yellow, or red. The pulse animation can be toggled off.
+ * Defaults to green with pulse enabled, showing "Available for projects".
+ * Uses aria-live="polite" so screen readers announce status changes.
+ */
 const dotColors = { green: 'bg-green-500', yellow: 'bg-yellow-500', red: 'bg-red-500' }
 const pingColors = { green: 'bg-green-400', yellow: 'bg-yellow-400', red: 'bg-red-400' }
 
