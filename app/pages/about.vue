@@ -149,7 +149,7 @@
         <div class="flex flex-col gap-8">
           <div v-for="group in toolGroups" :key="group.label">
             <h3
-              class="text-xs tracking-widest uppercase opacity-40 mb-3 font-mono">
+              class="text-xs tracking-widest uppercase opacity-50 mb-3 font-mono">
               {{ group.label }}
             </h3>
             <div class="flex flex-wrap gap-2">
