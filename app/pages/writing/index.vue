@@ -78,7 +78,9 @@
                 ? 'border-black dark:border-white bg-black dark:bg-white text-white dark:text-black'
                 : 'border-black/20 dark:border-white/20 hover:border-black/60 dark:hover:border-white/60',
             ]"
-            @click="activeTag = tag">
+            @click="activeTag = tag"
+            @keydown.right.prevent="selectNextTag"
+            @keydown.left.prevent="selectPrevTag">
             {{ tag }} ({{ getTagCount(tag) }})
           </button>
         </div>
@@ -218,5 +220,19 @@ const filteredPosts = computed(() =>
 
 function getTagCount(tag: string) {
   return tag === "All" ? nonFeaturedPosts.value.length : nonFeaturedPosts.value.filter(p => p.tags?.includes(tag)).length ?? 0
+}
+
+function selectNextTag() {
+  const tags = allTags.value
+  const currentIndex = tags.indexOf(activeTag.value)
+  const nextIndex = (currentIndex + 1) % tags.length
+  activeTag.value = tags[nextIndex]
+}
+
+function selectPrevTag() {
+  const tags = allTags.value
+  const currentIndex = tags.indexOf(activeTag.value)
+  const prevIndex = (currentIndex - 1 + tags.length) % tags.length
+  activeTag.value = tags[prevIndex]
 }
 </script>
