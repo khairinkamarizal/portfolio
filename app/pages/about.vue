@@ -65,7 +65,7 @@
                   <h3 class="mono-label mb-3">
                     {{ group.category }}
                   </h3>
-                  <ul class="flex flex-col gap-1.5">
+                  <ul class="flex flex-col divide-y divide-black/8 dark:divide-white/8">
                     <li
                       v-for="skill in group.items"
                       :key="skill"
