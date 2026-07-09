@@ -15,6 +15,8 @@
             <img
               src="/assets/dp.webp"
               alt="Khairin Kamarizal"
+              width="80"
+              height="80"
               loading="eager"
               decoding="async"
               class="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover object-center shrink-0 ring-1 ring-black/15 dark:ring-white/15" />
