@@ -10,25 +10,14 @@
         </div>
 
         <div v-if="posts && posts.length > 0" class="flex flex-col gap-0 divide-y divide-black/10 dark:divide-white/10">
-          <NuxtLink
+          <PostCard
             v-for="post in posts"
             :key="post.path"
-            :to="post.path"
-            class="group flex flex-col gap-1.5 py-5 first:pt-0 hover:opacity-70 transition-opacity duration-200">
-            <div class="flex justify-between items-start gap-4">
-              <h2 class="text-sm font-medium leading-snug">{{ post.title }}</h2>
-              <span class="text-xs opacity-40 shrink-0">{{ formatDate(post.date) }}</span>
-            </div>
-            <p class="text-sm opacity-60 leading-relaxed dark:font-light">{{ post.description }}</p>
-            <div v-if="post.tags?.length" class="flex flex-wrap gap-1.5 mt-0.5">
-              <span
-                v-for="tag in post.tags"
-                :key="tag"
-                class="text-[10px] tracking-wider border border-black/20 dark:border-white/20 px-2 py-0.5">
-                {{ tag.toUpperCase() }}
-              </span>
-            </div>
-          </NuxtLink>
+            :title="post.title"
+            :description="post.description"
+            :date="post.date"
+            :tags="post.tags"
+            :slug="post.stem?.split('/').pop() || ''" />
         </div>
 
         <div v-else class="flex flex-col gap-2">
@@ -73,14 +62,4 @@ const { data: posts } = await useAsyncData("writing-index", () =>
     .order("date", "DESC")
     .all()
 );
-
-function formatDate(dateStr: string): string {
-  if (!dateStr) return "";
-  const date = new Date(dateStr);
-  return date.toLocaleDateString("en-GB", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
-}
 </script>
