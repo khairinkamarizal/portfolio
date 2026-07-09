@@ -12,7 +12,7 @@
         <div
           v-for="skill in group.skills"
           :key="skill.name"
-          class="flex flex-col gap-1.5 p-3 border border-black/10 dark:border-white/10">
+          class="flex flex-col gap-1.5 p-3 border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 transition-colors duration-150">
           <span class="text-xs font-medium leading-snug">{{ skill.name }}</span>
           <!-- Level indicator dots -->
           <div 
