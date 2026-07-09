@@ -34,6 +34,11 @@
 
   body {
     @apply antialiased;
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+  }
+
+  .font-mono {
+    font-feature-settings: 'tnum' 1, 'zero' 1;
   }
 
   /* Better focus styles */
