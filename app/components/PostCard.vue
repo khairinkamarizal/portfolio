@@ -2,10 +2,9 @@
   <NuxtLink
     :to="post._path ?? `/writing/${post.slug}`"
     class="group block w-full relative border-b border-black/10 dark:border-white/10 py-6 hover:border-black/30 dark:hover:border-white/30 transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 group-hover:after:w-full after:bg-black dark:after:bg-white after:transition-all after:duration-300">
-    <!-- Date -->
+    <!-- Date + category -->
     <p class="text-xs font-mono opacity-50 mb-2 text-black dark:text-white">
-      {{ formattedDate }}
-      <span v-if="post.readingTime" class="font-mono text-[9px] opacity-40">· {{ post.readingTime }} min read</span>
+      <span v-if="post.category" class="font-mono text-[9px] tracking-[0.2em] uppercase opacity-40 mr-2">{{ post.category }}</span>{{ formattedDate }}
     </p>
 
     <!-- Title -->
@@ -51,6 +50,7 @@ const props = defineProps<{
     description?: string
     tags?: string[]
     readingTime?: number
+    category?: string
   }
 }>()
 
