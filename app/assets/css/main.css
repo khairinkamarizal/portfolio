@@ -86,6 +86,10 @@
     @apply max-w-full;
   }
 
+  img[src$=".svg"] {
+    image-rendering: crisp-edges;
+  }
+
   /* Tab size for code blocks */
   pre, code {
     tab-size: 2;
