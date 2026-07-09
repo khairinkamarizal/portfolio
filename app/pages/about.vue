@@ -3,7 +3,7 @@
     <template #default>
       <div class="flex flex-col gap-12 mt-10">
 
-        <!-- Magazine-style header -->
+        <!-- Magazine-style header (full width) -->
         <div class="flex flex-col gap-6">
           <!-- Byline label -->
           <span class="text-[10px] tracking-widest opacity-40">ABOUT THE DESIGNER</span>
@@ -42,69 +42,80 @@
           </a>
         </div>
 
-        <!-- Availability + Local time -->
-        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <AvailabilityCard />
-          <LocationTime />
-        </div>
+        <!-- Desktop: 2-column layout. Left: bio info/availability/contact. Right: experience/skills/certs/tools -->
+        <div class="lg:grid lg:grid-cols-2 lg:gap-12">
 
-        <!-- Skills -->
-        <div class="flex flex-col gap-4">
-          <h2 class="text-xs opacity-50 tracking-widest">Skills</h2>
-          <SkillGrid :skills="skills" />
-        </div>
+          <!-- Left column -->
+          <div class="flex flex-col gap-8">
+            <!-- Availability + Local time -->
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-1">
+              <AvailabilityCard />
+              <LocationTime />
+            </div>
 
-        <!-- Experience -->
-        <div class="flex flex-col gap-4">
-          <h2 class="text-xs opacity-50 tracking-widest">Experience</h2>
-          <ExperienceTimeline :items="experienceItems" />
-        </div>
+            <!-- Currently working on -->
+            <CurrentlyWorking />
 
-        <!-- Certifications -->
-        <div class="flex flex-col gap-4">
-          <h2 class="text-xs opacity-50 tracking-widest">Certifications</h2>
-          <div class="flex flex-col gap-2">
-            <div
-              v-for="cert in certifications"
-              :key="cert"
-              class="flex items-start gap-2 text-sm opacity-70">
-              <span class="text-xs opacity-40 mt-0.5">✓</span>
-              <span>{{ cert }}</span>
+            <!-- Get in touch -->
+            <div class="flex flex-col gap-4">
+              <h2 class="text-xs opacity-50 tracking-widest">Get in touch</h2>
+              <ContactCTA />
+              <ContactForm />
             </div>
           </div>
-        </div>
 
-        <!-- Education -->
-        <div class="flex flex-col gap-4">
-          <h2 class="text-xs opacity-50 tracking-widest">Education</h2>
-          <div class="flex flex-col gap-1">
-            <span class="text-sm font-medium">Diploma, New Media Communication & Contentpreneurship</span>
-            <span class="text-xs opacity-50 tracking-wide">UNIVERSITI TEKNOLOGI MARA (UITM)</span>
-            <span class="text-xs opacity-40 font-mono">July 2019 — January 2022</span>
+          <!-- Right column -->
+          <div class="flex flex-col gap-8 mt-8 lg:mt-0">
+            <!-- Skills -->
+            <div class="flex flex-col gap-4">
+              <h2 class="text-xs opacity-50 tracking-widest">Skills</h2>
+              <SkillGrid :skills="skills" />
+            </div>
+
+            <!-- Experience -->
+            <div class="flex flex-col gap-4">
+              <h2 class="text-xs opacity-50 tracking-widest">Experience</h2>
+              <ExperienceTimeline :items="experienceItems" />
+            </div>
+
+            <!-- Certifications -->
+            <div class="flex flex-col gap-4">
+              <h2 class="text-xs opacity-50 tracking-widest">Certifications</h2>
+              <div class="flex flex-col gap-2">
+                <div
+                  v-for="cert in certifications"
+                  :key="cert"
+                  class="flex items-start gap-2 text-sm opacity-70">
+                  <span class="text-xs opacity-40 mt-0.5">✓</span>
+                  <span>{{ cert }}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Education -->
+            <div class="flex flex-col gap-4">
+              <h2 class="text-xs opacity-50 tracking-widest">Education</h2>
+              <div class="flex flex-col gap-1">
+                <span class="text-sm font-medium">Diploma, New Media Communication & Contentpreneurship</span>
+                <span class="text-xs opacity-50 tracking-wide">UNIVERSITI TEKNOLOGI MARA (UITM)</span>
+                <span class="text-xs opacity-40 font-mono">July 2019 — January 2022</span>
+              </div>
+            </div>
+
+            <!-- Tools -->
+            <div class="flex flex-col gap-4">
+              <h2 class="text-xs opacity-50 tracking-widest">Tools</h2>
+              <div class="flex flex-wrap gap-1.5">
+                <span
+                  v-for="tool in tools"
+                  :key="tool"
+                  class="text-xs border border-black/20 dark:border-white/20 px-2.5 py-1 opacity-70">
+                  {{ tool }}
+                </span>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <!-- Tools -->
-        <div class="flex flex-col gap-4">
-          <h2 class="text-xs opacity-50 tracking-widest">Tools</h2>
-          <div class="flex flex-wrap gap-1.5">
-            <span
-              v-for="tool in tools"
-              :key="tool"
-              class="text-xs border border-black/20 dark:border-white/20 px-2.5 py-1 opacity-70">
-              {{ tool }}
-            </span>
-          </div>
-        </div>
-
-        <!-- Currently working on -->
-        <CurrentlyWorking />
-
-        <!-- Get in touch -->
-        <div class="flex flex-col gap-4">
-          <h2 class="text-xs opacity-50 tracking-widest">Get in touch</h2>
-          <ContactCTA />
-          <ContactForm />
         </div>
 
       </div>
