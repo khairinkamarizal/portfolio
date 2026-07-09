@@ -147,7 +147,7 @@ definePageMeta({
 
 const selectedType = ref('All')
 
-const projectTypes = ['Branding', 'Motion', 'Jersey', 'Logo']
+const projectTypes = ['All', 'Branding', 'Motion', 'Jersey', 'Logo']
 
 const featuredProjects = computed(() => projects.filter(p => p.featured))
 
