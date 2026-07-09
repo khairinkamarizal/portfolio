@@ -111,20 +111,22 @@
   </div>
 </template>
 
+<script setup lang="ts">
 /**
+ * WorkCard — project portfolio card.
+ *
  * Displays a project card with thumbnail, title, category, description, and tags.
  * Links to an external URL when provided. Falls back to a generated ProjectThumbnail
  * when no thumbnail image is supplied.
  *
- * @prop title - Project title (required)
- * @prop year - Year the project was completed
- * @prop description - Short description shown below the title
- * @prop tags - Up to 3 technology/skill tags displayed on hover
- * @prop thumbnail - Optional image URL; uses ProjectThumbnail when omitted
- * @prop category - Project category shown as a small label above the title
- * @prop url - External link; wraps the card in an <a> tag when provided
+ * @prop {string} title - Project title (required)
+ * @prop {string|number} [year] - Year the project was completed
+ * @prop {string} [description] - Short description shown below the title
+ * @prop {string[]} [tags] - Up to 3 technology/skill tags displayed on hover
+ * @prop {string} [thumbnail] - Optional image URL; uses ProjectThumbnail when omitted
+ * @prop {string} [category] - Project category shown as a small label above the title
+ * @prop {string} [url] - External link; wraps the card in an <a> tag when provided
  */
-<script setup lang="ts">
 defineProps<{
   title: string
   year?: string | number
