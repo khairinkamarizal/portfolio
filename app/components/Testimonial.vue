@@ -35,7 +35,7 @@ defineProps<{
   display: block;
   font-size: 4rem;
   line-height: 1;
-  opacity: 0.08;
+  opacity: 0.12;
   font-family: Georgia, 'Times New Roman', serif;
   font-weight: 700;
   margin-bottom: -1rem;
