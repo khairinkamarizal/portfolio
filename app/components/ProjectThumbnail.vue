@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full relative overflow-hidden bg-black/5 dark:bg-white/5">
+  <div class="w-full h-full relative overflow-hidden bg-black/8 dark:bg-white/8">
     <!-- Branding / Motion category -->
     <svg
       v-if="resolvedCategory === 'branding'"
@@ -22,7 +22,7 @@
         font-family="'Space Mono', monospace"
         font-weight="700"
         fill="currentColor"
-        opacity="0.08">
+        opacity="0.15">
         {{ initial }}
       </text>
     </svg>
@@ -48,7 +48,7 @@
         font-family="'Space Mono', monospace"
         font-weight="700"
         fill="currentColor"
-        opacity="0.08">
+        opacity="0.15">
         {{ initial }}
       </text>
     </svg>
@@ -75,7 +75,7 @@
         font-family="'Space Mono', monospace"
         font-weight="700"
         fill="currentColor"
-        opacity="0.08">
+        opacity="0.15">
         {{ initial }}
       </text>
     </svg>
@@ -105,7 +105,7 @@
         font-family="'Space Mono', monospace"
         font-weight="700"
         fill="currentColor"
-        opacity="0.08">
+        opacity="0.15">
         {{ initial }}
       </text>
     </svg>
@@ -135,7 +135,7 @@
         font-family="'Space Mono', monospace"
         font-weight="700"
         fill="currentColor"
-        opacity="0.08">
+        opacity="0.15">
         {{ initial }}
       </text>
     </svg>
