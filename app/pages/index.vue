@@ -1,87 +1,203 @@
 <template>
-  <div class="w-full">
-    <!-- Hero -->
-    <section class="px-6 md:px-12 lg:px-20 pt-16 md:pt-24 pb-16 border-b border-black/10 dark:border-white/10">
-      <p
-        class="text-xs tracking-widest uppercase opacity-40 mb-6 font-mono text-black dark:text-white"
-        style="font-family: 'Space Mono', monospace">
-        Designer &amp; Creative Director
-      </p>
-      <h1
-        class="text-[12vw] md:text-[8vw] font-bold leading-none tracking-tight text-black dark:text-white mb-8">
-        Khair<br />Studio
-      </h1>
-      <div class="flex items-center gap-4 flex-wrap">
-        <StatusBadge text="Available for work" />
-        <NuxtLink
-          to="/work"
-          class="text-xs tracking-widest uppercase font-mono opacity-60 hover:opacity-100 transition-opacity text-black dark:text-white"
-          style="font-family: 'Space Mono', monospace">
-          View Work →
-        </NuxtLink>
+  <NuxtLayout name="simple">
+    <template #default>
+      <GridBackground variant="dots" />
+      <ClientOnly>
+        <ScrollIndicator />
+      </ClientOnly>
+      <div class="flex flex-col gap-14 mt-8 pb-8 relative z-10">
+
+        <!-- Hero -->
+        <div class="flex flex-col gap-5">
+          <div class="flex flex-row items-center justify-between">
+            <div class="flex flex-col gap-1.5">
+              <span class="text-xs opacity-40 tracking-widest normal-case font-sans">Creative Designer & Developer</span>
+              <h1 class="text-2xl font-bold tracking-tight leading-none" style="font-family: 'Space Mono', monospace">
+                KHAIRIN<br />KAMARIZAL
+              </h1>
+            </div>
+            <div class="flex flex-row relative items-center">
+              <img
+                src="/assets/dp.webp"
+                alt="Khairin Kamarizal"
+                class="w-16 h-16 rounded-full object-cover object-center shrink-0 ring-2 ring-black/10 dark:ring-white/10" />
+              <div
+                class="w-10 h-10 shrink-0 flex items-center justify-center bg-black dark:bg-white rounded-full -ml-3 ring-2 ring-white dark:ring-black">
+                <AppLogo class="text-white dark:text-black w-5 h-5" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Status badge -->
+          <StatusBadge />
+
+          <!-- Bio tagline -->
+          <p class="text-sm leading-relaxed dark:font-light normal-case font-sans opacity-70">
+            Ambitious and versatile creative designer skilled in branding,
+            UI/UX, motion content and web development. Based in Cyberjaya, Malaysia.
+          </p>
+
+          <!-- CTA links -->
+          <div class="flex items-center gap-3 mt-2 normal-case">
+            <NuxtLink
+              to="/work"
+              class="text-xs tracking-wider px-4 py-2 bg-black dark:bg-white text-white dark:text-black hover:opacity-80 transition-opacity duration-150">
+              VIEW WORK
+            </NuxtLink>
+            <NuxtLink
+              to="mailto:khairinkamarizal@gmail.com"
+              class="text-xs tracking-wider px-4 py-2 border border-black/20 dark:border-white/20 hover:border-black dark:hover:border-white transition-colors duration-150">
+              HIT ME UP
+            </NuxtLink>
+          </div>
+        </div>
+
+        <!-- Skills marquee strip -->
+        <div class="border-y border-black/10 dark:border-white/10 py-2.5 -mx-5">
+          <MarqueeTicker :items="skills" :speed="30" />
+        </div>
+
+        <!-- Stats row -->
+        <div class="grid grid-cols-4 divide-x divide-black/10 dark:divide-white/10 border border-black/10 dark:border-white/10 py-5">
+          <ClientOnly>
+            <StatCounter :value="1423" label="BEHANCE VIEWS" />
+            <StatCounter :value="38" label="APPRECIATIONS" />
+            <StatCounter :value="43" label="FOLLOWERS" />
+            <StatCounter :value="5" label="YEARS EXP" suffix="+" />
+            <template #fallback>
+              <div class="col-span-4 flex items-center justify-center py-4 opacity-30 text-xs">Loading stats...</div>
+            </template>
+          </ClientOnly>
+        </div>
+
+        <!-- Featured work -->
+        <div class="flex flex-col gap-4 normal-case">
+          <div class="flex items-center justify-between">
+            <span class="text-xs opacity-40 tracking-widest uppercase" style="font-family: 'Space Mono', monospace">Featured Work</span>
+            <NuxtLink to="/work" class="text-xs opacity-40 hover:opacity-100 transition-opacity tracking-wider flex items-center gap-1">
+              View all <ArrowUpRight class="w-3 h-3" />
+            </NuxtLink>
+          </div>
+          <div class="grid grid-cols-1 gap-4">
+            <WorkCard
+              v-for="project in featuredProjects"
+              :key="project.title"
+              :title="project.title"
+              :year="project.year"
+              :tags="project.tags"
+              :description="project.description"
+              :url="project.behanceUrl"
+              :category="project.category"
+              :thumbnail="true" />
+          </div>
+        </div>
+
+        <!-- Latest writing -->
+        <div v-if="latestPosts?.length" class="flex flex-col gap-4 normal-case">
+          <div class="flex items-center justify-between">
+            <span class="text-xs opacity-40 tracking-widest uppercase" style="font-family: 'Space Mono', monospace">Latest Writing</span>
+            <NuxtLink to="/writing" class="text-xs opacity-40 hover:opacity-100 transition-opacity tracking-wider flex items-center gap-1">
+              View all <ArrowUpRight class="w-3 h-3" />
+            </NuxtLink>
+          </div>
+          <div class="flex flex-col divide-y divide-black/10 dark:divide-white/10">
+            <PostCard
+              v-for="post in latestPosts"
+              :key="post.path"
+              :title="post.title"
+              :description="post.description"
+              :date="post.date"
+              :tags="post.tags || []"
+              :slug="post.path?.split('/').pop() || ''" />
+          </div>
+        </div>
+
       </div>
-    </section>
+    </template>
 
-    <!-- Marquee -->
-    <MarqueeTicker
-      :items="['Branding', 'Motion Design', 'Editorial', 'Identity Systems', 'Typography', 'Art Direction', 'Visual Design']" />
-
-    <!-- Stats section with BigNumber decorative background -->
-    <section class="relative overflow-hidden px-6 md:px-12 lg:px-20 py-16 border-b border-black/10 dark:border-white/10">
-      <!-- Decorative ghosted background number (5 years experience) -->
-      <div class="absolute inset-0 flex items-center justify-end pr-8 pointer-events-none select-none" aria-hidden="true">
-        <BigNumber value="5" label="Years of experience" />
-      </div>
-
-      <!-- Stats grid -->
-      <div class="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-0 divide-x divide-y md:divide-y-0 divide-black/10 dark:divide-white/10 border border-black/10 dark:border-white/10">
-        <StatCounter value="5+" label="Years Experience" />
-        <StatCounter value="80+" label="Projects Delivered" />
-        <StatCounter value="30+" label="Clients Worldwide" />
-        <StatCounter value="12" label="Awards &amp; Recognition" />
-      </div>
-    </section>
-
-    <!-- Featured work -->
-    <section class="px-6 md:px-12 lg:px-20 py-16 border-b border-black/10 dark:border-white/10">
-      <SectionDivider number="01" title="Featured Work" class="mb-10" />
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <FeaturedProject
-          title="Brand Identity System"
-          category="Branding"
-          year="2024"
-          description="A comprehensive identity system built around geometric forms and typographic precision."
-          :tags="['Identity', 'Print', 'Digital']"
-          href="/work/brand-identity" />
-
-        <FeaturedProject
-          title="Motion Design Toolkit"
-          category="Motion"
-          year="2023"
-          description="A reusable animation framework for product UI — transitions, micro-interactions, and loading states."
-          :tags="['Motion', 'UI', 'Animation']"
-          href="/work/motion-toolkit" />
-      </div>
-
-      <div class="mt-10">
-        <NuxtLink
-          to="/work"
-          class="text-xs tracking-widest uppercase font-mono opacity-40 hover:opacity-100 transition-opacity text-black dark:text-white"
-          style="font-family: 'Space Mono', monospace">
-          All Work →
-        </NuxtLink>
-      </div>
-    </section>
-
-    <!-- Contact CTA -->
-    <ContactCTA />
-  </div>
+    <template #footer-actions>
+      <NuxtLink
+        to="mailto:khairinkamarizal@gmail.com"
+        class="group flex items-center">
+        <div class="flex-none group-hover:flex-1 transition-all duration-300 h-1"></div>
+        <span>Hit me up</span>
+        <div class="flex-1 group-hover:flex-none transition-all duration-300 group-hover:w-2 h-1"></div>
+        <ArrowUpRight class="group-hover:rotate-45 transition-transform duration-300" />
+      </NuxtLink>
+      <NuxtLink
+        to="https://be.net/khairinkamarizal"
+        class="group flex items-center">
+        <div class="flex-none group-hover:flex-1 transition-all duration-300 h-1"></div>
+        <span>View my portfolio</span>
+        <div class="flex-1 group-hover:flex-none transition-all duration-300 group-hover:w-2 h-1"></div>
+        <ArrowUpRight class="group-hover:rotate-45 transition-transform duration-300" />
+      </NuxtLink>
+    </template>
+  </NuxtLayout>
 </template>
 
 <script setup lang="ts">
-useSeoMeta({
-  title: 'Khair Studio — Designer & Creative Director',
-  description: 'Portfolio of a designer and creative director specialising in branding, motion, and editorial design.',
-})
+import { ArrowUpRight } from "lucide-vue-next";
+
+const { data: latestPosts } = await useAsyncData("latest-posts", () =>
+  queryCollection("writing").order("date", "DESC").limit(3).all()
+);
+
+const featuredProjects = [
+  {
+    title: "FRONTFACE®",
+    year: 2024,
+    tags: ["Branding", "Identity", "Logo"],
+    description: "Bold brand identity system built around a strong typographic foundation.",
+    behanceUrl: "https://www.behance.net/khairinkamarizal",
+    category: "Branding",
+  },
+  {
+    title: "Mero&Kero",
+    year: 2023,
+    tags: ["Branding", "Identity", "Logo"],
+    description: "Brand identity with 4 appreciations. Playful yet refined visual language.",
+    behanceUrl: "https://www.behance.net/khairinkamarizal",
+    category: "Branding",
+  },
+  {
+    title: "Datalyse Logo",
+    year: 2023,
+    tags: ["Logo", "Design", "Identity"],
+    description: "Top performer with 5 appreciations. Clean and modern approach to data brand identity.",
+    behanceUrl: "https://www.behance.net/khairinkamarizal",
+    category: "Logo",
+  },
+];
+
+const skills = [
+  "Brand Identity",
+  "UI/UX Design",
+  "Web Development",
+  "Motion Design",
+  "Figma",
+  "Vue.js",
+  "Nuxt",
+  "Tailwind CSS",
+  "Adobe CC",
+  "Typography",
+  "Creative Direction",
+];
+
+definePageMeta({
+  layout: false,
+});
+
+useHead({
+  title: "Khairin Kamarizal — Creative Designer & Developer",
+  meta: [
+    {
+      name: "description",
+      content: "Ambitious and versatile creative designer skilled in branding, UI/UX, motion content and web development.",
+    },
+    { property: "og:title", content: "Khairin Kamarizal — Creative Designer & Developer" },
+    { property: "og:description", content: "Ambitious and versatile creative designer skilled in branding, UI/UX, motion content and web development." },
+    { property: "og:url", content: "https://khair.ink" },
+  ],
+});
 </script>
