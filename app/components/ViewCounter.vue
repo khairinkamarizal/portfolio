@@ -4,6 +4,7 @@
       <Eye :size="12" />
       <span>{{ count }} {{ count === 1 ? 'view' : 'views' }}</span>
     </div>
+    <template #fallback><div class="w-10 h-4" /></template>
   </ClientOnly>
 </template>
 
