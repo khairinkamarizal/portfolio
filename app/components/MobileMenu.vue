@@ -21,8 +21,9 @@
       leave-to-class="opacity-0 -translate-y-2">
       <div
         v-if="open"
+        ref="menuRef"
         id="mobile-menu-dropdown"
-        class="absolute right-0 top-full mt-2 w-56 bg-white dark:bg-black border border-black/10 dark:border-white/10 shadow-lg z-50 font-mono backdrop-blur-sm"
+        class="absolute right-0 top-full mt-2 w-56 bg-white dark:bg-black border border-black/10 dark:border-white/10 shadow-lg z-50 font-mono"
         @touchstart="onTouchStart"
         @touchend="onTouchEnd">
 
@@ -80,7 +81,19 @@ import { Menu, X } from "lucide-vue-next";
 
 const open = ref(false);
 const containerRef = ref<HTMLElement | null>(null);
+const menuRef = ref<HTMLElement | null>(null);
 const route = useRoute();
+
+const { activate, deactivate } = useFocusTrap(menuRef);
+
+// Trap focus when menu opens/closes
+watch(open, (isOpen) => {
+  if (isOpen) {
+    nextTick(() => activate());
+  } else {
+    deactivate();
+  }
+});
 
 // Close on route change
 watch(
