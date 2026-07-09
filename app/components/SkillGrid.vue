@@ -15,7 +15,10 @@
           class="flex flex-col gap-1.5 p-3 border border-black/10 dark:border-white/10">
           <span class="text-xs font-medium leading-snug">{{ skill.name }}</span>
           <!-- Level indicator dots -->
-          <div class="flex items-center gap-1">
+          <div 
+            class="flex items-center gap-1"
+            role="img"
+            :aria-label="'Proficiency: ' + skillLevel(skill.level) + ' out of 5'">
             <span
               v-for="i in 5"
               :key="i"
