@@ -1,5 +1,5 @@
 <template>
-  <div :class="['w-full', showLine ? 'pt-px' : '']">
+  <div :class="['w-full mb-0', showLine ? 'pt-px' : '']">
     <!-- Optional top border line with width transition -->
     <div
       v-if="showLine"
