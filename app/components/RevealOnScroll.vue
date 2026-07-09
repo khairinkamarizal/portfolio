@@ -20,6 +20,11 @@
   </div>
 </template>
 
+/**
+ * Reveals slot content when it enters the viewport.
+ * Supports fade-up, fade-in, fade-left, fade-right variants.
+ * Respects prefers-reduced-motion.
+ */
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 
