@@ -1,7 +1,7 @@
 <template>
   <NuxtLayout name="simple">
     <template #default>
-      <div class="pb-16">
+      <div id="main-content" class="pb-16">
 
       <!-- ============================================ -->
       <!-- HERO: page heading                           -->
