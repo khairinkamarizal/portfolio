@@ -63,6 +63,12 @@ export default defineNuxtConfig({
     layoutTransition: { name: "page", mode: "out-in" },
   },
 
+  // Experimental performance features
+  experimental: {
+    renderJsonPayloads: true,
+    viewTransition: true,
+  },
+
   // Route rules for static page prerendering
   routeRules: {
     '/': { prerender: true },
