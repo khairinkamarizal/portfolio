@@ -24,6 +24,28 @@
             UI/UX, motion content and web development.
           </p>
         </div>
+
+        <!-- Latest writing -->
+        <div class="flex flex-col gap-4">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xs opacity-50 tracking-widest">Latest writing</h2>
+            <NuxtLink
+              to="/writing"
+              class="text-xs opacity-40 hover:opacity-100 transition-opacity duration-200 flex items-center gap-1">
+              All posts <ArrowUpRight class="w-3 h-3" />
+            </NuxtLink>
+          </div>
+          <div class="flex flex-col divide-y divide-black/10 dark:divide-white/10">
+            <PostCard
+              v-for="post in latestPosts"
+              :key="post.slug"
+              :title="post.title"
+              :description="post.description"
+              :date="post.date"
+              :tags="post.tags"
+              :slug="post.slug" />
+          </div>
+        </div>
       </div>
     </template>
 
@@ -57,6 +79,14 @@
 <script setup lang="ts">
 import { ArrowRight, ArrowUpRight } from "lucide-vue-next";
 import { useHead, definePageMeta } from "#imports";
+
+const { data: latestPosts } = await useAsyncData('latest-posts', () =>
+  queryCollection('writing')
+    .where('draft', '=', false)
+    .order('date', 'DESC')
+    .limit(3)
+    .all()
+)
 
 definePageMeta({
   layout: false,
