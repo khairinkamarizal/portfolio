@@ -1,5 +1,5 @@
 <template>
-  <article class="group/featured group/card relative flex flex-col transition-transform duration-300 group-hover/card:translate-y-[-2px]">
+  <article class="group/featured group/card relative flex flex-col transition-transform duration-300 group-hover/card:translate-y-[-2px] overflow-hidden">
     <!-- Large thumbnail -->
     <div class="relative w-full aspect-[16/9] overflow-hidden bg-black/[0.03] dark:bg-white/[0.03] border border-black/8 dark:border-white/8">
       <img
