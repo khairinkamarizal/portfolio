@@ -17,6 +17,17 @@
   </div>
 </template>
 
+/**
+ * ProjectTypeFilter component.
+ *
+ * Renders a group of toggle buttons for filtering projects by type.
+ * An "All" option is automatically prepended to the provided types list.
+ *
+ * @prop {string[]} types    - List of project type strings to render as filter buttons.
+ * @prop {string}   selected - The currently active filter value (use 'All' for no filter).
+ *
+ * @emits select - Emitted with the chosen type string when a button is clicked.
+ */
 <script setup lang="ts">
 const props = defineProps<{
   types: string[]
