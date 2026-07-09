@@ -17,6 +17,15 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * SectionLabel
+ *
+ * Small all-caps monospaced section heading, optionally preceded by a
+ * numbered prefix (e.g. "01 /") and an animated top border line.
+ * The border line expands from 0 to full width when the element enters
+ * the viewport, using an IntersectionObserver. Accepts content via the
+ * default slot or the `label` prop, with an optional `description` below.
+ */
 import { ref, onMounted, onUnmounted } from 'vue'
 
 defineProps<{
