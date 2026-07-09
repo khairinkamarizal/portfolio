@@ -6,20 +6,23 @@
         <!-- ============================================ -->
         <!-- HERO: page heading                           -->
         <!-- ============================================ -->
-        <div class="flex flex-col gap-3">
-          <div class="mb-10">
-            <p class="mono-label opacity-20 mb-2">001 / Get in touch</p>
-            <h1 class="font-mono text-5xl md:text-6xl font-bold tracking-tight leading-none uppercase text-balance">Let's<br/>Work.</h1>
+        <RevealOnScroll variant="fade-up">
+          <div class="flex flex-col gap-3">
+            <div class="mb-10">
+              <p class="mono-label opacity-20 mb-2">001 / Get in touch</p>
+              <h1 class="font-mono text-5xl md:text-6xl font-bold tracking-tight leading-none uppercase text-balance">Let's<br/>Work.</h1>
+            </div>
+            <p class="text-sm opacity-60 max-w-lg leading-relaxed">
+              Have a project in mind, a question, or just want to say hello?
+              Fill in the form or reach out directly.
+            </p>
           </div>
-          <p class="text-sm opacity-60 max-w-lg leading-relaxed">
-            Have a project in mind, a question, or just want to say hello?
-            Fill in the form or reach out directly.
-          </p>
-        </div>
+        </RevealOnScroll>
 
         <!-- ============================================ -->
         <!-- MAIN: form + contact info side by side       -->
         <!-- ============================================ -->
+        <RevealOnScroll variant="fade-up">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
 
           <!-- LEFT: contact form -->
@@ -216,6 +219,7 @@
             </div>
           </div>
         </div>
+        </RevealOnScroll>
 
       </div>
     </template>
