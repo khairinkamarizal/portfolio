@@ -16,7 +16,7 @@
       </div>
 
       <!-- CENTER: Nav links -->
-      <div class="flex flex-col gap-3 border-t border-black/8 dark:border-white/8 pt-6 md:border-t-0 md:pt-0">
+      <div class="flex flex-col gap-3 border-t border-black/8 dark:border-white/8 pt-6 md:border-t-0 md:pt-0" aria-label="Footer navigation">
         <span class="text-xs tracking-widest uppercase opacity-40 mb-2 font-mono">
           Navigation
         </span>
@@ -30,7 +30,7 @@
       </div>
 
       <!-- RIGHT: Social links -->
-      <div class="flex flex-col gap-3 border-t border-black/8 dark:border-white/8 pt-6 md:border-t-0 md:pt-0">
+      <div class="flex flex-col gap-3 border-t border-black/8 dark:border-white/8 pt-6 md:border-t-0 md:pt-0" aria-label="Social links">
         <span class="text-xs tracking-widest uppercase opacity-40 mb-2 font-mono">
           Connect
         </span>
@@ -42,7 +42,7 @@
           rel="noopener noreferrer"
           :aria-label="link.label"
           class="text-xs tracking-widest uppercase opacity-50 hover:opacity-100 transition-opacity duration-200 w-fit font-mono">
-          {{ link.label }}
+          {{ link.label }} ↗
         </a>
       </div>
 
