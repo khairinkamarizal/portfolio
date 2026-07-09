@@ -29,7 +29,7 @@ const props = withDefaults(defineProps<{
   once?: boolean
 }>(), {
   delay: 0,
-  duration: 500,
+  duration: 450,
   variant: 'fade-up',
   once: true,
 })
