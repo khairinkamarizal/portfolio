@@ -31,6 +31,14 @@
           </button>
         </div>
 
+        <!-- Post count -->
+        <div v-if="filteredPosts && filteredPosts.length > 0" class="flex items-center gap-2">
+          <span class="text-xs opacity-40 tracking-wider">
+            {{ filteredPosts.length }} {{ filteredPosts.length === 1 ? 'POST' : 'POSTS' }}
+            <span v-if="selectedTag"> IN {{ selectedTag.toUpperCase() }}</span>
+          </span>
+        </div>
+
         <div v-if="filteredPosts && filteredPosts.length > 0" class="flex flex-col gap-0 divide-y divide-black/10 dark:divide-white/10">
           <PostCard
             v-for="post in filteredPosts"
@@ -43,8 +51,19 @@
             :reading-time="getReadingTime(post)" />
         </div>
 
-        <div v-else class="flex flex-col gap-2">
-          <p class="text-sm opacity-50">Nothing published yet. Check back soon.</p>
+        <div v-else class="flex flex-col gap-4 py-12 items-center text-center">
+          <div class="flex flex-col gap-2">
+            <p class="text-sm opacity-60">
+              <span v-if="selectedTag">No posts found with the tag "{{ selectedTag }}".</span>
+              <span v-else>Nothing published yet. Check back soon.</span>
+            </p>
+            <button
+              v-if="selectedTag"
+              @click="selectedTag = null"
+              class="text-xs opacity-40 hover:opacity-100 transition-opacity duration-200 underline underline-offset-2">
+              Clear filter
+            </button>
+          </div>
         </div>
 
         <!-- Stay updated -->
