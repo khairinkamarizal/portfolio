@@ -51,6 +51,7 @@ export default defineNuxtConfig({
           crossorigin: "",
         },
         {
+          // display=swap ensures text remains visible during font load
           rel: "stylesheet",
           href: "https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap",
         },
