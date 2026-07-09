@@ -9,9 +9,31 @@
           </p>
         </div>
 
-        <div v-if="posts && posts.length > 0" class="flex flex-col gap-0 divide-y divide-black/10 dark:divide-white/10">
+        <!-- Tag filter -->
+        <div v-if="allTags.length > 0" class="flex flex-wrap gap-1.5">
+          <button
+            class="text-[10px] tracking-wider px-2 py-0.5 transition-colors duration-150"
+            :class="selectedTag === null
+              ? 'bg-black text-white dark:bg-white dark:text-black'
+              : 'border border-black/20 dark:border-white/20 opacity-60 hover:opacity-100'"
+            @click="selectedTag = null">
+            ALL
+          </button>
+          <button
+            v-for="tag in allTags"
+            :key="tag"
+            class="text-[10px] tracking-wider px-2 py-0.5 transition-colors duration-150"
+            :class="selectedTag === tag
+              ? 'bg-black text-white dark:bg-white dark:text-black'
+              : 'border border-black/20 dark:border-white/20 opacity-60 hover:opacity-100'"
+            @click="selectedTag = tag">
+            {{ tag.toUpperCase() }}
+          </button>
+        </div>
+
+        <div v-if="filteredPosts && filteredPosts.length > 0" class="flex flex-col gap-0 divide-y divide-black/10 dark:divide-white/10">
           <PostCard
-            v-for="post in posts"
+            v-for="post in filteredPosts"
             :key="post.path"
             :title="post.title"
             :description="post.description"
@@ -70,4 +92,23 @@ const { data: posts } = await useAsyncData("writing-index", () =>
     .order("date", "DESC")
     .all()
 );
+
+const selectedTag = ref<string | null>(null);
+
+const allTags = computed(() => {
+  if (!posts.value) return [];
+  const tagSet = new Set<string>();
+  for (const post of posts.value) {
+    for (const tag of post.tags ?? []) {
+      tagSet.add(tag);
+    }
+  }
+  return Array.from(tagSet).sort();
+});
+
+const filteredPosts = computed(() => {
+  if (!posts.value) return [];
+  if (!selectedTag.value) return posts.value;
+  return posts.value.filter((post) => post.tags?.includes(selectedTag.value!));
+});
 </script>
