@@ -1,21 +1,23 @@
 <template>
-  <div class="flex flex-col gap-12 mt-4 flex-1 pb-16">
-    <!-- Header -->
-    <header class="flex flex-col gap-4">
-      <img
-        src="/assets/brutalist.svg"
-        alt="Brutalist"
-        class="w-full dark:invert" />
-      <p class="text-sm opacity-60">
-        Submit any design screenshot and get a brutally honest critique from AI.
-        Select your required honesty level, but don't say I didn't warn you.
-      </p>
-    </header>
+  <NuxtLayout name="simple">
+    <template #default>
+      <div class="flex flex-col gap-8 lg:gap-12 mt-4 lg:mt-10 flex-1 pb-16">
+        <!-- Header -->
+        <header class="flex flex-col gap-4 max-w-2xl">
+          <img
+            src="/assets/brutalist.svg"
+            alt="Brutalist"
+            class="w-full dark:invert" />
+          <p class="text-sm opacity-60 leading-relaxed">
+            Submit any design screenshot and get a brutally honest critique from AI.
+            Select your required honesty level, but don't say I didn't warn you.
+          </p>
+        </header>
 
-    <!-- Upload Form -->
-    <section
-      class="relative z-10 bg-white dark:bg-neutral-950 p-8 border border-neutral-200 dark:border-neutral-800/60 transition-all duration-300">
-      <div class="space-y-8">
+        <!-- Upload Form: constrained width on desktop -->
+        <section
+          class="relative z-10 bg-white dark:bg-neutral-950 p-6 lg:p-8 border border-neutral-200 dark:border-neutral-800/60 transition-all duration-300 max-w-2xl">
+          <div class="space-y-6 lg:space-y-8">
         <!-- Image Upload Area -->
         <div
           @dragover.prevent="isDragging = true"
@@ -281,7 +283,9 @@
         </article>
       </TransitionGroup>
     </section>
-  </div>
+      </div>
+    </template>
+  </NuxtLayout>
 </template>
 
 <script setup lang="ts">
@@ -290,7 +294,7 @@ import { useHead, useSeoMeta, definePageMeta } from "#imports";
 import { UploadCloud, X, Flame, MessageSquare, Cog } from "lucide-vue-next";
 
 definePageMeta({
-  layout: "simple",
+  layout: false,
 });
 
 useSeoMeta({
