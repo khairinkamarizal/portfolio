@@ -95,7 +95,7 @@
               All posts <ArrowUpRight class="w-3 h-3" />
             </NuxtLink>
           </div>
-          <div class="flex flex-col divide-y divide-black/10 dark:divide-white/10">
+          <div v-if="latestPosts?.length" class="flex flex-col divide-y divide-black/10 dark:divide-white/10">
             <PostCard
               v-for="post in latestPosts"
               :key="post.slug"
@@ -105,6 +105,7 @@
               :tags="post.tags"
               :slug="post.slug" />
           </div>
+          <p v-else class="text-sm opacity-40 normal-case font-sans">No posts yet.</p>
         </div>
       </div>
     </template>
