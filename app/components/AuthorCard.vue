@@ -35,6 +35,20 @@
   </div>
 </template>
 
+/**
+ * AuthorCard component.
+ *
+ * Displays a compact author bio card with a square photo (or initial fallback),
+ * name, optional title, and optional bio text. Used in blog post pages to
+ * attribute written content.
+ *
+ * @prop {string} name    - Author's full name (required). Used as img alt text
+ *                          and to derive the initial fallback character.
+ * @prop {string} [title] - Optional job title or role displayed below the name.
+ * @prop {string} [bio]   - Optional short biography rendered below the title.
+ * @prop {string} [photo] - Optional URL for the author's avatar image.
+ *                          Falls back to a capitalised initial when omitted.
+ */
 <script setup lang="ts">
 const props = defineProps<{
   name: string
