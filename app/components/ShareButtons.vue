@@ -37,9 +37,10 @@
 
 <script setup lang="ts">
 /**
- * ShareButtons — share buttons for Copy link, Twitter/X, LinkedIn.
- * Props: title (string), url (string)
- * Uses navigator.clipboard for copy with a "copied" feedback state.
+ * ShareButtons — social share row for blog posts and pages.
+ * @props title {string} - Post or page title used in share text.
+ * @props url {string} - Canonical URL to share.
+ * Renders Copy Link (with clipboard feedback), Twitter/X, and LinkedIn buttons.
  */
 const props = defineProps<{
   title: string
