@@ -4,7 +4,7 @@
     class="group block w-full relative border-b border-black/10 dark:border-white/10 py-6 hover:border-black/30 dark:hover:border-white/30 transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 group-hover:after:w-full after:bg-black dark:after:bg-white after:transition-all after:duration-300">
     <!-- Date + category -->
     <p class="text-xs font-mono opacity-50 mb-2 text-black dark:text-white">
-      <span v-if="post.category" class="font-mono text-[9px] tracking-[0.2em] uppercase opacity-50 mr-2">{{ post.category }}</span>{{ formattedDate }}
+      <span v-if="post.category" class="mono-label mr-2">{{ post.category }}</span>{{ formattedDate }}
     </p>
 
     <!-- Title -->
@@ -26,12 +26,12 @@
       <span
         v-for="tag in post.tags"
         :key="tag"
-        class="text-xs font-mono opacity-50 text-black dark:text-white">
+        class="mono-label text-black dark:text-white">
         #{{ tag }}
       </span>
       <span
         v-if="post.readingTime"
-        class="text-xs font-mono opacity-50 ml-auto text-black dark:text-white">
+        class="mono-label ml-auto text-black dark:text-white">
         {{ post.readingTime }} min read
       </span>
     </div>
