@@ -9,7 +9,7 @@
 
     <!-- Title -->
     <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-black dark:text-white">
-      {{ title }}
+      <slot name="title">{{ title }}</slot>
     </h1>
 
     <!-- Description -->
