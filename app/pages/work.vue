@@ -4,14 +4,14 @@
       <div class="flex flex-col gap-10 mt-10">
         <div class="flex flex-col gap-2">
           <div class="flex items-center justify-between mb-3">
-            <h1 class="text-xs font-mono opacity-50 tracking-widest">Selected Work</h1>
+            <p class="text-xs font-mono opacity-50 tracking-widest">Selected Work</p>
             <ClientOnly>
               <ProjectCount :count="projects.length" />
             </ClientOnly>
           </div>
-          <p class="text-2xl md:text-3xl font-light leading-tight tracking-tight text-balance">
+          <h1 class="text-2xl md:text-3xl font-light leading-tight tracking-tight text-balance">
             Projects spanning brand identity, UI/UX, and digital design.
-          </p>
+          </h1>
         </div>
 
         <RevealOnScroll variant="fade-up">
@@ -73,17 +73,25 @@
 
         <RevealOnScroll variant="fade-up" :delay="50">
           <!-- Card view -->
-          <WorkGrid v-if="viewMode === 'card'" :projects="filteredProjects" />
+          <WorkGrid v-if="viewMode === 'card' && filteredProjects.length" :projects="filteredProjects" />
 
           <!-- List view -->
-          <div v-else class="flex flex-col gap-0 divide-y divide-black/10 dark:divide-white/10">
-            <WorkListItem
+          <div v-else-if="viewMode === 'list' && filteredProjects.length" class="flex flex-col gap-0 divide-y divide-black/10 dark:divide-white/10">
+            <div
               v-for="project in filteredProjects"
               :key="project.title"
-              :title="project.title"
-              :year="project.year"
-              :category="project.category"
-              :url="project.behanceUrl" />
+              class="hover:bg-black/5 dark:hover:bg-white/5 transition-colors duration-150">
+              <WorkListItem
+                :title="project.title"
+                :year="project.year"
+                :category="project.category"
+                :url="project.behanceUrl" />
+            </div>
+          </div>
+
+          <!-- Empty state -->
+          <div v-else-if="filteredProjects.length === 0" class="py-16 text-center">
+            <p class="text-sm opacity-50">No projects match the selected filter.</p>
           </div>
         </RevealOnScroll>
 
