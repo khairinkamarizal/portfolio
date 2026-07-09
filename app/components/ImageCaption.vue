@@ -13,6 +13,17 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * ImageCaption — accessible image with optional caption.
+ *
+ * @prop {string} src - Image source URL.
+ * @prop {string} alt - Alt text for the image; required for accessibility.
+ * @prop {string} [caption] - Optional caption rendered in a figcaption below the image.
+ * @prop {string} [width] - Optional CSS max-width applied to the figure element (e.g. '600px').
+ *
+ * Renders a semantic figure/figcaption pair. Image is lazy-loaded and async-decoded.
+ * Styled with a monospace caption and subtle border; adapts to dark mode.
+ */
 defineProps<{
   src: string
   alt: string
