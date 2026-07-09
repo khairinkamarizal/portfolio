@@ -1,49 +1,62 @@
 # About
 
-I'm Khairin — a creative designer and developer based in Cyberjaya, Malaysia. I bridge the gap between visual craft and technical execution, building digital experiences that look considered and work well.
+I'm Khairin Kamarizal — a creative designer and developer based in Cyberjaya, Malaysia. I sit at the intersection of visual craft and technical execution, turning ideas into digital experiences that feel both considered and alive.
 
 ## Background
 
-With 4+ years of experience across brand identity, UI/UX design, motion design, and web development, I've worked with startups, established companies, and individual clients across Malaysia, Singapore, and the UK. My work spans multiple disciplines — from crafting brand systems to designing interfaces to building production-ready web applications.
+I started out purely in design — brand identity, print, editorial — before curiosity about the web pulled me toward code. What began as "I'll just learn enough HTML to hand things off properly" became a full shift. Today I work across the entire stack: from shaping a brand's visual language to building the production site that delivers it.
 
-I believe good design is both functional and beautiful. Every project is an opportunity to solve real problems while creating something that feels intentional and polished.
+With experience at a tech startup, a digital agency, and as an independent, I've had the chance to work on everything from product UI to motion graphics to marketing campaigns. My clients and employers have spanned Malaysia, Singapore, and the UK — and the through-line has always been the same: make it look right, make it work right, make it mean something.
+
+I believe the best digital work happens when design and development aren't siloed. When the person who draws the grid also writes the grid system, things just fit better.
+
+Currently available for freelance work and open to full-time opportunities in branding and web.
 
 ## Skills
 
-**Design**  
-Brand identity, UI/UX design, motion design, typography, art direction, prototyping
+**Design Tools**
+Figma, Adobe Illustrator, Adobe Photoshop, After Effects, Prototyping, Art Direction
 
-**Development**  
-Nuxt / Vue, Tailwind CSS, TypeScript, HTML / CSS, responsive design, accessibility
+**Dev Stack**
+Nuxt / Vue.js, Tailwind CSS, TypeScript, HTML / CSS, Responsive Design, Accessibility
 
-**Craft**  
-Figma, Adobe Illustrator, Adobe Photoshop, After Effects, design systems, component libraries
+**Craft**
+Brand Identity, UI/UX Design, Motion Design, Typography, Design Systems, Component Libraries
+
+**Soft Skills**
+Client communication, creative direction, cross-functional collaboration, attention to detail
 
 ## Experience
 
-**Freelance Designer & Developer** — *Independent, 2023 — Present*  
-Working with clients across Malaysia, Singapore, and the UK on brand identity, UI/UX design, and web development projects. Focus on helping startups and small businesses establish their digital presence through thoughtful design and clean code.
+**Senior Graphic Designer** — *Trustori, Cheras, Malaysia (2023 — present)*
+Leading visual design across brand, marketing, and digital touchpoints at a growing Malaysian fintech startup. Own the design system, produce campaign assets, and collaborate closely with the product team to keep brand and UI aligned.
 
-**UI/UX Designer** — *Axiata Digital Services, 2021 — 2022*  
-Designed digital products and internal tooling for a major Malaysian telecommunications group. Led end-to-end design for a customer-facing mobile app feature used by 200k+ users. Collaborated with product managers, engineers, and stakeholders to ship features on time.
+**Creative Designer & Developer** — *Self-Employed (2022 — present)*
+Independent practice spanning brand identity, UI/UX design, and web development. Working with founders, small teams, and creative studios who need someone that can both design and build. Projects have ranged from full brand systems to custom Nuxt-powered sites.
 
-**Junior Graphic Designer** — *Studio Lapan, 2020 — 2021*  
-Contributed to branding, print, and digital design projects at a boutique creative studio in Kuala Lumpur. Worked on identity systems, packaging, editorial layouts, and marketing materials for local and international clients.
+**Digital Strategist & Front-End Developer** — *Horuz Technology, Malaysia (2021 — 2022)*
+Joined a digital agency as a hybrid strategist and front-end developer, bridging client briefs and technical delivery. Built landing pages, campaign microsites, and internal dashboards while shaping digital strategy recommendations for clients across retail and F&B.
 
-## Tools & Stack
+## Tools
 
-Figma, Adobe Illustrator, Adobe Photoshop, After Effects, VS Code, Nuxt, Vue, Tailwind CSS, TypeScript, Git, Cloudflare, Notion
+🎨 Figma — 🖊 Illustrator — 📷 Photoshop — 🎬 After Effects — ⚡ Nuxt — 💨 Tailwind CSS — 🔷 TypeScript — ☁️ Cloudflare — 📝 Notion — 🔧 VS Code
 
 ## Current Focus
 
-Right now I'm working on personal projects that combine design and development — building tools and interfaces that solve real problems. I'm also available for freelance projects and collaborations.
+Currently building personal projects that combine design and development — tools and interfaces that solve real problems. Open to freelance work in branding and web, and exploring full-time opportunities with product teams that care about craft.
 
-If you're looking for someone who can design and build, let's talk.
+## Fun Facts
+
+- I can sketch a logo concept and push the site live in the same afternoon
+- Cyberjaya by location, KL by soul
+- Behance: 1,423 views, 38 appreciations, 43 followers — and growing
+- My design process almost always starts with typography
+- I keep a running list of UI details that bother me (it's long)
 
 ---
 
-**Get in touch**  
-Email: [khairinkamarizal@gmail.com](mailto:khairinkamarizal@gmail.com)  
-Instagram: [@khairinkamarizal](https://instagram.com/khairinkamarizal)  
-Behance: [be.net/khairinkamarizal](https://be.net/khairinkamarizal)  
+**Get in touch**
+Email: [khairinkamarizal@gmail.com](mailto:khairinkamarizal@gmail.com)
+Instagram: [@khairinkamarizal](https://instagram.com/khairinkamarizal)
+Behance: [be.net/khairinkamarizal](https://be.net/khairinkamarizal)
 LinkedIn: [linkedin.com/in/khairinkamarizal](https://linkedin.com/in/khairinkamarizal)
