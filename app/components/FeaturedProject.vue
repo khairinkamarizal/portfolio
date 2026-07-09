@@ -45,7 +45,7 @@
           target="_blank"
           rel="noopener noreferrer"
           :aria-label="'View ' + title + ' on Behance (opens in new tab)'"
-          class="font-mono text-[10px] tracking-[0.15em] uppercase opacity-40 hover:opacity-100 transition-opacity duration-200 flex items-center gap-1 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2">
+          class="font-mono text-[10px] tracking-[0.2em] uppercase opacity-40 hover:opacity-100 transition-opacity duration-200 flex items-center gap-1 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2">
           Behance ↗
         </a>
       </div>
