@@ -75,10 +75,10 @@
         <section aria-label="Statistics">
           <div class="grid grid-cols-2 md:grid-cols-4 border-t border-b border-black/8 dark:border-white/8">
             <ClientOnly>
-              <div class="hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors duration-150"><StatCounter :value="1423" label="BEHANCE VIEWS" /></div>
-              <div class="hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors duration-150"><StatCounter :value="38" label="APPRECIATIONS" /></div>
-              <div class="hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors duration-150"><StatCounter :value="43" label="FOLLOWERS" /></div>
-              <div class="hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors duration-150"><StatCounter :value="5" label="YEARS EXP" suffix="+" /></div>
+              <div class="hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors duration-150 tabular-nums"><StatCounter :value="1423" label="BEHANCE VIEWS" /></div>
+              <div class="hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors duration-150 tabular-nums"><StatCounter :value="38" label="APPRECIATIONS" /></div>
+              <div class="hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors duration-150 tabular-nums"><StatCounter :value="43" label="FOLLOWERS" /></div>
+              <div class="hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors duration-150 tabular-nums"><StatCounter :value="5" label="YEARS EXP" suffix="+" /></div>
               <template #fallback>
                 <div class="col-span-4 py-6 flex items-center justify-center opacity-30 text-xs font-mono">Loading...</div>
               </template>
