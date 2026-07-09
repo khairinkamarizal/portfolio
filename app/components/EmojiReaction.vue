@@ -25,6 +25,12 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * EmojiReaction — per-post emoji reaction buttons (👀 🔥 💯 ✨).
+ * @props postSlug {string} - Unique post slug used as the localStorage key.
+ * Reactions and counts are persisted to localStorage; no backend required.
+ * Toggling an emoji increments or decrements its count and tracks state in a Set.
+ */
 const props = defineProps<{
   postSlug: string
 }>()
