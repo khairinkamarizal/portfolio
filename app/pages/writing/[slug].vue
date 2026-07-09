@@ -16,21 +16,14 @@
         </NuxtLink>
 
         <!-- Post header -->
-        <div class="flex flex-col gap-3" v-if="post">
-          <div class="flex flex-wrap gap-1.5">
-            <span
-              v-for="tag in post.tags"
-              :key="tag"
-              class="text-[10px] tracking-wider border border-black/20 dark:border-white/20 px-2 py-0.5">
-              {{ tag.toUpperCase() }}
-            </span>
-          </div>
-          <h1 class="text-2xl leading-tight dark:font-light">{{ post.title }}</h1>
-          <div class="flex items-center gap-3">
-            <span class="text-xs opacity-30">{{ readingTime }}</span>
-            <span class="text-xs opacity-50">{{ formatDate(post.date) }}</span>
+        <div class="flex flex-col gap-6" v-if="post">
+          <h1 class="text-3xl md:text-4xl leading-tight dark:font-light">{{ post.title }}</h1>
+          <div class="flex items-center gap-4 flex-wrap">
+            <PostMeta :date="post.date" :reading-time="readingTime" :tags="post.tags" />
             <ViewCounter :slug="route.params.slug as string" />
           </div>
+          <!-- Decorative separator -->
+          <div class="w-12 h-px bg-black dark:bg-white opacity-20"></div>
         </div>
 
         <!-- Post body — wrapped in prose for @tailwindcss/typography rendering -->
