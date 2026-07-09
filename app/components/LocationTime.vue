@@ -64,4 +64,8 @@ onMounted(() => {
 .blink {
   animation: blink 1s ease-in-out infinite;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .blink { animation: none; }
+}
 </style>
