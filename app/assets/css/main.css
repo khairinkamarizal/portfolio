@@ -298,6 +298,7 @@
   .heading-display {
     font-family: 'Space Mono', monospace;
     letter-spacing: -0.045em;
+    text-wrap: balance;
     @apply text-5xl md:text-7xl lg:text-[7vw] font-bold leading-none uppercase;
   }
 
