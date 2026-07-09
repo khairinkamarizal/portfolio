@@ -1,9 +1,11 @@
 <template>
   <div class="process-step">
-    <div
-      class="process-step-number font-mono"
-      aria-hidden="true">
-      {{ number }}
+    <div class="flex flex-col items-start" aria-hidden="true">
+      <span class="font-mono text-[8px] tracking-[0.25em] uppercase opacity-30 mb-0.5">Step</span>
+      <div
+        class="process-step-number font-mono">
+        {{ number }}
+      </div>
     </div>
     <div class="process-step-content">
       <h3 class="process-step-title">{{ title }}</h3>
