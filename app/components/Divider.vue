@@ -1,10 +1,15 @@
 <template>
-  <div
-    :class="['divider', `divider--${variant}`, extraClass]"
-    aria-hidden="true" />
+  <Transition name="divider-fade">
+    <div
+      v-show="mounted"
+      :class="['divider', `divider--${variant}`, extraClass]"
+      aria-hidden="true" />
+  </Transition>
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
+
 // Reusable section divider component
 // Variants: line | dots | zigzag | wave
 // Editorial design, dark mode aware
@@ -15,6 +20,12 @@ withDefaults(defineProps<{
 }>(), {
   variant: 'line',
   extraClass: '',
+})
+
+const mounted = ref(false)
+
+onMounted(() => {
+  mounted.value = true
 })
 </script>
 
@@ -82,5 +93,14 @@ withDefaults(defineProps<{
   border-radius: 50%;
   border: 1px solid currentColor;
   opacity: 0.15;
+}
+
+/* Fade-in transition */
+.divider-fade-enter-active {
+  transition: opacity 0.4s ease;
+}
+
+.divider-fade-enter-from {
+  opacity: 0;
 }
 </style>
