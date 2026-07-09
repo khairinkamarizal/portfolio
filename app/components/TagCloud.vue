@@ -5,6 +5,7 @@
       :key="tag.name"
       type="button"
       @click="$emit('filter', tag.name)"
+      :aria-pressed="activeTag === tag.name"
       :style="{ fontSize: `${Math.max(10, Math.min(18, 10 + tag.count * 2))}px`, transform: `rotate(${tag.rotation}deg)` }"
       class="tracking-wider border border-black/20 dark:border-white/20 px-2.5 py-1 hover:border-black dark:hover:border-white hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all duration-200 cursor-pointer">
       {{ tag.name.toUpperCase() }}
@@ -20,6 +21,7 @@ interface TagWithCount {
 
 const props = defineProps<{
   tags: TagWithCount[]
+  activeTag?: string
 }>()
 
 defineEmits<{
