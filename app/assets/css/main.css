@@ -367,6 +367,11 @@
   .clip-none { clip-path: none; }
   .clip-reveal { clip-path: inset(0 100% 0 0); }
   .clip-revealed { clip-path: inset(0 0 0 0); }
+
+  .blend-difference { mix-blend-mode: difference; }
+  .blend-multiply { mix-blend-mode: multiply; }
+  .blend-screen { mix-blend-mode: screen; }
+  .blend-overlay { mix-blend-mode: overlay; }
 }
 
 /* ============================================
