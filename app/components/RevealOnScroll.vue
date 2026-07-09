@@ -2,7 +2,7 @@
   <div
     ref="el"
     :class="[
-      'transition-[opacity,transform] ease-out',
+      'transition-[opacity,transform]',
       isVisible
         ? 'opacity-100 translate-y-0 translate-x-0'
         : variant === 'fade-up'   ? 'opacity-0 translate-y-6'
@@ -13,6 +13,7 @@
     :style="{
       transitionDuration: duration + 'ms',
       transitionDelay: delay + 'ms',
+      transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
     }"
   >
     <slot />
