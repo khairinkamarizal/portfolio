@@ -18,17 +18,17 @@
 
     <!-- Text -->
     <div class="flex-1 min-w-0">
-      <p class="text-sm font-bold text-black dark:text-white leading-tight">
+      <p class="text-sm font-bold leading-tight">
         {{ name }}
       </p>
       <p
         v-if="title"
-        class="text-xs opacity-50 text-black dark:text-white mt-0.5">
+        class="text-xs opacity-60 mt-0.5">
         {{ title }}
       </p>
       <p
         v-if="bio"
-        class="text-xs opacity-60 leading-relaxed text-black dark:text-white mt-2">
+        class="text-xs opacity-50 leading-relaxed mt-2">
         {{ bio }}
       </p>
     </div>
