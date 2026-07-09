@@ -40,9 +40,10 @@
       <!-- Tags row -->
       <div v-if="tags?.length" class="flex flex-wrap gap-1 mt-3">
         <span
-          v-for="tag in tags.slice(0, 3)"
+          v-for="(tag, index) in tags.slice(0, 3)"
           :key="tag"
-          class="font-mono text-[9px] tracking-[0.1em] uppercase px-2 py-0.5 border border-black/8 dark:border-white/8 opacity-60">
+          :style="{ transitionDelay: (index * 30) + 'ms' }"
+          class="font-mono text-[9px] tracking-[0.1em] uppercase px-2 py-0.5 border border-black/8 dark:border-white/8 opacity-0 group-hover:opacity-60 transition-opacity duration-150">
           {{ tag }}
         </span>
       </div>
