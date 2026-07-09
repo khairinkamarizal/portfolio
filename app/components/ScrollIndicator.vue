@@ -2,9 +2,9 @@
   <Transition name="fade">
     <div
       v-if="showIndicator"
-      class="scroll-indicator fixed bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 opacity-60 hover:opacity-100 transition-opacity duration-200"
+      class="scroll-indicator fixed bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 opacity-60 hover:opacity-100 transition-opacity duration-200 pointer-events-none"
       aria-hidden="true">
-      <span class="text-xs tracking-widest opacity-70 normal-case font-sans">Scroll</span>
+      <span class="text-xs tracking-widest opacity-70 normal-case font-mono">Scroll</span>
       <svg
         class="w-4 h-4 animate-bounce"
         fill="none"
@@ -26,7 +26,7 @@ const showIndicator = ref(true)
 
 onMounted(() => {
   const handleScroll = () => {
-    if (window.scrollY > 100) {
+    if (window.scrollY > 200) {
       showIndicator.value = false
       window.removeEventListener('scroll', handleScroll)
     }
