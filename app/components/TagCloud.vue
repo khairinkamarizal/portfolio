@@ -14,6 +14,18 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * TagCloud — interactive tag filter cloud with weighted sizing.
+ *
+ * @prop {TagWithCount[]} tags - Array of tags with name and usage count.
+ * @prop {string} [activeTag] - Currently active/selected tag name; controls aria-pressed state.
+ *
+ * @emits filter - Emitted with the tag name when a tag button is clicked.
+ *
+ * Tags are sorted by count (descending) and rendered with font-size scaled to count.
+ * Each tag gets a stable pseudo-random rotation (−3° to +3°) derived from a string hash
+ * of the tag name, so the layout is consistent across renders.
+ */
 interface TagWithCount {
   name: string
   count: number
