@@ -11,7 +11,7 @@
     <!-- Logo + color toggle -->
     <div class="flex items-center justify-between mb-10">
       <NuxtLink to="/" aria-label="Go to homepage">
-        <AppLogo class="w-7 h-7 hover:opacity-70 transition-opacity duration-200" />
+        <AppLogo class="w-8 h-8 hover:opacity-70 transition-opacity duration-200" />
       </NuxtLink>
       <ColorToggle
         class="w-6 h-6 hover:opacity-70 transition-opacity duration-200"
