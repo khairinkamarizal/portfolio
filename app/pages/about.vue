@@ -1,4 +1,6 @@
 <template>
+  <NuxtLayout name="simple">
+    <template #default>
   <div class="w-full">
 
     <!-- ============================================ -->
@@ -197,6 +199,8 @@
     </section>
 
   </div>
+    </template>
+  </NuxtLayout>
 </template>
 
 <script setup lang="ts">
@@ -207,7 +211,7 @@ useSeoMeta({
 });
 
 definePageMeta({
-  layout: "simple",
+  layout: false,
 });
 
 const processSteps = [
