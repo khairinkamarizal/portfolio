@@ -170,7 +170,7 @@ const tagCounts = computed(() => {
 })
 
 function handleTagFilter(tag: string) {
-  selectedType.value = 'All'
+  selectedType.value = tag
 }
 
 useHead({
