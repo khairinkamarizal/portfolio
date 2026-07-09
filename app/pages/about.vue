@@ -89,7 +89,7 @@
                   :key="cert.title"
                   class="py-4 flex flex-col gap-1 hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors duration-150 -mx-2 px-2">
                   <span class="text-sm font-medium">{{ cert.title }}</span>
-                  <span class="text-xs opacity-50">{{ cert.issuer }} · {{ cert.year }}</span>
+                  <span class="text-xs opacity-50">{{ cert.issuer }} · <span class="font-mono tabular-nums">{{ cert.year }}</span></span>
                 </div>
               </div>
             </div>
