@@ -8,45 +8,45 @@
       <div class="flex flex-col gap-14 mt-8 pb-8 relative z-10">
 
         <!-- Hero -->
-        <div class="flex flex-col gap-5">
+        <div class="flex flex-col gap-4 pb-8 border-b border-black/10 dark:border-white/10">
           <div class="flex flex-row items-center justify-between">
             <div class="flex flex-col gap-1.5">
-              <span class="text-xs opacity-40 tracking-widest normal-case font-sans">Creative Designer & Developer</span>
-              <h1 class="text-2xl font-bold tracking-tight leading-none" style="font-family: 'Space Mono', monospace">
+              <h1 class="text-4xl md:text-5xl font-bold tracking-tight leading-[0.9]" style="font-family: 'Space Mono', monospace">
                 KHAIRIN<br />KAMARIZAL
               </h1>
+              <span class="text-xs opacity-50 tracking-widest normal-case font-sans mt-2">Creative Designer & Developer</span>
             </div>
             <div class="flex flex-row relative items-center">
               <img
                 src="/assets/dp.webp"
                 alt="Khairin Kamarizal"
-                class="w-16 h-16 rounded-full object-cover object-center shrink-0 ring-2 ring-black/10 dark:ring-white/10" />
+                class="w-20 h-20 rounded-full object-cover object-center shrink-0 ring-2 ring-black/10 dark:ring-white/10" />
               <div
-                class="w-10 h-10 shrink-0 flex items-center justify-center bg-black dark:bg-white rounded-full -ml-3 ring-2 ring-white dark:ring-black">
-                <AppLogo class="text-white dark:text-black w-5 h-5" />
+                class="w-12 h-12 shrink-0 flex items-center justify-center bg-black dark:bg-white rounded-full -ml-3 ring-2 ring-white dark:ring-black">
+                <AppLogo class="text-white dark:text-black w-6 h-6" />
               </div>
             </div>
           </div>
 
-          <!-- Status badge -->
-          <StatusBadge />
-
           <!-- Bio tagline -->
-          <p class="text-sm leading-relaxed dark:font-light normal-case font-sans opacity-70">
+          <p class="text-sm leading-relaxed dark:font-light normal-case font-sans opacity-60 max-w-sm">
             Ambitious and versatile creative designer skilled in branding,
             UI/UX, motion content and web development. Based in Cyberjaya, Malaysia.
           </p>
 
+          <!-- Status badge -->
+          <StatusBadge />
+
           <!-- CTA links -->
-          <div class="flex items-center gap-3 mt-2 normal-case">
+          <div class="flex items-center gap-4 mt-2 normal-case">
             <NuxtLink
               to="/work"
-              class="text-xs tracking-wider px-4 py-2 bg-black dark:bg-white text-white dark:text-black hover:opacity-80 transition-opacity duration-150">
+              class="text-xs tracking-wider font-medium px-5 py-2.5 bg-black dark:bg-white text-white dark:text-black hover:opacity-80 transition-opacity duration-150">
               VIEW WORK
             </NuxtLink>
             <NuxtLink
               to="mailto:khairinkamarizal@gmail.com"
-              class="text-xs tracking-wider px-4 py-2 border border-black/20 dark:border-white/20 hover:border-black dark:hover:border-white transition-colors duration-150">
+              class="text-xs tracking-wider px-5 py-2.5 border border-black/20 dark:border-white/20 hover:border-black dark:hover:border-white transition-colors duration-150">
               HIT ME UP
             </NuxtLink>
           </div>
@@ -58,7 +58,7 @@
         </div>
 
         <!-- Stats row -->
-        <div class="grid grid-cols-4 divide-x divide-black/10 dark:divide-white/10 border border-black/10 dark:border-white/10 py-5">
+        <div class="grid grid-cols-4 divide-x divide-black/10 dark:divide-white/10 border border-black/10 dark:border-white/10 py-4">
           <ClientOnly>
             <StatCounter :value="1423" label="BEHANCE VIEWS" />
             <StatCounter :value="38" label="APPRECIATIONS" />
