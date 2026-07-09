@@ -1,7 +1,7 @@
 <template>
   <NuxtLayout name="simple">
     <template #default>
-      <div id="main-content" class="flex flex-col gap-10 px-8 py-10 pb-20">
+      <div id="main-content" class="flex flex-col gap-10 px-page py-10 pb-20">
         <RevealOnScroll variant="fade-up">
           <div class="flex flex-col gap-2">
             <p class="font-mono text-[9px] tracking-[0.3em] uppercase opacity-20 mb-1">001 / Work</p>
