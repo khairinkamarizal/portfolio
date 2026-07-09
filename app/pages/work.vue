@@ -133,6 +133,7 @@
         <div class="flex-1 group-hover:flex-none transition-all duration-300 group-hover:w-2 h-1"></div>
         <ArrowUpRight class="group-hover:rotate-45 transition-transform duration-300" />
       </a>
+        <div class="border-t border-black/8 dark:border-white/8 mt-10" />
     </template>
   </NuxtLayout>
 </template>
