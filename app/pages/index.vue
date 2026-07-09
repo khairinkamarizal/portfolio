@@ -72,17 +72,19 @@
 
       <!-- ==================== STATS ==================== -->
       <RevealOnScroll variant="fade-up" :delay="100">
-        <div class="grid grid-cols-2 md:grid-cols-4 border-t border-b border-black/8 dark:border-white/8">
-          <ClientOnly>
-            <StatCounter :value="1423" label="BEHANCE VIEWS" />
-            <StatCounter :value="38" label="APPRECIATIONS" />
-            <StatCounter :value="43" label="FOLLOWERS" />
-            <StatCounter :value="5" label="YEARS EXP" suffix="+" />
-            <template #fallback>
-              <div class="col-span-4 py-6 flex items-center justify-center opacity-30 text-xs font-mono">Loading...</div>
-            </template>
-          </ClientOnly>
-        </div>
+        <section aria-label="Statistics">
+          <div class="grid grid-cols-2 md:grid-cols-4 border-t border-b border-black/8 dark:border-white/8">
+            <ClientOnly>
+              <StatCounter :value="1423" label="BEHANCE VIEWS" />
+              <StatCounter :value="38" label="APPRECIATIONS" />
+              <StatCounter :value="43" label="FOLLOWERS" />
+              <StatCounter :value="5" label="YEARS EXP" suffix="+" />
+              <template #fallback>
+                <div class="col-span-4 py-6 flex items-center justify-center opacity-30 text-xs font-mono">Loading...</div>
+              </template>
+            </ClientOnly>
+          </div>
+        </section>
       </RevealOnScroll>
 
       <!-- ==================== FEATURED WORK ==================== -->
