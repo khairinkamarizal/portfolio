@@ -66,6 +66,7 @@ function scrollTo(id: string) {
 }
 
 let _handleScroll: (() => void) | null = null
+const handleResize = () => { isMobile.value = window.innerWidth < 768 }
 
 onMounted(() => {
   isMobile.value = window.innerWidth < 768
@@ -85,11 +86,12 @@ onMounted(() => {
 
   _handleScroll = handleScroll
   window.addEventListener('scroll', handleScroll, { passive: true })
-  window.addEventListener('resize', () => { isMobile.value = window.innerWidth < 768 })
+  window.addEventListener('resize', handleResize)
 })
 
 onUnmounted(() => {
   if (_handleScroll) window.removeEventListener('scroll', _handleScroll)
+  window.removeEventListener('resize', handleResize)
 })
 </script>
 
