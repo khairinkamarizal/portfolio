@@ -3,19 +3,27 @@
     role="status"
     aria-label="Loading"
     class="flex items-center justify-center">
-    <span class="spinner" aria-hidden="true"></span>
+    <span class="spinner" :class="sizeClasses[size]" aria-hidden="true"></span>
   </div>
 </template>
 
 <script setup lang="ts">
-// No props needed — drop in wherever a loading state is required
+const props = withDefaults(defineProps<{
+  size?: 'sm' | 'md' | 'lg'
+}>(), {
+  size: 'md',
+})
+
+const sizeClasses: Record<'sm' | 'md' | 'lg', string> = {
+  sm: 'w-3 h-3',
+  md: 'w-5 h-5',
+  lg: 'w-8 h-8',
+}
 </script>
 
 <style scoped>
 .spinner {
   display: inline-block;
-  width: 18px;
-  height: 18px;
   border: 2px solid currentColor;
   border-top-color: transparent;
   border-radius: 50%;
