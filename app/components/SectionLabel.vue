@@ -7,8 +7,7 @@
 
     <!-- Label row -->
     <p
-      class="text-xs tracking-[0.2em] uppercase font-mono opacity-50 text-black dark:text-white"
-      style="font-family: 'Space Mono', monospace">
+      class="text-xs tracking-[0.2em] uppercase font-mono opacity-50 text-black dark:text-white">
       <span v-if="number !== undefined" class="mr-3">{{ String(number).padStart(2, '0') }} /</span>
       <slot>{{ label }}</slot>
     </p>

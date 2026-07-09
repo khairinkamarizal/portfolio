@@ -10,33 +10,28 @@
         <p class="text-xs leading-relaxed opacity-50 max-w-[18ch]">
           Khairin Kamarizal — Designer & Developer
         </p>
-        <p class="text-xs opacity-30" style="font-family: 'Space Mono', monospace">
+        <p class="text-xs opacity-40 font-mono">
           Based in Cyberjaya, MY
         </p>
       </div>
 
       <!-- CENTER: Nav links -->
       <div class="flex flex-col gap-3">
-        <span
-          class="text-xs tracking-widest uppercase opacity-30 mb-2"
-          style="font-family: 'Space Mono', monospace">
+        <span class="text-xs tracking-widest uppercase opacity-40 mb-2 font-mono">
           Navigation
         </span>
         <NuxtLink
           v-for="link in navLinks"
           :key="link.to"
           :to="link.to"
-          class="text-xs tracking-widest uppercase opacity-50 hover:opacity-100 transition-opacity duration-200 w-fit"
-          style="font-family: 'Space Mono', monospace">
+          class="text-xs tracking-widest uppercase opacity-50 hover:opacity-100 transition-opacity duration-200 w-fit font-mono">
           {{ link.label }}
         </NuxtLink>
       </div>
 
       <!-- RIGHT: Social links + copyright -->
       <div class="flex flex-col gap-3">
-        <span
-          class="text-xs tracking-widest uppercase opacity-30 mb-2"
-          style="font-family: 'Space Mono', monospace">
+        <span class="text-xs tracking-widest uppercase opacity-40 mb-2 font-mono">
           Connect
         </span>
         <a
@@ -46,15 +41,12 @@
           target="_blank"
           rel="noopener noreferrer"
           :aria-label="link.label"
-          class="text-xs tracking-widest uppercase opacity-50 hover:opacity-100 transition-opacity duration-200 w-fit"
-          style="font-family: 'Space Mono', monospace">
+          class="text-xs tracking-widest uppercase opacity-50 hover:opacity-100 transition-opacity duration-200 w-fit font-mono">
           {{ link.label }}
         </a>
 
         <!-- Copyright -->
-        <p
-          class="text-xs opacity-30 mt-auto pt-6"
-          style="font-family: 'Space Mono', monospace">
+        <p class="text-xs opacity-40 mt-auto pt-6 font-mono">
           &copy; {{ currentYear }} Khairin Kamarizal
         </p>
       </div>
@@ -77,9 +69,9 @@ const navLinks = [
 ];
 
 const socialLinks = [
-  { label: "GitHub", href: "https://github.com" },
-  { label: "LinkedIn", href: "https://linkedin.com" },
-  { label: "Twitter", href: "https://twitter.com" },
+  { label: "GitHub", href: "https://github.com/khairinkamarizal" },
+  { label: "LinkedIn", href: "https://linkedin.com/in/khairinkamarizal" },
+  { label: "Twitter", href: "https://x.com/khairinkamarizal" },
   { label: "Email", href: "mailto:hello@khairin.dev" },
 ];
 </script>
