@@ -5,6 +5,15 @@
   </div>
 </template>
 
+/**
+ * ProjectCount component.
+ *
+ * Displays an animated count of projects using a cubic ease-out tween.
+ * The number animates from 0 (or its previous value) to the target `count`
+ * over 800 ms on mount and whenever `count` changes.
+ *
+ * @prop {number} count - The target project count to animate to.
+ */
 <script setup lang="ts">
 const props = defineProps<{
   count: number
