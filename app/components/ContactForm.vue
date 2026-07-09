@@ -63,6 +63,21 @@
   </div>
 </template>
 
+/**
+ * ContactForm component.
+ *
+ * Renders a validated contact form with name, email, and message fields.
+ * On successful submission the form is replaced with a success message;
+ * the user can reset back to the form via a "Send another message" button.
+ *
+ * - Submits to the `/api/contact` Nitro endpoint via `$fetch`.
+ * - Client-side email validation with inline error feedback.
+ * - Disables all inputs while the request is in-flight.
+ * - Displays a server-side error message on failure.
+ * - Enter/leave transition between form and success states (fade).
+ *
+ * No props. All state is internal.
+ */
 <script setup lang="ts">
 const form = reactive({
   name: '',
