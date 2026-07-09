@@ -261,6 +261,11 @@
   .gap-element { @apply gap-4 md:gap-5; }
   .gap-editorial { @apply gap-20 md:gap-28; }
 
+  /* Line-height scale */
+  .leading-editorial { line-height: 1.2; }
+  .leading-comfortable { line-height: 1.65; }
+  .leading-relaxed-wide { line-height: 1.85; }
+
   .hover-dim { @apply hover:opacity-60 transition-opacity duration-150; }
   .hover-bright { @apply opacity-60 hover:opacity-100 transition-opacity duration-150; }
 
