@@ -158,11 +158,17 @@ useHead({
 const pageUrl = computed(() => `https://khair.ink${route.path}`)
 
 const readingTime = computed(() => {
-  if (!post.value?.body) return ""
-  // Convert AST body to text by extracting from description and title
-  const content = `${post.value.title || ''} ${post.value.description || ''}`
-  const { text } = useReadingTime(content)
-  return text
+  if (!post.value?.body) return ''
+  // Extract text from body AST nodes recursively
+  function extractText(node: any): string {
+    if (node.type === 'text') return node.value || ''
+    if (node.children) return node.children.map(extractText).join(' ')
+    return ''
+  }
+  const text = extractText(post.value.body)
+  const words = text.trim().split(/\s+/).filter(Boolean).length
+  const minutes = Math.max(1, Math.round(words / 200))
+  return `${minutes} min read`
 })
 
 </script>
