@@ -81,6 +81,7 @@ const projects = [
     tags: ["Branding", "Logo Design", "Identity"],
     description: "A comprehensive brand identity system for a modern creative agency. Developed the visual language, logo suite, and brand guidelines from concept to delivery.",
     behanceUrl: "https://be.net/khairinkamarizal",
+    featured: true,
   },
   {
     title: "Relay Works — Visual Identity",
@@ -88,6 +89,7 @@ const projects = [
     tags: ["Branding", "Motion", "Print"],
     description: "Full visual identity for a remote-first productivity platform. Focused on clarity and adaptability across digital and physical touchpoints.",
     behanceUrl: "https://be.net/khairinkamarizal",
+    featured: true,
   },
   {
     title: "Folio — Portfolio Web App",
@@ -109,12 +111,27 @@ const projects = [
     tags: ["UI/UX", "Mobile", "Figma"],
     description: "UI/UX design for a solar energy monitoring app. Designed the full user flow, component system, and data visualisation patterns.",
     behanceUrl: "https://be.net/khairinkamarizal",
+    featured: true,
   },
   {
     title: "Kinetic — Motion Brand Package",
     year: 2022,
     tags: ["Motion Design", "After Effects", "Branding"],
     description: "Motion brand package for a digital media startup. Includes animated logo reveals, transition templates, and a motion design system.",
+    behanceUrl: "https://be.net/khairinkamarizal",
+  },
+  {
+    title: "Meridian — E-commerce Platform",
+    year: 2024,
+    tags: ["UI/UX", "E-commerce", "Figma"],
+    description: "Complete UI/UX redesign for a Malaysian fashion e-commerce platform. Focused on conversion optimization and mobile-first experience.",
+    behanceUrl: "https://be.net/khairinkamarizal",
+  },
+  {
+    title: "Voxel — 3D Icon System",
+    year: 2023,
+    tags: ["3D Design", "Icon Design", "Blender"],
+    description: "A cohesive 3D icon system with 50+ icons designed in Blender. Optimized for web with performance and visual consistency in mind.",
     behanceUrl: "https://be.net/khairinkamarizal",
   },
 ];
