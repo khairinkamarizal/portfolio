@@ -1,3 +1,14 @@
+/**
+ * Provides date formatting utilities.
+ *
+ * @returns formatDate, formatShort, formatRelative
+ *
+ * @example
+ * const { formatDate, formatShort, formatRelative } = useFormatDate()
+ * formatDate('2024-01-15')         // "January 15, 2024"
+ * formatShort('2024-01-15')        // "Jan 2024"
+ * formatRelative('2024-01-15')     // "6mo ago"
+ */
 export function useFormatDate() {
   function formatDate(date: string | Date, options?: Intl.DateTimeFormatOptions): string {
     return new Intl.DateTimeFormat('en-US', {
