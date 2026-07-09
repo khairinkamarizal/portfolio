@@ -1,5 +1,5 @@
 <template>
-  <span class="glitch-wrapper" :data-text="text" :class="`glitch-${intensity}`">
+  <span class="glitch-wrapper" :data-text="text" :class="`glitch-${intensity}`" :aria-label="text" aria-hidden="false">
     {{ text }}
   </span>
 </template>
