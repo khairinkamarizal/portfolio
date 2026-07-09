@@ -25,6 +25,7 @@
               <div class="flex items-center gap-4 flex-wrap mt-4">
                 <span class="font-mono text-[11px] opacity-50">{{ formattedDate }}</span>
                 <PostMeta :date="post.date" :reading-time="readingTime" :tags="post.tags" />
+                <span v-if="wordCount > 0" class="font-mono text-[11px] opacity-40">{{ wordCount }} words</span>
                 <ViewCounter :slug="route.params.slug as string" />
               </div>
             </header>
@@ -193,6 +194,17 @@ const readingTime = computed(() => {
   const words = text.trim().split(/\s+/).filter(Boolean).length
   const minutes = Math.max(1, Math.round(words / 200))
   return `${minutes} min read`
+})
+
+const wordCount = computed(() => {
+  if (!post.value?.body) return 0
+  function extractText(node: any): string {
+    if (node.type === 'text') return node.value || ''
+    if (node.children) return node.children.map(extractText).join(' ')
+    return ''
+  }
+  const text = extractText(post.value.body)
+  return text.trim().split(/\s+/).filter(Boolean).length
 })
 
 </script>
