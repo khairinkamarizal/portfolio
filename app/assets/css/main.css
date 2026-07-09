@@ -12,6 +12,21 @@
    BASE STYLES
    ============================================ */
 @layer base {
+  :root {
+    --color-ink: 0 0 0;
+    --color-paper: 255 255 255;
+    --border-subtle: oklch(0 0 0 / 0.08);
+    --border-medium: oklch(0 0 0 / 0.15);
+    --text-dim: oklch(0 0 0 / 0.5);
+    --text-muted: oklch(0 0 0 / 0.4);
+  }
+  .dark {
+    --border-subtle: oklch(1 0 0 / 0.08);
+    --border-medium: oklch(1 0 0 / 0.15);
+    --text-dim: oklch(1 0 0 / 0.5);
+    --text-muted: oklch(1 0 0 / 0.4);
+  }
+
   html {
     @apply scroll-smooth;
     font-family: 'Inter Tight', system-ui, sans-serif;
