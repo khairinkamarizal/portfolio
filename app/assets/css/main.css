@@ -220,6 +220,11 @@
     @apply text-2xl md:text-3xl font-bold leading-tight tracking-tight;
   }
 
+  .heading-mono {
+    font-family: 'Space Mono', monospace;
+    @apply text-2xl md:text-3xl font-bold leading-tight tracking-tight uppercase;
+  }
+
   /* Body text */
   .text-body {
     @apply text-sm leading-relaxed opacity-70;
