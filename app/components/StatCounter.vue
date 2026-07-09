@@ -8,7 +8,6 @@
     <!-- Label -->
     <span
       class="font-mono text-[10px] tracking-[0.25em] uppercase opacity-40 mt-1 text-black dark:text-white"
-      style="font-family: 'Space Mono', monospace">
       {{ label }}
     </span>
   </div>
