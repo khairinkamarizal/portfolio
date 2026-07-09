@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span>{{ current }}</span>
+    <span class="tabular-nums font-mono">{{ current }}</span>
   </div>
 </template>
 
