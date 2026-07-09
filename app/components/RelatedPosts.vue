@@ -15,6 +15,12 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * RelatedPosts — displays up to 3 posts sharing tags with the current post.
+ * @props tags {string[]} - Tags of the current post used to find related content.
+ * @props currentSlug {string} - Slug of the current post, excluded from results.
+ * Fetches all published posts and filters by tag overlap.
+ */
 const props = defineProps<{
   tags: string[]
   currentSlug: string
