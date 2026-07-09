@@ -48,6 +48,12 @@
           <ContentRenderer :value="post" />
         </div>
 
+        <!-- Related posts -->
+        <RelatedPosts
+          v-if="post?.tags?.length"
+          :tags="post.tags"
+          :current-slug="route.params.slug as string" />
+
       </div>
     </template>
 
