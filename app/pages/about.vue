@@ -120,7 +120,7 @@
                     {{ job.period }}
                   </span>
                 </div>
-                <p class="text-sm opacity-60 leading-relaxed mt-2">{{ job.description }}</p>
+                <p class="text-sm opacity-60 leading-relaxed mt-2 max-w-prose">{{ job.description }}</p>
                 <div class="flex flex-wrap gap-2 mt-1">
                   <span
                     v-for="tag in job.tags"
