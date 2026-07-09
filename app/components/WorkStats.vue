@@ -8,6 +8,14 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * WorkStats
+ *
+ * Displays a row of animated counters for key stats (projects, years of
+ * experience, technologies). Numbers count up from zero on mount using a
+ * cubic ease-out over 1000ms via requestAnimationFrame.
+ * Parses values like "8+" into a numeric part and a suffix for animation.
+ */
 import { ref, onMounted } from 'vue'
 
 const rawStats = [
