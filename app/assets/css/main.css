@@ -224,6 +224,10 @@
   .clamp-1 { @apply line-clamp-1; }
   .clamp-2 { @apply line-clamp-2; }
   .clamp-3 { @apply line-clamp-3; }
+
+  .gap-section { @apply gap-16 md:gap-20; }
+  .gap-component { @apply gap-8 md:gap-10; }
+  .gap-element { @apply gap-4 md:gap-5; }
 }
 
 /* ============================================
