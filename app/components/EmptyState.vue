@@ -4,7 +4,7 @@
       <!-- Render a simple SVG placeholder icon or use lucide via dynamic component -->
       <component :is="iconComponent" v-if="iconComponent" class="w-8 h-8 opacity-20" />
     </div>
-    <p class="empty-state-title">{{ title }}</p>
+    <h2 class="empty-state-title">{{ title }}</h2>
     <p v-if="description" class="empty-state-description">{{ description }}</p>
   </div>
 </template>
