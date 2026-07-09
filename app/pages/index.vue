@@ -34,8 +34,7 @@
 
           <!-- Bio tagline -->
           <p class="text-sm leading-relaxed dark:font-light normal-case font-sans opacity-70 max-w-xs">
-            Ambitious and versatile creative designer skilled in branding,
-            UI/UX, motion content and web development. Based in Cyberjaya, Malaysia.
+            Passionate about crafting designs that communicate clearly, inspire action and connect with people. Based in Cyberjaya, Malaysia.
           </p>
         </div>
 
@@ -50,7 +49,7 @@
             <StatCounter :value="1423" label="BEHANCE VIEWS" />
             <StatCounter :value="38" label="APPRECIATIONS" />
             <StatCounter :value="43" label="FOLLOWERS" />
-            <StatCounter :value="4" label="YEARS EXP" suffix="+" />
+            <StatCounter :value="5" label="YEARS EXP" suffix="+" />
             <template #fallback>
               <div class="flex flex-col items-center py-1 gap-0.5 col-span-4">
                 <span class="text-xs opacity-30 tracking-widest normal-case font-sans">—</span>
