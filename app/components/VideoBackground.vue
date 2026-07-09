@@ -1,6 +1,6 @@
 <template>
   <ClientOnly
-    ><div class="fixed inset-0 -z-50 overflow-hidden pointer-events-none">
+    ><div aria-hidden="true" class="fixed inset-0 -z-50 overflow-hidden pointer-events-none">
       <video
         ref="darkVideo"
         autoplay
