@@ -45,7 +45,7 @@
     </div>
 
     <!-- Availability -->
-    <div class="flex items-center gap-2 normal-case">
+    <div class="flex items-center gap-2 normal-case" title="Available for freelance projects">
       <span class="relative flex w-1.5 h-1.5 shrink-0">
         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-60" />
         <span class="relative inline-flex rounded-full w-1.5 h-1.5 bg-green-500" />
