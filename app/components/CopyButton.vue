@@ -5,7 +5,9 @@
     :aria-label="copied ? 'Copied to clipboard' : 'Copy to clipboard'">
     <Copy :size="14" aria-hidden="true" />
     <Transition name="swap" mode="out-in">
-      <span :key="copied ? 'copied' : 'copy'">{{ copied ? 'Copied!' : 'Copy' }}</span>
+      <span v-if="copied" key="copied">Copied!</span>
+      <span v-else-if="copyError" key="error" class="text-red-500">Failed</span>
+      <span v-else key="copy">Copy</span>
     </Transition>
   </button>
 </template>
@@ -20,6 +22,7 @@ interface Props {
 const props = defineProps<Props>()
 
 const copied = ref(false)
+const copyError = ref(false)
 
 async function handleCopy() {
   try {
@@ -30,6 +33,8 @@ async function handleCopy() {
     }, 2000)
   } catch (err) {
     console.error('Failed to copy:', err)
+    copyError.value = true
+    setTimeout(() => copyError.value = false, 2000)
   }
 }
 </script>
