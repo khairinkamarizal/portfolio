@@ -37,6 +37,11 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * OpenToWork — full-width availability banner for the portfolio home/about page.
+ * Displays current work status, availability details, and a CTA link to /message.
+ * All content is static; update the `details` array to reflect real availability.
+ */
 const details = [
   { label: 'Availability', value: 'Immediate' },
   { label: 'Location', value: 'Kuala Lumpur, MY' },
