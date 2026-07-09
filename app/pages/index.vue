@@ -24,7 +24,7 @@
         </div>
 
         <!-- Main hero text: takes up space boldly -->
-        <div class="flex-1 flex flex-col justify-center py-8">
+        <div class="relative z-10 flex-1 flex flex-col justify-center py-8">
           <div class="overflow-hidden">
             <h1 class="font-mono font-bold uppercase leading-[0.85] tracking-[-0.03em] text-[clamp(3.5rem,12vw,8rem)]">
               Khairin<br />Kamarizal
@@ -39,7 +39,7 @@
         </div>
 
         <!-- Bottom row: role + CTAs -->
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div class="relative z-10 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <span class="font-mono text-xs tracking-[0.25em] uppercase opacity-40">
             Creative Designer &amp; Developer
           </span>
