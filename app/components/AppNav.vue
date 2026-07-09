@@ -12,7 +12,7 @@
         direction === 'vertical'
           ? isActive(link.href)
             ? 'border-l-2 border-current pl-3 py-1.5 opacity-100'
-            : 'pl-2 py-1.5 opacity-40 hover:opacity-70'
+            : 'pl-2 py-1.5 opacity-50 hover:opacity-70'
           : isActive(link.href)
             ? 'font-bold opacity-100'
             : 'opacity-40 hover:opacity-70',
