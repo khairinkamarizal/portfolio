@@ -1,5 +1,9 @@
 <template>
-  <nav class="flex flex-row items-center gap-4 flex-wrap">
+  <nav
+    :class="[
+      'flex items-center gap-4',
+      direction === 'vertical' ? 'flex-col items-start gap-6' : 'flex-row flex-wrap',
+    ]">
     <NuxtLink
       v-for="link in links"
       :key="link.to"
@@ -13,6 +17,10 @@
 
 <script setup lang="ts">
 const route = useRoute();
+
+defineProps<{
+  direction?: 'horizontal' | 'vertical'
+}>()
 
 const links = [
   { to: "/", label: "Home" },
