@@ -110,6 +110,10 @@
         </div>
       </div>
     </div>
+    <!-- Back to top button -->
+    <ClientOnly>
+      <BackToTop />
+    </ClientOnly>
   </div>
 </template>
 
