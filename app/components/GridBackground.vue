@@ -9,11 +9,18 @@
 </template>
 
 <script setup lang="ts">
-// Subtle CSS background texture component
-// CSS only, no images
-// Variants: dots | grid | lines
-// Dark mode aware — very subtle opacity
-
+/**
+ * GridBackground — full-screen decorative CSS background texture.
+ *
+ * Renders a fixed, pointer-events-none background pattern behind page content.
+ * Pure CSS — no images. Rendered with `v-once` since the pattern is static.
+ * Dark mode aware via scoped CSS custom colors.
+ *
+ * @prop {'dots'|'grid'|'lines'} [variant='dots'] - Pattern style
+ * @prop {number} [size=24] - Grid cell size in pixels
+ *
+ * @example <GridBackground variant="dots" :size="24" />
+ */
 import { computed } from 'vue'
 
 const props = withDefaults(defineProps<{
