@@ -237,6 +237,9 @@
     width: 100vw;
     margin-left: calc(-50vw + 50%);
   }
+
+  .px-page { @apply px-5 md:px-8; }
+  .py-section { @apply py-10 md:py-14; }
 }
 
 /* ============================================
