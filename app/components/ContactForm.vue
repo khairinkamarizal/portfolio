@@ -49,8 +49,8 @@
           {{ loading ? 'Sending...' : 'Send Message' }}
         </button>
 
-        <!-- UI only note -->
-        <p class="text-[10px] opacity-30">UI only — not connected to a backend yet.</p>
+        <!-- Error state -->
+        <p v-if="errorMessage" class="text-[11px] text-red-500 dark:text-red-400">{{ errorMessage }}</p>
       </form>
     </Transition>
   </div>
@@ -65,13 +65,27 @@ const form = reactive({
 
 const submitted = ref(false)
 const loading = ref(false)
+const errorMessage = ref('')
 
 async function handleSubmit() {
   loading.value = true
-  // UI only — replace with real API call when backend is ready
-  await new Promise((resolve) => setTimeout(resolve, 700))
-  submitted.value = true
-  loading.value = false
+  errorMessage.value = ''
+
+  try {
+    await $fetch('/api/contact', {
+      method: 'POST',
+      body: {
+        name: form.name,
+        email: form.email,
+        message: form.message,
+      },
+    })
+    submitted.value = true
+  } catch (err: any) {
+    errorMessage.value = err?.data?.statusMessage || 'Something went wrong. Please try again.'
+  } finally {
+    loading.value = false
+  }
 }
 </script>
 
