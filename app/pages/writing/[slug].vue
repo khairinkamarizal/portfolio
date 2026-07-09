@@ -155,12 +155,7 @@ useHead({
   ],
 });
 
-const pageUrl = computed(() => {
-  if (import.meta.client) {
-    return window.location.href
-  }
-  return `https://khairinkamarizal.com/writing/${route.params.slug}`
-})
+const pageUrl = computed(() => `https://khair.ink${route.path}`)
 
 const readingTime = computed(() => {
   if (!post.value?.body) return ""
