@@ -4,6 +4,7 @@
     <!-- Pulsing dot -->
     <span class="relative flex w-1.5 h-1.5">
       <span
+        v-if="pulse"
         class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"
         :style="{ animationDuration: '2s' }" />
       <span class="relative inline-flex rounded-full w-1.5 h-1.5 bg-green-500" />
@@ -17,7 +18,10 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
+withDefaults(defineProps<{
   text?: string
-}>()
+  pulse?: boolean
+}>(), {
+  pulse: true,
+})
 </script>
