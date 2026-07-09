@@ -3,19 +3,36 @@
     <template #default>
       <div class="flex flex-col gap-12 mt-10">
 
-        <!-- Bio -->
-        <div class="flex flex-col gap-4">
-          <PageHeader
-            title="About"
-            description="Creative designer and developer based in Cyberjaya, Malaysia." />
-          <p class="text-sm opacity-70 leading-relaxed dark:font-light">
-            I'm Khairin — a versatile designer with 4+ years of experience across brand identity,
-            UI/UX, motion design, and web development. I bridge the gap between visual craft
-            and technical execution, building things that look considered and work well.
+        <!-- Magazine-style header -->
+        <div class="flex flex-col gap-6">
+          <!-- Byline label -->
+          <span class="text-[10px] tracking-widest opacity-40">ABOUT THE DESIGNER</span>
+
+          <!-- Large name display -->
+          <div class="flex flex-col gap-1">
+            <h1 class="text-4xl leading-none tracking-tight dark:font-light">Khairin</h1>
+            <h1 class="text-4xl leading-none tracking-tight dark:font-light opacity-40">Kamarizal</h1>
+          </div>
+
+          <!-- Title + location row -->
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="text-sm opacity-70">Creative Designer &amp; Developer</span>
+            <span class="text-xs opacity-30">—</span>
+            <span class="text-xs opacity-50">Cyberjaya, Malaysia</span>
+          </div>
+
+          <!-- Availability badge -->
+          <div class="flex items-center gap-2 self-start border border-black/10 dark:border-white/10 px-3 py-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0"></span>
+            <span class="text-xs opacity-60">Available — Freelance &amp; Fulltime</span>
+          </div>
+
+          <!-- Tagline / quote -->
+          <p class="text-base leading-relaxed dark:font-light max-w-md">
+            I sit at the intersection of visual craft and technical execution — turning ideas into digital experiences that feel both considered and alive.
           </p>
-          <p class="text-sm opacity-70 leading-relaxed dark:font-light">
-            Currently available for freelance projects and collaborations.
-          </p>
+
+          <!-- Resume download -->
           <a
             href="#"
             class="self-start text-xs tracking-wider px-4 py-2 border border-black/20 dark:border-white/20 hover:border-black dark:hover:border-white flex items-center gap-1.5 transition-colors duration-150"
@@ -25,11 +42,11 @@
           </a>
         </div>
 
-        <!-- Availability -->
-        <AvailabilityCard />
-
-        <!-- Local time -->
-        <LocationTime />
+        <!-- Availability + Local time -->
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <AvailabilityCard />
+          <LocationTime />
+        </div>
 
         <!-- Skills -->
         <div class="flex flex-col gap-4">
@@ -69,14 +86,14 @@
           </div>
         </div>
 
+        <!-- Currently working on -->
+        <CurrentlyWorking />
+
         <!-- Get in touch -->
         <div class="flex flex-col gap-4">
           <h2 class="text-xs opacity-50 tracking-widest">Get in touch</h2>
           <ContactForm />
         </div>
-
-        <!-- Currently working on -->
-        <CurrentlyWorking />
 
       </div>
     </template>
@@ -133,16 +150,20 @@ useHead({
 
 const skillGroups = [
   {
-    category: "Design",
-    items: ["Brand Identity", "UI/UX Design", "Motion Design", "Typography", "Art Direction", "Visual Design"],
+    category: "Design Tools",
+    items: ["Figma", "Adobe Illustrator", "Photoshop", "After Effects", "Prototyping", "Art Direction"],
   },
   {
-    category: "Development",
-    items: ["Nuxt / Vue.js", "Tailwind CSS", "TypeScript", "HTML / CSS", "Web Development"],
+    category: "Dev Stack",
+    items: ["Nuxt / Vue.js", "Tailwind CSS", "TypeScript", "HTML / CSS", "Responsive Design"],
   },
   {
     category: "Craft",
-    items: ["Figma", "Adobe Creative Suite", "After Effects", "Photoshop", "Illustrator"],
+    items: ["Brand Identity", "UI/UX Design", "Motion Design", "Typography", "Design Systems"],
+  },
+  {
+    category: "Soft Skills",
+    items: ["Client Communication", "Creative Direction", "Cross-functional Collaboration"],
   },
 ];
 
@@ -150,23 +171,26 @@ const experienceItems = [
   {
     role: "Senior Graphic Designer",
     company: "Trustori",
-    period: "Present",
-    location: "Cheras, MY",
-    description: "Leading visual design and brand direction at Trustori. Responsible for brand identity systems, marketing materials, and digital design across all touchpoints.",
+    period: "2023 — Present",
+    location: "Cheras, Malaysia",
+    current: true,
+    description: "Leading visual design across brand, marketing, and digital touchpoints at a growing Malaysian fintech startup. Own the design system, produce campaign assets, and collaborate with the product team.",
   },
   {
     role: "Creative Designer & Developer",
     company: "Self-Employed",
-    period: "Ongoing",
+    period: "2022 — Present",
     location: "Remote",
-    description: "Working independently with clients on brand identity, UI/UX design, and web development projects. Building digital experiences with Nuxt, Vue.js, and Tailwind CSS.",
+    current: true,
+    description: "Independent practice spanning brand identity, UI/UX design, and web development. Working with founders and small teams who need someone that can both design and build.",
   },
   {
     role: "Digital Strategist & Front-End Developer",
     company: "Horuz Technology",
-    period: "Previous",
+    period: "2021 — 2022",
     location: "Malaysia",
-    description: "Drove digital strategy and front-end development at Horuz Technology. Built and maintained web products, contributed to UI/UX decisions, and translated design systems into code.",
+    current: false,
+    description: "Hybrid strategist and front-end developer at a digital agency. Built landing pages, campaign microsites, and internal dashboards while shaping digital strategy recommendations.",
   },
 ];
 
