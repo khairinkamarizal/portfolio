@@ -12,7 +12,7 @@
     </span>
 
     <!-- Text -->
-    <span class="text-[10px] tracking-[0.15em] uppercase font-mono" style="font-family: 'Space Mono', monospace">
+    <span class="text-[10px] tracking-[0.2em] uppercase font-mono" style="font-family: 'Space Mono', monospace">
       <slot>Available for projects</slot>
     </span>
   </span>
