@@ -1,7 +1,7 @@
 <template>
   <div class="flex items-baseline gap-1.5">
-    <span class="text-2xl font-medium tracking-tight tabular-nums">{{ displayCount }}</span>
-    <span class="text-xs opacity-40 tracking-wider">PROJECTS</span>
+    <span class="text-2xl font-medium tracking-tight tabular-nums text-black dark:text-white">{{ displayCount }}</span>
+    <span class="text-xs opacity-40 tracking-wider font-mono text-black dark:text-white">PROJECTS</span>
   </div>
 </template>
 
@@ -34,5 +34,9 @@ function animateTo(target: number) {
 
 onMounted(() => {
   animateTo(props.count)
+})
+
+watch(() => props.count, (newCount) => {
+  animateTo(newCount)
 })
 </script>
