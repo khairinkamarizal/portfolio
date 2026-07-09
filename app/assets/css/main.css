@@ -29,6 +29,40 @@
   :focus:not(:focus-visible) {
     outline: none;
   }
+
+  /* Text selection */
+  ::selection {
+    background: black;
+    color: white;
+  }
+
+  .dark ::selection {
+    background: white;
+    color: black;
+  }
+
+  /* Minimal scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: oklch(0 0 0 / 0.2);
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background: oklch(1 0 0 / 0.2);
+  }
+
+  /* Prevent image layout shift */
+  img {
+    @apply max-w-full;
+  }
 }
 
 /* ============================================
@@ -50,15 +84,34 @@
     @apply border-b border-black/10 dark:border-white/10;
   }
 
+  /* Subtle divider */
+  .sr-divider {
+    @apply border-t border-black/8 dark:border-white/8;
+  }
+
   /* Monospace label — small all-caps tracking */
   .label-mono {
     font-family: 'Space Mono', monospace;
-    @apply text-xs tracking-widest uppercase opacity-40;
+    @apply text-xs tracking-widest uppercase opacity-50;
   }
 
   /* Full-bleed grid gap using 1px border trick */
   .grid-gap-px {
     @apply grid gap-px bg-black/10 dark:bg-white/10 border border-black/10 dark:border-white/10;
+  }
+
+  /* Balanced text wrapping — useful for headings */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Subtle card lift on hover */
+  .hover-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
   }
 }
 
@@ -69,7 +122,8 @@
   /* Display / hero heading */
   .heading-display {
     font-family: 'Space Mono', monospace;
-    @apply text-5xl md:text-7xl lg:text-[8vw] font-bold leading-none tracking-tighter uppercase;
+    letter-spacing: -0.04em;
+    @apply text-5xl md:text-7xl lg:text-[7vw] font-bold leading-none uppercase;
   }
 
   /* Section heading */
@@ -90,6 +144,26 @@
   /* Link hover pattern */
   .link-hover {
     @apply opacity-50 hover:opacity-100 transition-opacity duration-200;
+  }
+
+  /* Animated underline from left */
+  .link-underline {
+    position: relative;
+  }
+
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.25s ease;
+  }
+
+  .link-underline:hover::after {
+    width: 100%;
   }
 }
 
@@ -154,15 +228,15 @@
    ============================================ */
 .page-enter-active,
 .page-leave-active {
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .page-enter-from {
   opacity: 0;
-  transform: translateY(4px);
+  transform: translateY(6px);
 }
 
 .page-leave-to {
   opacity: 0;
-  transform: translateY(-4px);
+  transform: translateY(-6px);
 }
