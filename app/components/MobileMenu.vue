@@ -22,7 +22,9 @@
       <div
         v-if="open"
         id="mobile-menu-dropdown"
-        class="absolute right-0 top-full mt-2 w-56 bg-white dark:bg-black border border-black/10 dark:border-white/10 shadow-lg z-50 font-mono">
+        class="absolute right-0 top-full mt-2 w-56 bg-white dark:bg-black border border-black/10 dark:border-white/10 shadow-lg z-50 font-mono"
+        @touchstart="onTouchStart"
+        @touchend="onTouchEnd">
 
         <!-- Close button -->
         <div class="flex justify-end px-3 pt-2">
@@ -87,6 +89,14 @@ watch(
     open.value = false;
   }
 );
+
+// Swipe left to close
+let touchStartX = 0
+const onTouchStart = (e: TouchEvent) => { touchStartX = e.touches[0].clientX }
+const onTouchEnd = (e: TouchEvent) => {
+  const diff = touchStartX - e.changedTouches[0].clientX
+  if (diff > 50) open.value = false // swipe left to close
+}
 
 // Close on outside click
 function handleOutsideClick(event: MouseEvent) {
