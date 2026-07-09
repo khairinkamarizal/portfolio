@@ -2,15 +2,18 @@
   <NuxtLayout name="simple">
     <template #default>
       <GridBackground variant="dots" />
-      <div class="flex flex-col gap-12 mt-8 relative z-10">
+      <ClientOnly>
+        <ScrollIndicator />
+      </ClientOnly>
+      <div class="flex flex-col gap-14 mt-8 pb-8 relative z-10">
 
         <!-- Hero -->
-        <div class="flex flex-col gap-6">
+        <div class="flex flex-col gap-5">
           <!-- Identity row -->
           <div class="flex flex-row items-center justify-between">
-            <div class="flex flex-col gap-1">
+            <div class="flex flex-col gap-1.5">
               <span class="text-xs opacity-40 tracking-widest normal-case font-sans">Creative Designer & Developer</span>
-              <h1 class="text-xl font-bold tracking-tight leading-none" style="font-family: 'Space Mono', monospace">
+              <h1 class="text-2xl font-bold tracking-tight leading-none" style="font-family: 'Space Mono', monospace">
                 KHAIRIN<br />KAMARIZAL
               </h1>
             </div>
@@ -18,7 +21,7 @@
               <img
                 src="/assets/dp.webp"
                 alt="Khairin Kamarizal"
-                class="w-14 h-14 rounded-full object-cover object-center shrink-0 ring-2 ring-black/10 dark:ring-white/10" />
+                class="w-16 h-16 rounded-full object-cover object-center shrink-0 ring-2 ring-black/10 dark:ring-white/10" />
               <div
                 class="w-10 h-10 shrink-0 flex items-center justify-center bg-black dark:bg-white rounded-full -ml-3 ring-2 ring-white dark:ring-black">
                 <AppLogo class="text-white dark:text-black w-5 h-5" />
@@ -30,19 +33,19 @@
           <StatusBadge />
 
           <!-- Bio tagline -->
-          <p class="text-base leading-snug dark:font-light normal-case font-sans opacity-80">
+          <p class="text-sm leading-relaxed dark:font-light normal-case font-sans opacity-70 max-w-xs">
             Ambitious and versatile creative designer skilled in branding,
             UI/UX, motion content and web development. Based in Cyberjaya, Malaysia.
           </p>
         </div>
 
         <!-- Skills marquee strip -->
-        <div class="border-y border-black/10 dark:border-white/10 py-2 -mx-5">
+        <div class="border-y border-black/10 dark:border-white/10 py-2.5 -mx-5 md:-mx-8 lg:-mx-10">
           <MarqueeTicker :items="skills" :speed="30" />
         </div>
 
         <!-- Stats row -->
-        <div class="grid grid-cols-4 gap-0 divide-x divide-black/10 dark:divide-white/10 border border-black/10 dark:border-white/10 py-4">
+        <div class="grid grid-cols-4 divide-x divide-black/10 dark:divide-white/10 border border-black/10 dark:border-white/10 py-5">
           <ClientOnly>
             <StatCounter :value="1423" label="BEHANCE VIEWS" />
             <StatCounter :value="38" label="APPRECIATIONS" />
@@ -50,7 +53,7 @@
             <StatCounter :value="4" label="YEARS EXP" suffix="+" />
             <template #fallback>
               <div class="flex flex-col items-center py-1 gap-0.5 col-span-4">
-                <span class="text-xs opacity-30 tracking-widest normal-case font-sans">Loading stats…</span>
+                <span class="text-xs opacity-30 tracking-widest normal-case font-sans">—</span>
               </div>
             </template>
           </ClientOnly>
@@ -77,6 +80,8 @@
               :url="project.behanceUrl" />
           </div>
         </div>
+
+        <Divider variant="dots" />
 
         <!-- Latest writing -->
         <div class="flex flex-col gap-4">
@@ -113,9 +118,11 @@
       </NuxtLink>
       <NuxtLink
         to="https://be.net/khairinkamarizal"
+        target="_blank"
+        rel="noopener noreferrer"
         class="group flex items-center">
         <div class="flex-none group-hover:flex-1 transition-all duration-300 h-1"></div>
-        <span>View my portfolio</span>
+        <span>View on Behance</span>
         <div class="flex-1 group-hover:flex-none transition-all duration-300 group-hover:w-2 h-1"></div>
         <ArrowUpRight class="group-hover:rotate-45 transition-transform duration-300" />
       </NuxtLink>
@@ -198,4 +205,3 @@ useHead({
   ],
 });
 </script>
-
