@@ -34,6 +34,13 @@
         class="text-xs tracking-widest opacity-40 hover:opacity-100 transition-opacity duration-150">
         LINKEDIN
       </a>
+      <a
+        href="https://github.com/khairinkamarizal"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-xs tracking-widest opacity-40 hover:opacity-100 transition-opacity duration-150">
+        GITHUB
+      </a>
     </div>
   </div>
 </template>
