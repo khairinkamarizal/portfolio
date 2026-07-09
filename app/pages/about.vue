@@ -192,7 +192,7 @@
         <p class="text-sm opacity-60">Want to work together or just say hello?</p>
         <NuxtLink
           to="/message"
-          class="text-xs tracking-widest uppercase border border-black/20 dark:border-white/20 px-6 py-3 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-200 self-start sm:self-auto font-mono">
+          class="text-xs tracking-widest uppercase border border-black/20 dark:border-white/20 px-6 py-3 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-200 self-start sm:self-auto font-mono focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2">
           Get in Touch →
         </NuxtLink>
       </div>
