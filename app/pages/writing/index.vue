@@ -115,10 +115,10 @@
         </div>
 
         <!-- Empty state -->
-        <EmptyState
-          v-if="filteredPosts.length === 0"
-          title="No posts found"
-          :description="`No writing tagged with '${activeTag}' yet. Try a different tag.`" />
+        <div v-if="filteredPosts.length === 0" class="py-16 flex flex-col items-center gap-3 opacity-30">
+          <span class="font-mono text-4xl">∅</span>
+          <p class="font-mono text-xs tracking-widest uppercase">No posts found</p>
+        </div>
       </section>
 
     </template>
