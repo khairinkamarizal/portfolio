@@ -8,11 +8,8 @@
       <div class="flex flex-col gap-8 px-8 pt-10 pb-10">
 
         <!-- Back link -->
-        <NuxtLink
-          to="/writing"
-          class="flex items-center gap-1.5 text-xs opacity-50 hover:opacity-100 transition-opacity duration-200 w-fit">
-          <ArrowLeft class="w-3 h-3" />
-          <span>Writing</span>
+        <NuxtLink to="/writing" class="inline-flex items-center gap-1.5 font-mono text-[10px] tracking-[0.2em] uppercase opacity-40 hover:opacity-100 transition-opacity duration-200 mb-8">
+          ← Writing
         </NuxtLink>
 
         <!-- Post header -->
