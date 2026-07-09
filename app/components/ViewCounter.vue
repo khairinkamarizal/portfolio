@@ -1,8 +1,8 @@
 <template>
   <ClientOnly>
-    <div class="flex items-center gap-1.5 text-xs opacity-40" aria-label="View count">
+    <div class="flex items-center gap-1.5 text-xs opacity-50" aria-label="View count">
       <Eye :size="12" />
-      <span>{{ count }} {{ count === 1 ? 'view' : 'views' }}</span>
+      <span aria-live="polite">{{ count }} {{ count === 1 ? 'view' : 'views' }}</span>
     </div>
     <template #fallback><div class="w-10 h-4" /></template>
   </ClientOnly>
