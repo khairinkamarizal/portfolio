@@ -5,7 +5,7 @@
       <ClientOnly>
         <ReadingProgress />
       </ClientOnly>
-      <div class="px-8 pt-10 pb-10">
+      <div class="px-8 pt-10 pb-16">
 
         <!-- Back link -->
         <NuxtLink to="/writing" class="inline-flex items-center gap-1.5 font-mono text-[10px] tracking-[0.2em] uppercase opacity-40 hover:opacity-100 transition-opacity duration-200 mb-8">
