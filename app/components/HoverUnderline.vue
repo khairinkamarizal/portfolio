@@ -36,7 +36,8 @@ withDefaults(defineProps<{
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.hover-underline-wrapper:hover .hover-underline-text::after {
+.hover-underline-wrapper:hover .hover-underline-text::after,
+.hover-underline-wrapper:focus-within .hover-underline-text::after {
   transform: scaleX(1);
 }
 </style>
