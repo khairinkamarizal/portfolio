@@ -22,7 +22,10 @@
             </span>
           </div>
           <h1 class="text-2xl leading-tight dark:font-light">{{ post.title }}</h1>
-          <p class="text-sm opacity-50">{{ formatDate(post.date) }}</p>
+          <div class="flex items-center gap-2">
+            <span class="text-xs opacity-30">{{ readingTime }}</span>
+            <span class="text-xs opacity-50">{{ formatDate(post.date) }}</span>
+          </div>
         </div>
 
         <!-- Post body -->
@@ -94,6 +97,14 @@ useHead({
     },
   ],
 });
+
+const readingTime = computed(() => {
+  if (!post.value?.body) return ""
+  // Convert AST body to text by extracting from description and title
+  const content = `${post.value.title || ''} ${post.value.description || ''}`
+  const { text } = useReadingTime(content)
+  return text
+})
 
 function formatDate(dateStr: string): string {
   if (!dateStr) return "";
