@@ -220,6 +220,10 @@
   .text-truncate {
     @apply overflow-hidden text-ellipsis whitespace-nowrap;
   }
+
+  .clamp-1 { @apply line-clamp-1; }
+  .clamp-2 { @apply line-clamp-2; }
+  .clamp-3 { @apply line-clamp-3; }
 }
 
 /* ============================================
