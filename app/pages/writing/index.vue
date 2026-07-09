@@ -70,6 +70,7 @@
           <button
             v-for="tag in allTags"
             :key="tag"
+            :aria-pressed="activeTag === tag"
             :class="[
               'text-xs tracking-widest uppercase font-mono px-3 py-1.5 border transition-colors duration-150',
               activeTag === tag
