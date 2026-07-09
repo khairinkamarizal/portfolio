@@ -41,7 +41,7 @@
         </div>
 
         <!-- Bottom row: role + CTAs -->
-        <div class="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between flex-wrap gap-4">
+        <div class="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between flex-wrap gap-3">
           <span class="mono-label italic">
             Creative Designer &amp; Developer
           </span>
