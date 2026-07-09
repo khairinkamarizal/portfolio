@@ -1,5 +1,6 @@
 <template>
-  <div class="noise-overlay" :style="{ opacity }" aria-hidden="true">
+  <!-- v-once: grain texture is static, no need to re-render -->
+  <div v-once class="noise-overlay" :style="{ opacity }" aria-hidden="true">
     <svg class="noise-svg" xmlns="http://www.w3.org/2000/svg">
       <filter :id="filterId">
         <feTurbulence
