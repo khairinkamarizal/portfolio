@@ -35,7 +35,7 @@
           <span
             v-for="tag in (tags || []).slice(0, 2)"
             :key="tag"
-            class="font-mono text-[9px] tracking-[0.1em] uppercase px-2 py-0.5 border border-black/8 dark:border-white/8 opacity-60">
+            class="tag-base">
             {{ tag }}
           </span>
         </div>
