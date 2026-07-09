@@ -5,13 +5,14 @@
       <!-- ============================================ -->
       <!-- HERO: page heading                           -->
       <!-- ============================================ -->
-      <section class="w-full border-b border-black/10 dark:border-white/10 px-6 md:px-12 lg:px-20 py-16 lg:py-24">
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+      <section class="w-full border-b border-black/10 dark:border-white/10">
+        <div class="px-8 pt-10 pb-8 border-b border-black/8 dark:border-white/8">
+          <p class="font-mono text-[10px] tracking-[0.3em] uppercase opacity-30 mb-2">001 / Writing</p>
           <h1 class="font-mono text-4xl md:text-5xl font-bold tracking-tight leading-none uppercase">
-            Writing<span class="font-mono text-xs opacity-30 ml-2">({{ posts.length }})</span>
+            Thoughts &amp;<br/>Ideas.
           </h1>
-          <p class="text-sm opacity-60 max-w-sm leading-relaxed md:text-right">
-            Thoughts on design, engineering, and the space between.
+          <p class="text-sm opacity-50 mt-4 max-w-sm font-sans leading-relaxed">
+            Writing about design, development, and the space between them.
           </p>
         </div>
       </section>
