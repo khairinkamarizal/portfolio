@@ -8,7 +8,7 @@
       <!-- ============================================ -->
       <section id="main-content" class="w-full border-b border-black/10 dark:border-white/10">
         <div class="px-8 pt-10 pb-8 border-b border-black/8 dark:border-white/8">
-          <p class="font-mono text-[10px] tracking-[0.3em] uppercase opacity-30 mb-2">001 / Writing</p>
+          <p class="font-mono text-[10px] tracking-[0.3em] uppercase opacity-20 mb-2">001 / Writing</p>
           <h1 class="font-mono text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-none uppercase">
             Thoughts &amp;<br/>Ideas.
           </h1>
@@ -221,6 +221,10 @@ const filteredPosts = computed(() =>
   activeTag.value === "All"
     ? nonFeaturedPosts.value
     : nonFeaturedPosts.value.filter((p) => p.tags.includes(activeTag.value))
+);
+
+const sortedPosts = computed(() =>
+  [...(filteredPosts.value || [])].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 );
 
 function getTagCount(tag: string) {
