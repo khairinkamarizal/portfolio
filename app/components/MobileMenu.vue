@@ -23,7 +23,7 @@
         v-if="open"
         ref="menuRef"
         id="mobile-menu-panel"
-        class="absolute right-0 top-full mt-2 w-56 bg-white dark:bg-black border border-black/10 dark:border-white/10 shadow-lg z-50 font-mono"
+        class="absolute right-0 top-full mt-2 w-56 bg-white dark:bg-black border border-black/10 dark:border-white/10 shadow-lg z-50 font-mono p-6"
         @touchstart="onTouchStart"
         @touchend="onTouchEnd">
 
