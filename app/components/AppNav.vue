@@ -1,6 +1,6 @@
 <template>
   <nav
-    :class="direction === 'vertical' ? 'flex flex-col gap-1' : 'flex items-center gap-6'"
+    :class="direction === 'vertical' ? 'flex flex-col gap-2' : 'flex items-center gap-6'"
     aria-label="Main navigation">
     <NuxtLink
       v-for="(link, index) in links"
