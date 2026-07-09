@@ -22,6 +22,7 @@
             <header v-if="post" class="mb-10 pb-8 border-b border-black/8 dark:border-white/8">
               <p v-if="post.category" class="font-mono text-[10px] tracking-[0.25em] uppercase opacity-40 mb-3">{{ post.category }}</p>
               <h1 class="font-mono text-3xl md:text-4xl font-bold tracking-tight leading-tight">{{ post.title }}</h1>
+              <p v-if="post.description" class="mt-3 text-sm italic opacity-60 leading-relaxed">{{ post.description }}</p>
               <div class="flex items-center gap-4 flex-wrap mt-4">
                 <span class="font-mono text-[11px] opacity-50">{{ formattedDate }}</span>
                 <PostMeta :date="post.date" :reading-time="readingTime" :tags="post.tags" />
