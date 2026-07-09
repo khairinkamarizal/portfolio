@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col gap-12 mt-4 flex-1 overflow-hidden">
-    <!-- Form Section -->
+  <div class="flex flex-col gap-12 mt-4 lg:mt-10 flex-1 overflow-hidden lg:grid lg:grid-cols-2 lg:gap-16 lg:items-start">
+    <!-- Form Section: constrained on desktop -->
     <section class="relative group">
       <form
         @submit.prevent="submitMessage"
