@@ -64,7 +64,9 @@
         </div>
 
         <main id="main-content" role="main" class="flex-1 flex flex-col font-sans normal-case">
-          <slot />
+          <PageTransition>
+            <slot />
+          </PageTransition>
         </main>
 
         <!-- Footer -->
