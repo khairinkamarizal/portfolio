@@ -70,7 +70,7 @@
 
       <!-- ==================== STATS ==================== -->
       <RevealOnScroll variant="fade-up" :delay="100">
-        <div class="grid grid-cols-2 md:grid-cols-4 border-b border-black/8 dark:border-white/8">
+        <div class="grid grid-cols-2 md:grid-cols-4 border-t border-b border-black/8 dark:border-white/8">
           <ClientOnly>
             <StatCounter :value="1423" label="BEHANCE VIEWS" />
             <StatCounter :value="38" label="APPRECIATIONS" />
