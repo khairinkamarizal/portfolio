@@ -34,8 +34,8 @@ onMounted(() => {
   const lerp = (a: number, b: number, t: number) => a + (b - a) * t
 
   const animate = () => {
-    currentX = lerp(currentX, targetX, 0.12)
-    currentY = lerp(currentY, targetY, 0.12)
+    currentX = lerp(currentX, targetX, 0.16)
+    currentY = lerp(currentY, targetY, 0.16)
     x.value = currentX
     y.value = currentY
     rafId = requestAnimationFrame(animate)
