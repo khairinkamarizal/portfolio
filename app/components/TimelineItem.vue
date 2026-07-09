@@ -16,16 +16,16 @@
       <!-- Role + period row -->
       <div class="flex justify-between items-start gap-4 flex-wrap">
         <span class="text-sm font-medium leading-snug">{{ role }}</span>
-        <span class="text-xs opacity-40 shrink-0 font-mono">{{ period }}</span>
+        <span class="text-xs opacity-40 shrink-0 font-mono"><time :datetime="period">{{ period }}</time></span>
       </div>
 
       <!-- Company + location -->
       <div class="flex items-center gap-2">
         <span class="text-xs opacity-50 tracking-wide">{{ company.toUpperCase() }}</span>
-        <span v-if="location" class="text-xs opacity-30">· {{ location }}</span>
+        <span v-if="location" class="text-xs opacity-50">· {{ location }}</span>
         <span
           v-if="current"
-          class="text-[10px] tracking-wider px-1.5 py-0.5 border border-black/20 dark:border-white/20 opacity-60">
+          class="text-[10px] tracking-wider px-1.5 py-0.5 border border-black/30 dark:border-white/30 opacity-80">
           NOW
         </span>
       </div>
