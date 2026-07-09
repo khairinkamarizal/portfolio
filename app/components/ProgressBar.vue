@@ -15,7 +15,9 @@
 <script setup lang="ts">
 /**
  * ProgressBar — reading progress indicator for long-form content.
- * Shows a horizontal bar at the top indicating scroll progress.
+ * Shows a fixed horizontal bar at the top of the viewport indicating
+ * how far the user has scrolled through the page (0–100%).
+ * Listens to the scroll event with a passive listener for performance.
  */
 const progress = ref(0)
 
