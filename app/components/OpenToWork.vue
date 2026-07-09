@@ -6,14 +6,14 @@
         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
         <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
       </span>
-      <span class="text-[10px] tracking-widest opacity-60">AVAILABLE FOR WORK</span>
+      <span class="text-[10px] tracking-widest opacity-60">AVAILABLE FOR FREELANCE &amp; FULLTIME</span>
     </div>
 
     <!-- What kind of work -->
     <div class="flex flex-col gap-1">
       <p class="text-sm dark:font-light leading-relaxed">
-        Open to <span class="font-medium">Branding</span>, <span class="font-medium">UI/UX</span>,
-        <span class="font-medium">Web Dev</span>, and <span class="font-medium">Motion</span> projects.
+        Open to <span class="font-medium">Brand Identity</span>, <span class="font-medium">UI/UX Design</span>,
+        <span class="font-medium">Web Development</span>, <span class="font-medium">Motion Design</span>, and <span class="font-medium">Creative Direction</span> projects.
       </p>
       <p class="text-xs opacity-50">Remote · On-site Cyberjaya</p>
     </div>
