@@ -1,9 +1,9 @@
 <template>
   <figure class="testimonial">
     <span class="testimonial-mark" aria-hidden="true">&ldquo;</span>
-    <blockquote class="testimonial-quote">{{ quote }}</blockquote>
+    <blockquote class="testimonial-quote" :cite="source">{{ quote }}</blockquote>
     <figcaption class="testimonial-footer">
-      <span class="testimonial-name">{{ name }}</span>
+      <cite class="testimonial-name">— {{ name }}</cite>
       <span class="testimonial-sep" aria-hidden="true">·</span>
       <span class="testimonial-role">{{ role }}<template v-if="company">, {{ company }}</template></span>
     </figcaption>
@@ -16,6 +16,7 @@ defineProps<{
   name: string
   role: string
   company?: string
+  source?: string
 }>()
 </script>
 
