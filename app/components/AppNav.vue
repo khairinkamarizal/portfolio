@@ -11,7 +11,7 @@
       :class="[
         direction === 'vertical'
           ? isActive(link.href)
-            ? 'border-l border-current pl-3 py-2 opacity-100'
+            ? 'border-l border-current pl-3 py-2 opacity-100' /* active: pl-3 consistent */
             : 'pl-2 py-2 opacity-50 hover:opacity-70'
           : isActive(link.href)
             ? 'font-bold opacity-100'
