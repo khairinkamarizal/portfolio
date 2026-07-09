@@ -339,6 +339,14 @@
   .animated-underline:hover {
     background-size: 100% 1px;
   }
+
+  .prose-mono {
+    font-family: 'Space Mono', monospace;
+  }
+  .prose-mono p { @apply leading-relaxed; }
+  .prose-mono h1, .prose-mono h2, .prose-mono h3 {
+    @apply uppercase tracking-tight;
+  }
 }
 
 /* ============================================
