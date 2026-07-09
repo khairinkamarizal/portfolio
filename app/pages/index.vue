@@ -45,7 +45,7 @@
           <span class="mono-label italic">
             Creative Designer &amp; Developer
           </span>
-          <span class="hidden lg:block mono-label opacity-20">
+          <span class="hidden lg:block mono-label opacity-0 hover:opacity-20 transition-opacity duration-300">
             Press G then W to go to work
           </span>
           <div class="flex items-center gap-3">
