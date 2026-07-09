@@ -5,7 +5,7 @@
       'transition-[opacity,transform] ease-out',
       isVisible
         ? 'opacity-100 translate-y-0 translate-x-0'
-        : variant === 'fade-up'   ? 'opacity-0 translate-y-4'
+        : variant === 'fade-up'   ? 'opacity-0 translate-y-6'
         : variant === 'fade-left' ? 'opacity-0 translate-x-4'
         : variant === 'fade-right'? 'opacity-0 -translate-x-4'
         : 'opacity-0',
@@ -58,7 +58,7 @@ onMounted(() => {
         }
       })
     },
-    { threshold: 0.1 }
+    { threshold: 0.15 }
   )
 
   observer.observe(el.value)
