@@ -15,6 +15,15 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * NumberedList
+ *
+ * Renders an ordered list where each item is displayed alongside a large,
+ * zero-padded monospaced index number (e.g. "01", "02"). The number is
+ * decorative and hidden from assistive technologies via aria-hidden.
+ *
+ * @prop {string[]} items - Array of text strings to render as list items.
+ */
 defineProps<{
   items: string[]
 }>()
