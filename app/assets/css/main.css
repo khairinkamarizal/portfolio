@@ -191,6 +191,9 @@
   .text-foreground { @apply text-black dark:text-white; }
   .text-muted-foreground { @apply text-black/60 dark:text-white/60; }
   .text-subtle { @apply text-black/40 dark:text-white/40; }
+
+  .border-subtle { @apply border-black/8 dark:border-white/8; }
+  .divide-subtle > * + * { @apply border-t border-black/8 dark:border-white/8; }
 }
 
 /* ============================================
