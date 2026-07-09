@@ -18,7 +18,7 @@
           target="_blank"
           rel="noopener noreferrer"
           :aria-label="project.title + ' (opens in new tab)'"
-          class="group flex items-center justify-between py-2.5 first:pt-0 hover:opacity-60 transition-opacity duration-200">
+          class="group flex items-center justify-between py-2.5 first:pt-0 hover:bg-black/5 dark:hover:bg-white/5 transition-colors duration-150">
           <span class="text-sm font-medium">{{ project.title }}</span>
           <div class="flex items-center gap-2 shrink-0">
             <span class="text-[10px] tracking-wider opacity-40">{{ project.category?.toUpperCase() }}</span>
