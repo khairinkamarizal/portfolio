@@ -1,0 +1,3 @@
+Contact: mailto:khairinkamarizal@gmail.com
+Preferred-Languages: English
+Canonical: https://khair.ink/.well-known/security.txt
