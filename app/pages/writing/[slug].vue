@@ -43,6 +43,11 @@
               <ContentRenderer :value="post" />
             </div>
 
+            <!-- Post footer -->
+            <footer v-if="post" class="mt-12 pt-8 border-t border-black/8 dark:border-white/8 flex flex-col gap-6">
+              <ShareButtons :url="pageUrl" :title="post.title" />
+            </footer>
+
             <!-- Related posts -->
             <RelatedPosts
               v-if="post?.tags?.length"
