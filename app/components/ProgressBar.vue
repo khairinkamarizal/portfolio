@@ -2,6 +2,7 @@
   <div
     class="fixed top-0 left-0 right-0 h-1 z-50 bg-black/10 dark:bg-white/10"
     role="progressbar"
+    aria-label="Reading progress"
     :aria-valuenow="progress"
     aria-valuemin="0"
     aria-valuemax="100">
