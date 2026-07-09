@@ -24,7 +24,7 @@
     </div>
 
     <!-- Content -->
-    <div class="pt-4 pb-2">
+    <div class="pt-3 pb-2">
       <!-- Category + title row -->
       <div class="flex items-start justify-between gap-4 mb-1.5">
         <div class="flex flex-col gap-0.5 min-w-0">
