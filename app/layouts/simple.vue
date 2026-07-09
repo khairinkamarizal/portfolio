@@ -6,6 +6,12 @@
         ? 'text-white'
         : 'bg-white dark:bg-black text-black dark:text-white',
     ]">
+    <!-- Skip to content link for keyboard users -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:bg-black focus:text-white dark:focus:bg-white dark:focus:text-black focus:text-sm">
+      Skip to content
+    </a>
     <div class="w-full max-w-md flex flex-col relative overflow-hidden">
       <div
         class="flex flex-col relative min-h-screen p-5 gap-12 uppercase"
@@ -16,7 +22,7 @@
             'flex flex-col gap-10',
             transparent ? 'mix-blend-difference' : '',
           ]">
-          <header class="w-full flex justify-between items-center">
+          <header class="w-full flex justify-between items-center" aria-label="Site header">
             <NuxtLink to="/"
               ><AppLogo
                 class="w-8 h-8 hover:scale-125 transition-transform duration-300"
@@ -50,10 +56,10 @@
           </header>
 
           <!-- Navigation -->
-          <AppNav />
+          <AppNav aria-label="Main navigation" />
         </div>
 
-        <main class="flex-1 flex flex-col font-sans normal-case">
+        <main id="main-content" role="main" class="flex-1 flex flex-col font-sans normal-case">
           <slot />
         </main>
 
