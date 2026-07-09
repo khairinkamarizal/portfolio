@@ -21,7 +21,7 @@
         <Divider variant="dots" />
 
         <!-- Featured projects -->
-        <div v-if="featuredProjects.length" class="flex flex-col gap-3">
+        <section v-if="featuredProjects.length" aria-label="Featured projects" class="flex flex-col gap-3">
           <SectionLabel label="Featured" variant="numbered" :number="1" />
           <p class="text-xs font-sans opacity-40 mt-1">Highlight pieces I'm proud of</p>
           <RevealOnScroll variant="fade-up" :delay="50">
@@ -37,9 +37,9 @@
                 :category="project.category" />
             </div>
           </RevealOnScroll>
-        </div>
+        </section>
 
-        <div class="flex flex-col gap-3 border-t border-black/8 dark:border-white/8 pt-6">
+        <section aria-label="All projects" class="flex flex-col gap-3 border-t border-black/8 dark:border-white/8 pt-6">
           <SectionLabel label="All Work" variant="numbered" :number="2" />
           <div class="flex items-center justify-between gap-4">
             <div class="py-2">
@@ -68,7 +68,6 @@
               </button>
             </div>
           </div>
-        </div>
 
         <Divider variant="line" />
 
@@ -100,6 +99,7 @@
             <p class="text-sm opacity-50">No projects match the selected filter.</p>
           </div>
         </RevealOnScroll>
+        </section>
 
         <!-- Tag cloud -->
         <TagCloud :tags="tagCounts" @filter="handleTagFilter" />
