@@ -5,9 +5,8 @@
       :key="index"
       class="numbered-list-item">
       <span
-        class="numbered-list-number"
-        aria-hidden="true"
-        style="font-family: 'Space Mono', monospace">
+        class="numbered-list-number font-mono"
+        aria-hidden="true">
         {{ String(index + 1).padStart(2, '0') }}
       </span>
       <span class="numbered-list-text">{{ item }}</span>
@@ -48,7 +47,7 @@ defineProps<{
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 700;
   line-height: 1;
-  opacity: 0.15;
+  opacity: 0.2;
   min-width: 3ch;
   flex-shrink: 0;
   letter-spacing: -0.02em;
