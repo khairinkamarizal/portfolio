@@ -26,6 +26,8 @@ onMounted(() => {
 
   if (!isDesktop.value) return
 
+  document.body.style.cursor = 'none'
+
   let targetX = -100
   let targetY = -100
   let currentX = -100
@@ -71,6 +73,7 @@ onMounted(() => {
       el.removeEventListener('mouseenter', onLinkEnter)
       el.removeEventListener('mouseleave', onLinkLeave)
     })
+    document.body.style.cursor = ''
   })
 })
 </script>
