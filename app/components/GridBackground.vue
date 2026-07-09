@@ -58,7 +58,7 @@ const gridStyle = computed(() => {
 .grid-bg--dots {
   background-image: radial-gradient(circle, currentColor 1.5px, transparent 1.5px);
   background-size: 24px 24px;
-  color: rgba(0, 0, 0, 0.2);
+  color: rgba(0, 0, 0, 0.18);
 }
 
 :global(.dark) .grid-bg--dots {
