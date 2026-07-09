@@ -283,3 +283,13 @@
   opacity: 0;
   transform: translateY(-6px);
 }
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  .no-print { display: none !important; }
+  body { background: white !important; color: black !important; }
+  a { color: black !important; text-decoration: underline; }
+  .sidebar, aside { display: none !important; }
+}
