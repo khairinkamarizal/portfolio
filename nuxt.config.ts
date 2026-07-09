@@ -2,6 +2,9 @@
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
 
+  // Explicitly enable SSR for proper SEO and hydration
+  ssr: true,
+
   // Nuxt 4 app directory structure
   future: {
     compatibilityVersion: 4,
