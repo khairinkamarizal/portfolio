@@ -92,6 +92,10 @@ withDefaults(defineProps<{
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .glitch-wrapper::before, .glitch-wrapper::after { animation: none !important; }
+}
+
 @keyframes glitch-shift-b {
   0% {
     opacity: 0;
