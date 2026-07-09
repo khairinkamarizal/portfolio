@@ -3,7 +3,12 @@
     ref="el"
     :class="[
       'transition-[opacity,transform] ease-out',
-      isVisible ? 'opacity-100 translate-y-0' : (variant === 'fade-up' ? 'opacity-0 translate-y-4' : 'opacity-0'),
+      isVisible
+        ? 'opacity-100 translate-y-0 translate-x-0'
+        : variant === 'fade-up'   ? 'opacity-0 translate-y-4'
+        : variant === 'fade-left' ? 'opacity-0 translate-x-4'
+        : variant === 'fade-right'? 'opacity-0 -translate-x-4'
+        : 'opacity-0',
     ]"
     :style="{
       transitionDuration: '0.5s',
@@ -19,7 +24,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 
 const props = withDefaults(defineProps<{
   delay?: number
-  variant?: 'fade-up' | 'fade-in'
+  variant?: 'fade-up' | 'fade-in' | 'fade-left' | 'fade-right'
 }>(), {
   delay: 0,
   variant: 'fade-up',
