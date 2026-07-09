@@ -7,9 +7,10 @@
         <!-- HERO: page heading                           -->
         <!-- ============================================ -->
         <div class="flex flex-col gap-3">
-          <h1 class="text-4xl md:text-5xl font-bold tracking-tight leading-none uppercase font-mono">
-            Message
-          </h1>
+          <div class="mb-10">
+            <p class="font-mono text-[10px] tracking-[0.3em] uppercase opacity-30 mb-2">001 / Get in touch</p>
+            <h1 class="font-mono text-4xl md:text-5xl font-bold tracking-tight leading-none uppercase">Let's<br/>Talk.</h1>
+          </div>
           <p class="text-sm opacity-60 max-w-lg leading-relaxed">
             Have a project in mind, a question, or just want to say hello?
             Fill in the form or reach out directly.
