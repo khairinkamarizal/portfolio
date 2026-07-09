@@ -538,6 +538,25 @@
   50%       { opacity: 0.25; }
 }
 
+/* ============================================
+   TOC LINKS
+   ============================================ */
+.toc-links a {
+  transition: opacity 0.15s ease, text-decoration-color 0.15s ease;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 2px;
+}
+
+.toc-links a:hover {
+  text-decoration-color: currentColor;
+}
+
+.toc-links a.active {
+  text-decoration-color: currentColor;
+  opacity: 1;
+}
+
 .blink {
   animation: blink 1s ease-in-out infinite;
 }

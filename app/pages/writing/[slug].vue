@@ -88,7 +88,7 @@
 
           <!-- Right: sticky ToC (1/4 width on lg+) -->
           <div class="hidden lg:block lg:col-span-1">
-            <div class="sticky top-8">
+            <div class="sticky top-8 toc-links">
               <p class="font-mono text-[9px] tracking-[0.25em] uppercase opacity-40 mb-3">Contents</p>
               <TableOfContents v-if="post" />
             </div>
