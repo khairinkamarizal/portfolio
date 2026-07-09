@@ -3,7 +3,12 @@
     <template #default>
       <div class="flex flex-col gap-10 mt-10">
         <div class="flex flex-col gap-2">
-          <h1 class="text-xs opacity-50 tracking-widest">Selected Work</h1>
+          <div class="flex items-center justify-between">
+            <h1 class="text-xs opacity-50 tracking-widest">Selected Work</h1>
+            <ClientOnly>
+              <ProjectCount :count="projects.length" />
+            </ClientOnly>
+          </div>
           <p class="text-2xl leading-tight dark:font-light">
             Projects spanning brand identity, UI/UX, and digital design.
           </p>
