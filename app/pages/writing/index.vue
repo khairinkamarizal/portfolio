@@ -39,7 +39,8 @@
             :description="post.description"
             :date="post.date"
             :tags="post.tags"
-            :slug="post.stem?.split('/').pop() || ''" />
+            :slug="post.stem?.split('/').pop() || ''"
+            :reading-time="getReadingTime(post)" />
         </div>
 
         <div v-else class="flex flex-col gap-2">
@@ -111,4 +112,11 @@ const filteredPosts = computed(() => {
   if (!selectedTag.value) return posts.value;
   return posts.value.filter((post) => post.tags?.includes(selectedTag.value!));
 });
+
+function getReadingTime(post: any): string {
+  // Estimate reading time from title + description
+  const content = `${post.title || ''} ${post.description || ''}`
+  const { text } = useReadingTime(content)
+  return text
+}
 </script>
