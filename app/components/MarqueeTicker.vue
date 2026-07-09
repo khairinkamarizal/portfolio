@@ -1,7 +1,7 @@
 <template>
   <div class="w-full overflow-hidden py-3">
     <div
-      class="marquee-track flex gap-0 whitespace-nowrap"
+      class="marquee-track flex items-center gap-0 whitespace-nowrap"
       :style="{ '--marquee-duration': `${(100 / speed) * 20}s`, animationDirection: direction === 'rtl' ? 'reverse' : 'normal', gap: `${gap}px` }">
       <!-- Primary content — accessible -->
       <span class="marquee-content inline-flex shrink-0 items-center">
