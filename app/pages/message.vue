@@ -48,7 +48,7 @@
                   autocomplete="name"
                   required
                    :class="[
-                    'w-full border px-4 py-3 text-sm bg-transparent focus:outline-none transition-colors duration-150 placeholder:opacity-30 min-h-[40px]',
+                    'w-full border px-4 py-3 text-sm bg-transparent focus:outline-none transition-colors duration-150 placeholder:opacity-30 min-h-[40px] rounded-none',
                     'focus:border-black dark:focus:border-white',
                     errors.name
                       ? 'border-red-500'
@@ -74,7 +74,7 @@
                   autocomplete="email"
                   required
                   :class="[
-                    'w-full border px-4 py-3 text-sm bg-transparent focus:outline-none transition-colors duration-150 placeholder:opacity-30 min-h-[40px]',
+                    'w-full border px-4 py-3 text-sm bg-transparent focus:outline-none transition-colors duration-150 placeholder:opacity-30 min-h-[40px] rounded-none',
                     'focus:border-black dark:focus:border-white',
                     errors.email
                       ? 'border-red-500'
@@ -97,7 +97,7 @@
                   v-model="form.subject"
                   type="text"
                   name="subject"
-                  class="w-full border border-black/25 dark:border-white/25 px-4 py-3 text-sm bg-transparent focus:outline-none focus:border-black dark:focus:border-white transition-colors duration-150 placeholder:opacity-30 min-h-[40px]"
+                  class="w-full border border-black/25 dark:border-white/25 px-4 py-3 text-sm bg-transparent focus:outline-none focus:border-black dark:focus:border-white transition-colors duration-150 placeholder:opacity-30 min-h-[40px] rounded-none"
                   placeholder="What's this about?" />
               </div>
 
@@ -115,7 +115,7 @@
                   rows="6"
                   required
                   :class="[
-                    'w-full border px-4 py-3 text-sm bg-transparent focus:outline-none transition-colors duration-150 resize-none placeholder:opacity-30 min-h-[120px]',
+                    'w-full border px-4 py-3 text-sm bg-transparent focus:outline-none transition-colors duration-150 resize-none placeholder:opacity-30 min-h-[120px] rounded-none',
                     'focus:border-black dark:focus:border-white',
                     errors.message
                       ? 'border-red-500'
