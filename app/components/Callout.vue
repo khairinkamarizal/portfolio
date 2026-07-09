@@ -26,10 +26,10 @@ const calloutClasses = computed(() => {
   const type = props.type || 'note'
   
   const classes = {
-    note: 'border-black/20 dark:border-white/20 bg-black/[0.02] dark:bg-white/[0.02]',
-    tip: 'border-green-500/30 dark:border-green-400/30 bg-green-500/[0.03] dark:bg-green-400/[0.03]',
-    warning: 'border-yellow-500/30 dark:border-yellow-400/30 bg-yellow-500/[0.03] dark:bg-yellow-400/[0.03]',
-    info: 'border-blue-500/30 dark:border-blue-400/30 bg-blue-500/[0.03] dark:bg-blue-400/[0.03]',
+    note: 'border-black/20 dark:border-white/20 bg-black/[0.05] dark:bg-white/[0.05]',
+    tip: 'border-green-500/30 dark:border-green-400/30 bg-green-500/[0.08] dark:bg-green-400/[0.08]',
+    warning: 'border-yellow-500/30 dark:border-yellow-400/30 bg-yellow-500/[0.08] dark:bg-yellow-400/[0.08]',
+    info: 'border-blue-500/30 dark:border-blue-400/30 bg-blue-500/[0.08] dark:bg-blue-400/[0.08]',
   }
   
   return classes[type]
