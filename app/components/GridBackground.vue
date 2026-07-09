@@ -22,7 +22,6 @@ withDefaults(defineProps<{
   position: fixed;
   inset: 0;
   z-index: 0;
-  opacity: 0.4;
   pointer-events: none;
 }
 
@@ -30,11 +29,11 @@ withDefaults(defineProps<{
 .grid-bg--dots {
   background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
   background-size: 24px 24px;
-  color: rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.2);
 }
 
 :global(.dark) .grid-bg--dots {
-  color: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.12);
 }
 
 /* Grid variant */
