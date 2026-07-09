@@ -95,7 +95,7 @@
           </div>
 
           <!-- Empty state -->
-          <div v-else-if="filteredProjects.length === 0" class="py-16 text-center">
+          <div v-else-if="filteredProjects.length === 0" class="min-h-[200px] flex items-center justify-center text-center">
             <p class="text-sm opacity-50">No projects match the selected filter.</p>
           </div>
         </RevealOnScroll>
