@@ -19,6 +19,7 @@
     </div>
 
     <!-- Vertical nav -->
+    <!-- AppNav handles vertical nav with border-l-2 active states -->
     <AppNav direction="vertical" aria-label="Main navigation" />
 
     <!-- Spacer -->
