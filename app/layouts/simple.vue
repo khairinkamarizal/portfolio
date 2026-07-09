@@ -26,7 +26,7 @@
       <!-- MOBILE / TABLET LAYOUT (hidden on lg+) -->
       <!-- ===================== -->
       <div
-        class="flex flex-col relative min-h-screen px-5 md:px-8 py-5 gap-12 lg:hidden overflow-x-hidden">
+        class="flex flex-col relative min-h-screen px-5 md:px-8 py-5 gap-10 lg:hidden overflow-x-hidden">
         <!-- Header -->
         <div
           :class="[
