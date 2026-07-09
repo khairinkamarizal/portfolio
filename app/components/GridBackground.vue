@@ -27,7 +27,7 @@ withDefaults(defineProps<{
 
 /* Dots variant */
 .grid-bg--dots {
-  background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
+  background-image: radial-gradient(circle, currentColor 1.5px, transparent 1.5px);
   background-size: 24px 24px;
   color: rgba(0, 0, 0, 0.2);
 }
