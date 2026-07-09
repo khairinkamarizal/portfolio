@@ -199,6 +199,20 @@ useHead({
     { property: 'og:description', content: 'Selected design and development projects by Khairin Kamarizal.' },
     { property: 'og:url', content: 'https://khair.ink/work' },
   ],
+  script: [{
+    type: 'application/ld+json',
+    innerHTML: JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'CreativeWork',
+      name: 'Portfolio — Khairin Kamarizal',
+      url: 'https://khair.ink/work',
+      creator: {
+        '@type': 'Person',
+        name: 'Khairin Kamarizal',
+        url: 'https://khair.ink'
+      }
+    })
+  }],
 });
 
 const projects = [
