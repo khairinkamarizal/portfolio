@@ -1,136 +1,127 @@
 <template>
-  <div class="w-full">
+  <NuxtLayout name="simple">
+    <template #default>
 
-    <!-- ============================================ -->
-    <!-- HERO: page heading                           -->
-    <!-- ============================================ -->
-    <section class="w-full border-b border-black/10 dark:border-white/10 px-6 md:px-12 lg:px-20 py-16 lg:py-24">
-      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-        <h1
-          class="text-5xl md:text-7xl lg:text-[8vw] font-bold leading-none tracking-tighter uppercase"
-          style="font-family: 'Space Mono', monospace">
-          Writing
-        </h1>
-        <p class="text-sm opacity-60 max-w-sm leading-relaxed md:text-right">
-          Thoughts on design, engineering, and the space between.
-        </p>
-      </div>
-    </section>
-
-    <!-- ============================================ -->
-    <!-- FEATURED POST: full-width                    -->
-    <!-- ============================================ -->
-    <section
-      v-if="featuredPost"
-      class="w-full border-b border-black/10 dark:border-white/10">
-      <NuxtLink
-        :to="`/writing/${featuredPost.slug}`"
-        class="group block px-6 md:px-12 lg:px-20 py-12 lg:py-16 hover:bg-black/2 dark:hover:bg-white/2 transition-colors duration-200">
-        <div class="flex flex-col lg:flex-row lg:items-start lg:gap-16">
-          <!-- Featured label + meta -->
-          <div class="lg:w-1/3 flex flex-col gap-4 mb-6 lg:mb-0">
-            <span
-              class="text-xs tracking-widest uppercase opacity-40"
-              style="font-family: 'Space Mono', monospace">
-              Featured
-            </span>
-            <div class="flex items-center gap-3 text-xs opacity-50" style="font-family: 'Space Mono', monospace">
-              <span>{{ featuredPost.date }}</span>
-              <span>·</span>
-              <span>{{ featuredPost.readTime }}</span>
-            </div>
-            <div class="flex flex-wrap gap-2">
-              <span
-                v-for="tag in featuredPost.tags"
-                :key="tag"
-                class="text-xs tracking-wide border border-black/10 dark:border-white/10 px-2 py-0.5 opacity-50">
-                {{ tag }}
-              </span>
-            </div>
-          </div>
-          <!-- Title + excerpt -->
-          <div class="lg:w-2/3">
-            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight tracking-tight group-hover:opacity-70 transition-opacity duration-200">
-              {{ featuredPost.title }}
-            </h2>
-            <p class="mt-4 text-sm leading-relaxed opacity-60 max-w-2xl">
-              {{ featuredPost.excerpt }}
-            </p>
-            <span
-              class="mt-6 inline-block text-xs tracking-widest uppercase opacity-50 group-hover:opacity-100 transition-opacity"
-              style="font-family: 'Space Mono', monospace">
-              Read More →
-            </span>
-          </div>
-        </div>
-      </NuxtLink>
-    </section>
-
-    <!-- ============================================ -->
-    <!-- POSTS GRID: 3-col xl+, 2-col md, 1-col      -->
-    <!-- ============================================ -->
-    <section class="w-full px-6 md:px-12 lg:px-20 py-12 lg:py-16">
-      <!-- Tag filter -->
-      <div class="flex flex-wrap gap-2 mb-10">
-        <button
-          v-for="tag in allTags"
-          :key="tag"
-          :class="[
-            'text-xs tracking-widest uppercase px-3 py-1.5 border transition-colors duration-200',
-            activeTag === tag
-              ? 'border-black dark:border-white bg-black dark:bg-white text-white dark:text-black'
-              : 'border-black/20 dark:border-white/20 hover:border-black/60 dark:hover:border-white/60',
-          ]"
-          style="font-family: 'Space Mono', monospace"
-          @click="activeTag = tag">
-          {{ tag }}
-        </button>
-      </div>
-
-      <!-- Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-px bg-black/10 dark:bg-white/10 border border-black/10 dark:border-white/10">
-        <NuxtLink
-          v-for="post in filteredPosts"
-          :key="post.slug"
-          :to="`/writing/${post.slug}`"
-          class="group bg-white dark:bg-black p-6 flex flex-col gap-4 hover:bg-black/2 dark:hover:bg-white/2 transition-colors duration-200">
-          <div class="flex items-center justify-between">
-            <div class="flex flex-wrap gap-2">
-              <span
-                v-for="tag in post.tags"
-                :key="tag"
-                class="text-xs tracking-wide border border-black/10 dark:border-white/10 px-2 py-0.5 opacity-50">
-                {{ tag }}
-              </span>
-            </div>
-            <span
-              class="text-xs opacity-40 shrink-0"
-              style="font-family: 'Space Mono', monospace">
-              {{ post.readTime }}
-            </span>
-          </div>
-          <h3 class="text-base font-semibold leading-snug group-hover:opacity-70 transition-opacity duration-200">
-            {{ post.title }}
-          </h3>
-          <p class="text-sm opacity-50 leading-relaxed line-clamp-3 flex-1">
-            {{ post.excerpt }}
+      <!-- ============================================ -->
+      <!-- HERO: page heading                           -->
+      <!-- ============================================ -->
+      <section class="w-full border-b border-black/10 dark:border-white/10 px-6 md:px-12 lg:px-20 py-16 lg:py-24">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <h1 class="font-mono text-4xl md:text-5xl font-bold tracking-tight leading-none uppercase">
+            Writing
+          </h1>
+          <p class="text-sm opacity-60 max-w-sm leading-relaxed md:text-right">
+            Thoughts on design, engineering, and the space between.
           </p>
-          <span
-            class="text-xs opacity-40 mt-auto"
-            style="font-family: 'Space Mono', monospace">
-            {{ post.date }}
-          </span>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- FEATURED POST: full-width                    -->
+      <!-- ============================================ -->
+      <section
+        v-if="featuredPost"
+        class="w-full border-b border-black/10 dark:border-white/10">
+        <NuxtLink
+          :to="`/writing/${featuredPost.slug}`"
+          class="group block px-6 md:px-12 lg:px-20 py-12 lg:py-16 hover:bg-black/5 dark:hover:bg-white/5 transition-colors duration-150">
+          <div class="flex flex-col lg:flex-row lg:items-start lg:gap-16">
+            <!-- Featured label + meta -->
+            <div class="lg:w-1/3 flex flex-col gap-4 mb-6 lg:mb-0">
+              <span class="text-xs tracking-widest uppercase font-mono opacity-50">
+                Featured
+              </span>
+              <div class="flex items-center gap-3 text-xs opacity-50 font-mono">
+                <span>{{ featuredPost.date }}</span>
+                <span>·</span>
+                <span>{{ featuredPost.readTime }}</span>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  v-for="tag in featuredPost.tags"
+                  :key="tag"
+                  class="text-xs tracking-wide border border-black/10 dark:border-white/10 px-2 py-0.5 opacity-50">
+                  {{ tag }}
+                </span>
+              </div>
+            </div>
+            <!-- Title + excerpt -->
+            <div class="lg:w-2/3">
+              <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight tracking-tight group-hover:opacity-70 transition-opacity duration-150">
+                {{ featuredPost.title }}
+              </h2>
+              <p class="mt-4 text-sm leading-relaxed opacity-60 max-w-2xl">
+                {{ featuredPost.excerpt }}
+              </p>
+              <span class="mt-6 inline-block text-xs tracking-widest uppercase font-mono opacity-50 group-hover:opacity-100 transition-opacity duration-150">
+                Read More →
+              </span>
+            </div>
+          </div>
         </NuxtLink>
-      </div>
+      </section>
 
-      <!-- Empty state -->
-      <EmptyState
-        v-if="filteredPosts.length === 0"
-        title="No posts found"
-        :description="`No writing tagged with '${activeTag}' yet. Try a different tag.`" />
-    </section>
+      <!-- ============================================ -->
+      <!-- POSTS GRID: 3-col xl+, 2-col md, 1-col      -->
+      <!-- ============================================ -->
+      <section class="w-full px-6 md:px-12 lg:px-20 py-12 lg:py-16">
+        <!-- Tag filter -->
+        <div class="flex flex-wrap gap-2 mb-10">
+          <button
+            v-for="tag in allTags"
+            :key="tag"
+            :class="[
+              'text-xs tracking-widest uppercase font-mono px-3 py-1.5 border transition-colors duration-150',
+              activeTag === tag
+                ? 'border-black dark:border-white bg-black dark:bg-white text-white dark:text-black'
+                : 'border-black/20 dark:border-white/20 hover:border-black/60 dark:hover:border-white/60',
+            ]"
+            @click="activeTag = tag">
+            {{ tag }}
+          </button>
+        </div>
 
-  </div>
+        <!-- Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-px bg-black/10 dark:bg-white/10 border border-black/10 dark:border-white/10">
+          <NuxtLink
+            v-for="post in filteredPosts"
+            :key="post.slug"
+            :to="`/writing/${post.slug}`"
+            class="group bg-white dark:bg-black p-6 flex flex-col gap-4 hover:bg-black/5 dark:hover:bg-white/5 transition-colors duration-150">
+            <div class="flex items-center justify-between">
+              <div class="flex flex-wrap gap-2">
+                <span
+                  v-for="tag in post.tags"
+                  :key="tag"
+                  class="text-xs tracking-wide border border-black/10 dark:border-white/10 px-2 py-0.5 opacity-50">
+                  {{ tag }}
+                </span>
+              </div>
+              <span class="text-xs font-mono opacity-50 shrink-0">
+                {{ post.readTime }}
+              </span>
+            </div>
+            <h3 class="text-base font-semibold leading-snug group-hover:opacity-70 transition-opacity duration-150">
+              {{ post.title }}
+            </h3>
+            <p class="text-sm opacity-50 leading-relaxed line-clamp-3 flex-1">
+              {{ post.excerpt }}
+            </p>
+            <span class="text-xs font-mono opacity-50 mt-auto">
+              {{ post.date }}
+            </span>
+          </NuxtLink>
+        </div>
+
+        <!-- Empty state -->
+        <EmptyState
+          v-if="filteredPosts.length === 0"
+          title="No posts found"
+          :description="`No writing tagged with '${activeTag}' yet. Try a different tag.`" />
+      </section>
+
+    </template>
+  </NuxtLayout>
 </template>
 
 <script setup lang="ts">
@@ -142,7 +133,7 @@ useSeoMeta({
 });
 
 definePageMeta({
-  layout: "simple",
+  layout: false,
 });
 
 const posts = [
