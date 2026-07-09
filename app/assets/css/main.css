@@ -281,6 +281,13 @@
       oklch(1 0 0 / 0.015) 2px
     );
   }
+
+  /* Container query utilities */
+  @container (min-width: 640px) {
+    .cq-sm\:text-base { font-size: 1rem; line-height: 1.5rem; }
+    .cq-sm\:flex-row { flex-direction: row; }
+  }
+  .container-query { container-type: inline-size; }
 }
 
 /* ============================================
