@@ -4,6 +4,7 @@
       <div id="main-content" class="flex flex-col gap-10 px-8 py-10 pb-16">
         <RevealOnScroll variant="fade-up">
           <div class="flex flex-col gap-2">
+            <p class="font-mono text-[9px] tracking-[0.3em] uppercase opacity-20 mb-1">001 / Work</p>
             <div class="flex items-center justify-between mb-3">
               <p class="mono-label">Selected Work <span class="opacity-50">({{ projects.length }})</span></p>
               <ClientOnly>
