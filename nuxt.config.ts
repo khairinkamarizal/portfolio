@@ -63,6 +63,15 @@ export default defineNuxtConfig({
     layoutTransition: { name: "page", mode: "out-in" },
   },
 
+  // Route rules for static page prerendering
+  routeRules: {
+    '/': { prerender: true },
+    '/work': { prerender: true },
+    '/about': { prerender: true },
+    '/writing': { prerender: true },
+    '/message': { prerender: true },
+  },
+
   // Dev tools
   devtools: { enabled: true },
 });
