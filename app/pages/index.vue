@@ -87,7 +87,7 @@
 
       <!-- ==================== FEATURED WORK ==================== -->
       <RevealOnScroll variant="fade-up" :delay="50">
-        <section class="px-8 py-10">
+        <section class="px-8 py-10" aria-label="Featured work">
           <div class="flex items-center justify-between mb-8">
             <div class="flex items-center gap-3">
               <span class="font-mono text-[9px] tracking-[0.25em] uppercase opacity-25">002</span>
