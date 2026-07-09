@@ -32,7 +32,7 @@
               <h2 class="mono-label mb-4">
                 Bio
               </h2>
-              <div class="flex flex-col gap-3 text-sm leading-[1.7] opacity-70 max-w-lg font-light">
+              <div class="flex flex-col gap-3 text-sm leading-relaxed md:leading-[1.7] opacity-70 max-w-lg font-light">
                 <p>
                   I'm Khairin — a designer and developer with 5+ years of experience
                   building digital products that balance form and function. I believe
