@@ -1,5 +1,5 @@
 <template>
-  <div class="background-text" :style="{ opacity }" aria-hidden="true">
+  <div class="background-text select-none" :style="{ opacity }" aria-hidden="true">
     {{ text }}
   </div>
 </template>
