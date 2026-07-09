@@ -154,6 +154,9 @@
                     </span>
                   </Transition>
                 </div>
+                <p class="font-mono text-[10px] tracking-[0.15em] opacity-30 mt-4">
+                  Usually respond within 24–48 hours.
+                </p>
               </div>
             </form>
           </div>
