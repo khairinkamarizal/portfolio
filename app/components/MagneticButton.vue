@@ -2,7 +2,8 @@
   <div
     ref="el"
     class="magnetic-button"
-    :style="{ transform: `translate(${offsetX}px, ${offsetY}px)` }"
+    :style="{ transform: `translate(${offsetX}px, ${offsetY}px)`, willChange: isHovering ? 'transform' : 'auto' }"
+    @mouseenter="isHovering = true"
     @mousemove="onMouseMove"
     @mouseleave="onMouseLeave">
     <slot />
@@ -21,6 +22,7 @@ const props = withDefaults(defineProps<{
 const el = ref<HTMLElement | null>(null)
 const offsetX = ref(0)
 const offsetY = ref(0)
+const isHovering = ref(false)
 
 // Only activate on non-touch devices
 const isTouch = ref(false)
@@ -45,6 +47,7 @@ function onMouseMove(e: MouseEvent) {
 }
 
 function onMouseLeave() {
+  isHovering.value = false
   offsetX.value = 0
   offsetY.value = 0
 }
@@ -54,7 +57,6 @@ function onMouseLeave() {
 .magnetic-button {
   display: inline-block;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform;
 }
 
 .magnetic-button:hover {
