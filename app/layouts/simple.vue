@@ -48,6 +48,9 @@
                 transparent ? 'bg-white text-black' : '!bg-black dark:!bg-white'
               " />
           </header>
+
+          <!-- Navigation -->
+          <AppNav />
         </div>
 
         <main class="flex-1 flex flex-col font-sans normal-case">
