@@ -69,6 +69,12 @@
     tab-size: 2;
   }
 
+  /* Improved text rendering for headings */
+  h1, h2, h3, h4, h5, h6 {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
   /* Reduced motion override for accessibility */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
