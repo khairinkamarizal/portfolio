@@ -16,10 +16,18 @@
 </template>
 
 <script setup lang="ts">
-// Subtle CSS noise/grain overlay for the page
-// Creates a film grain effect using an inline SVG feTurbulence filter
-// Very subtle — default opacity 0.04
-// Optional prop: opacity (default 0.04)
+/**
+ * NoiseOverlay — full-screen film grain texture overlay.
+ *
+ * Renders a fixed, animated SVG noise layer over the entire page using an
+ * inline `feTurbulence` filter. Purely decorative; `pointer-events: none` and
+ * `aria-hidden`. Uses `v-once` to skip re-renders since the texture is static.
+ * The filter ID is randomised to avoid collisions when multiple instances exist.
+ *
+ * @prop {number} [opacity=0.04] - Overall opacity of the grain layer (0–1)
+ *
+ * @example <NoiseOverlay :opacity="0.04" />
+ */
 
 withDefaults(defineProps<{
   opacity?: number
