@@ -23,7 +23,7 @@
     <!-- ============================================ -->
     <!-- MAIN CONTENT: 2-col desktop, stacked mobile  -->
     <!-- ============================================ -->
-    <section class="w-full px-8 py-10 lg:py-14" aria-label="Bio and experience">
+    <section class="w-full px-page py-10 lg:py-14" aria-label="Bio and experience">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
 
         <!-- LEFT COL: bio + skills + certs -->
