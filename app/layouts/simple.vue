@@ -66,7 +66,7 @@
           </header>
 
           <!-- Navigation -->
-          <AppNav direction="horizontal" aria-label="Main navigation" />
+          <AppNav direction="horizontal" aria-label="Main navigation" class="mt-2" />
         </div>
 
         <main id="main-content" role="main" class="flex-1 flex flex-col font-sans normal-case">
