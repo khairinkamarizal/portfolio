@@ -1,5 +1,6 @@
 <template>
   <ClientOnly>
+    <template #fallback><div class="w-5 h-5" /></template>
     <button
       id="color-mode-toggle"
       @click="toggleTheme"
