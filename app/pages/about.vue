@@ -6,7 +6,7 @@
     <!-- ============================================ -->
     <!-- HERO: page heading                           -->
     <!-- ============================================ -->
-    <section class="w-full border-b border-black/8 dark:border-white/8 px-8 py-12 lg:py-20">
+    <section class="w-full border-b border-black/8 dark:border-white/8 px-8 py-12 lg:py-20" aria-label="About">
       <h1
         class="text-4xl md:text-6xl lg:text-7xl font-bold leading-none tracking-tighter uppercase font-mono">
         About
@@ -19,7 +19,7 @@
     <!-- ============================================ -->
     <!-- MAIN CONTENT: 2-col desktop, stacked mobile  -->
     <!-- ============================================ -->
-    <section class="w-full px-8 py-10 lg:py-14">
+    <section class="w-full px-8 py-10 lg:py-14" aria-label="Bio and experience">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
 
         <!-- LEFT COL: bio + skills + certs -->
@@ -144,10 +144,7 @@
     <!-- TOOLS & STACK                                -->
     <!-- ============================================ -->
     <RevealOnScroll variant="fade-up" :delay="50">
-      <section class="w-full border-t border-black/8 dark:border-white/8 px-8 py-10 lg:py-14">
-        <h2
-          class="text-xs tracking-widest uppercase opacity-50 mb-4 font-mono">
-          Tools &amp; Stack
+      <section class="w-full border-t border-black/8 dark:border-white/8 px-8 py-10 lg:py-14" aria-label="Tools and stack">
         </h2>
         <div class="flex flex-col gap-8">
           <div v-for="group in toolGroups" :key="group.label">
@@ -171,7 +168,7 @@
     <!-- MY PROCESS                                   -->
     <!-- ============================================ -->
     <RevealOnScroll variant="fade-up" :delay="100">
-      <section class="w-full border-t border-black/8 dark:border-white/8 px-8 py-10 lg:py-14">
+      <section class="w-full border-t border-black/8 dark:border-white/8 px-8 py-10 lg:py-14" aria-label="My process">
         <h2
           class="text-xs tracking-widest uppercase opacity-50 mb-4 font-mono">
           My Process
