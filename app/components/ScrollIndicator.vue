@@ -11,9 +11,16 @@
 </template>
 
 <script setup lang="ts">
-// Scroll indicator component
-// Shows animated arrow/line indicating "scroll down"
-// Fades out after user scrolls
+/**
+ * ScrollIndicator — animated "scroll down" hint.
+ *
+ * Displays a fixed, centered arrow and label at the bottom of the viewport to
+ * prompt the user to scroll. Automatically hides with a fade transition once
+ * the page has been scrolled more than 200px. Uses a passive scroll listener
+ * that self-removes after triggering.
+ *
+ * @example <ScrollIndicator />
+ */
 
 const showIndicator = ref(true)
 
