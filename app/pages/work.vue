@@ -45,11 +45,19 @@ definePageMeta({
 });
 
 useHead({
-  title: "Work",
+  title: "Work — Khairinkamarizal",
   meta: [
     {
       name: "description",
-      content: "Selected projects spanning brand identity, UI/UX design, and digital experiences.",
+      content: "Selected work and projects",
+    },
+    {
+      property: "og:title",
+      content: "Work — Khairinkamarizal",
+    },
+    {
+      property: "og:description",
+      content: "Selected work and projects spanning brand identity, UI/UX design, and digital experiences.",
     },
   ],
 });
