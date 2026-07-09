@@ -214,6 +214,26 @@ useHead({
     { property: 'og:description', content: 'Designer, developer, and occasional over-thinker. Based in Cyberjaya, Malaysia.' },
     { property: 'og:url', content: 'https://khair.ink/about' },
   ],
+  script: [{
+    type: 'application/ld+json',
+    innerHTML: JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: 'Khairin Kamarizal',
+      url: 'https://khair.ink',
+      jobTitle: 'Creative Designer & Developer',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Cyberjaya',
+        addressCountry: 'MY'
+      },
+      sameAs: [
+        'https://github.com/khairinkamarizal',
+        'https://linkedin.com/in/khairinkamarizal',
+        'https://www.behance.net/khairinkamarizal'
+      ]
+    })
+  }],
 });
 
 definePageMeta({
