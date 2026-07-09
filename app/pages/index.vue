@@ -22,7 +22,7 @@
               fetchpriority="high"
               class="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover object-center shrink-0 ring-1 ring-black/15 dark:ring-white/15" />
             <div
-              class="w-9 h-9 md:w-10 md:h-10 shrink-0 flex items-center justify-center bg-black dark:bg-white rounded-full -ml-3 ring-2 ring-white dark:ring-black">
+              class="w-9 h-9 md:w-10 md:h-10 shrink-0 flex items-center justify-center bg-black dark:bg-white rounded-full -ml-2 ring-2 ring-white dark:ring-black">
               <AppLogo class="text-white dark:text-black w-4 h-4 md:w-5 md:h-5" />
             </div>
           </div>
