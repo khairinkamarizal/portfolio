@@ -69,7 +69,7 @@
           <AppNav direction="horizontal" aria-label="Main navigation" class="mt-2" />
         </div>
 
-        <main id="main-content" role="main" class="flex-1 flex flex-col font-sans normal-case">
+        <main id="main-content" role="main" aria-label="Main content" class="flex-1 flex flex-col font-sans normal-case">
           <PageTransition>
             <slot />
           </PageTransition>
@@ -115,7 +115,7 @@
 
         <!-- Main content area: flex-1 takes all remaining width -->
         <div class="flex-1 flex flex-col min-h-screen overflow-x-hidden overflow-y-auto">
-          <main id="main-content" role="main" class="flex-1 flex flex-col font-sans normal-case">
+          <main id="main-content" role="main" aria-label="Main content" class="flex-1 flex flex-col font-sans normal-case">
             <PageTransition>
               <slot />
             </PageTransition>
