@@ -18,7 +18,7 @@
 
     <!-- Short bio -->
     <p class="text-xs opacity-60 leading-relaxed dark:font-light">
-      Based in Cyberjaya, Malaysia. I work at the intersection of visual design and web development — crafting brand identities, interfaces, and the code that brings them to life.
+      Ambitious and versatile creative designer skilled in branding, UI/UX, motion content and web development. Passionate about crafting designs that communicate clearly, inspire action and connect with people.
     </p>
 
     <!-- Social links -->
