@@ -123,7 +123,7 @@
 
       <!-- ==================== LATEST WRITING ==================== -->
       <RevealOnScroll v-if="latestPosts?.length" variant="fade-up" :delay="50">
-        <section class="px-8 py-10 border-t border-black/8 dark:border-white/8">
+        <section class="px-8 py-10">
           <div class="flex items-center justify-between mb-8">
             <div class="flex items-center gap-3">
               <span class="mono-label opacity-25">003</span>
