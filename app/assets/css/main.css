@@ -388,6 +388,11 @@
   .card-base:hover {
     @apply border-black/20 dark:border-white/20;
   }
+
+  .number-display {
+    font-family: 'Space Mono', monospace;
+    @apply text-3xl font-light tabular-nums tracking-tight;
+  }
 }
 
 /* ============================================
