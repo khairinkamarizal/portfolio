@@ -37,7 +37,7 @@
               <div class="flex flex-col gap-2">
                 <label
                   for="name"
-                  class="text-xs tracking-widest uppercase font-mono opacity-50">
+                  class="text-xs tracking-[0.15em] uppercase font-mono opacity-50">
                    Name <span class="opacity-50">*</span><span class="sr-only">(required)</span>
                 </label>
                 <input
@@ -63,7 +63,7 @@
               <div class="flex flex-col gap-2">
                 <label
                   for="email"
-                  class="text-xs tracking-widest uppercase font-mono opacity-50">
+                  class="text-xs tracking-[0.15em] uppercase font-mono opacity-50">
                    Email <span class="opacity-50">*</span><span class="sr-only">(required)</span>
                 </label>
                 <input
@@ -89,7 +89,7 @@
               <div class="flex flex-col gap-2">
                 <label
                   for="subject"
-                  class="text-xs tracking-widest uppercase font-mono opacity-50">
+                  class="text-xs tracking-[0.15em] uppercase font-mono opacity-50">
                   Subject
                 </label>
                 <input
@@ -105,7 +105,7 @@
               <div class="flex flex-col gap-2">
                 <label
                   for="message"
-                  class="text-xs tracking-widest uppercase font-mono opacity-50">
+                  class="text-xs tracking-[0.15em] uppercase font-mono opacity-50">
                    Message <span class="opacity-50">*</span><span class="sr-only">(required)</span>
                 </label>
                 <textarea
