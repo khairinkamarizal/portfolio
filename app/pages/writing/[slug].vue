@@ -23,6 +23,7 @@
               <p v-if="post.category" class="font-mono text-[10px] tracking-[0.25em] uppercase opacity-40 mb-3">{{ post.category }}</p>
               <h1 class="text-3xl md:text-4xl leading-tight dark:font-light">{{ post.title }}</h1>
               <div class="flex items-center gap-4 flex-wrap mt-4">
+                <span class="font-mono text-[11px] opacity-50">{{ formattedDate }}</span>
                 <PostMeta :date="post.date" :reading-time="readingTime" :tags="post.tags" />
                 <ViewCounter :slug="route.params.slug as string" />
               </div>
@@ -174,6 +175,11 @@ useHead({
 });
 
 const pageUrl = computed(() => `https://khair.ink${route.path}`)
+
+const formattedDate = computed(() => {
+  if (!post.value?.date) return ''
+  return new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(post.value.date))
+})
 
 const readingTime = computed(() => {
   if (!post.value?.body) return ''
