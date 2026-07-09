@@ -101,7 +101,7 @@
         </div>
 
         <!-- RIGHT COL: experience timeline -->
-        <RevealOnScroll variant="fade-up" :delay="50">
+        <RevealOnScroll variant="fade-left" :delay="50">
           <div>
             <h2
               class="text-xs tracking-widest uppercase opacity-50 mb-4 font-mono">
