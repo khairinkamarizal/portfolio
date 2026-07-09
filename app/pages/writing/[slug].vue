@@ -5,67 +5,84 @@
       <ClientOnly>
         <ReadingProgress />
       </ClientOnly>
-      <div class="flex flex-col gap-8 px-8 pt-10 pb-10">
+      <div class="px-8 pt-10 pb-10">
 
         <!-- Back link -->
         <NuxtLink to="/writing" class="inline-flex items-center gap-1.5 font-mono text-[10px] tracking-[0.2em] uppercase opacity-40 hover:opacity-100 transition-opacity duration-200 mb-8">
           ← Writing
         </NuxtLink>
 
-        <!-- Post header -->
-        <div class="flex flex-col gap-6" v-if="post">
-          <h1 class="text-3xl md:text-4xl leading-tight dark:font-light">{{ post.title }}</h1>
-          <div class="flex items-center gap-4 flex-wrap">
-            <PostMeta :date="post.date" :reading-time="readingTime" :tags="post.tags" />
-            <ViewCounter :slug="route.params.slug as string" />
+        <!-- 2-col grid on lg+: content left, ToC right -->
+        <div class="lg:grid lg:grid-cols-4 lg:gap-12">
+
+          <!-- Left: post content (3/4 width on lg+) -->
+          <div class="lg:col-span-3 flex flex-col gap-8">
+
+            <!-- Post header -->
+            <div class="flex flex-col gap-6" v-if="post">
+              <h1 class="text-3xl md:text-4xl leading-tight dark:font-light">{{ post.title }}</h1>
+              <div class="flex items-center gap-4 flex-wrap">
+                <PostMeta :date="post.date" :reading-time="readingTime" :tags="post.tags" />
+                <ViewCounter :slug="route.params.slug as string" />
+              </div>
+              <!-- Decorative separator -->
+              <div class="w-12 h-px bg-black/10 dark:bg-white/10"></div>
+            </div>
+
+            <!-- Post body — wrapped in prose for @tailwindcss/typography rendering -->
+            <div
+              v-if="post"
+              class="prose prose-sm dark:prose-invert max-w-2xl
+                prose-headings:font-medium prose-headings:tracking-tight
+                prose-h1:text-xl prose-h2:text-lg prose-h3:text-base
+                prose-p:opacity-70 prose-p:leading-relaxed prose-p:dark:font-light
+                prose-a:underline prose-a:underline-offset-2
+                prose-code:text-sm prose-code:font-mono
+                prose-pre:bg-black/5 dark:prose-pre:bg-white/5 prose-pre:rounded-none
+                prose-blockquote:border-l-2 prose-blockquote:border-black/20 dark:prose-blockquote:border-white/20 prose-blockquote:pl-4 prose-blockquote:opacity-70
+                prose-li:opacity-70">
+              <ContentRenderer :value="post" />
+            </div>
+
+            <!-- Related posts -->
+            <RelatedPosts
+              v-if="post?.tags?.length"
+              :tags="post.tags"
+              :current-slug="route.params.slug as string" />
+
+            <!-- Post navigation -->
+            <PostNavigation
+              :prev-post="prevPost"
+              :next-post="nextPost" />
+
+            <!-- Emoji reactions -->
+            <EmojiReaction :post-slug="route.params.slug as string" />
+
+            <!-- Author bio -->
+            <AuthorCard
+              v-if="post"
+              name="Khairinkamarizal"
+              title="Software Engineer"
+              bio="Writing about design, code, and the space between them." />
+
+            <!-- Share buttons -->
+            <ClientOnly>
+              <ShareButtons
+                v-if="post"
+                :title="post.title"
+                :url="pageUrl" />
+            </ClientOnly>
+
           </div>
-          <!-- Decorative separator -->
-          <div class="w-12 h-px bg-black/10 dark:bg-white/10"></div>
+
+          <!-- Right: sticky ToC (1/4 width on lg+) -->
+          <div class="hidden lg:block lg:col-span-1">
+            <div class="sticky top-8">
+              <TableOfContents v-if="post" />
+            </div>
+          </div>
+
         </div>
-
-        <!-- Post body — wrapped in prose for @tailwindcss/typography rendering -->
-        <div
-          v-if="post"
-          class="prose prose-sm dark:prose-invert max-w-2xl
-            prose-headings:font-medium prose-headings:tracking-tight
-            prose-h1:text-xl prose-h2:text-lg prose-h3:text-base
-            prose-p:opacity-70 prose-p:leading-relaxed prose-p:dark:font-light
-            prose-a:underline prose-a:underline-offset-2
-            prose-code:text-sm prose-code:font-mono
-            prose-pre:bg-black/5 dark:prose-pre:bg-white/5 prose-pre:rounded-none
-            prose-blockquote:border-l-2 prose-blockquote:border-black/20 dark:prose-blockquote:border-white/20 prose-blockquote:pl-4 prose-blockquote:opacity-70
-            prose-li:opacity-70">
-          <ContentRenderer :value="post" />
-        </div>
-
-        <!-- Related posts -->
-        <RelatedPosts
-          v-if="post?.tags?.length"
-          :tags="post.tags"
-          :current-slug="route.params.slug as string" />
-
-        <!-- Post navigation -->
-        <PostNavigation
-          :prev-post="prevPost"
-          :next-post="nextPost" />
-
-        <!-- Emoji reactions -->
-        <EmojiReaction :post-slug="route.params.slug as string" />
-
-        <!-- Author bio -->
-        <AuthorCard
-          v-if="post"
-          name="Khairinkamarizal"
-          title="Software Engineer"
-          bio="Writing about design, code, and the space between them." />
-
-        <!-- Share buttons -->
-        <ClientOnly>
-          <ShareButtons
-            v-if="post"
-            :title="post.title"
-            :url="pageUrl" />
-        </ClientOnly>
 
       </div>
     </template>
