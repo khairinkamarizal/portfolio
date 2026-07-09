@@ -3,9 +3,9 @@
     :class="[
       'tag-pill',
       `tag-pill--${size}`,
+      'font-mono',
       active ? 'tag-pill--active' : 'tag-pill--inactive',
-    ]"
-    style="font-family: 'Space Mono', monospace">
+    ]">
     {{ tag }}
   </span>
 </template>
@@ -45,7 +45,7 @@ withDefaults(defineProps<{
 /* Inactive: border only */
 .tag-pill--inactive {
   border: 1px solid currentColor;
-  opacity: 0.4;
+  opacity: 0.6;
   background-color: transparent;
   color: inherit;
 }
