@@ -16,6 +16,8 @@
 /**
  * ExperienceTimeline — vertical timeline for work history.
  * Props: items array of {company, role, period, location, description, current}
+ * - current: true shows a filled dot and a "NOW" badge on the item
+ * - location: displays city/country alongside company name
  * Delegates rendering to TimelineItem for each entry.
  */
 interface TimelineItem {
