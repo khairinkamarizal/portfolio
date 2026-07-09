@@ -69,6 +69,9 @@
           <ContactForm />
         </div>
 
+        <!-- Currently working on -->
+        <CurrentlyWorking />
+
       </div>
     </template>
 
