@@ -63,12 +63,25 @@ definePageMeta({
 });
 
 useHead({
-  title: "",
+  title: "Khairinkamarizal — Creative Designer & Developer",
   meta: [
     {
       name: "description",
       content:
         "Ambitious and versatile creative designer skilled in branding, UI/UX, motion content and web development.",
+    },
+    {
+      property: "og:title",
+      content: "Khairinkamarizal — Creative Designer & Developer",
+    },
+    {
+      property: "og:description",
+      content:
+        "Ambitious and versatile creative designer skilled in branding, UI/UX, motion content and web development.",
+    },
+    {
+      property: "og:url",
+      content: "https://khair.ink",
     },
   ],
 });
