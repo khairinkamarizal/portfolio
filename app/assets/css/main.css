@@ -216,6 +216,10 @@
   .aspect-wide { aspect-ratio: 16/9; }
   .aspect-square { aspect-ratio: 1/1; }
   .aspect-portrait { aspect-ratio: 3/4; }
+
+  .text-truncate {
+    @apply overflow-hidden text-ellipsis whitespace-nowrap;
+  }
 }
 
 /* ============================================
