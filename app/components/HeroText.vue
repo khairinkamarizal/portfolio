@@ -28,6 +28,12 @@ function setLineRef(el: HTMLElement | null, i: number) {
 }
 
 onMounted(() => {
+  // Skip animation entirely for users who prefer reduced motion
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    visible.value = true
+    return
+  }
+
   // Set will-change before animation starts
   lineRefs.forEach(el => {
     if (el) el.style.willChange = 'transform'
