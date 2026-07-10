@@ -1,69 +1,45 @@
 <template>
   <a
-    :href="url"
+    :href="project.url"
     target="_blank"
     rel="noopener noreferrer"
     class="project-card"
-    :class="`project-card--${tone}`"
-    :aria-label="`${title}, ${category || 'project'} (opens on Behance)`">
+    :style="{ '--project-ratio': ratio }"
+    :aria-label="`${project.title}, ${project.discipline} project (opens on Behance)`">
     <div class="project-card__media">
       <img
-        v-if="thumbnail"
-        :src="thumbnail"
-        :alt="`${title} project cover`"
+        v-if="project.thumbnail"
+        :src="project.thumbnail"
+        :alt="`${project.title} project cover`"
         :loading="eager ? 'eager' : 'lazy'"
         decoding="async"
-        width="808"
-        height="632" />
-      <ProjectThumbnail v-else :category="category" :title="title" />
-
-      <div class="project-card__index" aria-hidden="true">
-        {{ String(index).padStart(2, '0') }}
-      </div>
-      <div class="project-card__open" aria-hidden="true">
-        <ArrowUpRight :size="20" />
-      </div>
+        width="1200"
+        height="900">
+      <ProjectThumbnail v-else :category="project.discipline" :title="project.title" />
+      <div class="project-card__index" aria-hidden="true">{{ String(index).padStart(2, '0') }}</div>
+      <div class="project-card__open" aria-hidden="true"><ArrowUpRight :size="18" /></div>
     </div>
 
     <div class="project-card__body">
-      <div class="project-card__heading">
-        <p class="eyebrow">{{ category }} / {{ year }}</p>
-        <h3>{{ title }}</h3>
+      <div class="project-card__top">
+        <h3>{{ project.title }}</h3>
+        <span class="project-card__year">{{ project.year }}</span>
       </div>
-      <p v-if="description" class="project-card__description">{{ description }}</p>
-      <div class="project-card__details">
-        <span v-for="tag in tags" :key="tag">{{ tag }}</span>
-      </div>
-      <p v-if="outcome" class="project-card__outcome">{{ outcome }}</p>
+      <dl class="project-card__ledger">
+        <dt>Discipline</dt><dd>{{ project.discipline }}</dd>
+        <dt>Role</dt><dd>{{ project.role }}</dd>
+        <dt>Medium</dt><dd>{{ project.medium }}</dd>
+        <dt>Scope</dt><dd>{{ project.scope.join(' / ') }}</dd>
+      </dl>
+      <p class="project-card__description">{{ project.description }}</p>
     </div>
   </a>
 </template>
 
 <script setup lang="ts">
 import { ArrowUpRight } from 'lucide-vue-next'
+import type { PortfolioProject } from '~/data/projects'
 
-withDefaults(defineProps<{
-  title: string
-  year?: string | number
-  description?: string
-  tags?: string[]
-  thumbnail?: string
-  category?: string
-  url?: string
-  outcome?: string
-  index?: number
-  tone?: 'red' | 'blue' | 'ink' | 'yellow'
-  eager?: boolean
-}>(), {
-  year: '',
-  description: '',
-  tags: () => [],
-  thumbnail: '',
-  category: '',
-  url: '#',
-  outcome: '',
-  index: 1,
-  tone: 'ink',
-  eager: false,
-})
+const props = withDefaults(defineProps<{ project: PortfolioProject; index?: number; eager?: boolean }>(), { index: 1, eager: false })
+const ratio = computed(() => props.project.layout === 'portrait' ? '4 / 5' : props.project.layout === 'wide' ? '16 / 10' : '4 / 3')
 </script>

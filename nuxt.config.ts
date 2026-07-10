@@ -32,17 +32,23 @@ export default defineNuxtConfig({
     preload: true,
     subsets: ["latin"],
     families: {
-      "Inter Tight": [400, 500, 600, 700],
-      "Space Mono": [400],
+      "Inter Tight": [400, 500],
     },
   },
   tailwindcss: {
     config: {
       darkMode: "class",
       theme: {
+        fontWeight: {
+          normal: "400",
+          medium: "500",
+          semibold: "500",
+          bold: "500",
+        },
         extend: {
           fontFamily: {
             sans: ['"Inter Tight"', "sans-serif"],
+            mono: ['"Inter Tight"', "sans-serif"],
           },
         },
       },

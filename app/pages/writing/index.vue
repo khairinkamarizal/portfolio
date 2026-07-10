@@ -1,249 +1,65 @@
-﻿<template>
+<template>
   <NuxtLayout name="simple">
-    <template #default>
-      <div id="main-content" class="pb-16">
+    <header class="editorial-header">
+      <div><p class="eyebrow">Notes 03 / {{ posts?.length ?? 0 }} entries</p><h1>Writing and field notes.</h1></div>
+      <p class="editorial-header__copy">Observations on design craft, frontend development, systems, and the decisions behind the work.</p>
+    </header>
 
-      <!-- ============================================ -->
-      <!-- HERO: page heading                           -->
-      <!-- ============================================ -->
-      <section id="main-content" class="w-full border-b border-black/10 dark:border-white/10">
-        <div class="px-page pt-10 pb-8 border-b border-black/10 dark:border-white/10">
-          <p class="font-mono text-[10px] tracking-[0.3em] uppercase opacity-20 mb-2">001 / Writing</p>
-          <h1 class="font-mono text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-none uppercase animate-appear">
-            Thoughts &amp;<br/>Ideas.
-          </h1>
-          <span class="font-mono text-[9px] tracking-[0.2em] opacity-25 ml-2">({{ posts?.length ?? 0 }})</span>
-          <p class="text-sm opacity-50 mt-4 max-w-sm font-sans leading-relaxed">
-            Notes on design craft, frontend development, and creative thinking.
-          </p>
+    <section class="writing-index">
+      <div class="writing-toolbar">
+        <p class="eyebrow">Topic index</p>
+        <div class="topic-filters" role="group" aria-label="Filter writing by topic">
+          <button v-for="tag in tags" :key="tag" type="button" :class="{ active: activeTag === tag }" :aria-pressed="activeTag === tag" @click="activeTag = tag">{{ tag }}</button>
         </div>
-      </section>
-
-      <!-- ============================================ -->
-      <!-- FEATURED POST: full-width                    -->
-      <!-- ============================================ -->
-      <section
-        v-if="featuredPost"
-        class="w-full border-b border-black/10 dark:border-white/10">
-        <NuxtLink
-          :to="`/writing/${featuredPost.slug}`"
-          class="group block px-6 md:px-12 lg:px-20 py-12 lg:py-16 hover:bg-black/5 dark:hover:bg-white/5 transition-colors duration-150">
-          <div class="flex flex-col lg:flex-row lg:items-start lg:gap-16">
-            <!-- Featured label + meta -->
-            <div class="lg:w-1/3 flex flex-col gap-4 mb-6 lg:mb-0">
-              <span class="text-xs tracking-widest uppercase font-mono opacity-50">
-                Featured
-              </span>
-              <div class="flex items-center gap-3 text-xs opacity-50 font-mono">
-                <span>{{ formatDate(featuredPost.date) }}</span>
-                <span>·</span>
-                <span>{{ featuredPost.readTime }}</span>
-              </div>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  v-for="tag in featuredPost.tags"
-                  :key="tag"
-                  class="text-xs tracking-wide border border-black/10 dark:border-white/10 px-2 py-0.5 opacity-50">
-                  {{ tag }}
-                </span>
-              </div>
-            </div>
-            <!-- Title + excerpt -->
-            <div class="lg:w-2/3">
-              <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight tracking-tight group-hover:opacity-70 transition-opacity duration-150">
-                {{ featuredPost.title }}
-              </h2>
-              <p class="mt-4 text-sm leading-relaxed opacity-60 max-w-2xl">
-                {{ featuredPost.excerpt }}
-              </p>
-              <span class="mt-6 inline-block text-xs tracking-widest uppercase font-mono opacity-50 group-hover:opacity-100 transition-opacity duration-150">
-                Read More →
-              </span>
-            </div>
-          </div>
-        </NuxtLink>
-      </section>
-
-      <!-- ============================================ -->
-      <!-- POSTS GRID: 3-col xl+, 2-col md, 1-col      -->
-      <!-- ============================================ -->
-      <RevealOnScroll variant="fade-up" :delay="50">
-      <section class="w-full px-6 md:px-12 lg:px-20 py-12 lg:py-16">
-        <!-- Tag filter -->
-        <div class="sticky top-0 z-10 bg-white dark:bg-black py-3 border-b border-black/10 dark:border-white/10 flex flex-wrap gap-1.5 mb-10">
-          <button
-            v-for="tag in allTags"
-            :key="tag"
-            :aria-pressed="activeTag === tag"
-            :class="[
-              'text-xs tracking-widest uppercase font-mono px-3 py-1.5 border transition-colors duration-150',
-              activeTag === tag
-                ? 'border-black dark:border-white bg-black dark:bg-white text-white dark:text-black'
-                : 'border-black/20 dark:border-white/20 hover:border-black/60 dark:hover:border-white/60',
-            ]"
-            @click="activeTag = tag"
-            @keydown.right.prevent="selectNextTag"
-            @keydown.left.prevent="selectPrevTag">
-            {{ tag }} ({{ getTagCount(tag) }})
-          </button>
-        </div>
-
-        <!-- Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-px bg-black/10 dark:bg-white/10 border border-black/10 dark:border-white/10 divide-y divide-black/10 dark:divide-white/10 max-w-2xl">
-          <NuxtLink
-            v-for="(post, index) in sortedPosts"
-            :key="post.slug"
-            :to="`/writing/${post.slug}`"
-            class="group bg-white dark:bg-black p-6 flex flex-col gap-4 hover:bg-black/5 dark:hover:bg-white/5 transition-colors duration-150 hover:translate-x-0.5 transition-transform duration-200">
-            <div class="flex items-center justify-between">
-              <div class="flex flex-wrap gap-2 items-center">
-                <span v-if="index === 0" class="font-mono text-[9px] tracking-[0.2em] uppercase opacity-30 mr-2">Latest</span>
-                <span
-                  v-for="tag in post.tags"
-                  :key="tag"
-                  class="text-xs tracking-wide border border-black/10 dark:border-white/10 px-2 py-0.5 opacity-50">
-                  {{ tag }}
-                </span>
-              </div>
-              <span class="text-xs font-mono opacity-50 shrink-0">
-                {{ post.readTime }}
-              </span>
-            </div>
-            <h3 class="text-base font-semibold leading-snug group-hover:opacity-70 transition-opacity duration-150">
-              {{ post.title }}
-            </h3>
-            <p class="text-sm opacity-50 leading-relaxed line-clamp-3 flex-1">
-              {{ post.excerpt }}
-            </p>
-            <span class="text-xs font-mono opacity-50 mt-auto">
-              {{ formatDate(post.date) }}
-            </span>
-          </NuxtLink>
-        </div>
-
-        <!-- Empty state -->
-        <div v-if="filteredPosts.length === 0" class="py-16 flex flex-col items-center gap-3 opacity-30">
-          <span class="font-mono text-4xl">∅</span>
-          <p class="font-mono text-xs tracking-widest uppercase">No posts found</p>
-        </div>
-      </section>
-      </RevealOnScroll>
-
+        <p class="eyebrow">{{ filteredPosts.length }} shown</p>
       </div>
-    </template>
+
+      <div class="post-ledger" aria-live="polite">
+        <NuxtLink v-for="(post, index) in filteredPosts" :key="post.path" :to="post.path" class="post-row">
+          <span class="post-row__number">{{ String(index + 1).padStart(2, '0') }}</span>
+          <div class="post-row__title"><h2>{{ post.title }}</h2><p>{{ post.description }}</p></div>
+          <div class="post-row__meta"><time :datetime="post.date">{{ formatDate(post.date) }}</time><span>{{ post.tags.slice(0, 2).join(' / ') }}</span></div>
+          <ArrowUpRight :size="18" aria-hidden="true" />
+        </NuxtLink>
+      </div>
+
+      <p v-if="filteredPosts.length === 0" class="empty-index">No notes in this topic.</p>
+    </section>
   </NuxtLayout>
 </template>
 
 <script setup lang="ts">
-
-useHead({
-  title: 'Writing — Khairin Kamarizal',
-  meta: [
-    { name: 'description', content: 'Writing about design, development, and the creative process.' },
-    { property: 'og:title', content: 'Writing — Khairin Kamarizal' },
-    { property: 'og:description', content: 'Writing about design, development, and the creative process.' },
-    { property: 'og:url', content: 'https://khair.ink/writing' },
-  ],
-});
-
-definePageMeta({
-  layout: false,
-});
-
-const posts = [
-  {
-    slug: "on-design-systems",
-    title: "On Design Systems",
-    date: "2024-06-01",
-    readTime: "5 min",
-    tags: ["Design", "Systems"],
-    excerpt:
-      "Design systems are not just component libraries. They are a shared language between designers and engineers — and the decisions baked into them shape every product decision downstream.",
-    featured: true,
-  },
-  {
-    slug: "the-case-for-boring-tech",
-    title: "The Case for Boring Tech",
-    date: "2024-05-12",
-    readTime: "4 min",
-    tags: ["Engineering"],
-    excerpt:
-      "Choosing proven, well-understood technology over the shiny new thing is often the most radical choice you can make on a team that values velocity.",
-    featured: false,
-  },
-  {
-    slug: "nuxt-4-first-look",
-    title: "Nuxt 4 First Look",
-    date: "2024-04-20",
-    readTime: "6 min",
-    tags: ["Vue", "Nuxt"],
-    excerpt:
-      "Nuxt 4 brings a new app directory structure, improved TypeScript support, and a faster dev server. Here's what changed and what it means for existing projects.",
-    featured: false,
-  },
-  {
-    slug: "typography-in-product-ui",
-    title: "Typography in Product UI",
-    date: "2024-03-15",
-    readTime: "7 min",
-    tags: ["Design", "Typography"],
-    excerpt:
-      "Most UI typography problems are not about choosing the right typeface. They are about hierarchy, spacing, and having the discipline to use fewer styles.",
-    featured: false,
-  },
-  {
-    slug: "building-with-tailwind",
-    title: "Building with Tailwind at Scale",
-    date: "2024-02-08",
-    readTime: "5 min",
-    tags: ["Engineering", "CSS"],
-    excerpt:
-      "Tailwind CSS gets a bad reputation for verbose HTML. Here is how we keep it manageable in large codebases without sacrificing the utility-first approach.",
-    featured: false,
-  },
-];
-
-const featuredPost = computed(() => posts.find((p) => p.featured) ?? null);
-const nonFeaturedPosts = computed(() => posts.filter((p) => !p.featured));
-
-function formatDate(d: string) {
-  // All date strings are formatted consistently via Intl.DateTimeFormat
-  return new Intl.DateTimeFormat('en-US', { month: 'short', year: 'numeric' }).format(new Date(d))
-}
-
-const allTags = computed(() => {
-  const tags = new Set<string>(["All"]);
-  nonFeaturedPosts.value.forEach((p) => p.tags.forEach((t) => tags.add(t)));
-  return Array.from(tags);
-});
-
-const activeTag = ref("All");
-
-const filteredPosts = computed(() =>
-  activeTag.value === "All"
-    ? nonFeaturedPosts.value
-    : nonFeaturedPosts.value.filter((p) => p.tags.includes(activeTag.value))
-);
-
-const sortedPosts = computed(() =>
-  [...(filteredPosts.value || [])].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-);
-
-function getTagCount(tag: string) {
-  return tag === "All" ? nonFeaturedPosts.value.length : nonFeaturedPosts.value.filter(p => p.tags?.includes(tag)).length ?? 0
-}
-
-function selectNextTag() {
-  const tags = allTags.value
-  const currentIndex = tags.indexOf(activeTag.value)
-  const nextIndex = (currentIndex + 1) % tags.length
-  activeTag.value = tags[nextIndex]
-}
-
-function selectPrevTag() {
-  const tags = allTags.value
-  const currentIndex = tags.indexOf(activeTag.value)
-  const prevIndex = (currentIndex - 1 + tags.length) % tags.length
-  activeTag.value = tags[prevIndex]
-}
+import { ArrowUpRight } from 'lucide-vue-next'
+definePageMeta({ layout: false })
+const { data: posts } = await useAsyncData('writing-index', () => queryCollection('writing').where('draft', '=', false).order('date', 'DESC').all())
+const activeTag = ref('All')
+const tags = computed(() => ['All', ...new Set((posts.value || []).flatMap(post => post.tags))])
+const filteredPosts = computed(() => activeTag.value === 'All' ? (posts.value || []) : (posts.value || []).filter(post => post.tags.includes(activeTag.value)))
+function formatDate(value: string) { return new Intl.DateTimeFormat('en', { month: 'short', year: 'numeric' }).format(new Date(value)) }
+useSeoMeta({ title: 'Writing', description: 'Writing about design, development, systems, and creative practice.', ogTitle: 'Writing | Khairin Kamarizal', ogUrl: 'https://khair.ink/writing' })
 </script>
+
+<style scoped>
+.writing-index { padding: 0 var(--page) clamp(7rem, 12vw, 12rem); }
+.writing-toolbar { position: sticky; top: 0; z-index: 20; display: grid; grid-template-columns: 0.5fr 1fr 0.5fr; gap: 1rem; align-items: center; min-height: 5rem; border-bottom: 1px solid var(--line); background: var(--paper); }
+.writing-toolbar > p:last-child { text-align: right; }
+.topic-filters { display: flex; gap: 0.35rem; overflow-x: auto; }
+.topic-filters button { flex: 0 0 auto; min-height: 2rem; padding: 0.35rem 0.6rem; border: 1px solid var(--line); color: var(--muted); font-size: 0.66rem; font-weight: 500; text-transform: uppercase; }
+.topic-filters button:hover, .topic-filters button.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.post-ledger { border-top: 1px solid var(--line); margin-top: clamp(3rem, 6vw, 6rem); }
+.post-row { display: grid; grid-template-columns: 3rem minmax(0, 1fr) 10rem 1.5rem; gap: clamp(1rem, 3vw, 3rem); align-items: start; padding: 1.5rem 0 2rem; border-bottom: 1px solid var(--line); }
+.post-row__number { padding-top: 0.25rem; color: var(--muted); font-size: 0.68rem; }
+.post-row h2 { font-size: clamp(1.6rem, 3vw, 3.2rem); line-height: 1; font-weight: 500; }
+.post-row__title p { max-width: 43rem; margin-top: 0.8rem; color: var(--muted); line-height: 1.45; }
+.post-row__meta { display: grid; gap: 0.6rem; padding-top: 0.25rem; color: var(--muted); font-size: 0.68rem; text-transform: uppercase; }
+.post-row svg { margin-top: 0.15rem; transition: transform 180ms ease; }
+.post-row:hover svg { transform: translate(0.2rem, -0.2rem); }
+.empty-index { padding: 4rem 0; color: var(--muted); }
+@media (max-width: 760px) {
+  .writing-toolbar { top: var(--rail); grid-template-columns: 1fr auto; padding: 1rem 0; }
+  .topic-filters { grid-column: 1 / 3; grid-row: 2; }
+  .post-row { grid-template-columns: 2rem minmax(0, 1fr) 1.25rem; }
+  .post-row__meta { grid-column: 2; grid-row: 2; grid-template-columns: auto 1fr; }
+  .post-row svg { grid-column: 3; grid-row: 1; }
+}
+</style>

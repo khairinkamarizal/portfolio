@@ -28,14 +28,5 @@
     "@types/node": "^25.3.5",
     "dotenv": "^17.3.1",
     "wrangler": "^4.71.0"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@parcel/watcher",
-      "better-sqlite3",
-      "esbuild",
-      "sharp",
-      "workerd"
-    ]
   }
 }
