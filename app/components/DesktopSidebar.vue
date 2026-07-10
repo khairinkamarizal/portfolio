@@ -13,9 +13,12 @@
       <NuxtLink to="/" aria-label="Go to homepage">
         <AppLogo class="w-8 h-8 hover:opacity-70 transition-opacity duration-200" />
       </NuxtLink>
-      <ColorToggle
-        class="w-6 h-6 hover:opacity-70 transition-opacity duration-200"
-        :class="transparent ? 'mix-blend-difference text-white' : 'text-black dark:text-white'" />
+      <ClientOnly>
+        <ColorToggle
+          class="w-6 h-6 hover:opacity-70 transition-opacity duration-200"
+          :class="transparent ? 'mix-blend-difference text-white' : 'text-black dark:text-white'" />
+        <template #fallback><span class="w-6 h-6 block" /></template>
+      </ClientOnly>
     </div>
 
     <!-- Vertical nav -->

@@ -56,13 +56,18 @@
                 </template>
               </ClientOnly>
             </div>
-            <ColorToggle
-              class="w-8 h-8 hover:scale-125 transition-transform duration-300"
-              :class="
-                transparent
-                  ? 'mix-blend-difference text-white'
-                  : 'text-black dark:text-white'
-              " />
+            <ClientOnly>
+              <ColorToggle
+                class="w-8 h-8 hover:scale-125 transition-transform duration-300"
+                :class="
+                  transparent
+                    ? 'mix-blend-difference text-white'
+                    : 'text-black dark:text-white'
+                " />
+              <template #fallback>
+                <span class="w-8 h-8 block" />
+              </template>
+            </ClientOnly>
           </header>
 
           <!-- Navigation -->
