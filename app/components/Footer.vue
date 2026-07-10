@@ -1,88 +1,61 @@
-﻿<template>
-  <footer role="contentinfo" class="w-full px-6 md:px-12 lg:px-20 py-10 md:py-12 lg:py-16 border-t border-black/10 dark:border-white/10">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 lg:gap-12">
+<template>
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__lead">
+      <p class="eyebrow">Have a project in mind?</p>
+      <a class="site-footer__cta" href="mailto:khairinkamarizal@gmail.com">
+        <span>Let's make it matter.</span>
+        <ArrowUpRight aria-hidden="true" />
+      </a>
+    </div>
 
-      <!-- LEFT: Logo + tagline -->
-      <div class="flex flex-col gap-4">
-        <NuxtLink to="/" class="inline-block mb-4">
-          <AppLogo class="w-7 h-7 hover:scale-110 transition-transform duration-300" />
-        </NuxtLink>
-        <p class="text-xs leading-relaxed opacity-50 max-w-[18ch]">
-          Khairin Kamarizal — Designer & Developer
-        </p>
-        <p class="text-xs opacity-50 font-mono">
-          Based in Cyberjaya, MY
-        </p>
+    <div class="site-footer__meta">
+      <div>
+        <p class="eyebrow">Based in</p>
+        <p>Cyberjaya, Malaysia<br>Working worldwide</p>
       </div>
 
-      <!-- CENTER: Nav links -->
-      <div class="flex flex-col gap-1.5 border-t border-black/10 dark:border-white/10 pt-6 md:border-t-0 md:pt-0" aria-label="Footer navigation">
-        <span class="text-xs tracking-widest uppercase tracking-[0.2em] opacity-40 mb-2 font-mono">
-          Navigation
-        </span>
-        <NuxtLink
-          v-for="link in navLinks"
-          :key="link.to"
-          :to="link.to"
-          class="text-xs tracking-widest uppercase opacity-50 hover:opacity-100 transition-opacity duration-200 w-fit font-mono">
+      <nav aria-label="Footer navigation">
+        <p class="eyebrow">Navigate</p>
+        <NuxtLink v-for="link in navLinks" :key="link.to" :to="link.to">
           {{ link.label }}
         </NuxtLink>
-      </div>
+      </nav>
 
-      <!-- RIGHT: Social links -->
-      <div class="flex flex-col gap-3 border-t border-black/10 dark:border-white/10 pt-6 md:border-t-0 md:pt-0" aria-label="Social links">
-        <span class="text-xs tracking-widest uppercase tracking-[0.2em] opacity-40 mb-2 font-mono">
-          Connect
-        </span>
-        <a
-          v-for="link in socialLinks"
-          :key="link.label"
-          :href="link.href"
-          target="_blank"
-          rel="noopener noreferrer"
-          :aria-label="link.label"
-          class="text-xs tracking-widest uppercase opacity-60 hover:opacity-100 transition-opacity duration-150 w-fit font-mono">
-          {{ link.label }} ↗
+      <div>
+        <p class="eyebrow">Elsewhere</p>
+        <a v-for="link in socialLinks" :key="link.label" :href="link.href" target="_blank" rel="noopener noreferrer">
+          {{ link.label }} <ArrowUpRight :size="13" aria-hidden="true" />
         </a>
       </div>
 
-      <!-- COPYRIGHT: full-width row -->
-      <div class="border-t border-black/10 dark:border-white/10 mt-8 pt-6 col-span-full">
-        <p class="text-xs opacity-50 font-mono">
-          &copy; {{ currentYear }} &middot; All rights reserved
-        </p>
+      <div class="site-footer__mark">
+        <AppLogo aria-hidden="true" />
       </div>
+    </div>
 
+    <div class="site-footer__base">
+      <span>&copy; {{ currentYear }} Khairin Kamarizal</span>
+      <span>Design with reason. Build with care.</span>
     </div>
   </footer>
 </template>
 
 <script setup lang="ts">
-/**
- * Footer — site-wide footer component.
- *
- * Renders a three-column layout with the site logo and tagline, primary
- * navigation links, and social/contact links. A full-width copyright row
- * spans all columns at the bottom. Adapts to a single-column stack on mobile.
- *
- * @example <Footer />
- */
-import { computed } from "vue";
+import { ArrowUpRight } from 'lucide-vue-next'
 
-const currentYear = computed(() => new Date().getFullYear());
+const currentYear = new Date().getFullYear()
 
 const navLinks = [
-  { to: "/", label: "Home" },
-  { to: "/work", label: "Work" },
-  { to: "/writing", label: "Writing" },
-  { to: "/about", label: "About" },
-  { to: "/message", label: "Message" },
-];
+  { to: '/work', label: 'Work' },
+  { to: '/about', label: 'About' },
+  { to: '/writing', label: 'Writing' },
+  { to: '/message', label: 'Contact' },
+]
 
 const socialLinks = [
-  { label: "GitHub", href: "https://github.com/khairinkamarizal" },
-  { label: "LinkedIn", href: "https://linkedin.com/in/khairinkamarizal" },
-  { label: "Twitter", href: "https://x.com/khairinkamarizal" },
-  { label: "Email", href: "mailto:hello@khairin.dev" },
-];
+  { label: 'Behance', href: 'https://www.behance.net/khairinkamarizal' },
+  { label: 'GitHub', href: 'https://github.com/khairinkamarizal' },
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/khairinkamarizal' },
+  { label: 'Instagram', href: 'https://instagram.com/khairinkamarizal' },
+]
 </script>

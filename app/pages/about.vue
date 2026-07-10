@@ -1,334 +1,320 @@
-﻿<template>
+<template>
   <NuxtLayout name="simple">
-    <template #default>
-
-    <!-- ============================================ -->
-    <!-- HERO: page heading                           -->
-    <!-- ============================================ -->
-    <RevealOnScroll variant="fade-up">
-      <section id="main-content" class="w-full border-b border-black/10 dark:border-white/10 px-page py-12 md:py-16 lg:py-20" aria-label="About">
-        <p class="mono-label opacity-20 mb-3">002 / About</p>
-        <h1
-          class="text-4xl md:text-6xl lg:text-7xl font-bold leading-none uppercase font-mono tracking-[-0.04em] animate-appear [will-change:opacity,transform]">
-          About
-        </h1>
-        <FadeText :delay="150">
-          <p class="mt-4 text-sm opacity-60 max-w-lg leading-relaxed text-balance">
-            Designer, developer, and deliberate craftsperson. Cyberjaya, Malaysia.
-          </p>
-        </FadeText>
-      </section>
-    </RevealOnScroll>
-
-    <!-- ============================================ -->
-    <!-- MAIN CONTENT: 2-col desktop, stacked mobile  -->
-    <!-- ============================================ -->
-    <section class="w-full px-page py-10 lg:py-14" aria-label="Bio and experience">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-
-        <!-- LEFT COL: bio + skills + certs -->
-        <div class="flex flex-col gap-12">
-
-          <!-- Bio -->
-          <RevealOnScroll variant="fade-up">
-            <div>
-              <h2 class="mono-label mb-4">
-                Bio
-              </h2>
-              <div class="flex flex-col gap-3 text-sm leading-relaxed md:leading-[1.7] opacity-70 max-w-lg font-light">
-                <p>
-                  I'm Khairin — a Malaysian designer and developer who builds digital things that feel as good as they look. 5+ years of craft across brand, product, and web.
-                </p>
-                <p>
-                  My work lives at the intersection of design and engineering — Figma to code, brand identity to design systems. I care about the details that make the difference between good and great.
-                </p>
-                <p>
-                  Outside of client work, I write about design craft, experiment with creative code, and drink too much coffee thinking about typography.
-                </p>
-              </div>
-            </div>
-          </RevealOnScroll>
-
-          <!-- Skills -->
-          <RevealOnScroll variant="fade-up" :delay="50">
-            <div>
-              <h2 class="mono-label mb-4 tracking-widest sticky top-0 bg-white dark:bg-black py-2 -mx-2 px-2 z-10">
-                Skills
-              </h2>
-              <div class="grid grid-cols-2 gap-px bg-black/10 dark:bg-white/10 border border-black/10 dark:border-white/10">
-                <div
-                  v-for="(group, i) in skillGroups"
-                  :key="group.category"
-                  class="bg-white dark:bg-black p-4">
-                  <h3 class="mono-label mb-3">
-                    {{ group.category }}
-                  </h3>
-                  <ul class="flex flex-col divide-y divide-black/10 dark:divide-white/10">
-                    <li
-                      v-for="skill in group.items"
-                      :key="skill"
-                      class="text-sm opacity-70">
-                      <div class="flex items-center justify-between gap-2 py-2.5">
-                        <span class="text-sm tracking-tight">{{ skill }}</span>
-                        <div class="flex-1 border-b border-dotted border-black/15 dark:border-white/15 mx-2" />
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </RevealOnScroll>
-
-          <!-- Certifications -->
-          <RevealOnScroll variant="fade-up" :delay="50">
-            <div>
-              <h2 class="mono-label mb-4">
-                Education & Certs
-              </h2>
-              <div class="flex flex-col divide-y divide-black/10 dark:divide-white/10 border-t border-black/10 dark:border-white/10">
-                <div
-                  v-for="cert in certs"
-                  :key="cert.title"
-                  class="py-4 flex flex-col gap-1 hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors duration-150 -mx-2 px-2">
-                  <span class="text-sm font-medium">{{ cert.title }}</span>
-                  <span class="text-xs opacity-50">{{ cert.issuer }} · <span class="font-mono tabular-nums">{{ cert.year }}</span></span>
-                </div>
-              </div>
-            </div>
-          </RevealOnScroll>
-        </div>
-
-        <!-- RIGHT COL: experience timeline -->
-        <RevealOnScroll variant="fade-left" :delay="50">
-          <div class="lg:border-l border-black/10 dark:border-white/10 lg:pl-20">
-            <h2 class="mono-label mb-4">
-              Experience
-            </h2>
-            <div class="flex flex-col gap-0 border-t border-black/10 dark:border-white/10">
-              <div
-                v-for="job in experience"
-                :key="`${job.company}-${job.period}`"
-                class="py-6 flex flex-col gap-2 border-b border-black/10 dark:border-white/10 pb-8 last:border-b-0">
-                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
-                  <div>
-                    <h3 class="text-sm font-semibold">{{ job.role }}</h3>
-                    <span class="text-sm opacity-60">{{ job.company }}</span>
-                  </div>
-                  <span class="font-mono text-xs opacity-50 shrink-0">
-                    {{ job.period }}
-                  </span>
-                </div>
-                <p class="text-sm opacity-60 leading-relaxed mt-2 max-w-prose">{{ job.description }}</p>
-                <div class="flex flex-wrap gap-2 mt-1">
-                  <span
-                    v-for="tag in job.tags"
-                    :key="tag"
-                    class="tag-base">
-                    {{ tag }}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </RevealOnScroll>
+    <section class="about-hero">
+      <div class="about-hero__title">
+        <p class="eyebrow">About / Khairin Kamarizal</p>
+        <h1>Designer by instinct.<br><em>Builder by practice.</em></h1>
+      </div>
+      <figure>
+        <NuxtImg src="/assets/dp.webp" alt="Khairin Kamarizal" width="640" height="800" format="webp" loading="eager" />
+        <figcaption class="eyebrow">Cyberjaya, Malaysia</figcaption>
+      </figure>
+      <div class="about-hero__bio">
+        <p>I am an independent Malaysian designer and developer working across brand identity, digital experiences, and creative technology.</p>
+        <p>My advantage is range without disconnect: I can shape the idea, define the visual system, and understand what it takes to make it work in the browser.</p>
       </div>
     </section>
 
-    <!-- ============================================ -->
-    <!-- TOOLS & STACK                                -->
-    <!-- ============================================ -->
-    <RevealOnScroll variant="fade-up" :delay="50">
-      <section class="w-full border-t border-black/10 dark:border-white/10 px-8 py-10 lg:py-14" aria-label="Tools and stack">
-        <h2 class="mono-label mb-4">Tools &amp; Stack</h2>
-        <div class="flex flex-col gap-8">
-          <div v-for="group in toolGroups" :key="group.label">
-            <h3 class="mono-label mb-3">
-              {{ group.label }}
-            </h3>
-            <div class="flex flex-wrap gap-2">
-              <ToolBadge
-                v-for="tool in group.tools"
-                :key="tool"
-                :name="tool"
-                :type="group.type" />
-            </div>
-          </div>
-        </div>
-      </section>
-    </RevealOnScroll>
+    <section class="about-belief">
+      <p class="eyebrow">A working belief</p>
+      <blockquote>Design is not decoration added at the end. It is the logic that decides what matters, what comes next, and what people remember.</blockquote>
+    </section>
 
-    <!-- ============================================ -->
-    <!-- MY PROCESS                                   -->
-    <!-- ============================================ -->
-    <RevealOnScroll variant="fade-up" :delay="100">
-      <section class="w-full border-t border-black/10 dark:border-white/10 px-8 py-10 lg:py-14" aria-label="My process">
-        <h2 class="mono-label mb-4">
-          My Process
-        </h2>
-        <div class="max-w-2xl">
-          <ProcessStep
-            v-for="step in processSteps"
-            :key="step.number"
-            :number="step.number"
-            :title="step.title"
-            :description="step.description" />
-        </div>
-      </section>
-    </RevealOnScroll>
-
-    <!-- ============================================ -->
-    <!-- CTA: footer strip                            -->
-    <!-- ============================================ -->
-    <section class="w-full border-t border-black/10 dark:border-white/10 px-8 py-12">
-      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <p class="text-sm opacity-60">Want to work together or just say hello?</p>
-        <div class="flex items-center gap-3 self-start sm:self-auto">
-          <NuxtLink
-            to="/message"
-            class="text-xs tracking-widest uppercase border border-black/20 dark:border-white/20 px-6 py-3 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-200 font-mono focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2">
-            Get in Touch →
-          </NuxtLink>
-          <button
-            type="button"
-            @click="copyEmail"
-            class="font-mono text-[10px] tracking-[0.2em] uppercase opacity-50 hover:opacity-100 transition-opacity duration-200 flex items-center gap-1.5">
-            <span>{{ emailCopied ? 'Copied!' : 'Copy email' }}</span>
-          </button>
-        </div>
+    <section class="about-practice" aria-labelledby="practice-title">
+      <div>
+        <p class="eyebrow">The practice</p>
+        <h2 id="practice-title">From first question<br>to final detail.</h2>
+      </div>
+      <div class="about-practice__copy">
+        <p>I care about typography that gives content a voice, systems that make brands recognizable, and interactions that feel obvious only after someone has carefully designed them.</p>
+        <p>That means research before styling, a reason behind every visual move, and close attention to how the work behaves beyond the polished mockup.</p>
       </div>
     </section>
 
-    </template>
+    <section class="about-grid" aria-label="Capabilities and tools">
+      <article v-for="group in practiceGroups" :key="group.title">
+        <p class="eyebrow">{{ group.number }}</p>
+        <h2>{{ group.title }}</h2>
+        <p>{{ group.description }}</p>
+        <ul>
+          <li v-for="item in group.items" :key="item">{{ item }}</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="about-now">
+      <div>
+        <p class="eyebrow">Now</p>
+        <h2>Open to thoughtful collaborations.</h2>
+      </div>
+      <div>
+        <p>Available for selected identity, web, and creative development projects. Remote worldwide, with local collaboration across the Klang Valley.</p>
+        <NuxtLink to="/message" class="button-primary">Start a conversation <ArrowUpRight :size="15" /></NuxtLink>
+      </div>
+    </section>
   </NuxtLayout>
 </template>
 
 <script setup lang="ts">
-useHead({
-  title: 'About — Khairin Kamarizal',
-  meta: [
-    { name: 'description', content: 'Designer and developer with 5+ years of experience building digital products that balance form and function.' },
-    { property: 'og:title', content: 'About — Khairin Kamarizal' },
-    { property: 'og:description', content: 'Designer, developer, and occasional over-thinker. Based in Cyberjaya, Malaysia.' },
-    { property: 'og:url', content: 'https://khair.ink/about' },
-  ],
-  script: [{
-    type: 'application/ld+json',
-    innerHTML: JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'Person',
-      name: 'Khairin Kamarizal',
-      url: 'https://khair.ink',
-      jobTitle: 'Creative Designer & Developer',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Cyberjaya',
-        addressCountry: 'MY'
-      },
-      sameAs: [
-        'https://github.com/khairinkamarizal',
-        'https://linkedin.com/in/khairinkamarizal',
-        'https://www.behance.net/khairinkamarizal'
-      ]
-    })
-  }],
-});
+import { ArrowUpRight } from 'lucide-vue-next'
 
-definePageMeta({
-  layout: false,
-});
+definePageMeta({ layout: false })
 
-const emailCopied = ref(false)
-async function copyEmail() {
-  await navigator.clipboard.writeText('khairinkamarizal@gmail.com')
-  emailCopied.value = true
-  setTimeout(() => { emailCopied.value = false }, 2000)
+const practiceGroups = [
+  {
+    number: '01 / Identity',
+    title: 'Give the idea a face.',
+    description: 'Distinctive systems grounded in positioning, not trends.',
+    items: ['Brand strategy', 'Visual identity', 'Logo systems', 'Art direction', 'Guidelines'],
+  },
+  {
+    number: '02 / Experience',
+    title: 'Make the path feel natural.',
+    description: 'Digital experiences built around hierarchy, rhythm, and human behavior.',
+    items: ['UI/UX design', 'Information architecture', 'Design systems', 'Prototyping', 'Motion'],
+  },
+  {
+    number: '03 / Development',
+    title: 'Protect the intent in code.',
+    description: 'Responsive frontends that keep the character and precision of the design.',
+    items: ['Vue and Nuxt', 'TypeScript', 'Tailwind CSS', 'Accessibility', 'Performance'],
+  },
+]
+
+useSeoMeta({
+  title: 'About',
+  description: 'About Khairin Kamarizal, an independent Malaysian designer and developer working across identity, digital experiences, and creative technology.',
+  ogTitle: 'About | Khairin Kamarizal',
+  ogUrl: 'https://khair.ink/about',
+})
+</script>
+
+<style scoped>
+.about-hero {
+  min-height: calc(100svh - 5rem);
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 2rem;
+  align-items: end;
+  padding: clamp(3rem, 7vw, 7rem) var(--page);
+  border-bottom: 1px solid var(--line);
 }
 
-const processSteps = [
-  {
-    number: '01',
-    title: 'Discover',
-    description: 'Research, brief, and goals. Understanding the problem space before proposing solutions. Asking questions that surface constraints and opportunities.',
-  },
-  {
-    number: '02',
-    title: 'Define',
-    description: 'Strategy and visual direction. Translating research into clear design principles and a creative direction that aligns with the project goals.',
-  },
-  {
-    number: '03',
-    title: 'Design',
-    description: 'Concepts, iteration, and refinement. Exploring multiple directions, testing ideas quickly, and refining toward the strongest solution.',
-  },
-  {
-    number: '04',
-    title: 'Deliver',
-    description: 'Production, handoff, and launch. Building with precision, documenting decisions, and ensuring the implementation matches the intent.',
-  },
-]
+.about-hero__title {
+  z-index: 2;
+  grid-column: 1 / 11;
+  grid-row: 1;
+  align-self: start;
+}
 
-const toolGroups = [
-  {
-    label: 'Design',
-    type: 'design' as const,
-    tools: ['Figma', 'Adobe Illustrator', 'Photoshop', 'After Effects'],
-  },
-  {
-    label: 'Development',
-    type: 'dev' as const,
-    tools: ['Nuxt', 'Vue', 'Tailwind', 'TypeScript'],
-  },
-]
+.about-hero h1 {
+  margin-top: 1.5rem;
+  font-size: clamp(4rem, 9.5vw, 10rem);
+  line-height: 0.86;
+  font-weight: 630;
+}
 
-const skillGroups = [
-  {
-    category: "Design",
-    items: ["Figma", "Design Systems", "Typography", "Motion"],
-  },
-  {
-    category: "Engineering",
-    items: ["Vue / Nuxt", "TypeScript", "Node.js", "Tailwind CSS"],
-  },
-  {
-    category: "Tools",
-    items: ["Git", "Docker", "Vercel", "Supabase"],
-  },
-  {
-    category: "Soft Skills",
-    items: ["Systems Thinking", "Technical Writing", "Mentoring"],
-  },
-];
+.about-hero h1 em {
+  color: var(--red);
+  font-family: Georgia, serif;
+  font-weight: 400;
+}
 
-const certs = [
-  { title: "B.Sc. Computer Science", issuer: "Universiti Putra Malaysia", year: "2019" },
-  { title: "AWS Certified Developer", issuer: "Amazon Web Services", year: "2022" },
-  { title: "Google UX Design Certificate", issuer: "Google / Coursera", year: "2021" },
-];
+.about-hero figure {
+  position: relative;
+  grid-column: 7 / 12;
+  grid-row: 1 / 3;
+  align-self: end;
+  aspect-ratio: 0.8;
+  max-height: 65svh;
+  overflow: hidden;
+  background: var(--blue);
+}
 
-const experience = [
-  {
-    role: "Senior Product Designer",
-    company: "TechCorp MY",
-    period: "2023 — Present",
-    description:
-      "Leading design for core product features, managing the design system, and collaborating with engineering on implementation.",
-    tags: ["Figma", "Vue", "Design Systems"],
-  },
-  {
-    role: "Frontend Engineer",
-    company: "FinTech Startup",
-    period: "2021 — 2023",
-    description:
-      "Built and maintained customer-facing web application. Introduced component library that reduced development time by 40%.",
-    tags: ["Vue", "TypeScript", "Tailwind"],
-  },
-  {
-    role: "UI/UX Designer",
-    company: "Digital Agency",
-    period: "2020 — 2021",
-    description:
-      "Designed digital experiences for clients across fintech, e-commerce, and healthcare verticals.",
-    tags: ["Figma", "Prototyping", "User Research"],
-  },
-];
-</script>
+.about-hero figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+}
+
+.about-hero figcaption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 0.75rem;
+  background: var(--blue);
+  color: white;
+}
+
+.about-hero__bio {
+  z-index: 2;
+  grid-column: 1 / 6;
+  grid-row: 2;
+  display: grid;
+  gap: 1rem;
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  line-height: 1.4;
+}
+
+.about-belief {
+  display: grid;
+  grid-template-columns: 0.45fr 1.55fr;
+  gap: 3rem;
+  padding: clamp(6rem, 12vw, 12rem) var(--page);
+  background: var(--red);
+  color: white;
+}
+
+.about-belief blockquote {
+  max-width: 72rem;
+  font-size: clamp(2.5rem, 6vw, 6rem);
+  line-height: 0.98;
+  font-weight: 560;
+}
+
+.about-practice {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 8vw, 9rem);
+  padding: clamp(6rem, 10vw, 10rem) var(--page);
+}
+
+.about-practice h2 {
+  margin-top: 1.5rem;
+  font-size: clamp(3rem, 6vw, 6.5rem);
+  line-height: 0.95;
+  font-weight: 620;
+}
+
+.about-practice__copy {
+  align-self: end;
+  display: grid;
+  gap: 1.5rem;
+  color: var(--muted);
+  font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+  line-height: 1.5;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 0 var(--page) clamp(7rem, 12vw, 12rem);
+}
+
+.about-grid article {
+  padding: 2rem clamp(1.25rem, 2.5vw, 2.5rem);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.about-grid article:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.about-grid h2 {
+  min-height: 6.5rem;
+  margin: 2rem 0 1rem;
+  font-size: clamp(1.8rem, 3vw, 3.2rem);
+  line-height: 1.05;
+  font-weight: 600;
+}
+
+.about-grid article > p:nth-of-type(2) {
+  min-height: 5rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.about-grid ul {
+  margin-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+
+.about-grid li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--line);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+}
+
+.about-now {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  padding: clamp(5rem, 9vw, 9rem) var(--page);
+  border-top: 1px solid var(--line);
+}
+
+.about-now h2 {
+  margin-top: 1rem;
+  font-size: clamp(2.8rem, 5vw, 5.5rem);
+  line-height: 0.98;
+  font-weight: 620;
+}
+
+.about-now > div:last-child {
+  align-self: end;
+  max-width: 34rem;
+  color: var(--muted);
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.about-now .button-primary {
+  margin-top: 2rem;
+  color: var(--paper);
+}
+
+@media (max-width: 800px) {
+  .about-hero {
+    min-height: 80svh;
+  }
+
+  .about-hero__title {
+    grid-column: 1 / 13;
+  }
+
+  .about-hero figure {
+    grid-column: 7 / 13;
+    opacity: 0.45;
+  }
+
+  .about-hero__bio {
+    grid-column: 1 / 9;
+  }
+
+  .about-belief,
+  .about-practice,
+  .about-now {
+    grid-template-columns: 1fr;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-grid article,
+  .about-grid article:first-child {
+    padding: 2rem 0 4rem;
+    border-left: 0;
+  }
+
+  .about-grid h2,
+  .about-grid article > p:nth-of-type(2) {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 540px) {
+  .about-hero figure {
+    grid-column: 6 / 13;
+  }
+
+  .about-hero__bio {
+    grid-column: 1 / 12;
+  }
+}
+</style>

@@ -19,8 +19,8 @@ export default defineNuxtConfig({
         { name: "twitter:creator", content: "@khairinkamarizal" },
       ],
     },
-    pageTransition: { name: "page", mode: "out-in" },
-    layoutTransition: { name: "page", mode: "out-in" },
+    pageTransition: false,
+    layoutTransition: false,
   },
   colorMode: {
     classSuffix: "",
@@ -28,9 +28,12 @@ export default defineNuxtConfig({
     fallback: "light",
   },
   googleFonts: {
+    display: "swap",
+    preload: true,
+    subsets: ["latin"],
     families: {
-      "Inter Tight": "100..900",
-      "Space Mono": [400, 700],
+      "Inter Tight": [400, 500, 600, 700],
+      "Space Mono": [400],
     },
   },
   tailwindcss: {

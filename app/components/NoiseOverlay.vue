@@ -35,7 +35,7 @@ withDefaults(defineProps<{
   opacity: 0.04,
 })
 
-const filterId = 'noise-' + Math.random().toString(36).slice(2, 8)
+const filterId = `noise-${useId().replaceAll(':', '')}`
 </script>
 
 <style scoped>
