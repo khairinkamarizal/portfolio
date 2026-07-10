@@ -135,7 +135,7 @@
               All posts <ArrowUpRight class="w-3 h-3" />
             </NuxtLink>
           </div>
-          <div class="flex flex-col divide-y divide-black/8 dark:divide-white/8">
+          <div class="flex flex-col divide-y divide-black/10 dark:divide-white/10">
             <PostCard
               v-for="post in latestPosts"
               :key="post._path"

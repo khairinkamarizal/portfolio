@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div
     role="separator"
     :aria-orientation="orientation"
@@ -6,7 +6,7 @@
       orientation === 'horizontal'
         ? 'w-full h-px'
         : 'h-full w-px',
-      'bg-black/8 dark:bg-white/8',
+      'bg-black/10 dark:bg-white/10',
       className
     ]" />
 </template>

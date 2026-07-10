@@ -89,7 +89,7 @@
         </div>
 
         <!-- Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-px bg-black/8 dark:bg-white/8 border border-black/10 dark:border-white/10 divide-y divide-black/8 dark:divide-white/8 max-w-2xl">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-px bg-black/10 dark:bg-white/10 border border-black/10 dark:border-white/10 divide-y divide-black/10 dark:divide-white/10 max-w-2xl">
           <NuxtLink
             v-for="(post, index) in sortedPosts"
             :key="post.slug"

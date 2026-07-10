@@ -1,6 +1,6 @@
-<template>
+﻿<template>
   <div
-    :class="['animate-pulse bg-black/8 dark:bg-white/8', widthClass, heightClass, rounded ? 'rounded' : '']"
+    :class="['animate-pulse bg-black/10 dark:bg-white/10', widthClass, heightClass, rounded ? 'rounded' : '']"
     :style="{ width: width, height: height }"
     :aria-busy="true"
     role="status"

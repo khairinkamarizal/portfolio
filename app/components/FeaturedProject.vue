@@ -16,7 +16,7 @@
         class="w-full h-full transition-transform duration-700 ease-out group-hover/featured:scale-[1.02]" />
       <!-- Category overlay bottom-left -->
       <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover/featured:opacity-100 transition-opacity duration-300">
-        <span v-if="category" class="font-mono text-[9px] tracking-[0.25em] uppercase text-white/80">{{ category }}</span>
+        <span v-if="category" class="font-mono text-[9px] tracking-[0.25em] uppercase text-white/100">{{ category }}</span>
       </div>
     </div>
 

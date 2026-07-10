@@ -55,7 +55,7 @@
               <h2 class="mono-label mb-4 tracking-widest sticky top-0 bg-white dark:bg-black py-2 -mx-2 px-2 z-10">
                 Skills
               </h2>
-              <div class="grid grid-cols-2 gap-px bg-black/8 dark:bg-white/8 border border-black/10 dark:border-white/10">
+              <div class="grid grid-cols-2 gap-px bg-black/10 dark:bg-white/10 border border-black/10 dark:border-white/10">
                 <div
                   v-for="(group, i) in skillGroups"
                   :key="group.category"
@@ -63,7 +63,7 @@
                   <h3 class="mono-label mb-3">
                     {{ group.category }}
                   </h3>
-                  <ul class="flex flex-col divide-y divide-black/8 dark:divide-white/8">
+                  <ul class="flex flex-col divide-y divide-black/10 dark:divide-white/10">
                     <li
                       v-for="skill in group.items"
                       :key="skill"
@@ -85,7 +85,7 @@
               <h2 class="mono-label mb-4">
                 Education & Certs
               </h2>
-              <div class="flex flex-col divide-y divide-black/8 dark:divide-white/8 border-t border-black/10 dark:border-white/10">
+              <div class="flex flex-col divide-y divide-black/10 dark:divide-white/10 border-t border-black/10 dark:border-white/10">
                 <div
                   v-for="cert in certs"
                   :key="cert.title"

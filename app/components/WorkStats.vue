@@ -1,5 +1,5 @@
 ﻿<template>
-  <div class="flex flex-row border border-black/10 dark:border-white/10 divide-x divide-black/8 dark:divide-white/8">
+  <div class="flex flex-row border border-black/10 dark:border-white/10 divide-x divide-black/10 dark:divide-white/10">
     <div v-for="stat in stats" :key="stat.label" class="flex-1 flex flex-col gap-0.5 px-4 py-4">
       <span class="text-3xl font-medium tracking-tight tabular-nums">{{ stat.displayed }}</span>
       <span class="text-[10px] tracking-[0.15em] opacity-50 font-mono">{{ stat.label.toUpperCase() }}</span>
