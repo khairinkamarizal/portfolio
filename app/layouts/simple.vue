@@ -4,7 +4,7 @@
 
     <aside class="index-sidebar" aria-label="Site index">
       <NuxtLink to="/" class="sidebar-identity" aria-label="Khairin Kamarizal, home">
-        <span>Khairin<br>Kamarizal</span>
+        <AppLogo class="sidebar-logo" />
         <span class="index-label">Independent<br>Designer + Developer</span>
       </NuxtLink>
 
@@ -29,7 +29,10 @@
     </aside>
 
     <header class="mobile-rail">
-      <NuxtLink to="/" class="mobile-brand" aria-label="Khairin Kamarizal, home">KK / Index</NuxtLink>
+      <NuxtLink to="/" class="mobile-brand" aria-label="Khairin Kamarizal, home">
+        <AppLogo />
+        <span>Index</span>
+      </NuxtLink>
       <span class="mobile-section">{{ currentSection }}</span>
       <button
         type="button"
@@ -102,7 +105,7 @@ useKeyboardShortcuts()
   padding: 1.5rem; border-right: 1px solid var(--line); background: var(--paper);
 }
 .sidebar-identity { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--line); }
-.sidebar-identity > span:first-child { font-size: 1.15rem; line-height: 0.95; font-weight: 500; }
+.sidebar-logo { width: 2.25rem; height: 2.25rem; }
 .sidebar-identity .index-label { color: var(--muted); line-height: 1.35; }
 .sidebar-status { display: flex; gap: 0.65rem; padding: 1rem 0; color: var(--muted); font-size: 0.68rem; line-height: 1.35; text-transform: uppercase; border-bottom: 1px solid var(--line); }
 .status-mark { width: 0.45rem; height: 0.45rem; flex: 0 0 auto; margin-top: 0.15rem; border-radius: 50%; background: var(--ink); }
@@ -120,7 +123,9 @@ useKeyboardShortcuts()
     display: grid; grid-template-columns: 1fr auto 2.5rem; gap: 1rem; align-items: center;
     padding: 0 var(--page); border-bottom: 1px solid var(--line); background: var(--paper);
   }
-  .mobile-brand, .mobile-section { font-size: 0.7rem; font-weight: 500; text-transform: uppercase; }
+  .mobile-brand { display: inline-flex; align-items: center; gap: 0.65rem; }
+  .mobile-brand svg { width: 1.35rem; height: 1.35rem; }
+  .mobile-brand span, .mobile-section { font-size: 0.7rem; font-weight: 500; text-transform: uppercase; }
   .mobile-section { color: var(--muted); }
   .mobile-menu-button { width: 2.5rem; height: 2.5rem; display: grid; place-items: center; }
   .mobile-drawer {
