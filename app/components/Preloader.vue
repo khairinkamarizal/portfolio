@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <Transition name="fade-overlay">
     <div
       v-if="isLoading"
@@ -12,22 +12,6 @@
   </Transition>
 </template>
 
-/**
- * Preloader component.
- *
- * Displays a full-screen loading overlay centred on the AppLogo while the
- * initial page hydrates. The overlay is shown for a minimum of 2 000 ms,
- * then fades out with a slide-up exit transition.
- *
- * Side-effects:
- * - Sets the `color-scheme` meta tag to `light dark` via `useHead`.
- * - Prints a personalised console greeting for curious visitors.
- *
- * Respects `prefers-reduced-motion` via scoped CSS overrides that collapse
- * the exit animation to a simple opacity fade.
- *
- * No props.
- */
 <script setup lang="ts">
 useHead({
   meta: [{ name: 'color-scheme', content: 'light dark' }]
@@ -37,7 +21,7 @@ const isLoading = ref(true);
 
 onMounted(() => {
   console.log(
-    "%chey i saw u. thanks for stopping by my portfolio.\ni hope you find something that inspires you here.\n— Khairinkamarizal%c",
+    "%chey i saw u. thanks for stopping by my portfolio.\ni hope you find something that inspires you here.\nâ€” Khairinkamarizal%c",
     "background: #fff; color: #000; padding: 4px 12px; font-weight: 600; font-size: 14px; font-family: sans-serif; letter-spacing: 2px;",
     "background: #fff; color: #000; padding: 4px 12px; font-weight: 600; font-size: 14px; font-family: sans-serif; letter-spacing: 2px;",
   );

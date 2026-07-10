@@ -1,19 +1,10 @@
-<template>
+﻿<template>
   <div class="flex items-baseline gap-1.5">
     <span class="text-2xl font-medium tracking-tight tabular-nums text-black dark:text-white">{{ displayCount }}</span>
     <span class="text-xs opacity-40 tracking-wider font-mono text-black dark:text-white">PROJECTS</span>
   </div>
 </template>
 
-/**
- * ProjectCount component.
- *
- * Displays an animated count of projects using a cubic ease-out tween.
- * The number animates from 0 (or its previous value) to the target `count`
- * over 800 ms on mount and whenever `count` changes.
- *
- * @prop {number} count - The target project count to animate to.
- */
 <script setup lang="ts">
 const props = defineProps<{
   count: number
