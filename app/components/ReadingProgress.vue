@@ -1,8 +1,8 @@
 <template>
   <ClientOnly>
     <div
-      class="reading-progress"
-      :style="{ transform: `scaleX(${progress})` }"
+      class="fixed top-0 left-0 right-0 h-[2px] z-50 origin-left bg-black dark:bg-white"
+      :style="{ transform: `scaleX(${progress})`, transition: 'transform 0.1s linear' }"
       role="progressbar"
       :aria-valuenow="Math.round(progress * 100)"
       aria-valuemin="0"
@@ -11,6 +11,20 @@
   </ClientOnly>
 </template>
 
+/**
+ * ReadingProgress component.
+ *
+ * Renders a fixed 2 px progress bar at the top of the viewport that tracks
+ * how far the user has scrolled through the page. The bar scales horizontally
+ * from 0 to 1 using a CSS `scaleX` transform for GPU-composited animation.
+ *
+ * - Wrapped in `<ClientOnly>` to prevent SSR hydration mismatches.
+ * - Uses a passive scroll listener for optimal scroll performance.
+ * - Fully accessible: `role="progressbar"` with `aria-valuenow`,
+ *   `aria-valuemin`, `aria-valuemax`, and `aria-label` attributes.
+ *
+ * No props.
+ */
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 
@@ -31,21 +45,3 @@ onUnmounted(() => {
   window.removeEventListener('scroll', updateProgress)
 })
 </script>
-
-<style scoped>
-.reading-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  z-index: 50;
-  transform-origin: left center;
-  transition: transform 0.1s linear;
-  background-color: #000;
-}
-
-:global(.dark) .reading-progress {
-  background-color: #fff;
-}
-</style>

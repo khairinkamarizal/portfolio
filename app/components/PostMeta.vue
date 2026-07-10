@@ -1,7 +1,8 @@
 <template>
   <div class="flex items-center gap-2 flex-wrap">
-    <span v-if="readingTime" class="text-xs opacity-30 font-mono">{{ readingTime }}</span>
-    <span class="text-xs opacity-40">{{ formattedDate }}</span>
+    <span v-if="readingTime" class="text-xs opacity-50 font-mono">{{ readingTime }}</span>
+    <span v-if="readingTime" class="opacity-30" aria-hidden="true">·</span>
+    <span class="text-xs opacity-50">{{ formattedDate }}</span>
     <div v-if="tags?.length" class="flex items-center gap-1.5">
       <span
         v-for="tag in tags"
@@ -15,9 +16,11 @@
 
 <script setup lang="ts">
 /**
- * PostMeta — compact post metadata display
- * Props: date (string), readingTime (string, optional), tags (string[], optional)
- * Used in PostCard and post detail pages
+ * PostMeta — compact post metadata display.
+ * @props date {string} - ISO date string for the post.
+ * @props readingTime {string} - Optional estimated read time (e.g. "4 min read").
+ * @props tags {string[]} - Optional list of tags rendered as uppercase badges.
+ * Used in PostCard and post detail pages.
  */
 const props = defineProps<{
   date: string

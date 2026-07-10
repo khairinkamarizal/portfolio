@@ -45,6 +45,12 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * FloatingNav — scroll-aware section navigation overlay.
+ * @props sections {Section[]} - Array of { id, label } objects matching page section IDs.
+ * Renders dot buttons on desktop (right edge) and a label bar on mobile (bottom center).
+ * Becomes visible after scrolling 100px; highlights the active section via getBoundingClientRect.
+ */
 interface Section {
   id: string
   label: string
@@ -65,6 +71,9 @@ function scrollTo(id: string) {
   }
 }
 
+let _handleScroll: (() => void) | null = null
+const handleResize = () => { isMobile.value = window.innerWidth < 768 }
+
 onMounted(() => {
   isMobile.value = window.innerWidth < 768
 
@@ -81,9 +90,18 @@ onMounted(() => {
     }
   }
 
+  _handleScroll = handleScroll
   window.addEventListener('scroll', handleScroll, { passive: true })
-  window.addEventListener('resize', () => { isMobile.value = window.innerWidth < 768 })
-  onUnmounted(() => window.removeEventListener('scroll', handleScroll))
+  window.addEventListener('resize', handleResize)
+
+  // Set initial active section
+  const firstSection = props.sections[0]
+  if (firstSection) activeSection.value = firstSection.id
+})
+
+onUnmounted(() => {
+  if (_handleScroll) window.removeEventListener('scroll', _handleScroll)
+  window.removeEventListener('resize', handleResize)
 })
 </script>
 

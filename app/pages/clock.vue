@@ -1,11 +1,11 @@
 <template>
   <NuxtLayout name="simple">
     <template #default>
-      <div class="flex flex-col h-full justify-center gap-12">
+      <div class="flex flex-col min-h-screen justify-center gap-12">
         <div class="flex flex-col justify-center items-center gap-2">
-          <h2 class="text-3xl">Countdown to Freedom</h2>
+          <h1 class="text-3xl">Countdown to Freedom</h1>
           <p
-            class="text-6xl text-center font-semibold tracking-tight tabular-nums leading-tight">
+            class="font-mono text-[15vw] md:text-[10vw] font-light tracking-tight leading-none tabular-nums text-center">
             {{ countdown }}
           </p>
           <p class="text-lg opacity-50 text-center">

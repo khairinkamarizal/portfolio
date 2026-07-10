@@ -1,38 +1,92 @@
 <template>
-  <div ref="el" :class="['reveal-on-scroll', revealed ? 'revealed' : 'hidden-initial', `direction-${direction}`]" :style="{ transitionDelay: `${delay}ms` }">
+  <div
+    ref="el"
+    :class="[
+      'transition-[opacity,transform]',
+      isVisible
+        ? 'opacity-100 translate-y-0 translate-x-0'
+        : variant === 'fade-up'   ? 'opacity-0 translate-y-6'
+        : variant === 'fade-left' ? 'opacity-0 translate-x-4'
+        : variant === 'fade-right'? 'opacity-0 -translate-x-4'
+        : 'opacity-0',
+    ]"
+    :style="{
+      transitionDuration: duration + 'ms',
+      transitionDelay: delay + 'ms',
+      transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
+    }"
+  >
     <slot />
   </div>
 </template>
 
 <script setup lang="ts">
+/**
+ * RevealOnScroll component.
+ *
+ * Wraps slot content in a div that animates into view when the element
+ * enters the viewport, using IntersectionObserver.
+ *
+ * @prop {number}  delay    - Animation delay in ms (default: 0).
+ * @prop {number}  duration - Transition duration in ms (default: 450).
+ * @prop {'fade-up'|'fade-in'|'fade-left'|'fade-right'} variant
+ *                          - Direction/style of the reveal (default: 'fade-up').
+ * @prop {boolean} once     - Disconnect observer after first reveal (default: true).
+ *                            Set to false to re-animate on each viewport entry.
+ *
+ * Accessibility: respects `prefers-reduced-motion`; renders content fully
+ * visible with no animation when the preference is set.
+ * SSR-safe: defaults to visible so content is readable without JS.
+ */
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const props = withDefaults(defineProps<{
   delay?: number
-  direction?: 'up' | 'left'
+  duration?: number
+  variant?: 'fade-up' | 'fade-in' | 'fade-left' | 'fade-right'
+  once?: boolean
 }>(), {
   delay: 0,
-  direction: 'up',
+  duration: 450,
+  variant: 'fade-up',
+  once: true,
 })
 
 const el = ref<HTMLElement | null>(null)
-const revealed = ref(false)
+// Default true so SSR renders content visible; flipped to false on mount before observer fires
+const isVisible = ref(true)
 
 let observer: IntersectionObserver | null = null
 
 onMounted(() => {
-  if (!el.value) return
+  if (!el.value || typeof IntersectionObserver === 'undefined') {
+    isVisible.value = true
+    return
+  }
+
+  // Skip animation for users who prefer reduced motion
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  if (prefersReduced) { isVisible.value = true; return }
+
+  // Hide once we're on the client, then let the observer reveal
+  isVisible.value = false
 
   observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting && !revealed.value) {
-          revealed.value = true
-          observer?.disconnect()
+        if (entry.isIntersecting) {
+          isVisible.value = true
+          // When once=true, disconnect after first reveal
+          if (props.once) {
+            observer?.disconnect()
+          }
+        } else if (!props.once) {
+          // Re-trigger: hide again when element leaves viewport
+          isVisible.value = false
         }
       })
     },
-    { threshold: 0.1 }
+    { threshold: 0.15 }
   )
 
   observer.observe(el.value)
@@ -42,24 +96,3 @@ onUnmounted(() => {
   observer?.disconnect()
 })
 </script>
-
-<style scoped>
-.reveal-on-scroll {
-  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.hidden-initial.direction-up {
-  opacity: 0;
-  transform: translateY(24px);
-}
-
-.hidden-initial.direction-left {
-  opacity: 0;
-  transform: translateX(-24px);
-}
-
-.revealed {
-  opacity: 1;
-  transform: translate(0, 0);
-}
-</style>

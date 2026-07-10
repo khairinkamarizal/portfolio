@@ -1,19 +1,38 @@
 <template>
   <div class="process-step">
-    <div
-      class="process-step-number"
-      aria-hidden="true"
-      style="font-family: 'Space Mono', monospace">
-      {{ number }}
+    <div class="flex flex-col items-start" aria-hidden="true">
+      <span class="font-mono text-[8px] tracking-[0.25em] uppercase opacity-30 mb-0.5">Step</span>
+      <div
+        class="process-step-number font-mono">
+        {{ number }}
+      </div>
     </div>
     <div class="process-step-content">
       <h3 class="process-step-title">{{ title }}</h3>
-      <p class="process-step-description">{{ description }}</p>
+      <slot name="description">
+        <p class="process-step-description">{{ description }}</p>
+      </slot>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+/**
+ * ProcessStep
+ *
+ * Displays a single step in a multi-step process. Renders a large decorative
+ * step number alongside a title and description. The "Step" label and number
+ * are marked aria-hidden since they are purely visual; the title conveys
+ * semantic meaning to assistive technologies.
+ *
+ * Supports an optional named slot "description" to replace the default
+ * paragraph with custom markup.
+ *
+ * @prop {string} number      - The step identifier displayed as the large number (e.g. "01").
+ * @prop {string} title       - Heading text for this process step.
+ * @prop {string} description - Fallback description text rendered when the
+ *                              "description" slot is not provided.
+ */
 defineProps<{
   number: string
   title: string
@@ -42,7 +61,7 @@ defineProps<{
   font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 700;
   line-height: 1;
-  opacity: 0.1;
+  opacity: 0.2;
   min-width: 4ch;
   flex-shrink: 0;
   letter-spacing: -0.04em;

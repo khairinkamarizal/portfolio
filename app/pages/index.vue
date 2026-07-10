@@ -1,84 +1,112 @@
 <template>
   <NuxtLayout name="simple">
     <template #default>
-      <GridBackground variant="dots" />
       <ClientOnly>
         <ScrollIndicator />
       </ClientOnly>
-      <div class="flex flex-col gap-14 mt-8 pb-8 relative z-10">
 
-        <!-- Hero -->
-        <div class="flex flex-col gap-5">
-          <div class="flex flex-row items-center justify-between">
-            <div class="flex flex-col gap-1.5">
-              <span class="text-xs opacity-40 tracking-widest normal-case font-sans">Creative Designer & Developer</span>
-              <h1 class="text-2xl font-bold tracking-tight leading-none" style="font-family: 'Space Mono', monospace">
-                KHAIRIN<br />KAMARIZAL
-              </h1>
-            </div>
-            <div class="flex flex-row relative items-center">
-              <img
-                src="/assets/dp.webp"
-                alt="Khairin Kamarizal"
-                class="w-16 h-16 rounded-full object-cover object-center shrink-0 ring-2 ring-black/10 dark:ring-white/10" />
-              <div
-                class="w-10 h-10 shrink-0 flex items-center justify-center bg-black dark:bg-white rounded-full -ml-3 ring-2 ring-white dark:ring-black">
-                <AppLogo class="text-white dark:text-black w-5 h-5" />
-              </div>
+      <!-- ==================== HERO ==================== -->
+      <section id="main-content" aria-describedby="hero-bio" class="relative min-h-[88vh] flex flex-col justify-between px-page pt-8 pb-10 border-b border-black/8 dark:border-white/8">
+        <GridBackground variant="dots" class="z-0" />
+        <!-- Top row: number + avatar cluster -->
+        <div class="relative z-10 flex items-start justify-between">
+          <span class="font-mono text-[9px] tracking-[0.3em] uppercase opacity-20">001 / Index</span>
+          <div class="flex flex-row relative items-center">
+            <img
+              src="/assets/dp.webp"
+              alt="Khairin Kamarizal"
+              width="64"
+              height="64"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+              class="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover object-center shrink-0 ring-1 ring-black/15 dark:ring-white/15" />
+            <div
+              class="w-9 h-9 md:w-10 md:h-10 shrink-0 flex items-center justify-center bg-black dark:bg-white rounded-full -ml-3 ring-2 ring-white dark:ring-black">
+              <AppLogo class="text-white dark:text-black w-4 h-4 md:w-5 md:h-5" />
             </div>
           </div>
+        </div>
 
-          <!-- Status badge -->
-          <StatusBadge />
-
-          <!-- Bio tagline -->
-          <p class="text-sm leading-relaxed dark:font-light normal-case font-sans opacity-70">
-            Ambitious and versatile creative designer skilled in branding,
-            UI/UX, motion content and web development. Based in Cyberjaya, Malaysia.
-          </p>
-
-          <!-- CTA links -->
-          <div class="flex items-center gap-3 mt-2 normal-case">
+        <!-- Main hero text: takes up space boldly -->
+        <div class="relative z-10 flex-1 flex flex-col justify-center py-8">
+          <p class="font-mono text-[9px] tracking-[0.3em] uppercase opacity-20 mb-4">001 / Home</p>
+          <div class="overflow-hidden">
+            <h1 class="font-mono font-bold uppercase leading-[0.85] tracking-[-0.04em] text-[clamp(3rem,10vw,7rem)] animate-appear opacity-0 [will-change:opacity,transform]">
+              Khairin<br />Kamarizal
+            </h1>
+          </div>
+          <FadeText :delay="200" class="mt-5">
+            <span class="mono-label italic tracking-[-0.02em] animate-appear animate-appear-delay-1">
+              Creative Designer &amp; Developer
+            </span>
+          </FadeText>
+          <div class="mt-4 flex flex-col gap-4 max-w-xs">
+            <p id="hero-bio" class="text-sm leading-relaxed opacity-55 font-sans font-light max-w-[280px] animate-appear animate-appear-delay-2">
+              Designer and developer crafting digital experiences at the intersection of aesthetics and function. Cyberjaya, Malaysia.
+            </p>
+            <StatusBadge text="Available for projects" />
+          </div>
+          <div class="flex items-center gap-6 mt-6 animate-appear animate-appear-delay-3">
             <NuxtLink
               to="/work"
-              class="text-xs tracking-wider px-4 py-2 bg-black dark:bg-white text-white dark:text-black hover:opacity-80 transition-opacity duration-150">
-              VIEW WORK
+              class="font-mono font-medium text-xs tracking-[0.15em] uppercase px-5 py-2.5 bg-black dark:bg-white text-white dark:text-black hover:opacity-75 transition-all duration-200">
+              View Work
             </NuxtLink>
-            <NuxtLink
-              to="mailto:khairinkamarizal@gmail.com"
-              class="text-xs tracking-wider px-4 py-2 border border-black/20 dark:border-white/20 hover:border-black dark:hover:border-white transition-colors duration-150">
-              HIT ME UP
-            </NuxtLink>
+            <a
+              href="mailto:khairinkamarizal@gmail.com"
+              class="font-mono text-xs tracking-[0.15em] uppercase px-5 py-2.5 border border-black/20 dark:border-white/20 hover:border-black dark:hover:border-white transition-colors duration-200 opacity-70 hover:opacity-100">
+              Contact
+            </a>
           </div>
         </div>
 
-        <!-- Skills marquee strip -->
-        <div class="border-y border-black/10 dark:border-white/10 py-2.5 -mx-5">
+        <!-- Bottom row: keyboard hint -->
+        <div class="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between flex-wrap gap-3">
+          <span class="hidden lg:block mono-label opacity-0 hover:opacity-20 transition-opacity duration-300">
+            Press G then W to go to work
+          </span>
+        </div>
+      </section>
+
+      <!-- ==================== SKILLS MARQUEE ==================== -->
+      <RevealOnScroll variant="fade-up">
+        <div class="border-b border-black/8 dark:border-white/8 py-3">
           <MarqueeTicker :items="skills" :speed="30" />
         </div>
+      </RevealOnScroll>
 
-        <!-- Stats row -->
-        <div class="grid grid-cols-4 divide-x divide-black/10 dark:divide-white/10 border border-black/10 dark:border-white/10 py-5">
-          <ClientOnly>
-            <StatCounter :value="1423" label="BEHANCE VIEWS" />
-            <StatCounter :value="38" label="APPRECIATIONS" />
-            <StatCounter :value="43" label="FOLLOWERS" />
-            <StatCounter :value="5" label="YEARS EXP" suffix="+" />
-            <template #fallback>
-              <div class="col-span-4 flex items-center justify-center py-4 opacity-30 text-xs">Loading stats...</div>
-            </template>
-          </ClientOnly>
-        </div>
+      <!-- ==================== STATS ==================== -->
+      <RevealOnScroll variant="fade-up" :delay="100">
+        <section aria-label="Statistics" class="border-b border-black/8 dark:border-white/8">
+          <div class="grid grid-cols-2 md:grid-cols-4">
+            <ClientOnly>
+              <div class="hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors duration-150 tabular-nums"><StatCounter :value="1423" label="BEHANCE VIEWS" /></div>
+              <div class="hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors duration-150 tabular-nums"><StatCounter :value="38" label="APPRECIATIONS" /></div>
+              <div class="hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors duration-150 tabular-nums"><StatCounter :value="43" label="FOLLOWERS" /></div>
+              <div class="hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors duration-150 tabular-nums"><StatCounter :value="5" label="YEARS EXP" suffix="+" /></div>
+              <template #fallback>
+                <div class="col-span-4 py-6 flex items-center justify-center opacity-30 text-xs font-mono">Loading...</div>
+              </template>
+            </ClientOnly>
+          </div>
+        </section>
+      </RevealOnScroll>
 
-        <!-- Featured work -->
-        <div class="flex flex-col gap-4 normal-case">
-          <div class="flex items-center justify-between">
-            <span class="text-xs opacity-40 tracking-widest uppercase" style="font-family: 'Space Mono', monospace">Featured Work</span>
-            <NuxtLink to="/work" class="text-xs opacity-40 hover:opacity-100 transition-opacity tracking-wider flex items-center gap-1">
-              View all <ArrowUpRight class="w-3 h-3" />
+      <!-- ==================== FEATURED WORK ==================== -->
+      <div class="border-t border-black/8 dark:border-white/8" />
+      <RevealOnScroll variant="fade-up" :delay="50">
+        <section class="px-8 py-10" aria-label="Featured work">
+          <div class="flex items-center justify-between mb-8">
+            <div class="flex items-center gap-3">
+              <span class="mono-label opacity-25">002</span>
+              <span class="mono-label">Selected Work</span>
+            </div>
+            <NuxtLink to="/work" class="font-mono text-[10px] tracking-[0.2em] uppercase opacity-40 hover:opacity-100 transition-opacity duration-200 flex items-center gap-1.5">
+              All work <ArrowUpRight class="w-3 h-3" />
             </NuxtLink>
           </div>
-          <div class="grid grid-cols-1 gap-4">
+          <div class="grid grid-cols-1 gap-8">
             <WorkCard
               v-for="project in featuredProjects"
               :key="project.title"
@@ -86,52 +114,36 @@
               :year="project.year"
               :tags="project.tags"
               :description="project.description"
-              :url="project.behanceUrl"
               :category="project.category"
-              :thumbnail="true" />
+              :url="project.behanceUrl" />
           </div>
-        </div>
+        </section>
+      </RevealOnScroll>
 
-        <!-- Latest writing -->
-        <div v-if="latestPosts?.length" class="flex flex-col gap-4 normal-case">
-          <div class="flex items-center justify-between">
-            <span class="text-xs opacity-40 tracking-widest uppercase" style="font-family: 'Space Mono', monospace">Latest Writing</span>
-            <NuxtLink to="/writing" class="text-xs opacity-40 hover:opacity-100 transition-opacity tracking-wider flex items-center gap-1">
-              View all <ArrowUpRight class="w-3 h-3" />
+      <!-- Divider between featured work and latest writing -->
+      <div class="border-t border-black/8 dark:border-white/8" />
+
+      <!-- ==================== LATEST WRITING ==================== -->
+      <RevealOnScroll v-if="latestPosts?.length" variant="fade-up" :delay="50">
+        <section class="px-8 py-10">
+          <div class="flex items-center justify-between mb-8">
+            <div class="flex items-center gap-3">
+              <span class="mono-label opacity-25">003</span>
+              <span class="mono-label">Latest Writing</span>
+            </div>
+            <NuxtLink to="/writing" class="font-mono text-[10px] tracking-[0.2em] uppercase opacity-40 hover:opacity-100 transition-opacity duration-200 flex items-center gap-1.5">
+              All posts <ArrowUpRight class="w-3 h-3" />
             </NuxtLink>
           </div>
-          <div class="flex flex-col divide-y divide-black/10 dark:divide-white/10">
+          <div class="flex flex-col divide-y divide-black/8 dark:divide-white/8">
             <PostCard
               v-for="post in latestPosts"
-              :key="post.path"
-              :title="post.title"
-              :description="post.description"
-              :date="post.date"
-              :tags="post.tags || []"
-              :slug="post.path?.split('/').pop() || ''" />
+              :key="post._path"
+              :post="post" />
           </div>
-        </div>
+        </section>
+      </RevealOnScroll>
 
-      </div>
-    </template>
-
-    <template #footer-actions>
-      <NuxtLink
-        to="mailto:khairinkamarizal@gmail.com"
-        class="group flex items-center">
-        <div class="flex-none group-hover:flex-1 transition-all duration-300 h-1"></div>
-        <span>Hit me up</span>
-        <div class="flex-1 group-hover:flex-none transition-all duration-300 group-hover:w-2 h-1"></div>
-        <ArrowUpRight class="group-hover:rotate-45 transition-transform duration-300" />
-      </NuxtLink>
-      <NuxtLink
-        to="https://be.net/khairinkamarizal"
-        class="group flex items-center">
-        <div class="flex-none group-hover:flex-1 transition-all duration-300 h-1"></div>
-        <span>View my portfolio</span>
-        <div class="flex-1 group-hover:flex-none transition-all duration-300 group-hover:w-2 h-1"></div>
-        <ArrowUpRight class="group-hover:rotate-45 transition-transform duration-300" />
-      </NuxtLink>
     </template>
   </NuxtLayout>
 </template>
@@ -193,10 +205,10 @@ useHead({
   meta: [
     {
       name: "description",
-      content: "Ambitious and versatile creative designer skilled in branding, UI/UX, motion content and web development.",
+      content: "Designer and developer crafting digital experiences at the intersection of aesthetics and function. Cyberjaya, Malaysia.",
     },
     { property: "og:title", content: "Khairin Kamarizal — Creative Designer & Developer" },
-    { property: "og:description", content: "Ambitious and versatile creative designer skilled in branding, UI/UX, motion content and web development." },
+    { property: "og:description", content: "Designer and developer crafting digital experiences at the intersection of aesthetics and function. Cyberjaya, Malaysia." },
     { property: "og:url", content: "https://khair.ink" },
   ],
 });

@@ -3,8 +3,12 @@
     @click="handleCopy"
     class="text-xs tracking-wider px-3 py-1.5 border border-black/20 dark:border-white/20 hover:border-black dark:hover:border-white transition-all duration-150 flex items-center gap-1.5"
     :aria-label="copied ? 'Copied to clipboard' : 'Copy to clipboard'">
-    <Copy :size="14" />
-    <span>{{ copied ? 'Copied!' : 'Copy' }}</span>
+    <Copy :size="14" aria-hidden="true" />
+    <Transition name="swap" mode="out-in">
+      <span v-if="copied" key="copied">Copied!</span>
+      <span v-else-if="copyError" key="error" class="text-red-500">Failed</span>
+      <span v-else key="copy">Copy</span>
+    </Transition>
   </button>
 </template>
 
@@ -18,6 +22,7 @@ interface Props {
 const props = defineProps<Props>()
 
 const copied = ref(false)
+const copyError = ref(false)
 
 async function handleCopy() {
   try {
@@ -28,6 +33,13 @@ async function handleCopy() {
     }, 2000)
   } catch (err) {
     console.error('Failed to copy:', err)
+    copyError.value = true
+    setTimeout(() => copyError.value = false, 2000)
   }
 }
 </script>
+
+<style scoped>
+.swap-enter-active, .swap-leave-active { transition: opacity 0.15s ease; }
+.swap-enter-from, .swap-leave-to { opacity: 0; }
+</style>

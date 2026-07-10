@@ -1,8 +1,9 @@
 <template>
-  <div class="w-full">
+  <div class="w-full" role="list">
     <div
       v-for="(item, index) in items"
-      :key="index"
+      :key="item.company + '-' + item.period"
+      role="listitem"
       class="relative flex gap-6 pb-10 last:pb-0">
 
       <!-- Timeline spine -->
@@ -24,8 +25,7 @@
           </span>
           <span
             v-if="item.current"
-            class="text-[10px] tracking-widest uppercase bg-black dark:bg-white text-white dark:text-black px-2 py-0.5 font-mono"
-            style="font-family: 'Space Mono', monospace">
+            class="text-[10px] tracking-widest uppercase bg-black dark:bg-white text-white dark:text-black px-2 py-0.5 font-mono">
             NOW
           </span>
         </div>
@@ -37,8 +37,7 @@
 
         <!-- Period + location -->
         <p
-          class="text-xs font-mono opacity-40 text-black dark:text-white mb-3"
-          style="font-family: 'Space Mono', monospace">
+          class="text-xs font-mono opacity-40 text-black dark:text-white mb-3">
           {{ item.period }}<span v-if="item.location"> · {{ item.location }}</span>
         </p>
 
@@ -53,6 +52,22 @@
   </div>
 </template>
 
+/**
+ * ExperienceTimeline component.
+ *
+ * Renders a vertical timeline of work experience entries. Each item shows a
+ * dot-and-line spine on the left alongside company, role, period, optional
+ * location, and optional description. A "NOW" badge is shown for the current
+ * position when `current: true`.
+ *
+ * @prop {Array} items - List of experience entries to render.
+ *   @prop {string}  items[].company     - Company or organisation name.
+ *   @prop {string}  items[].role        - Job title or role.
+ *   @prop {string}  items[].period      - Display string for the date range (e.g. "2022 – Present").
+ *   @prop {string}  [items[].location]  - Optional location string.
+ *   @prop {string}  [items[].description] - Optional short description of responsibilities.
+ *   @prop {boolean} [items[].current]   - When true, renders a "NOW" badge next to the company name.
+ */
 <script setup lang="ts">
 defineProps<{
   items: Array<{

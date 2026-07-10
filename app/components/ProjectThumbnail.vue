@@ -1,11 +1,13 @@
 <template>
-  <div class="w-full h-full relative overflow-hidden bg-black/5 dark:bg-white/5">
+  <div class="w-full h-full relative overflow-hidden bg-black/8 dark:bg-white/8 text-black dark:text-white">
     <!-- Branding / Motion category -->
     <svg
       v-if="resolvedCategory === 'branding'"
       viewBox="0 0 400 300"
       xmlns="http://www.w3.org/2000/svg"
-      class="w-full h-full">
+      class="w-full h-full"
+      role="img"
+      :aria-label="'Project thumbnail for ' + title">
       <!-- Concentric circles -->
       <circle cx="200" cy="150" r="20" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.15" />
       <circle cx="200" cy="150" r="50" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.12" />
@@ -22,7 +24,7 @@
         font-family="'Space Mono', monospace"
         font-weight="700"
         fill="currentColor"
-        opacity="0.08">
+        opacity="0.15">
         {{ initial }}
       </text>
     </svg>
@@ -32,7 +34,9 @@
       v-else-if="resolvedCategory === 'motion'"
       viewBox="0 0 400 300"
       xmlns="http://www.w3.org/2000/svg"
-      class="w-full h-full">
+      class="w-full h-full"
+      role="img"
+      :aria-label="'Project thumbnail for ' + title">
       <!-- Wave lines -->
       <path d="M0 150 Q50 100 100 150 T200 150 T300 150 T400 150" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.15" />
       <path d="M0 150 Q50 80 100 150 T200 150 T300 150 T400 150" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.12" />
@@ -48,7 +52,7 @@
         font-family="'Space Mono', monospace"
         font-weight="700"
         fill="currentColor"
-        opacity="0.08">
+        opacity="0.15">
         {{ initial }}
       </text>
     </svg>
@@ -58,7 +62,9 @@
       v-else-if="resolvedCategory === 'jersey'"
       viewBox="0 0 400 300"
       xmlns="http://www.w3.org/2000/svg"
-      class="w-full h-full">
+      class="w-full h-full"
+      role="img"
+      :aria-label="'Project thumbnail for ' + title">
       <!-- Diagonal stripes -->
       <line x1="-50" y1="0" x2="150" y2="300" stroke="currentColor" stroke-width="18" opacity="0.04" />
       <line x1="50" y1="0" x2="250" y2="300" stroke="currentColor" stroke-width="18" opacity="0.04" />
@@ -75,7 +81,7 @@
         font-family="'Space Mono', monospace"
         font-weight="700"
         fill="currentColor"
-        opacity="0.08">
+        opacity="0.15">
         {{ initial }}
       </text>
     </svg>
@@ -85,7 +91,9 @@
       v-else-if="resolvedCategory === 'logo'"
       viewBox="0 0 400 300"
       xmlns="http://www.w3.org/2000/svg"
-      class="w-full h-full">
+      class="w-full h-full"
+      role="img"
+      :aria-label="'Project thumbnail for ' + title">
       <!-- Centered geometric shape (hexagon) -->
       <polygon
         points="200,90 245,112 245,188 200,210 155,188 155,112"
@@ -105,7 +113,7 @@
         font-family="'Space Mono', monospace"
         font-weight="700"
         fill="currentColor"
-        opacity="0.08">
+        opacity="0.15">
         {{ initial }}
       </text>
     </svg>
@@ -115,7 +123,9 @@
       v-else
       viewBox="0 0 400 300"
       xmlns="http://www.w3.org/2000/svg"
-      class="w-full h-full">
+      class="w-full h-full"
+      role="img"
+      :aria-label="'Project thumbnail for ' + title">
       <!-- Grid lines -->
       <line x1="0" y1="75" x2="400" y2="75" stroke="currentColor" stroke-width="0.5" opacity="0.1" />
       <line x1="0" y1="150" x2="400" y2="150" stroke="currentColor" stroke-width="0.5" opacity="0.1" />
@@ -135,7 +145,7 @@
         font-family="'Space Mono', monospace"
         font-weight="700"
         fill="currentColor"
-        opacity="0.08">
+        opacity="0.15">
         {{ initial }}
       </text>
     </svg>
@@ -143,6 +153,19 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * ProjectThumbnail — SVG placeholder thumbnail for projects without an image.
+ *
+ * Renders a category-specific SVG illustration (concentric circles for branding,
+ * wave lines for motion, diagonal lines for jersey/sport, a grid for logo/identity,
+ * or a default dot pattern) with the project's initial letter overlaid.
+ * Used as a fallback inside WorkCard when no `thumbnail` image URL is provided.
+ *
+ * @prop {string} [title] - Project title; its first character is used as the initial
+ * @prop {string} [category] - Project category; drives which SVG pattern is rendered
+ *
+ * @example <ProjectThumbnail title="Acme Rebrand" category="Branding" />
+ */
 const props = defineProps<{
   title?: string
   category?: string

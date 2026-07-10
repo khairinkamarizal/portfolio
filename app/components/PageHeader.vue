@@ -3,14 +3,13 @@
     <!-- Eyebrow label -->
     <p
       v-if="label"
-      class="text-xs tracking-widest uppercase opacity-40 mb-4 font-mono"
-      style="font-family: 'Space Mono', monospace">
+      class="text-xs tracking-widest uppercase opacity-40 mb-4 font-mono">
       {{ label }}
     </p>
 
     <!-- Title -->
     <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-black dark:text-white">
-      {{ title }}
+      <slot name="title">{{ title }}</slot>
     </h1>
 
     <!-- Description -->

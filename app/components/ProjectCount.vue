@@ -1,10 +1,19 @@
 <template>
   <div class="flex items-baseline gap-1.5">
-    <span class="text-2xl font-medium tracking-tight tabular-nums">{{ displayCount }}</span>
-    <span class="text-xs opacity-40 tracking-wider">PROJECTS</span>
+    <span class="text-2xl font-medium tracking-tight tabular-nums text-black dark:text-white">{{ displayCount }}</span>
+    <span class="text-xs opacity-40 tracking-wider font-mono text-black dark:text-white">PROJECTS</span>
   </div>
 </template>
 
+/**
+ * ProjectCount component.
+ *
+ * Displays an animated count of projects using a cubic ease-out tween.
+ * The number animates from 0 (or its previous value) to the target `count`
+ * over 800 ms on mount and whenever `count` changes.
+ *
+ * @prop {number} count - The target project count to animate to.
+ */
 <script setup lang="ts">
 const props = defineProps<{
   count: number
@@ -12,19 +21,31 @@ const props = defineProps<{
 
 const displayCount = ref(0)
 
-onMounted(() => {
+function animateTo(target: number) {
   const duration = 800
-  const steps = 30
-  const increment = props.count / steps
-  let current = 0
-  const timer = setInterval(() => {
-    current += increment
-    if (current >= props.count) {
-      displayCount.value = props.count
-      clearInterval(timer)
+  const start = displayCount.value
+  const startTime = performance.now()
+
+  function tick(now: number) {
+    const elapsed = now - startTime
+    const t = Math.min(elapsed / duration, 1)
+    const progress = 1 - Math.pow(1 - t, 3)
+    displayCount.value = Math.floor(start + (target - start) * progress)
+    if (t < 1) {
+      requestAnimationFrame(tick)
     } else {
-      displayCount.value = Math.floor(current)
+      displayCount.value = target
     }
-  }, duration / steps)
+  }
+
+  requestAnimationFrame(tick)
+}
+
+onMounted(() => {
+  animateTo(props.count)
+})
+
+watch(() => props.count, (newCount) => {
+  animateTo(newCount)
 })
 </script>

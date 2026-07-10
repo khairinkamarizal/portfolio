@@ -1,20 +1,17 @@
 <template>
-  <div class="relative">
+  <div ref="containerRef" class="relative">
     <!-- Hamburger toggle button -->
     <button
       type="button"
       :aria-expanded="open"
-      aria-controls="mobile-menu-dropdown"
+      aria-controls="mobile-menu-panel"
       aria-label="Toggle navigation menu"
-      :class="[
-        'flex items-center justify-center w-8 h-8 hover:opacity-60 transition-opacity duration-200',
-        transparent ? 'mix-blend-difference text-white' : '',
-      ]"
+      class="flex items-center justify-center w-8 h-8 hover:opacity-60 transition-opacity duration-200"
       @click="open = !open">
       <component :is="open ? X : Menu" :size="20" stroke-width="1.5" />
     </button>
 
-    <!-- Dropdown overlay -->
+    <!-- Dropdown -->
     <Transition
       enter-active-class="transition duration-200 ease-out"
       enter-from-class="opacity-0 -translate-y-2"
@@ -24,13 +21,26 @@
       leave-to-class="opacity-0 -translate-y-2">
       <div
         v-if="open"
-        id="mobile-menu-dropdown"
-        class="absolute right-0 top-full mt-2 w-56 bg-white dark:bg-black border border-black/10 dark:border-white/10 shadow-lg z-50"
-        style="font-family: 'Space Mono', monospace">
+        ref="menuRef"
+        id="mobile-menu-panel"
+        class="absolute right-0 top-full mt-2 w-56 bg-white dark:bg-black border border-black/10 dark:border-white/10 shadow-lg z-50 font-mono p-6"
+        @touchstart="onTouchStart"
+        @touchend="onTouchEnd">
+
+        <!-- Close button -->
+        <div class="flex justify-end px-3 pt-2">
+          <button
+            type="button"
+            aria-label="Close menu"
+            class="flex items-center justify-center w-7 h-7 opacity-40 hover:opacity-100 transition-opacity"
+            @click="open = false">
+            <X :size="16" stroke-width="1.5" />
+          </button>
+        </div>
 
         <!-- Nav links -->
-        <div class="py-1">
-          <AppNav :mobile="true" @close="open = false" />
+        <div class="py-1 flex flex-col gap-4">
+          <AppNav direction="vertical" bordered />
         </div>
 
         <!-- Social links -->
@@ -65,12 +75,39 @@
   </div>
 </template>
 
+/**
+ * MobileMenu component.
+ *
+ * Renders a hamburger toggle button that opens/closes a dropdown navigation
+ * panel for small-screen viewports. Features include:
+ *
+ * - Animated enter/leave transitions (fade + slide)
+ * - Focus trap while the menu is open (via useFocusTrap)
+ * - Swipe-left gesture to dismiss on touch devices
+ * - Auto-close on outside click and on route change
+ * - Keyboard-accessible: aria-expanded, aria-controls on the trigger button
+ *
+ * No props. State is fully internal.
+ */
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { ref, watch, onMounted, onBeforeUnmount } from "vue";
 import { Menu, X } from "lucide-vue-next";
 
 const open = ref(false);
+const containerRef = ref<HTMLElement | null>(null);
+const menuRef = ref<HTMLElement | null>(null);
 const route = useRoute();
+
+const { activate, deactivate } = useFocusTrap(menuRef);
+
+// Trap focus when menu opens/closes
+watch(open, (isOpen) => {
+  if (isOpen) {
+    nextTick(() => activate());
+  } else {
+    deactivate();
+  }
+});
 
 // Close on route change
 watch(
@@ -79,4 +116,27 @@ watch(
     open.value = false;
   }
 );
+
+// Swipe left to close
+let touchStartX = 0
+const onTouchStart = (e: TouchEvent) => { touchStartX = e.touches[0].clientX }
+const onTouchEnd = (e: TouchEvent) => {
+  const diff = touchStartX - e.changedTouches[0].clientX
+  if (diff > 50) open.value = false // swipe left to close
+}
+
+// Close on outside click
+function handleOutsideClick(event: MouseEvent) {
+  if (open.value && containerRef.value && !containerRef.value.contains(event.target as Node)) {
+    open.value = false;
+  }
+}
+
+onMounted(() => {
+  document.addEventListener("mousedown", handleOutsideClick);
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener("mousedown", handleOutsideClick);
+});
 </script>

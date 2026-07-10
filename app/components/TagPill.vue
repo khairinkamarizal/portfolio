@@ -3,14 +3,27 @@
     :class="[
       'tag-pill',
       `tag-pill--${size}`,
+      'font-mono',
       active ? 'tag-pill--active' : 'tag-pill--inactive',
-    ]"
-    style="font-family: 'Space Mono', monospace">
+    ]">
     {{ tag }}
   </span>
 </template>
 
 <script setup lang="ts">
+/**
+ * TagPill — small label badge for project/post tags.
+ *
+ * Renders an uppercase monospace pill displaying a single tag string.
+ * Supports two sizes and an active/inactive visual state — inactive shows a
+ * border-only style while active uses a filled background (inverted in dark mode).
+ *
+ * @prop {string} tag - The tag text to display
+ * @prop {boolean} [active=false] - Whether the pill is in the active/selected state
+ * @prop {'sm'|'md'} [size='sm'] - Size variant controlling font size and padding
+ *
+ * @example <TagPill tag="Nuxt" :active="true" size="sm" />
+ */
 withDefaults(defineProps<{
   tag: string
   active?: boolean
@@ -45,7 +58,7 @@ withDefaults(defineProps<{
 /* Inactive: border only */
 .tag-pill--inactive {
   border: 1px solid currentColor;
-  opacity: 0.4;
+  opacity: 0.6;
   background-color: transparent;
   color: inherit;
 }
@@ -56,13 +69,15 @@ withDefaults(defineProps<{
 
 /* Active: filled */
 .tag-pill--active {
-  background-color: currentColor;
-  border: 1px solid currentColor;
+  background-color: black;
+  color: white;
+  border: 1px solid black;
   opacity: 1;
 }
 
-/* Active text inversion trick using mix-blend-mode */
-.tag-pill--active {
-  position: relative;
+.dark .tag-pill--active {
+  background-color: white;
+  color: black;
+  border-color: white;
 }
 </style>

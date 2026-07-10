@@ -1,10 +1,24 @@
 <template>
-  <span class="glitch-wrapper" :data-text="text" :class="`glitch-${intensity}`">
+  <span class="glitch-wrapper" :data-text="text" :class="`glitch-${intensity}`" :aria-label="text" aria-hidden="false">
     {{ text }}
   </span>
 </template>
 
 <script setup lang="ts">
+/**
+ * GlitchText — CSS glitch animation component for inline text.
+ *
+ * @prop {string} text - The text string to display and apply the glitch effect to.
+ * @prop {'low'|'medium'|'high'} [intensity='low'] - Controls animation speed and repeat count.
+ *   - low: single pass, 0.4s, 2 steps
+ *   - medium: 2 passes, 0.3s, 3 steps
+ *   - high: 3 passes, 0.2s, 4 steps
+ *
+ * Uses CSS pseudo-elements (::before, ::after) with clip-path and keyframe transforms
+ * to produce a glitch slice effect on hover. The text prop is mirrored via data-text
+ * so pseudo-elements can replicate it with `content: attr(data-text)`.
+ * Respects `prefers-reduced-motion`: animations are suppressed via CSS media query.
+ */
 withDefaults(defineProps<{
   text: string
   intensity?: 'low' | 'medium' | 'high'
@@ -90,6 +104,10 @@ withDefaults(defineProps<{
     opacity: 0;
     transform: translate(0);
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glitch-wrapper::before, .glitch-wrapper::after { animation: none !important; }
 }
 
 @keyframes glitch-shift-b {

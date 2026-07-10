@@ -1,22 +1,41 @@
 <template>
   <span
-    class="inline-flex items-center gap-2 px-3 py-1.5 border border-black/10 dark:border-white/10 rounded-full text-black dark:text-white">
+    aria-live="polite"
+    class="inline-flex items-center gap-2 px-2 py-0.5 border border-black/12 dark:border-white/12 text-black dark:text-white">
     <!-- Pulsing dot -->
     <span class="relative flex w-1.5 h-1.5">
       <span
-        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75" />
-      <span class="relative inline-flex rounded-full w-1.5 h-1.5 bg-green-500" />
+        v-if="pulse"
+        :class="['animate-ping absolute inline-flex h-full w-full rounded-full opacity-75', pingColors[color]]"
+        :style="{ animationDuration: '2s' }" />
+      <span :class="['relative inline-flex rounded-full w-1.5 h-1.5', dotColors[color]]" />
     </span>
 
     <!-- Text -->
-    <span class="text-xs tracking-wider">
-      <slot>{{ text }}</slot>
+    <span class="mono-label">
+      <slot>Available for projects</slot>
     </span>
   </span>
 </template>
 
 <script setup lang="ts">
-defineProps<{
+/**
+ * StatusBadge
+ *
+ * Displays an availability indicator with a colored pulsing dot and a text label.
+ * Color can be green, yellow, or red. The pulse animation can be toggled off.
+ * Defaults to green with pulse enabled, showing "Available for projects".
+ * Uses aria-live="polite" so screen readers announce status changes.
+ */
+const dotColors = { green: 'bg-green-500', yellow: 'bg-yellow-500', red: 'bg-red-500' }
+const pingColors = { green: 'bg-green-400', yellow: 'bg-yellow-400', red: 'bg-red-400' }
+
+withDefaults(defineProps<{
   text?: string
-}>()
+  pulse?: boolean
+  color?: 'green' | 'yellow' | 'red'
+}>(), {
+  pulse: true,
+  color: 'green',
+})
 </script>

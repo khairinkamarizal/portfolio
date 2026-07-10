@@ -12,17 +12,20 @@
         <div
           v-for="skill in group.skills"
           :key="skill.name"
-          class="flex flex-col gap-1.5 p-3 border border-black/10 dark:border-white/10">
+          class="flex flex-col gap-1.5 p-3 border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 transition-colors duration-150">
           <span class="text-xs font-medium leading-snug">{{ skill.name }}</span>
           <!-- Level indicator dots -->
-          <div class="flex items-center gap-1">
+          <div 
+            class="flex items-center gap-1"
+            role="img"
+            :aria-label="'Proficiency: ' + skillLevel(skill.level) + ' out of 5'">
             <span
               v-for="i in 5"
               :key="i"
               class="w-1 h-1 rounded-full transition-colors duration-150"
               :class="i <= skillLevel(skill.level)
                 ? 'bg-black dark:bg-white'
-                : 'bg-black/15 dark:bg-white/15'" />
+                : 'bg-black/25 dark:bg-white/25'" />
           </div>
         </div>
       </div>

@@ -4,10 +4,13 @@
 
     <!-- Copy link -->
     <button
+      type="button"
       @click="copyLink"
-      class="text-[11px] opacity-50 hover:opacity-100 transition-opacity duration-150 tracking-wider flex items-center gap-1"
+      class="text-[11px] opacity-70 hover:opacity-100 transition-opacity duration-150 tracking-wider flex items-center gap-1"
       :aria-label="copied ? 'Link copied' : 'Copy link'">
-      <span>{{ copied ? 'COPIED' : 'COPY LINK' }}</span>
+      <Transition name="fade" mode="out-in">
+        <span :key="copied ? 'copied' : 'copy'">{{ copied ? 'COPIED' : 'COPY LINK' }}</span>
+      </Transition>
     </button>
 
     <!-- Twitter / X -->
@@ -15,7 +18,7 @@
       :href="twitterUrl"
       target="_blank"
       rel="noopener noreferrer"
-      class="text-[11px] opacity-50 hover:opacity-100 transition-opacity duration-150 tracking-wider"
+      class="text-[11px] opacity-70 hover:opacity-100 transition-opacity duration-150 tracking-wider"
       aria-label="Share on Twitter / X">
       X
     </a>
@@ -25,7 +28,7 @@
       :href="linkedinUrl"
       target="_blank"
       rel="noopener noreferrer"
-      class="text-[11px] opacity-50 hover:opacity-100 transition-opacity duration-150 tracking-wider"
+      class="text-[11px] opacity-70 hover:opacity-100 transition-opacity duration-150 tracking-wider"
       aria-label="Share on LinkedIn">
       LINKEDIN
     </a>
@@ -34,9 +37,10 @@
 
 <script setup lang="ts">
 /**
- * ShareButtons — share buttons for Copy link, Twitter/X, LinkedIn.
- * Props: title (string), url (string)
- * Uses navigator.clipboard for copy with a "copied" feedback state.
+ * ShareButtons — social share row for blog posts and pages.
+ * @props title {string} - Post or page title used in share text.
+ * @props url {string} - Canonical URL to share.
+ * Renders Copy Link (with clipboard feedback), Twitter/X, and LinkedIn buttons.
  */
 const props = defineProps<{
   title: string
@@ -53,17 +57,8 @@ async function copyLink() {
       copied.value = false
     }, 2000)
   } catch {
-    // Fallback: select a temporary input
-    const input = document.createElement('input')
-    input.value = props.url
-    document.body.appendChild(input)
-    input.select()
-    document.execCommand('copy')
-    document.body.removeChild(input)
-    copied.value = true
-    setTimeout(() => {
-      copied.value = false
-    }, 2000)
+    // Fallback: show URL in prompt so user can copy manually
+    window.prompt('Copy this link:', props.url)
   }
 }
 
@@ -78,3 +73,14 @@ const linkedinUrl = computed(() => {
   return `https://www.linkedin.com/sharing/share-offsite/?url=${url}&title=${title}`
 })
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.15s;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>

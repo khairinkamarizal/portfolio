@@ -4,25 +4,24 @@
       <!-- Render a simple SVG placeholder icon or use lucide via dynamic component -->
       <component :is="iconComponent" v-if="iconComponent" class="w-8 h-8 opacity-20" />
     </div>
-    <p class="empty-state-title">{{ title }}</p>
+    <h2 class="empty-state-title">{{ title }}</h2>
     <p v-if="description" class="empty-state-description">{{ description }}</p>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import type { Component } from 'vue'
 
 const props = defineProps<{
   title: string
   description?: string
-  icon?: string
+  icon?: Component
 }>()
 
-// Dynamically resolve lucide icon if name is provided
+// Render icon component directly — accepts a component reference
 const iconComponent = computed(() => {
   if (!props.icon) return null
-  // Icons are auto-imported in Nuxt via lucide-vue-next
-  // Return the pascal-cased component name as a string for dynamic resolution
   return props.icon
 })
 </script>

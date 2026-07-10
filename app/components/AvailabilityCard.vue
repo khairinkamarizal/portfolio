@@ -5,8 +5,7 @@
       <div>
         <!-- Eyebrow -->
         <p
-          class="text-[10px] tracking-widest uppercase opacity-40 mb-1.5 font-mono text-black dark:text-white"
-          style="font-family: 'Space Mono', monospace">
+          class="text-[10px] tracking-widest uppercase opacity-50 mb-1.5 font-mono text-black dark:text-white">
           Availability
         </p>
         <!-- Status -->
@@ -21,8 +20,7 @@
     <dl class="grid grid-cols-2 gap-x-6 gap-y-4 border-t border-black/10 dark:border-white/10 pt-5">
       <div v-for="detail in details" :key="detail.label">
         <dt
-          class="text-[10px] tracking-widest uppercase opacity-40 font-mono text-black dark:text-white mb-0.5"
-          style="font-family: 'Space Mono', monospace">
+          class="text-[10px] tracking-widest uppercase opacity-50 font-mono text-black dark:text-white mb-0.5">
           {{ detail.label }}
         </dt>
         <dd class="text-sm text-black dark:text-white font-medium">
@@ -34,9 +32,8 @@
     <!-- CTA -->
     <div class="mt-6 pt-5 border-t border-black/10 dark:border-white/10">
       <NuxtLink
-        to="/contact"
+        to="/message"
         class="text-xs tracking-widest uppercase font-mono opacity-60 hover:opacity-100 transition-opacity duration-200 text-black dark:text-white"
-        style="font-family: 'Space Mono', monospace">
         Start a Conversation →
       </NuxtLink>
     </div>
@@ -44,6 +41,11 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * AvailabilityCard — compact sidebar card showing current work availability.
+ * @props available {boolean} - When true shows "Available Now"; false shows "Currently Busy".
+ * Uses StatusBadge for the visual indicator and dl/dt/dd for structured detail rows.
+ */
 defineProps<{
   available?: boolean
 }>()

@@ -15,7 +15,7 @@
               : 'border-black/20 dark:border-white/20 hover:border-black dark:hover:border-white',
           ]"
           :aria-pressed="reacted.has(reaction.emoji)"
-          :aria-label="`React with ${reaction.emoji}`">
+          :aria-label="'React with ' + emojiNames[reaction.emoji] + ' emoji (count: ' + reaction.count + ')'">
           <span>{{ reaction.emoji }}</span>
           <span class="font-mono tabular-nums">{{ reaction.count }}</span>
         </button>
@@ -25,6 +25,12 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * EmojiReaction — per-post emoji reaction buttons (👀 🔥 💯 ✨).
+ * @props postSlug {string} - Unique post slug used as the localStorage key.
+ * Reactions and counts are persisted to localStorage; no backend required.
+ * Toggling an emoji increments or decrements its count and tracks state in a Set.
+ */
 const props = defineProps<{
   postSlug: string
 }>()
@@ -35,6 +41,7 @@ interface Reaction {
 }
 
 const EMOJIS = ['👀', '🔥', '💯', '✨']
+const emojiNames: Record<string, string> = { '👀': 'eyes', '🔥': 'fire', '💯': 'hundred points', '✨': 'sparkles' }
 const STORAGE_KEY = computed(() => `reactions-${props.postSlug}`)
 
 const reactions = ref<Reaction[]>(EMOJIS.map(emoji => ({ emoji, count: 0 })))
@@ -63,9 +70,11 @@ function react(emoji: string) {
   if (reacted.value.has(emoji)) {
     reaction.count = Math.max(0, reaction.count - 1)
     reacted.value.delete(emoji)
+    reacted.value = new Set(reacted.value)
   } else {
     reaction.count += 1
     reacted.value.add(emoji)
+    reacted.value = new Set(reacted.value)
   }
 
   // Persist to localStorage

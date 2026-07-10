@@ -1,16 +1,27 @@
 <template>
-  <Transition name="fade">
+  <Transition name="fade-up">
     <button
       v-if="visible"
+      type="button"
       @click="scrollToTop"
-      class="fixed bottom-6 right-6 z-50 w-9 h-9 flex items-center justify-center border border-black/20 dark:border-white/20 bg-white dark:bg-black hover:border-black dark:hover:border-white transition-all duration-200"
+      class="fixed bottom-6 right-6 z-50 w-9 h-9 p-2.5 flex items-center justify-center border border-black/10 dark:border-white/10 bg-white/90 dark:bg-black/90 backdrop-blur-sm shadow-sm hover:border-black dark:hover:border-white opacity-80 hover:opacity-100 transition-opacity duration-150 transition-all duration-200"
       aria-label="Back to top">
-      <ArrowUp :size="14" />
+      <ArrowUp :size="14" aria-hidden="true" />
     </button>
   </Transition>
 </template>
 
 <script setup lang="ts">
+/**
+ * BackToTop — floating scroll-to-top button.
+ *
+ * Renders a fixed button in the bottom-right corner that smoothly scrolls the
+ * page back to the top when clicked. Appears with a fade-up transition once
+ * the user has scrolled more than 400px, and disappears when back near the top.
+ * Uses a passive scroll listener for performance.
+ *
+ * @example <BackToTop />
+ */
 import { ArrowUp } from 'lucide-vue-next'
 
 const visible = ref(false)
@@ -33,12 +44,16 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.2s ease;
+.fade-up-enter-active,
+.fade-up-leave-active {
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
-.fade-enter-from,
-.fade-leave-to {
+.fade-up-enter-from {
   opacity: 0;
+  transform: translateY(8px);
+}
+.fade-up-leave-to {
+  opacity: 0;
+  transform: translateY(8px);
 }
 </style>

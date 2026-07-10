@@ -1,34 +1,31 @@
 <template>
-  <NuxtLayout name="simple">
-    <template #default>
-      <div class="flex flex-col gap-10 mt-10">
-        <div class="flex flex-col gap-4">
-          <h1 class="text-xs opacity-50 tracking-widest">Error {{ error?.statusCode || 404 }}</h1>
-          <p class="text-2xl leading-tight dark:font-light">
-            {{ errorMessage }}
-          </p>
-          <p class="text-sm opacity-60 leading-relaxed dark:font-light">
-            {{ errorDescription }}
-          </p>
-        </div>
+  <div class="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-black text-black dark:text-white px-6">
+    <div class="flex flex-col items-center text-center gap-4 max-w-md w-full">
+      <p class="font-mono text-[8vw] font-bold leading-none opacity-10 select-none">
+        {{ error?.statusCode || 404 }}
+      </p>
 
-        <NuxtLink
-          to="/"
-          class="group flex items-center gap-2 text-sm hover:opacity-70 transition-opacity duration-200">
-          <span>← Back to home</span>
-        </NuxtLink>
+      <div class="flex flex-col gap-2">
+        <p class="text-xl font-medium">
+          {{ errorMessage }}
+        </p>
+        <p class="text-sm opacity-60">
+          {{ errorDescription }}
+        </p>
       </div>
-    </template>
-  </NuxtLayout>
+
+      <NuxtLink
+        to="/"
+        class="inline-flex items-center gap-2 px-5 py-2.5 bg-black dark:bg-white text-white dark:text-black text-xs tracking-wider font-medium hover:opacity-80 transition-opacity duration-150 mt-6">
+        <span>&larr; Back to home</span>
+      </NuxtLink>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
 const props = defineProps({
   error: Object as () => { statusCode?: number; statusMessage?: string; message?: string },
-})
-
-definePageMeta({
-  layout: false,
 })
 
 const errorMessage = computed(() => {

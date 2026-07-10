@@ -1,214 +1,248 @@
 <template>
-  <div class="w-full">
+  <NuxtLayout name="simple">
+    <template #default>
 
     <!-- ============================================ -->
     <!-- HERO: page heading                           -->
     <!-- ============================================ -->
-    <section class="w-full border-b border-black/10 dark:border-white/10 px-6 md:px-12 lg:px-20 py-16 lg:py-24">
-      <h1
-        class="text-5xl md:text-7xl lg:text-[8vw] font-bold leading-none tracking-tighter uppercase"
-        style="font-family: 'Space Mono', monospace">
-        About
-      </h1>
-      <p class="mt-4 text-sm opacity-60 max-w-lg leading-relaxed">
-        Designer, developer, and occasional over-thinker. Based in Cyberjaya, Malaysia.
-      </p>
-    </section>
+    <RevealOnScroll variant="fade-up">
+      <section id="main-content" class="w-full border-b border-black/8 dark:border-white/8 px-page py-12 md:py-16 lg:py-20" aria-label="About">
+        <p class="mono-label opacity-20 mb-3">002 / About</p>
+        <h1
+          class="text-4xl md:text-6xl lg:text-7xl font-bold leading-none uppercase font-mono tracking-[-0.04em] animate-appear [will-change:opacity,transform]">
+          About
+        </h1>
+        <FadeText :delay="150">
+          <p class="mt-4 text-sm opacity-60 max-w-lg leading-relaxed text-balance">
+            Designer, developer, and deliberate craftsperson. Cyberjaya, Malaysia.
+          </p>
+        </FadeText>
+      </section>
+    </RevealOnScroll>
 
     <!-- ============================================ -->
     <!-- MAIN CONTENT: 2-col desktop, stacked mobile  -->
     <!-- ============================================ -->
-    <section class="w-full px-6 md:px-12 lg:px-20 py-12 lg:py-16">
+    <section class="w-full px-page py-10 lg:py-14" aria-label="Bio and experience">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
 
         <!-- LEFT COL: bio + skills + certs -->
         <div class="flex flex-col gap-12">
 
           <!-- Bio -->
-          <div>
-            <h2
-              class="text-xs tracking-widest uppercase opacity-40 mb-6"
-              style="font-family: 'Space Mono', monospace">
-              Bio
-            </h2>
-            <div class="flex flex-col gap-4 text-sm leading-relaxed opacity-80">
-              <p>
-                I'm Khairin — a designer and developer with 5+ years of experience
-                building digital products that balance form and function. I believe
-                great software is the result of careful thinking, not just clever code.
-              </p>
-              <p>
-                My work spans product design, front-end engineering, and brand identity.
-                I'm comfortable moving between Figma and the terminal, and I care deeply
-                about the details that make an experience feel right.
-              </p>
-              <p>
-                When I'm not building things, I'm writing about design, reading about
-                systems, or making coffee with too much deliberation.
-              </p>
+          <RevealOnScroll variant="fade-up">
+            <div>
+              <h2 class="mono-label mb-4">
+                Bio
+              </h2>
+              <div class="flex flex-col gap-3 text-sm leading-relaxed md:leading-[1.7] opacity-70 max-w-lg font-light">
+                <p>
+                  I'm Khairin — a Malaysian designer and developer who builds digital things that feel as good as they look. 5+ years of craft across brand, product, and web.
+                </p>
+                <p>
+                  My work lives at the intersection of design and engineering — Figma to code, brand identity to design systems. I care about the details that make the difference between good and great.
+                </p>
+                <p>
+                  Outside of client work, I write about design craft, experiment with creative code, and drink too much coffee thinking about typography.
+                </p>
+              </div>
             </div>
-          </div>
+          </RevealOnScroll>
 
           <!-- Skills -->
-          <div>
-            <h2
-              class="text-xs tracking-widest uppercase opacity-40 mb-6"
-              style="font-family: 'Space Mono', monospace">
-              Skills
-            </h2>
-            <div class="grid grid-cols-2 gap-px bg-black/10 dark:bg-white/10 border border-black/10 dark:border-white/10">
-              <div
-                v-for="(group, i) in skillGroups"
-                :key="group.category"
-                class="bg-white dark:bg-black p-4">
-                <h3
-                  class="text-xs tracking-widest uppercase opacity-40 mb-3"
-                  style="font-family: 'Space Mono', monospace">
-                  {{ group.category }}
-                </h3>
-                <ul class="flex flex-col gap-1.5">
-                  <li
-                    v-for="skill in group.items"
-                    :key="skill"
-                    class="text-sm opacity-70">
-                    {{ skill }}
-                  </li>
-                </ul>
+          <RevealOnScroll variant="fade-up" :delay="50">
+            <div>
+              <h2 class="mono-label mb-4 tracking-widest sticky top-0 bg-white dark:bg-black py-2 -mx-2 px-2 z-10">
+                Skills
+              </h2>
+              <div class="grid grid-cols-2 gap-px bg-black/8 dark:bg-white/8 border border-black/8 dark:border-white/8">
+                <div
+                  v-for="(group, i) in skillGroups"
+                  :key="group.category"
+                  class="bg-white dark:bg-black p-4">
+                  <h3 class="mono-label mb-3">
+                    {{ group.category }}
+                  </h3>
+                  <ul class="flex flex-col divide-y divide-black/8 dark:divide-white/8">
+                    <li
+                      v-for="skill in group.items"
+                      :key="skill"
+                      class="text-sm opacity-70">
+                      <div class="flex items-center justify-between gap-2 py-2.5">
+                        <span class="text-sm tracking-tight">{{ skill }}</span>
+                        <div class="flex-1 border-b border-dotted border-black/15 dark:border-white/15 mx-2" />
+                      </div>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
+          </RevealOnScroll>
 
           <!-- Certifications -->
-          <div>
-            <h2
-              class="text-xs tracking-widest uppercase opacity-40 mb-6"
-              style="font-family: 'Space Mono', monospace">
-              Education & Certs
-            </h2>
-            <div class="flex flex-col divide-y divide-black/10 dark:divide-white/10 border-t border-black/10 dark:border-white/10">
-              <div
-                v-for="cert in certs"
-                :key="cert.title"
-                class="py-4 flex flex-col gap-1">
-                <span class="text-sm font-medium">{{ cert.title }}</span>
-                <span class="text-xs opacity-50">{{ cert.issuer }} · {{ cert.year }}</span>
+          <RevealOnScroll variant="fade-up" :delay="50">
+            <div>
+              <h2 class="mono-label mb-4">
+                Education & Certs
+              </h2>
+              <div class="flex flex-col divide-y divide-black/8 dark:divide-white/8 border-t border-black/8 dark:border-white/8">
+                <div
+                  v-for="cert in certs"
+                  :key="cert.title"
+                  class="py-4 flex flex-col gap-1 hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors duration-150 -mx-2 px-2">
+                  <span class="text-sm font-medium">{{ cert.title }}</span>
+                  <span class="text-xs opacity-50">{{ cert.issuer }} · <span class="font-mono tabular-nums">{{ cert.year }}</span></span>
+                </div>
               </div>
             </div>
-          </div>
+          </RevealOnScroll>
         </div>
 
         <!-- RIGHT COL: experience timeline -->
-        <div>
-          <h2
-            class="text-xs tracking-widest uppercase opacity-40 mb-6"
-            style="font-family: 'Space Mono', monospace">
-            Experience
-          </h2>
-          <div class="flex flex-col gap-0 divide-y divide-black/10 dark:divide-white/10 border-t border-black/10 dark:border-white/10">
-            <div
-              v-for="job in experience"
-              :key="`${job.company}-${job.period}`"
-              class="py-6 flex flex-col gap-2">
-              <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
-                <div>
-                  <h3 class="text-sm font-semibold">{{ job.role }}</h3>
-                  <span class="text-sm opacity-60">{{ job.company }}</span>
+        <RevealOnScroll variant="fade-left" :delay="50">
+          <div class="lg:border-l border-black/8 dark:border-white/8 lg:pl-20">
+            <h2 class="mono-label mb-4">
+              Experience
+            </h2>
+            <div class="flex flex-col gap-0 border-t border-black/8 dark:border-white/8">
+              <div
+                v-for="job in experience"
+                :key="`${job.company}-${job.period}`"
+                class="py-6 flex flex-col gap-2 border-b border-black/8 dark:border-white/8 pb-8 last:border-b-0">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
+                  <div>
+                    <h3 class="text-sm font-semibold">{{ job.role }}</h3>
+                    <span class="text-sm opacity-60">{{ job.company }}</span>
+                  </div>
+                  <span class="font-mono text-xs opacity-50 shrink-0">
+                    {{ job.period }}
+                  </span>
                 </div>
-                <span
-                  class="text-xs tracking-widest opacity-40 shrink-0"
-                  style="font-family: 'Space Mono', monospace">
-                  {{ job.period }}
-                </span>
-              </div>
-              <p class="text-sm opacity-60 leading-relaxed">{{ job.description }}</p>
-              <div class="flex flex-wrap gap-2 mt-1">
-                <span
-                  v-for="tag in job.tags"
-                  :key="tag"
-                  class="text-xs tracking-wide opacity-40 border border-black/10 dark:border-white/10 px-2 py-0.5">
-                  {{ tag }}
-                </span>
+                <p class="text-sm opacity-60 leading-relaxed mt-2 max-w-prose">{{ job.description }}</p>
+                <div class="flex flex-wrap gap-2 mt-1">
+                  <span
+                    v-for="tag in job.tags"
+                    :key="tag"
+                    class="tag-base">
+                    {{ tag }}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </RevealOnScroll>
       </div>
     </section>
 
     <!-- ============================================ -->
     <!-- TOOLS & STACK                                -->
     <!-- ============================================ -->
-    <section class="w-full border-t border-black/10 dark:border-white/10 px-6 md:px-12 lg:px-20 py-12 lg:py-16">
-      <h2
-        class="text-xs tracking-widest uppercase opacity-40 mb-8"
-        style="font-family: 'Space Mono', monospace">
-        Tools &amp; Stack
-      </h2>
-      <div class="flex flex-col gap-8">
-        <div v-for="group in toolGroups" :key="group.label">
-          <h3
-            class="text-xs tracking-widest uppercase opacity-30 mb-3"
-            style="font-family: 'Space Mono', monospace">
-            {{ group.label }}
-          </h3>
-          <div class="flex flex-wrap gap-2">
-            <ToolBadge
-              v-for="tool in group.tools"
-              :key="tool"
-              :name="tool"
-              :type="group.type" />
+    <RevealOnScroll variant="fade-up" :delay="50">
+      <section class="w-full border-t border-black/8 dark:border-white/8 px-8 py-10 lg:py-14" aria-label="Tools and stack">
+        <h2 class="mono-label mb-4">Tools &amp; Stack</h2>
+        <div class="flex flex-col gap-8">
+          <div v-for="group in toolGroups" :key="group.label">
+            <h3 class="mono-label mb-3">
+              {{ group.label }}
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <ToolBadge
+                v-for="tool in group.tools"
+                :key="tool"
+                :name="tool"
+                :type="group.type" />
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </RevealOnScroll>
 
     <!-- ============================================ -->
     <!-- MY PROCESS                                   -->
     <!-- ============================================ -->
-    <section class="w-full border-t border-black/10 dark:border-white/10 px-6 md:px-12 lg:px-20 py-12 lg:py-16">
-      <h2
-        class="text-xs tracking-widest uppercase opacity-40 mb-8"
-        style="font-family: 'Space Mono', monospace">
-        My Process
-      </h2>
-      <div class="max-w-2xl">
-        <ProcessStep
-          v-for="step in processSteps"
-          :key="step.number"
-          :number="step.number"
-          :title="step.title"
-          :description="step.description" />
-      </div>
-    </section>
+    <RevealOnScroll variant="fade-up" :delay="100">
+      <section class="w-full border-t border-black/8 dark:border-white/8 px-8 py-10 lg:py-14" aria-label="My process">
+        <h2 class="mono-label mb-4">
+          My Process
+        </h2>
+        <div class="max-w-2xl">
+          <ProcessStep
+            v-for="step in processSteps"
+            :key="step.number"
+            :number="step.number"
+            :title="step.title"
+            :description="step.description" />
+        </div>
+      </section>
+    </RevealOnScroll>
 
     <!-- ============================================ -->
     <!-- CTA: footer strip                            -->
     <!-- ============================================ -->
-    <section class="w-full border-t border-black/10 dark:border-white/10 px-6 md:px-12 lg:px-20 py-12">
+    <section class="w-full border-t border-black/8 dark:border-white/8 px-8 py-12">
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <p class="text-sm opacity-60">Want to work together or just say hello?</p>
-        <NuxtLink
-          to="/message"
-          class="text-xs tracking-widest uppercase border border-black/20 dark:border-white/20 px-6 py-3 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-200 self-start sm:self-auto"
-          style="font-family: 'Space Mono', monospace">
-          Get in Touch →
-        </NuxtLink>
+        <div class="flex items-center gap-3 self-start sm:self-auto">
+          <NuxtLink
+            to="/message"
+            class="text-xs tracking-widest uppercase border border-black/20 dark:border-white/20 px-6 py-3 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-200 font-mono focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2">
+            Get in Touch →
+          </NuxtLink>
+          <button
+            type="button"
+            @click="copyEmail"
+            class="font-mono text-[10px] tracking-[0.2em] uppercase opacity-50 hover:opacity-100 transition-opacity duration-200 flex items-center gap-1.5">
+            <span>{{ emailCopied ? 'Copied!' : 'Copy email' }}</span>
+          </button>
+        </div>
       </div>
     </section>
 
-  </div>
+    </template>
+  </NuxtLayout>
 </template>
 
 <script setup lang="ts">
-useSeoMeta({
-  title: "About",
-  description:
-    "Designer & developer based in Cyberjaya, Malaysia. 5+ years building thoughtful digital products.",
+useHead({
+  title: 'About — Khairin Kamarizal',
+  meta: [
+    { name: 'description', content: 'Designer and developer with 5+ years of experience building digital products that balance form and function.' },
+    { property: 'og:title', content: 'About — Khairin Kamarizal' },
+    { property: 'og:description', content: 'Designer, developer, and occasional over-thinker. Based in Cyberjaya, Malaysia.' },
+    { property: 'og:url', content: 'https://khair.ink/about' },
+  ],
+  script: [{
+    type: 'application/ld+json',
+    innerHTML: JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: 'Khairin Kamarizal',
+      url: 'https://khair.ink',
+      jobTitle: 'Creative Designer & Developer',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Cyberjaya',
+        addressCountry: 'MY'
+      },
+      sameAs: [
+        'https://github.com/khairinkamarizal',
+        'https://linkedin.com/in/khairinkamarizal',
+        'https://www.behance.net/khairinkamarizal'
+      ]
+    })
+  }],
 });
 
 definePageMeta({
-  layout: "simple",
+  layout: false,
 });
+
+const emailCopied = ref(false)
+async function copyEmail() {
+  await navigator.clipboard.writeText('khairinkamarizal@gmail.com')
+  emailCopied.value = true
+  setTimeout(() => { emailCopied.value = false }, 2000)
+}
 
 const processSteps = [
   {
@@ -274,7 +308,7 @@ const certs = [
 const experience = [
   {
     role: "Senior Product Designer",
-    company: "Acme Corp",
+    company: "TechCorp MY",
     period: "2023 — Present",
     description:
       "Leading design for core product features, managing the design system, and collaborating with engineering on implementation.",
@@ -282,7 +316,7 @@ const experience = [
   },
   {
     role: "Frontend Engineer",
-    company: "Startup XYZ",
+    company: "FinTech Startup",
     period: "2021 — 2023",
     description:
       "Built and maintained customer-facing web application. Introduced component library that reduced development time by 40%.",
@@ -290,8 +324,8 @@ const experience = [
   },
   {
     role: "UI/UX Designer",
-    company: "Agency ABC",
-    period: "2019 — 2021",
+    company: "Digital Agency",
+    period: "2020 — 2021",
     description:
       "Designed digital experiences for clients across fintech, e-commerce, and healthcare verticals.",
     tags: ["Figma", "Prototyping", "User Research"],

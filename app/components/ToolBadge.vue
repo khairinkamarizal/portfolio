@@ -1,5 +1,5 @@
 <template>
-  <div :class="['tool-badge', `tool-badge--${type}`]">
+  <div :class="['tool-badge', `tool-badge--${type}`, 'hover:bg-black/[0.03] dark:hover:bg-white/[0.03] transition-colors duration-150 -mx-1 px-1']">
     <span class="tool-badge-initial" aria-hidden="true">{{ initial }}</span>
     <span class="tool-badge-name">{{ name }}</span>
   </div>

@@ -1,60 +1,70 @@
 <template>
   <aside
     :class="[
-      'w-48 shrink-0 flex flex-col gap-10 px-6 py-8 border-r uppercase sticky top-0 h-screen overflow-y-auto',
+      'w-56 shrink-0 min-w-0 flex flex-col px-5 py-7 border-r sticky top-0 h-screen overflow-y-auto font-mono dark:bg-[#0a0a0a]',
       transparent
-        ? 'border-white/10 mix-blend-difference'
-        : 'border-black/10 dark:border-white/10',
+        ? 'border-white/8 mix-blend-difference'
+        : 'border-black/8 dark:border-white/8',
     ]"
-    style="font-family: 'Space Mono', monospace"
     aria-label="Desktop sidebar">
-    
+
     <!-- Logo + color toggle -->
-    <div class="flex items-center justify-between">
-      <NuxtLink to="/" aria-label="Home">
-        <AppLogo
-          class="w-8 h-8 hover:scale-125 transition-transform duration-300" />
+    <div class="flex items-center justify-between mb-10">
+      <NuxtLink to="/" aria-label="Go to homepage">
+        <AppLogo class="w-8 h-8 hover:opacity-70 transition-opacity duration-200" />
       </NuxtLink>
       <ColorToggle
-        class="w-7 h-7 hover:scale-125 transition-transform duration-300"
-        :class="
-          transparent
-            ? 'mix-blend-difference text-white'
-            : 'text-black dark:text-white'
-        " />
+        class="w-6 h-6 hover:opacity-70 transition-opacity duration-200"
+        :class="transparent ? 'mix-blend-difference text-white' : 'text-black dark:text-white'" />
     </div>
 
     <!-- Vertical nav -->
+    <!-- AppNav handles vertical nav with border-l-2 active states -->
     <AppNav direction="vertical" aria-label="Main navigation" />
 
-    <!-- Spacer pushes info to bottom -->
+    <!-- Spacer -->
     <div class="flex-1" />
 
+    <!-- Divider -->
+    <div class="border-t border-black/8 dark:border-white/8 -mx-5 mb-5" />
+
     <!-- Location + time -->
-    <div class="flex flex-col gap-1.5 font-sans normal-case text-xs">
-      <span class="opacity-40 tracking-widest text-[10px]">CYBERJAYA, MY</span>
+    <div class="flex flex-col gap-1 normal-case text-xs mb-4 pt-2">
+      <span class="mono-label">Cyberjaya, MY</span>
       <ClientOnly>
-        <div class="opacity-60 flex items-center gap-0.5">
+        <div class="opacity-70 flex items-center gap-0.5 tabular-nums">
           <span>{{ hours }}</span>
           <span class="blink">:</span>
           <span>{{ minutes }}</span>
-          <span class="ml-1 opacity-70">{{ ampm }}</span>
+          <span class="ml-1.5 opacity-60 uppercase text-[9px]">{{ ampm }}</span>
         </div>
         <template #fallback>
-          <div class="opacity-40">--:-- --</div>
+          <div class="opacity-30 tabular-nums">--:-- --</div>
         </template>
       </ClientOnly>
     </div>
 
-    <!-- Availability dot -->
-    <div class="flex items-center gap-2 font-sans normal-case">
-      <span class="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0 animate-pulse"></span>
-      <span class="text-[10px] opacity-50 tracking-wider">AVAILABLE</span>
+    <!-- Availability -->
+    <div class="flex items-center gap-2 normal-case pb-2" title="Available for freelance projects">
+      <span class="relative flex w-1.5 h-1.5 shrink-0">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-60" />
+        <span class="relative inline-flex rounded-full w-1.5 h-1.5 bg-green-500" />
+      </span>
+      <FadeText :delay="300">Open to work</FadeText>
     </div>
   </aside>
 </template>
 
 <script setup lang="ts">
+/**
+ * DesktopSidebar
+ *
+ * Persistent left-side navigation panel for desktop viewports. Displays the
+ * site logo, color mode toggle, vertical AppNav, and a footer showing the
+ * author's local time (Asia/Kuala_Lumpur) and availability status.
+ * Supports a `transparent` prop for mix-blend-difference overlay mode.
+ * Updates the clock every second via a setInterval that is cleaned up on unmount.
+ */
 import { ref, onMounted, onUnmounted } from "vue";
 
 defineProps({

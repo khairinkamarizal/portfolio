@@ -5,11 +5,19 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
-  text: string
-  tag?: 'span' | 'div'
-}>()
-
+/**
+ * HoverUnderline — animated underline text wrapper.
+ *
+ * Wraps a text string in a configurable inline element and applies a
+ * left-to-right animated underline on hover and focus-within using a CSS
+ * `::after` pseudo-element. Uses `cubic-bezier(0.4, 0, 0.2, 1)` easing for
+ * a smooth reveal effect. Useful for nav links and inline CTAs.
+ *
+ * @prop {string} text - The text content to display and underline
+ * @prop {'span'|'div'} [tag='span'] - The root element tag to render
+ *
+ * @example <HoverUnderline text="View project" tag="span" />
+ */
 withDefaults(defineProps<{
   text: string
   tag?: 'span' | 'div'
@@ -41,7 +49,8 @@ withDefaults(defineProps<{
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.hover-underline-wrapper:hover .hover-underline-text::after {
+.hover-underline-wrapper:hover .hover-underline-text::after,
+.hover-underline-wrapper:focus-within .hover-underline-text::after {
   transform: scaleX(1);
 }
 </style>

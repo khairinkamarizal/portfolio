@@ -1,19 +1,56 @@
 <template>
+  <!-- v-once: grid is purely decorative and static, skip re-renders -->
   <div
+    v-once
     :class="['grid-bg pointer-events-none', `grid-bg--${variant}`]"
+    :style="gridStyle"
+    class="pointer-events-none"
     aria-hidden="true" />
 </template>
 
 <script setup lang="ts">
-// Subtle CSS background texture component
-// CSS only, no images
-// Variants: dots | grid | lines
-// Dark mode aware — very subtle opacity
+/**
+ * GridBackground — full-screen decorative CSS background texture.
+ *
+ * Renders a fixed, pointer-events-none background pattern behind page content.
+ * Pure CSS — no images. Rendered with `v-once` since the pattern is static.
+ * Dark mode aware via scoped CSS custom colors.
+ *
+ * @prop {'dots'|'grid'|'lines'} [variant='dots'] - Pattern style
+ * @prop {number} [size=24] - Grid cell size in pixels
+ *
+ * @example <GridBackground variant="dots" :size="24" />
+ */
+import { computed } from 'vue'
 
-withDefaults(defineProps<{
+const props = withDefaults(defineProps<{
   variant?: 'dots' | 'grid' | 'lines'
+  size?: number
 }>(), {
   variant: 'dots',
+  size: 24,
+})
+
+const gridStyle = computed(() => {
+  const s = props.size
+  if (props.variant === 'dots') {
+    return { backgroundSize: `${s}px ${s}px` }
+  }
+  if (props.variant === 'grid') {
+    return { backgroundSize: `${s}px ${s}px` }
+  }
+  if (props.variant === 'lines') {
+    return {
+      backgroundImage: `repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent ${s - 1}px,
+        currentColor ${s - 1}px,
+        currentColor ${s}px
+      )`,
+    }
+  }
+  return {}
 })
 </script>
 
@@ -22,19 +59,18 @@ withDefaults(defineProps<{
   position: fixed;
   inset: 0;
   z-index: 0;
-  opacity: 0.4;
   pointer-events: none;
 }
 
 /* Dots variant */
 .grid-bg--dots {
-  background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
+  background-image: radial-gradient(circle, currentColor 1.5px, transparent 1.5px);
   background-size: 24px 24px;
-  color: rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.18);
 }
 
 :global(.dark) .grid-bg--dots {
-  color: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.12);
 }
 
 /* Grid variant */

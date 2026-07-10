@@ -9,7 +9,7 @@
     </div>
 
     <Transition name="fade" mode="out-in">
-      <div v-if="submitted" key="success" class="flex items-center gap-2 text-sm">
+      <div v-if="submitted" key="success" role="status" aria-live="polite" class="flex items-center gap-2 text-sm">
         <span class="opacity-70">You're subscribed. Talk soon.</span>
       </div>
 
@@ -25,8 +25,12 @@
             aria-label="Email address" />
           <button
             type="submit"
-            :disabled="loading || !email"
-            class="text-xs tracking-wider px-4 py-2 bg-black dark:bg-white text-white dark:text-black transition-opacity duration-150 disabled:opacity-40">
+            :aria-disabled="loading || !email"
+            @click="!email || loading ? null : handleSubmit()"
+            :class="[
+              'text-xs tracking-wider px-4 py-2 bg-black dark:bg-white text-white dark:text-black transition-opacity duration-150',
+              !email ? 'opacity-40 cursor-not-allowed' : ''
+            ]">
             {{ loading ? '...' : 'Subscribe' }}
           </button>
         </div>
@@ -37,6 +41,12 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * NewsletterSignup — email capture form shown at the bottom of blog posts.
+ * UI only — no backend is connected. Replace the setTimeout stub in handleSubmit
+ * with a real API call when a mailing-list service is integrated.
+ * Shows a success message after submission; no page reload required.
+ */
 const email = ref('')
 const submitted = ref(false)
 const loading = ref(false)

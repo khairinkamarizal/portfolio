@@ -4,12 +4,12 @@
       'flex items-stretch justify-center transition-colors duration-300 min-h-screen',
       transparent
         ? 'text-white'
-        : 'bg-white dark:bg-black text-black dark:text-white',
+        : 'bg-white dark:bg-[#0a0a0a] text-black dark:text-white',
     ]">
     <!-- Skip to content link for keyboard users -->
     <a
       href="#main-content"
-      class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:bg-black focus:text-white dark:focus:bg-white dark:focus:text-black focus:text-sm">
+      class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:bg-black focus:text-white dark:focus:bg-white dark:focus:text-black focus:text-sm focus:ring-2 focus:ring-black dark:focus:ring-white">
       Skip to content
     </a>
     <!-- Custom cursor follower (desktop only) -->
@@ -26,33 +26,29 @@
       <!-- MOBILE / TABLET LAYOUT (hidden on lg+) -->
       <!-- ===================== -->
       <div
-        class="flex flex-col relative min-h-screen px-5 md:px-8 py-5 gap-12 uppercase lg:hidden"
-        style="font-family: &quot;Space Mono&quot;, monospace">
+        class="flex flex-col relative min-h-screen px-5 md:px-8 py-5 gap-10 lg:hidden overflow-x-hidden">
         <!-- Header -->
         <div
           :class="[
             'flex flex-col gap-10',
             transparent ? 'mix-blend-difference' : '',
           ]">
-          <header class="w-full flex justify-between items-center" aria-label="Site header">
+          <header class="w-full flex justify-between items-center border-b border-black/8 dark:border-white/8 pb-4" aria-label="Site header">
             <NuxtLink to="/"
               ><AppLogo
                 class="w-8 h-8 hover:scale-125 transition-transform duration-300"
             /></NuxtLink>
             <div
-              class="text-xs flex items-center flex-col gap-0 font-sans tracking-wide normal-case">
+              class="text-xs flex flex-col items-end gap-0.5 font-sans tracking-wide normal-case">
               <span class="font-medium">Based in MY 大马</span>
               <ClientOnly>
-                <div class="opacity-50 flex items-center">
-                  <span>Cyberjaya,&nbsp;</span>
+                <div class="opacity-60 flex items-center">
                   <span>{{ hours }}</span>
                   <span class="blink">:</span>
-                  <span
-                    >{{ minutes }} <span class="ml-1">{{ ampm }}</span></span
-                  >
+                  <span>{{ minutes }} <span class="ml-1">{{ ampm }}</span></span>
                 </div>
                 <template #fallback>
-                  <div class="opacity-50 flex items-center">
+                  <div class="opacity-60 flex items-center">
                     <span>--</span>
                     <span class="mx-[1px] blink">:</span>
                     <span>-- <span class="ml-1">--</span></span>
@@ -70,10 +66,10 @@
           </header>
 
           <!-- Navigation -->
-          <AppNav aria-label="Main navigation" />
+          <AppNav direction="horizontal" aria-label="Main navigation" class="mt-2" />
         </div>
 
-        <main id="main-content" role="main" class="flex-1 flex flex-col font-sans normal-case">
+        <main id="main-content" role="main" aria-label="Main content" class="flex-1 flex flex-col font-sans normal-case">
           <PageTransition>
             <slot />
           </PageTransition>
@@ -82,7 +78,7 @@
         <!-- Footer -->
         <div
           :class="[
-            'flex flex-col gap-8 font-sans normal-case',
+            'flex flex-col gap-8 font-sans normal-case py-4 dark:bg-[#0a0a0a]',
             transparent ? 'mix-blend-difference' : '',
           ]">
           <div
@@ -114,63 +110,12 @@
       <!-- DESKTOP LAYOUT (lg+): sidebar + main content -->
       <!-- ===================== -->
       <div class="hidden lg:flex flex-row w-full min-h-screen">
-        <!-- Sidebar: w-56, sticky, full height -->
-        <aside
-          :class="[
-            'w-56 shrink-0 flex flex-col gap-10 px-6 py-8 border-r uppercase sticky top-0 h-screen overflow-y-auto',
-            transparent
-              ? 'border-white/10 mix-blend-difference'
-              : 'border-black/10 dark:border-white/10',
-          ]"
-          style="font-family: &quot;Space Mono&quot;, monospace"
-          aria-label="Desktop sidebar">
-          <!-- Logo + color toggle -->
-          <div class="flex items-center justify-between">
-            <NuxtLink to="/">
-              <AppLogo
-                class="w-8 h-8 hover:scale-125 transition-transform duration-300" />
-            </NuxtLink>
-            <ColorToggle
-              class="w-7 h-7 hover:scale-125 transition-transform duration-300"
-              :class="
-                transparent
-                  ? 'mix-blend-difference text-white'
-                  : 'text-black dark:text-white'
-              " />
-          </div>
-
-          <!-- Vertical nav -->
-          <AppNav direction="vertical" aria-label="Main navigation" />
-
-          <!-- Spacer pushes location/availability to bottom -->
-          <div class="flex-1" />
-
-          <!-- Location + time -->
-          <div class="flex flex-col gap-1.5 font-sans normal-case text-xs">
-            <span class="opacity-40 tracking-widest text-[10px]">CYBERJAYA, MY</span>
-            <ClientOnly>
-              <div class="opacity-60 flex items-center gap-0.5">
-                <span>{{ hours }}</span>
-                <span class="blink">:</span>
-                <span>{{ minutes }}</span>
-                <span class="ml-1 opacity-70">{{ ampm }}</span>
-              </div>
-              <template #fallback>
-                <div class="opacity-40">--:-- --</div>
-              </template>
-            </ClientOnly>
-          </div>
-
-          <!-- Availability dot -->
-          <div class="flex items-center gap-2 font-sans normal-case">
-            <span class="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0 animate-pulse"></span>
-            <span class="text-[10px] opacity-50 tracking-wider">AVAILABLE</span>
-          </div>
-        </aside>
+        <!-- Sidebar: delegated to DesktopSidebar component -->
+        <DesktopSidebar :transparent="transparent" />
 
         <!-- Main content area: flex-1 takes all remaining width -->
-        <div class="flex-1 flex flex-col min-h-screen px-10 py-8">
-          <main id="main-content" role="main" class="flex-1 flex flex-col font-sans normal-case">
+        <div class="flex-1 flex flex-col min-h-screen overflow-x-hidden overflow-y-auto">
+          <main id="main-content" role="main" aria-label="Main content" class="flex-1 flex flex-col font-sans normal-case">
             <PageTransition>
               <slot />
             </PageTransition>
@@ -209,7 +154,8 @@
       </div>
 
     </div>
-    <!-- Back to top button -->
+    <!-- Back to top button — intentionally in ClientOnly for lazy loading;
+         only needed after scroll, so we avoid SSR and defer hydration -->
     <ClientOnly>
       <BackToTop />
     </ClientOnly>
@@ -228,11 +174,13 @@ defineProps({
 });
 
 useHead({
-  htmlAttrs: { lang: "en" },
+  htmlAttrs: { lang: "en" }, // ensures <html lang="en"> for screen readers and SEO
   bodyAttrs: { class: "antialiased" },
   titleTemplate: (title) =>
     title ? `${title} — Khairin Kamarizal ` : "Khairin Kamarizal",
 });
+
+useKeyboardShortcuts();
 
 const hours = ref("00");
 const minutes = ref("00");

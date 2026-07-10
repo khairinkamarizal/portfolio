@@ -2,31 +2,31 @@
   <Transition name="fade">
     <div
       v-if="showIndicator"
-      class="scroll-indicator fixed bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 opacity-60 hover:opacity-100 transition-opacity duration-200"
+      class="scroll-indicator fixed bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 opacity-50 hover:opacity-100 transition-opacity duration-200 pointer-events-none"
       aria-hidden="true">
-      <span class="text-xs tracking-widest opacity-70 normal-case font-sans">Scroll</span>
-      <svg
-        class="w-4 h-4 animate-bounce"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-      </svg>
+      <span class="text-xs tracking-widest opacity-70 normal-case font-mono">Scroll</span>
+      <span class="text-sm nudge">↓</span>
     </div>
   </Transition>
 </template>
 
 <script setup lang="ts">
-// Scroll indicator component
-// Shows animated arrow/line indicating "scroll down"
-// Fades out after user scrolls
+/**
+ * ScrollIndicator — animated "scroll down" hint.
+ *
+ * Displays a fixed, centered arrow and label at the bottom of the viewport to
+ * prompt the user to scroll. Automatically hides with a fade transition once
+ * the page has been scrolled more than 200px. Uses a passive scroll listener
+ * that self-removes after triggering.
+ *
+ * @example <ScrollIndicator />
+ */
 
 const showIndicator = ref(true)
 
 onMounted(() => {
   const handleScroll = () => {
-    if (window.scrollY > 100) {
+    if (window.scrollY > 200) {
       showIndicator.value = false
       window.removeEventListener('scroll', handleScroll)
     }
@@ -49,5 +49,14 @@ onMounted(() => {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+@keyframes nudge-down {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+.nudge {
+  animation: nudge-down 2s ease-in-out infinite;
 }
 </style>

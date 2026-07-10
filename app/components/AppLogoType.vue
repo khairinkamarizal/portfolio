@@ -1,12 +1,10 @@
 <template>
   <svg
-    id="Layer_1"
     xmlns="http://www.w3.org/2000/svg"
-    version="1.1"
     viewBox="0 0 1080 215"
     fill="currentColor"
-    aria-label="Logo">
-    <!-- Generator: Adobe Illustrator 30.2.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 1)  -->
+    aria-hidden="true"
+    focusable="false">
     <g>
       <path
         d="M0,215V0h39v98.9h2.6L125.6,0h47.5l-83.1,96.5,83.8,118.5h-46.9L62.8,123l-23.8,28.1v63.9H0Z" />
