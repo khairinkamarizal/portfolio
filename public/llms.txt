@@ -1,0 +1,25 @@
+# Khairin Kamarizal
+
+> Personal portfolio of Khairin Kamarizal, a creative designer in Cyberjaya, Malaysia, working across brand identity, UI/UX, motion design, and web development.
+
+Khairin combines visual design and frontend development to create clear, functional brand experiences from concept through implementation. The site contains selected portfolio work, professional background, and writing about design craft, branding, typography, motion, print, and creative practice.
+
+## Portfolio
+
+- [Home](https://khair.ink/): Introduction, current focus, and featured work.
+- [About](https://khair.ink/about): Biography, skills, experience, education, certifications, and contact details.
+- [Selected work](https://khair.ink/work): Brand identity, art direction, motion, packaging, and digital design projects.
+- [Writing](https://khair.ink/writing): Essays and field notes on graphic design, branding, typography, motion design, print, and creative practice.
+
+## Contact and professional profiles
+
+- [Send a message](https://khair.ink/message): Contact Khairin through the website.
+- [Behance](https://www.behance.net/khairinkamarizal): Full visual case studies and project presentations.
+- [LinkedIn](https://www.linkedin.com/in/khairinkamarizal): Professional profile and experience.
+- [GitHub](https://github.com/khairinkamarizal): Development projects and source code.
+- [Instagram](https://www.instagram.com/khairinkamarizal): Visual work and updates.
+
+## Optional
+
+- [XML sitemap](https://khair.ink/sitemap.xml): Complete index of public pages and writing.
+- [Brutalist experiment](https://khair.ink/brutalist): An experimental alternate portfolio presentation.
