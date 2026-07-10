@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <NuxtLayout name="simple">
     <template #default>
       <ClientOnly>
@@ -6,7 +6,7 @@
       </ClientOnly>
 
       <!-- ==================== HERO ==================== -->
-      <section id="main-content" aria-describedby="hero-bio" class="relative min-h-[88vh] flex flex-col justify-between px-page pt-8 pb-10 border-b border-black/8 dark:border-white/8">
+      <section id="main-content" aria-describedby="hero-bio" class="relative min-h-[88vh] flex flex-col justify-between px-page pt-8 pb-10 border-b border-black/10 dark:border-white/10">
         <GridBackground variant="dots" class="z-0" />
         <!-- Top row: number + avatar cluster -->
         <div class="relative z-10 flex items-start justify-between">
@@ -71,14 +71,14 @@
 
       <!-- ==================== SKILLS MARQUEE ==================== -->
       <RevealOnScroll variant="fade-up">
-        <div class="border-b border-black/8 dark:border-white/8 py-3">
+        <div class="border-b border-black/10 dark:border-white/10 py-3">
           <MarqueeTicker :items="skills" :speed="30" />
         </div>
       </RevealOnScroll>
 
       <!-- ==================== STATS ==================== -->
       <RevealOnScroll variant="fade-up" :delay="100">
-        <section aria-label="Statistics" class="border-b border-black/8 dark:border-white/8">
+        <section aria-label="Statistics" class="border-b border-black/10 dark:border-white/10">
           <div class="grid grid-cols-2 md:grid-cols-4">
             <ClientOnly>
               <div class="hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors duration-150 tabular-nums"><StatCounter :value="1423" label="BEHANCE VIEWS" /></div>
@@ -94,7 +94,7 @@
       </RevealOnScroll>
 
       <!-- ==================== FEATURED WORK ==================== -->
-      <div class="border-t border-black/8 dark:border-white/8" />
+      <div class="border-t border-black/10 dark:border-white/10" />
       <RevealOnScroll variant="fade-up" :delay="50">
         <section class="px-8 py-10" aria-label="Featured work">
           <div class="flex items-center justify-between mb-8">
@@ -121,7 +121,7 @@
       </RevealOnScroll>
 
       <!-- Divider between featured work and latest writing -->
-      <div class="border-t border-black/8 dark:border-white/8" />
+      <div class="border-t border-black/10 dark:border-white/10" />
 
       <!-- ==================== LATEST WRITING ==================== -->
       <RevealOnScroll v-if="latestPosts?.length" variant="fade-up" :delay="50">

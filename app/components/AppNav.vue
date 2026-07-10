@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <nav
     :class="direction === 'vertical' ? 'flex flex-col gap-1.5' : 'flex items-center gap-6'"
     aria-label="Main navigation">
@@ -16,7 +16,7 @@
           : isActive(link.href)
             ? 'font-bold opacity-100'
             : 'opacity-40 hover:opacity-70',
-        bordered ? 'border-b border-black/8 dark:border-white/8 py-3' : '',
+        bordered ? 'border-b border-black/10 dark:border-white/10 py-3' : '',
       ]"
       :aria-current="isActive(link.href) ? 'page' : undefined">
       {{ link.label }}

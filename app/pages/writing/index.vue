@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <NuxtLayout name="simple">
     <template #default>
       <div id="main-content" class="pb-16">
@@ -7,7 +7,7 @@
       <!-- HERO: page heading                           -->
       <!-- ============================================ -->
       <section id="main-content" class="w-full border-b border-black/10 dark:border-white/10">
-        <div class="px-page pt-10 pb-8 border-b border-black/8 dark:border-white/8">
+        <div class="px-page pt-10 pb-8 border-b border-black/10 dark:border-white/10">
           <p class="font-mono text-[10px] tracking-[0.3em] uppercase opacity-20 mb-2">001 / Writing</p>
           <h1 class="font-mono text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-none uppercase animate-appear">
             Thoughts &amp;<br/>Ideas.
@@ -70,7 +70,7 @@
       <RevealOnScroll variant="fade-up" :delay="50">
       <section class="w-full px-6 md:px-12 lg:px-20 py-12 lg:py-16">
         <!-- Tag filter -->
-        <div class="sticky top-0 z-10 bg-white dark:bg-black py-3 border-b border-black/8 dark:border-white/8 flex flex-wrap gap-1.5 mb-10">
+        <div class="sticky top-0 z-10 bg-white dark:bg-black py-3 border-b border-black/10 dark:border-white/10 flex flex-wrap gap-1.5 mb-10">
           <button
             v-for="tag in allTags"
             :key="tag"
@@ -89,7 +89,7 @@
         </div>
 
         <!-- Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-px bg-black/8 dark:bg-white/8 border border-black/8 dark:border-white/8 divide-y divide-black/8 dark:divide-white/8 max-w-2xl">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-px bg-black/8 dark:bg-white/8 border border-black/10 dark:border-white/10 divide-y divide-black/8 dark:divide-white/8 max-w-2xl">
           <NuxtLink
             v-for="(post, index) in sortedPosts"
             :key="post.slug"

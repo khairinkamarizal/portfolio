@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <NuxtLayout name="simple">
     <template #default>
       <div id="main-content" class="flex flex-col gap-10 px-page py-10 pb-20">
@@ -21,7 +21,7 @@
           <WorkStats />
         </RevealOnScroll>
 
-        <div class="border-t border-black/8 dark:border-white/8" />
+        <div class="border-t border-black/10 dark:border-white/10" />
 
         <!-- Featured projects -->
         <section v-if="featuredProjects.length" aria-label="Featured projects" class="flex flex-col gap-3 py-8">
@@ -42,7 +42,7 @@
           </RevealOnScroll>
         </section>
 
-        <section aria-label="All projects" class="flex flex-col gap-3 border-t border-black/8 dark:border-white/8 pt-6">
+        <section aria-label="All projects" class="flex flex-col gap-3 border-t border-black/10 dark:border-white/10 pt-6">
           <SectionLabel label="All Work" variant="numbered" :number="2" />
           <div class="flex items-center justify-between gap-4">
             <div class="py-2">
@@ -139,7 +139,7 @@
         <div class="flex-1 group-hover:flex-none transition-all duration-300 group-hover:w-2 h-1"></div>
         <ArrowUpRight class="group-hover:rotate-45 transition-transform duration-300" />
       </a>
-        <div class="border-t border-black/8 dark:border-white/8 mt-10" />
+        <div class="border-t border-black/10 dark:border-white/10 mt-10" />
     </template>
   </NuxtLayout>
 </template>

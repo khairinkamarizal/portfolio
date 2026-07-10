@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <NuxtLayout name="simple">
     <template #default>
 
@@ -6,7 +6,7 @@
     <!-- HERO: page heading                           -->
     <!-- ============================================ -->
     <RevealOnScroll variant="fade-up">
-      <section id="main-content" class="w-full border-b border-black/8 dark:border-white/8 px-page py-12 md:py-16 lg:py-20" aria-label="About">
+      <section id="main-content" class="w-full border-b border-black/10 dark:border-white/10 px-page py-12 md:py-16 lg:py-20" aria-label="About">
         <p class="mono-label opacity-20 mb-3">002 / About</p>
         <h1
           class="text-4xl md:text-6xl lg:text-7xl font-bold leading-none uppercase font-mono tracking-[-0.04em] animate-appear [will-change:opacity,transform]">
@@ -55,7 +55,7 @@
               <h2 class="mono-label mb-4 tracking-widest sticky top-0 bg-white dark:bg-black py-2 -mx-2 px-2 z-10">
                 Skills
               </h2>
-              <div class="grid grid-cols-2 gap-px bg-black/8 dark:bg-white/8 border border-black/8 dark:border-white/8">
+              <div class="grid grid-cols-2 gap-px bg-black/8 dark:bg-white/8 border border-black/10 dark:border-white/10">
                 <div
                   v-for="(group, i) in skillGroups"
                   :key="group.category"
@@ -85,7 +85,7 @@
               <h2 class="mono-label mb-4">
                 Education & Certs
               </h2>
-              <div class="flex flex-col divide-y divide-black/8 dark:divide-white/8 border-t border-black/8 dark:border-white/8">
+              <div class="flex flex-col divide-y divide-black/8 dark:divide-white/8 border-t border-black/10 dark:border-white/10">
                 <div
                   v-for="cert in certs"
                   :key="cert.title"
@@ -100,15 +100,15 @@
 
         <!-- RIGHT COL: experience timeline -->
         <RevealOnScroll variant="fade-left" :delay="50">
-          <div class="lg:border-l border-black/8 dark:border-white/8 lg:pl-20">
+          <div class="lg:border-l border-black/10 dark:border-white/10 lg:pl-20">
             <h2 class="mono-label mb-4">
               Experience
             </h2>
-            <div class="flex flex-col gap-0 border-t border-black/8 dark:border-white/8">
+            <div class="flex flex-col gap-0 border-t border-black/10 dark:border-white/10">
               <div
                 v-for="job in experience"
                 :key="`${job.company}-${job.period}`"
-                class="py-6 flex flex-col gap-2 border-b border-black/8 dark:border-white/8 pb-8 last:border-b-0">
+                class="py-6 flex flex-col gap-2 border-b border-black/10 dark:border-white/10 pb-8 last:border-b-0">
                 <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
                   <div>
                     <h3 class="text-sm font-semibold">{{ job.role }}</h3>
@@ -138,7 +138,7 @@
     <!-- TOOLS & STACK                                -->
     <!-- ============================================ -->
     <RevealOnScroll variant="fade-up" :delay="50">
-      <section class="w-full border-t border-black/8 dark:border-white/8 px-8 py-10 lg:py-14" aria-label="Tools and stack">
+      <section class="w-full border-t border-black/10 dark:border-white/10 px-8 py-10 lg:py-14" aria-label="Tools and stack">
         <h2 class="mono-label mb-4">Tools &amp; Stack</h2>
         <div class="flex flex-col gap-8">
           <div v-for="group in toolGroups" :key="group.label">
@@ -161,7 +161,7 @@
     <!-- MY PROCESS                                   -->
     <!-- ============================================ -->
     <RevealOnScroll variant="fade-up" :delay="100">
-      <section class="w-full border-t border-black/8 dark:border-white/8 px-8 py-10 lg:py-14" aria-label="My process">
+      <section class="w-full border-t border-black/10 dark:border-white/10 px-8 py-10 lg:py-14" aria-label="My process">
         <h2 class="mono-label mb-4">
           My Process
         </h2>
@@ -179,7 +179,7 @@
     <!-- ============================================ -->
     <!-- CTA: footer strip                            -->
     <!-- ============================================ -->
-    <section class="w-full border-t border-black/8 dark:border-white/8 px-8 py-12">
+    <section class="w-full border-t border-black/10 dark:border-white/10 px-8 py-12">
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <p class="text-sm opacity-60">Want to work together or just say hello?</p>
         <div class="flex items-center gap-3 self-start sm:self-auto">

@@ -1,10 +1,10 @@
-<template>
+﻿<template>
   <aside
     :class="[
       'w-56 shrink-0 min-w-0 flex flex-col px-5 py-7 border-r sticky top-0 h-screen overflow-y-auto font-mono dark:bg-[#0a0a0a]',
       transparent
-        ? 'border-white/8 mix-blend-difference'
-        : 'border-black/8 dark:border-white/8',
+        ? 'border-white/10 mix-blend-difference'
+        : 'border-black/10 dark:border-white/10',
     ]"
     aria-label="Desktop sidebar">
 
@@ -26,7 +26,7 @@
     <div class="flex-1" />
 
     <!-- Divider -->
-    <div class="border-t border-black/8 dark:border-white/8 -mx-5 mb-5" />
+    <div class="border-t border-black/10 dark:border-white/10 -mx-5 mb-5" />
 
     <!-- Location + time -->
     <div class="flex flex-col gap-1 normal-case text-xs mb-4 pt-2">

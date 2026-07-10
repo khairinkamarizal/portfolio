@@ -1,7 +1,7 @@
-<template>
+﻿<template>
   <article class="group/featured group/card relative flex flex-col transition-transform duration-300 group-hover/card:translate-y-[-2px] overflow-hidden">
     <!-- Large thumbnail -->
-    <div class="relative w-full aspect-[16/9] overflow-hidden bg-black/[0.03] dark:bg-white/[0.03] border border-black/8 dark:border-white/8">
+    <div class="relative w-full aspect-[16/9] overflow-hidden bg-black/[0.03] dark:bg-white/[0.03] border border-black/10 dark:border-white/10">
       <img
         v-if="thumbnail"
         :src="thumbnail"
@@ -29,7 +29,7 @@
       <p v-if="description" class="text-sm opacity-60 leading-relaxed font-sans">{{ description }}</p>
 
       <!-- Bottom row: year + tags + CTA -->
-      <div class="flex items-center justify-between gap-3 mt-1 pt-4 border-t border-black/8 dark:border-white/8">
+      <div class="flex items-center justify-between gap-3 mt-1 pt-4 border-t border-black/10 dark:border-white/10">
         <div class="flex items-center gap-3 flex-wrap">
           <span v-if="year" class="font-mono text-xs opacity-40 tabular-nums">{{ year }}</span>
           <span
