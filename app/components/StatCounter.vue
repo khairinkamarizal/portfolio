@@ -6,27 +6,12 @@
     </span>
 
     <!-- Label -->
-    <span
-      class="font-mono text-[10px] tracking-[0.25em] uppercase opacity-40 mt-1 text-black dark:text-white"
+    <span class="font-mono text-[10px] tracking-[0.25em] uppercase opacity-40 mt-1 text-black dark:text-white">
       {{ label }}
     </span>
   </div>
 </template>
 
-/**
- * StatCounter component.
- *
- * Animates a numeric statistic from zero to its target value on mount using
- * a cubic ease-out tween over 1 200 ms. Supports numeric suffixes (e.g. "50+",
- * "100k") — the trailing non-numeric characters are preserved and appended to
- * each frame of the animation.
- *
- * @prop {string|number} value  - The target value to count up to. May include
- *                                a trailing suffix (e.g. "42+", "100k").
- * @prop {string}        label  - Descriptive label rendered below the number.
- * @prop {string}        suffix - Optional suffix override; takes precedence over
- *                                any suffix parsed from `value`.
- */
 <script setup lang="ts">
 const props = defineProps<{
   value: string | number
@@ -58,7 +43,7 @@ onMounted(() => {
   function tick(now: number) {
     const elapsed = now - startTime
     const t = Math.min(elapsed / duration, 1)
-    const progress = 1 - Math.pow(1 - t, 3) // easeOut cubic
+    const progress = 1 - Math.pow(1 - t, 3)
     const current = Math.round(progress * target)
     displayValue.value = current + trail
 
