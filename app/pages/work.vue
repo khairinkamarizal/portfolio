@@ -17,9 +17,9 @@
           </div>
         </RevealOnScroll>
 
-        <RevealOnScroll variant="fade-up">
+        <ClientOnly>
           <WorkStats />
-        </RevealOnScroll>
+        </ClientOnly>
 
         <div class="border-t border-black/10 dark:border-white/10" />
 

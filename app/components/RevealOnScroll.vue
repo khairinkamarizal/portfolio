@@ -53,22 +53,28 @@ const props = withDefaults(defineProps<{
 })
 
 const el = ref<HTMLElement | null>(null)
-// Default true so SSR renders content visible; flipped to false on mount before observer fires
+// Always start visible — SSR and hydration see same value, no mismatch
 const isVisible = ref(true)
+// Track if we're on client to enable animations
+const isClient = ref(false)
 
 let observer: IntersectionObserver | null = null
 
 onMounted(() => {
-  if (!el.value || typeof IntersectionObserver === 'undefined') {
-    isVisible.value = true
-    return
-  }
+  isClient.value = true
+
+  if (!el.value || typeof IntersectionObserver === 'undefined') return
 
   // Skip animation for users who prefer reduced motion
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  if (prefersReduced) { isVisible.value = true; return }
+  if (prefersReduced) return
 
-  // Hide once we're on the client, then let the observer reveal
+  // Only animate elements that are NOT already in viewport
+  const rect = el.value.getBoundingClientRect()
+  const alreadyVisible = rect.top < window.innerHeight && rect.bottom > 0
+  if (alreadyVisible) return
+
+  // Safe to hide now — client only, no hydration mismatch
   isVisible.value = false
 
   observer = new IntersectionObserver(
