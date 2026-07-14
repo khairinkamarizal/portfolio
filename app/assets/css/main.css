@@ -104,21 +104,43 @@
 
   .button-primary,
   .button-secondary {
-    min-height: 2.75rem;
+    min-height: 3rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.55rem;
-    padding: 0.65rem 0.9rem;
+    padding: 0.72rem 1rem;
     border: 1px solid var(--ink);
     font-size: 0.72rem;
     font-weight: 500;
     text-transform: uppercase;
-    transition: background-color 160ms ease, color 160ms ease;
+    transition: background-color 160ms ease, border-color 160ms ease, box-shadow 180ms var(--ease), color 160ms ease, transform 180ms var(--ease);
   }
-  .button-primary { background: var(--ink); color: var(--paper); }
+  .button-primary {
+    min-width: 11rem;
+    padding-inline: 1.2rem;
+    border-width: 2px;
+    background: var(--ink);
+    color: var(--paper);
+    box-shadow: 0.3rem 0.3rem 0 var(--line-strong);
+  }
+  .button-primary:hover,
+  .button-primary:focus-visible {
+    transform: translate(-0.12rem, -0.12rem);
+    box-shadow: 0.45rem 0.45rem 0 var(--line-strong);
+  }
+  .button-primary:active {
+    transform: translate(0.06rem, 0.06rem);
+    box-shadow: 0.14rem 0.14rem 0 var(--line-strong);
+  }
   .button-secondary { background: transparent; color: var(--ink); }
   .button-secondary:hover { background: var(--ink); color: var(--paper); }
+  .button-primary svg,
+  .button-secondary svg { transition: transform 180ms var(--ease); }
+  .button-primary:hover svg,
+  .button-primary:focus-visible svg,
+  .button-secondary:hover svg,
+  .button-secondary:focus-visible svg { transform: translate(0.18rem, -0.18rem); }
 
   .editorial-header {
     display: grid;

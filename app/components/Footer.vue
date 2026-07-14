@@ -2,7 +2,7 @@
   <footer class="site-footer">
     <div class="site-footer__row">
       <p class="site-footer__prompt">Have a considered project in mind?</p>
-      <NuxtLink to="/message" class="rule-link">Open a conversation <ArrowUpRight :size="15" aria-hidden="true" /></NuxtLink>
+      <NuxtLink to="/message" class="button-primary">Open a conversation <ArrowUpRight :size="15" aria-hidden="true" /></NuxtLink>
     </div>
     <div class="site-footer__base">
       <span>&copy; {{ currentYear }} Khairin Kamarizal</span>

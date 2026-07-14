@@ -33,7 +33,7 @@
     <section class="about-now">
       <p class="eyebrow">Current status</p>
       <h2>Open to thoughtful collaborations.</h2>
-      <div><p>Available for selected identity, web, and creative development projects. Remote worldwide, with local collaboration across the Klang Valley.</p><NuxtLink to="/message" class="rule-link">Start a conversation <ArrowUpRight :size="15" aria-hidden="true" /></NuxtLink></div>
+      <div><p>Available for selected identity, web, and creative development projects. Remote worldwide, with local collaboration across the Klang Valley.</p><NuxtLink to="/message" class="button-primary">Start a conversation <ArrowUpRight :size="15" aria-hidden="true" /></NuxtLink></div>
     </section>
   </NuxtLayout>
 </template>
@@ -72,7 +72,7 @@ useSeoMeta({ title: 'About', description: 'About Khairin Kamarizal, an independe
 .about-now { display: grid; grid-template-columns: 0.45fr 1fr 0.75fr; gap: 3rem; padding: clamp(5rem, 9vw, 9rem) var(--page); border-top: 1px solid var(--line); }
 .about-now h2 { font-size: clamp(2.5rem, 5vw, 5.5rem); line-height: 0.95; font-weight: 500; }
 .about-now > div { color: var(--muted); line-height: 1.5; }
-.about-now .rule-link { margin-top: 2rem; color: var(--ink); }
+.about-now .button-primary { margin-top: 2rem; }
 @media (max-width: 780px) {
   .about-cover { min-height: 80svh; }
   .about-cover__title { grid-column: 1 / 13; }

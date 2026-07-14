@@ -22,7 +22,7 @@
     <section class="archive-end">
       <p class="eyebrow">End of current index</p>
       <p>Additional work is under documentation or NDA. The archive is deliberately selective.</p>
-      <NuxtLink to="/message" class="rule-link">Discuss a project <ArrowUpRight :size="15" aria-hidden="true" /></NuxtLink>
+      <NuxtLink to="/message" class="button-primary">Discuss a project <ArrowUpRight :size="15" aria-hidden="true" /></NuxtLink>
     </section>
   </NuxtLayout>
 </template>
