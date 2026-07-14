@@ -45,33 +45,45 @@ type WritingIndexPost = {
   tags: string[]
 }
 
-type WritingIndexResponse = {
-  posts: WritingIndexPost[]
-  tags: string[]
+type WritingIndexTag = {
+  name: string
+  slug: string
   total: number
+}
+
+type WritingIndexMeta = {
+  total: number
+  pageSize: number
+  tags: WritingIndexTag[]
+}
+
+type WritingIndexPage = {
+  posts: WritingIndexPost[]
+  total: number
+  page: number
+  pageSize: number
   hasMore: boolean
 }
 
 const activeTag = ref('All')
-const isLoading = ref(false)
+const isLoading = ref(true)
 const loadError = ref('')
 const requestId = ref(0)
+const indexMeta = ref<WritingIndexMeta | null>(null)
+const posts = ref<WritingIndexPost[]>([])
+const currentPage = ref(0)
+const totalPosts = ref(0)
+const hasMore = ref(false)
 
-const { data: initialIndex, error } = await useFetch<WritingIndexResponse>('/api/writing-index', {
-  query: { limit: POSTS_PER_PAGE },
-})
-
-const posts = ref<WritingIndexPost[]>(initialIndex.value?.posts || [])
-const availableTags = ref<string[]>(initialIndex.value?.tags || [])
-const totalPosts = ref(initialIndex.value?.total || 0)
-const hasMore = ref(initialIndex.value?.hasMore || false)
-
-if (error.value) {
-  loadError.value = 'Unable to load the writing archive.'
-}
-
-const tags = computed(() => ['All', ...availableTags.value])
+const tags = computed(() => ['All', ...(indexMeta.value?.tags.map(tag => tag.name) || [])])
+const activeTagData = computed(() => indexMeta.value?.tags.find(tag => tag.name === activeTag.value))
 const nextBatchCount = computed(() => Math.min(POSTS_PER_PAGE, totalPosts.value - posts.value.length))
+
+async function ensureIndexMeta() {
+  if (!indexMeta.value) {
+    indexMeta.value = await $fetch<WritingIndexMeta>('/writing-index/index.json')
+  }
+}
 
 async function fetchPosts(reset = false) {
   const currentRequest = requestId.value + 1
@@ -80,18 +92,15 @@ async function fetchPosts(reset = false) {
   loadError.value = ''
 
   try {
-    const data = await $fetch<WritingIndexResponse>('/api/writing-index', {
-      query: {
-        limit: POSTS_PER_PAGE,
-        offset: reset ? 0 : posts.value.length,
-        tag: activeTag.value === 'All' ? undefined : activeTag.value,
-      },
-    })
+    await ensureIndexMeta()
+    const page = reset ? 0 : currentPage.value + 1
+    const scope = activeTag.value === 'All' ? 'all' : `tags/${activeTagData.value?.slug}`
+    const data = await $fetch<WritingIndexPage>(`/writing-index/${scope}/page-${page}.json`)
 
     if (currentRequest !== requestId.value) return
 
     posts.value = reset ? data.posts : [...posts.value, ...data.posts]
-    availableTags.value = data.tags
+    currentPage.value = data.page
     totalPosts.value = data.total
     hasMore.value = data.hasMore
   } catch {
@@ -112,6 +121,7 @@ function loadMore() {
 }
 
 watch(activeTag, () => { fetchPosts(true) })
+onMounted(() => { fetchPosts(true) })
 function formatDate(value: string) { return new Intl.DateTimeFormat('en', { month: 'short', year: 'numeric' }).format(new Date(value)) }
 useSeoMeta({ title: 'Writing', description: 'Writing about design, development, systems, and creative practice.', ogTitle: 'Writing | Khairin Kamarizal', ogUrl: 'https://khair.ink/writing' })
 </script>

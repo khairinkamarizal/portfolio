@@ -1,3 +1,13 @@
+import { existsSync, readdirSync } from "node:fs";
+import { basename, extname } from "node:path";
+
+const writingDir = new URL("./content/writing/", import.meta.url);
+const writingRoutes = existsSync(writingDir)
+  ? readdirSync(writingDir)
+    .filter(file => extname(file) === ".md")
+    .map(file => `/writing/${basename(file, ".md")}`)
+  : [];
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
@@ -61,6 +71,18 @@ export default defineNuxtConfig({
   },
   nitro: {
     preset: "cloudflare_module",
+    prerender: {
+      routes: [
+        "/",
+        "/about",
+        "/work",
+        "/writing",
+        "/message",
+        "/brutalist",
+        "/sitemap.xml",
+        ...writingRoutes,
+      ],
+    },
   },
   experimental: {
     payloadExtraction: false,
