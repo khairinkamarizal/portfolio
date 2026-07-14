@@ -40,11 +40,11 @@
       </div>
 
       <nav class="article-navigation" aria-label="Adjacent writing">
-        <NuxtLink v-if="prevPost" :to="`/writing/${prevPost.slug}`">
+        <NuxtLink v-if="prevPost" :to="prevPost.path">
           <span class="eyebrow">Previous note</span><strong>{{ prevPost.title }}</strong>
         </NuxtLink>
         <span v-else aria-hidden="true" />
-        <NuxtLink v-if="nextPost" :to="`/writing/${nextPost.slug}`">
+        <NuxtLink v-if="nextPost" :to="nextPost.path">
           <span class="eyebrow">Next note</span><strong>{{ nextPost.title }}</strong>
         </NuxtLink>
       </nav>
@@ -67,18 +67,21 @@ if (!post.value) {
 }
 
 const { data: allPosts } = await useAsyncData('all-writing-nav', () =>
-  queryCollection('writing').where('draft', '=', false).order('date', 'DESC').all()
+  queryCollection('writing')
+    .select('path', 'title')
+    .where('draft', '=', false)
+    .order('date', 'DESC')
+    .all()
 )
 
-const currentSlug = route.params.slug as string
-const currentIndex = computed(() => allPosts.value?.findIndex(item => item.slug === currentSlug) ?? -1)
+const currentIndex = computed(() => allPosts.value?.findIndex(item => item.path === route.path) ?? -1)
 const prevPost = computed(() => {
   const item = allPosts.value?.[currentIndex.value + 1]
-  return item ? { title: item.title, slug: item.slug } : null
+  return item ? { title: item.title, path: item.path } : null
 })
 const nextPost = computed(() => {
   const item = currentIndex.value > 0 ? allPosts.value?.[currentIndex.value - 1] : null
-  return item ? { title: item.title, slug: item.slug } : null
+  return item ? { title: item.title, path: item.path } : null
 })
 
 function extractText(node: any): string {

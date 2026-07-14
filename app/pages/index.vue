@@ -69,7 +69,12 @@ import { projects } from '~/data/projects'
 definePageMeta({ layout: false })
 const featuredProjects = projects.filter(project => project.featured).slice(0, 3)
 const { data: latestPosts } = await useAsyncData('latest-posts-home', () =>
-  queryCollection('writing').where('draft', '=', false).order('date', 'DESC').limit(3).all()
+  queryCollection('writing')
+    .select('path', 'title', 'date')
+    .where('draft', '=', false)
+    .order('date', 'DESC')
+    .limit(3)
+    .all()
 )
 function formatDate(value: string) { return new Intl.DateTimeFormat('en', { month: 'short', year: 'numeric' }).format(new Date(value)) }
 

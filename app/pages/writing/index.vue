@@ -1,8 +1,8 @@
 <template>
   <NuxtLayout name="simple">
     <header class="editorial-header">
-      <div><p class="eyebrow">Notes 03 / {{ posts?.length ?? 0 }} entries</p><h1>Writing and field notes.</h1></div>
-      <p class="editorial-header__copy">Observations on design craft, frontend development, systems, and the decisions behind the work.</p>
+      <div><p class="eyebrow">Memos 03 / {{ totalPosts }} entries</p><h1>Writing and field notes.</h1></div>
+      <p class="editorial-header__copy">Short-form memos and longer notes on design craft, frontend development, systems, and the decisions behind the work.</p>
     </header>
 
     <section class="writing-index">
@@ -11,19 +11,23 @@
         <div class="topic-filters" role="group" aria-label="Filter writing by topic">
           <button v-for="tag in tags" :key="tag" type="button" :class="{ active: activeTag === tag }" :aria-pressed="activeTag === tag" @click="activeTag = tag">{{ tag }}</button>
         </div>
-        <p class="eyebrow">{{ filteredPosts.length }} shown</p>
+        <p class="eyebrow">{{ posts.length }} of {{ totalPosts }} shown</p>
       </div>
 
-      <div class="post-ledger" aria-live="polite">
-        <NuxtLink v-for="(post, index) in filteredPosts" :key="post.path" :to="post.path" class="post-row">
+      <div class="post-ledger" aria-live="polite" :aria-busy="isLoading">
+        <NuxtLink v-for="(post, index) in posts" :key="post.path" :to="post.path" class="post-row">
           <span class="post-row__number">{{ String(index + 1).padStart(2, '0') }}</span>
           <div class="post-row__title"><h2>{{ post.title }}</h2><p>{{ post.description }}</p></div>
-          <div class="post-row__meta"><time :datetime="post.date">{{ formatDate(post.date) }}</time><span>{{ post.tags.slice(0, 2).join(' / ') }}</span></div>
+          <div class="post-row__meta"><time :datetime="post.date">{{ formatDate(post.date) }}</time><span>{{ post.tags?.slice(0, 2).join(' / ') }}</span></div>
           <ArrowUpRight :size="18" aria-hidden="true" />
         </NuxtLink>
       </div>
 
-      <p v-if="filteredPosts.length === 0" class="empty-index">No notes in this topic.</p>
+      <p v-if="loadError" class="empty-index">{{ loadError }}</p>
+      <p v-else-if="!isLoading && totalPosts === 0" class="empty-index">No notes in this topic.</p>
+      <button v-else-if="hasMore" type="button" class="load-more" :disabled="isLoading" @click="loadMore">
+        {{ isLoading ? 'Loading memos' : `Load ${nextBatchCount} more memos` }}
+      </button>
     </section>
   </NuxtLayout>
 </template>
@@ -31,10 +35,83 @@
 <script setup lang="ts">
 import { ArrowUpRight } from 'lucide-vue-next'
 definePageMeta({ layout: false })
-const { data: posts } = await useAsyncData('writing-index', () => queryCollection('writing').where('draft', '=', false).order('date', 'DESC').all())
+const POSTS_PER_PAGE = 40
+
+type WritingIndexPost = {
+  path: string
+  title: string
+  description: string
+  date: string
+  tags: string[]
+}
+
+type WritingIndexResponse = {
+  posts: WritingIndexPost[]
+  tags: string[]
+  total: number
+  hasMore: boolean
+}
+
 const activeTag = ref('All')
-const tags = computed(() => ['All', ...new Set((posts.value || []).flatMap(post => post.tags))])
-const filteredPosts = computed(() => activeTag.value === 'All' ? (posts.value || []) : (posts.value || []).filter(post => post.tags.includes(activeTag.value)))
+const isLoading = ref(false)
+const loadError = ref('')
+const requestId = ref(0)
+
+const { data: initialIndex, error } = await useFetch<WritingIndexResponse>('/api/writing-index', {
+  query: { limit: POSTS_PER_PAGE },
+})
+
+const posts = ref<WritingIndexPost[]>(initialIndex.value?.posts || [])
+const availableTags = ref<string[]>(initialIndex.value?.tags || [])
+const totalPosts = ref(initialIndex.value?.total || 0)
+const hasMore = ref(initialIndex.value?.hasMore || false)
+
+if (error.value) {
+  loadError.value = 'Unable to load the writing archive.'
+}
+
+const tags = computed(() => ['All', ...availableTags.value])
+const nextBatchCount = computed(() => Math.min(POSTS_PER_PAGE, totalPosts.value - posts.value.length))
+
+async function fetchPosts(reset = false) {
+  const currentRequest = requestId.value + 1
+  requestId.value = currentRequest
+  isLoading.value = true
+  loadError.value = ''
+
+  try {
+    const data = await $fetch<WritingIndexResponse>('/api/writing-index', {
+      query: {
+        limit: POSTS_PER_PAGE,
+        offset: reset ? 0 : posts.value.length,
+        tag: activeTag.value === 'All' ? undefined : activeTag.value,
+      },
+    })
+
+    if (currentRequest !== requestId.value) return
+
+    posts.value = reset ? data.posts : [...posts.value, ...data.posts]
+    availableTags.value = data.tags
+    totalPosts.value = data.total
+    hasMore.value = data.hasMore
+  } catch {
+    if (currentRequest === requestId.value) {
+      loadError.value = 'Unable to load the writing archive.'
+    }
+  } finally {
+    if (currentRequest === requestId.value) {
+      isLoading.value = false
+    }
+  }
+}
+
+function loadMore() {
+  if (!isLoading.value && hasMore.value) {
+    fetchPosts()
+  }
+}
+
+watch(activeTag, () => { fetchPosts(true) })
 function formatDate(value: string) { return new Intl.DateTimeFormat('en', { month: 'short', year: 'numeric' }).format(new Date(value)) }
 useSeoMeta({ title: 'Writing', description: 'Writing about design, development, systems, and creative practice.', ogTitle: 'Writing | Khairin Kamarizal', ogUrl: 'https://khair.ink/writing' })
 </script>
@@ -55,6 +132,9 @@ useSeoMeta({ title: 'Writing', description: 'Writing about design, development, 
 .post-row svg { margin-top: 0.15rem; transition: transform 180ms ease; }
 .post-row:hover svg { transform: translate(0.2rem, -0.2rem); }
 .empty-index { padding: 4rem 0; color: var(--muted); }
+.load-more { display: block; width: min(100%, 22rem); min-height: 3rem; margin: 3rem auto 0; border: 1px solid var(--line); color: var(--muted); font-size: 0.72rem; font-weight: 500; text-transform: uppercase; transition: background 180ms ease, color 180ms ease, border-color 180ms ease; }
+.load-more:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.load-more:disabled { cursor: wait; opacity: 0.55; }
 @media (max-width: 760px) {
   .writing-toolbar { top: var(--rail); grid-template-columns: 1fr auto; padding: 1rem 0; }
   .topic-filters { grid-column: 1 / 3; grid-row: 2; }
