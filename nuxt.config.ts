@@ -1,5 +1,13 @@
+import { execFileSync } from "node:child_process";
 import { existsSync, readdirSync } from "node:fs";
 import { basename, extname } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const writingIndexScript = fileURLToPath(new URL("./scripts/generate-writing-index.mjs", import.meta.url));
+
+if (process.env.SKIP_WRITING_INDEX_GENERATION !== "1" && existsSync(writingIndexScript)) {
+  execFileSync(process.execPath, [writingIndexScript], { stdio: "inherit" });
+}
 
 const writingDir = new URL("./content/writing/", import.meta.url);
 const writingRoutes = existsSync(writingDir)

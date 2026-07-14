@@ -5,8 +5,6 @@
   "type": "module",
   "scripts": {
     "generate:writing-index": "node scripts/generate-writing-index.mjs",
-    "prebuild": "node scripts/generate-writing-index.mjs",
-    "predev": "node scripts/generate-writing-index.mjs",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
