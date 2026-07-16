@@ -81,11 +81,12 @@ useSeoMeta({ title: 'Contact', description: 'Start a design or development proje
 .field-row input, .field-row textarea { width: 100%; border: 0; outline: 0; background: transparent; color: var(--ink); font-size: clamp(1.15rem, 2vw, 1.7rem); line-height: 1.3; resize: vertical; }
 .field-row input::placeholder, .field-row textarea::placeholder { color: var(--muted); opacity: 0.6; }
 .form-error { grid-column: 2; font-size: 0.72rem; font-weight: 500; }
-.contact-submit { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-top: 1.4rem; padding: 1.15rem 1.2rem; border: 2px solid var(--ink); background: var(--ink); color: var(--paper); box-shadow: 0.36rem 0.36rem 0 var(--line-strong); font-size: clamp(1.8rem, 3.5vw, 3.5rem); line-height: 1; font-weight: 500; text-align: left; transition: box-shadow 180ms var(--ease), transform 180ms var(--ease); }
-.contact-submit svg { width: 2.5rem; height: 2.5rem; flex: 0 0 auto; transition: transform 180ms var(--ease); }
-.contact-submit:hover, .contact-submit:focus-visible { transform: translate(-0.12rem, -0.12rem); box-shadow: 0.52rem 0.52rem 0 var(--line-strong); }
+.contact-submit { position: relative; width: 100%; display: flex; justify-content: space-between; align-items: center; margin-top: 1.4rem; padding: 1.15rem 1.2rem; border: 1px solid var(--ink); background: var(--ink); color: var(--paper); box-shadow: none; font-size: clamp(1.8rem, 3.5vw, 3.5rem); line-height: 1; font-weight: 500; text-align: left; transition: background-color 160ms ease, color 160ms ease, opacity 160ms ease, transform 180ms var(--ease); }
+.contact-submit::after { content: ''; position: absolute; inset: 0 clamp(4.5rem, 8vw, 7rem) 0 auto; width: 1px; background: currentColor; opacity: 0.35; }
+.contact-submit svg { position: relative; z-index: 1; width: 2.5rem; height: 2.5rem; flex: 0 0 auto; margin-left: clamp(2.5rem, 6vw, 6rem); transition: transform 180ms var(--ease); }
+.contact-submit:hover, .contact-submit:focus-visible { background: var(--paper); color: var(--ink); transform: none; }
 .contact-submit:hover svg, .contact-submit:focus-visible svg { transform: translate(0.25rem, -0.25rem); }
-.contact-submit:active { transform: translate(0.06rem, 0.06rem); box-shadow: 0.16rem 0.16rem 0 var(--line-strong); }
+.contact-submit:active { opacity: 0.72; transform: translateY(1px); }
 .form-note { margin-top: 0.8rem; color: var(--muted); font-size: 0.68rem; }
 .contact-details { display: flex; flex-direction: column; gap: 4rem; }
 .contact-email { display: block; margin-top: 1rem; font-size: clamp(1.6rem, 3vw, 3rem); line-height: 1; font-weight: 500; overflow-wrap: anywhere; }

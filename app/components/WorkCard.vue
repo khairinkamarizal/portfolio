@@ -7,15 +7,19 @@
     :style="{ '--project-ratio': ratio }"
     :aria-label="`${project.title}, ${project.discipline} project (opens on Behance)`">
     <div class="project-card__media">
-      <img
-        v-if="project.thumbnail"
-        :src="project.thumbnail"
-        :alt="`${project.title} project cover`"
-        :loading="eager ? 'eager' : 'lazy'"
-        decoding="async"
-        width="1200"
-        height="900">
-      <ProjectThumbnail v-else :category="project.discipline" :title="project.title" />
+      <VueBitsTiltedCard>
+        <div class="project-card__surface">
+          <img
+            v-if="project.thumbnail"
+            :src="project.thumbnail"
+            :alt="`${project.title} project cover`"
+            :loading="eager ? 'eager' : 'lazy'"
+            decoding="async"
+            width="1200"
+            height="900">
+          <ProjectThumbnail v-else :category="project.discipline" :title="project.title" />
+        </div>
+      </VueBitsTiltedCard>
       <div class="project-card__index" aria-hidden="true">{{ String(index).padStart(2, '0') }}</div>
       <div class="project-card__open" aria-hidden="true"><ArrowUpRight :size="18" /></div>
     </div>

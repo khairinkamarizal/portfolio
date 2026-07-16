@@ -6,7 +6,7 @@
     </div>
     <div class="site-footer__base">
       <span>&copy; {{ currentYear }} Khairin Kamarizal</span>
-      <span>Index system / Set in Inter Tight</span>
+      <span><VueBitsDecryptedText text="Index system / Set in Inter Tight" animate-on="inViewHover" /></span>
     </div>
   </footer>
 </template>

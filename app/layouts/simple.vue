@@ -10,7 +10,7 @@
 
       <div class="sidebar-status">
         <span class="status-mark" aria-hidden="true" />
-        <span>Available for selected work<br>Cyberjaya / UTC+8</span>
+        <span><VueBitsDecryptedText text="Available for selected work" animate-on="inViewHover" /><br>Cyberjaya / UTC+8</span>
       </div>
 
       <AppNav />
