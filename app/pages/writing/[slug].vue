@@ -5,13 +5,13 @@
     <article v-if="post" class="article-page">
       <div class="article-rail">
         <NuxtLink to="/writing" class="article-back"><ArrowLeft :size="14" aria-hidden="true" /> Writing index</NuxtLink>
-        <span class="eyebrow">Note / {{ formattedDate }}</span>
+        <span class="eyebrow"><VueBitsDecryptedText :text="`Note / ${formattedDate}`" animate-on="inViewHover" /></span>
       </div>
 
       <header class="article-header">
         <div>
-          <p class="eyebrow">Field note / {{ post.tags.join(' / ') }}</p>
-          <h1>{{ post.title }}</h1>
+          <p class="eyebrow"><VueBitsDecryptedText :text="`Field note / ${post.tags.join(' / ')}`" animate-on="inViewHover" :speed="14" /></p>
+          <h1 :aria-label="post.title"><VueBitsSplitText :text="post.title" split-type="words" :delay="38" :duration="0.95" /></h1>
         </div>
         <div class="article-header__aside">
           <p>{{ post.description }}</p>

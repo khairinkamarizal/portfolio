@@ -1,7 +1,10 @@
 <template>
   <NuxtLayout name="simple">
     <header class="editorial-header">
-      <div><p class="eyebrow">Memos 03 / {{ totalPosts }} entries</p><h1>Writing and field notes.</h1></div>
+      <div>
+        <p class="eyebrow"><VueBitsDecryptedText :text="`Memos 03 / ${totalPosts} entries`" animate-on="inViewHover" /></p>
+        <h1 aria-label="Writing and field notes"><VueBitsSplitText text="Writing and field notes." split-type="words" :delay="64" /></h1>
+      </div>
       <p class="editorial-header__copy">Short-form memos and longer notes on design craft, frontend development, systems, and the decisions behind the work.</p>
     </header>
 

@@ -1,8 +1,11 @@
 <template>
   <NuxtLayout name="simple">
     <header class="editorial-header contact-header">
-      <div><p class="eyebrow">Contact 04 / Project enquiry</p><h1>Start with context.</h1></div>
-      <div class="editorial-header__copy"><p>Tell me what you are making, where the work stands, and what a useful outcome looks like.</p><p class="contact-status"><span aria-hidden="true" /> Accepting selected projects</p></div>
+      <div>
+        <p class="eyebrow"><VueBitsDecryptedText text="Contact 04 / Project enquiry" animate-on="inViewHover" /></p>
+        <h1 aria-label="Start with context"><VueBitsSplitText text="Start with context." split-type="words" :delay="70" /></h1>
+      </div>
+      <div class="editorial-header__copy"><p>Tell me what you are making, where the work stands, and what a useful outcome looks like.</p><p class="contact-status"><span aria-hidden="true" /><VueBitsDecryptedText text="Accepting selected projects" animate-on="inViewHover" /></p></div>
     </header>
 
     <section class="contact-layout">

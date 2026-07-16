@@ -127,6 +127,8 @@ onBeforeUnmount(() => {
   display: inline-block;
   max-width: 100%;
   overflow: hidden;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
   vertical-align: top;
 }
 </style>

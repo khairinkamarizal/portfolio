@@ -1,7 +1,13 @@
 <template>
   <NuxtLayout name="simple">
     <header class="about-cover">
-      <div class="about-cover__title"><p class="eyebrow">Profile 02 / Khairin Kamarizal</p><h1>Designer by instinct.<br>Builder by practice.</h1></div>
+      <div class="about-cover__title">
+        <p class="eyebrow"><VueBitsDecryptedText text="Profile 02 / Khairin Kamarizal" animate-on="inViewHover" /></p>
+        <h1 aria-label="Designer by instinct. Builder by practice.">
+          <VueBitsSplitText text="Designer by instinct." split-type="words" class-name="about-title-line" :delay="52" />
+          <VueBitsSplitText text="Builder by practice." split-type="words" class-name="about-title-line" :delay="52" :start-delay="160" />
+        </h1>
+      </div>
       <figure>
         <NuxtImg src="/assets/dp.webp" alt="Portrait of Khairin Kamarizal" width="720" height="900" format="webp" loading="eager" fetchpriority="high" />
         <figcaption class="index-label">Cyberjaya, Malaysia / 2026</figcaption>
@@ -11,11 +17,11 @@
 
     <section class="about-statement">
       <p class="eyebrow">Working position</p>
-      <blockquote>Design is the logic that decides what matters, what comes next, and what people remember.</blockquote>
+      <blockquote><VueBitsSplitText text="Design is the logic that decides what matters, what comes next, and what people remember." split-type="words" :delay="38" /></blockquote>
     </section>
 
     <section class="about-copy" aria-labelledby="practice-title">
-      <div><p class="eyebrow">Practice</p><h2 id="practice-title">From first question to final detail.</h2></div>
+      <div><p class="eyebrow">Practice</p><h2 id="practice-title"><VueBitsSplitText text="From first question to final detail." split-type="words" :delay="50" /></h2></div>
       <div>
         <p>I care about typography that gives content a voice, systems that make brands recognizable, and interactions that feel obvious only after someone has carefully designed them.</p>
         <p>My range is connected: I can shape the idea, define the visual system, and understand what it takes to make it work in the browser.</p>
@@ -32,7 +38,7 @@
 
     <section class="about-now">
       <p class="eyebrow">Current status</p>
-      <h2>Open to thoughtful collaborations.</h2>
+      <h2><VueBitsSplitText text="Open to thoughtful collaborations." split-type="words" :delay="50" /></h2>
       <div><p>Available for selected identity, web, and creative development projects. Remote worldwide, with local collaboration across the Klang Valley.</p><NuxtLink to="/message" class="button-primary">Start a conversation <ArrowUpRight :size="15" aria-hidden="true" /></NuxtLink></div>
     </section>
   </NuxtLayout>
@@ -52,6 +58,7 @@ useSeoMeta({ title: 'About', description: 'About Khairin Kamarizal, an independe
 <style scoped>
 .about-cover { min-height: 90svh; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: 1fr auto; gap: 2rem; padding: clamp(4rem, 8vw, 8rem) var(--page) 2rem; border-bottom: 1px solid var(--line); }
 .about-cover__title { z-index: 2; grid-column: 1 / 12; grid-row: 1; }
+.about-title-line { display: block; width: fit-content; }
 .about-cover h1 { margin-top: 1rem; max-width: 11ch; font-size: clamp(3.5rem, 8.5vw, 9.5rem); line-height: 0.87; font-weight: 500; }
 .about-cover figure { position: relative; grid-column: 8 / 13; grid-row: 1 / 3; align-self: end; aspect-ratio: 4 / 5; max-height: 70svh; overflow: hidden; background: var(--soft); }
 .about-cover figure img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.06); }

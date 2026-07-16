@@ -1,7 +1,10 @@
 <template>
   <NuxtLayout name="simple">
     <header class="editorial-header">
-      <div><p class="eyebrow">Archive 01 / {{ projects.length }} entries</p><h1>Selected work.</h1></div>
+      <div>
+        <p class="eyebrow"><VueBitsDecryptedText :text="`Archive 01 / ${projects.length} entries`" animate-on="inViewHover" /></p>
+        <h1 aria-label="Selected work"><VueBitsSplitText text="Selected work." split-type="words" :delay="70" /></h1>
+      </div>
       <p class="editorial-header__copy">Identity, motion, apparel, and digital work catalogued by discipline, role, medium, and scope.</p>
     </header>
 
